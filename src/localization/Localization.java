@@ -13,7 +13,7 @@ public class localization {
 
     public static boolean load(String lang) {
         try {
-            Scanner scanner = new Scanner(new File("../../src/localization/"+lang+".loc"));
+            Scanner scanner = new Scanner(new File("../../src/localization/loc/"+lang+".loc"));
             while(scanner.hasNextLine()) {
                 decodeLine(scanner.nextLine());
             }
@@ -21,5 +21,15 @@ public class localization {
         } catch (IOException e) {}
     }
 
-    private static void decodeLine()
+    /**
+     * Fonction utilitaire pour décoder les lignes et les stocker dans la hashmap
+     * @param line String
+     */
+    private static void decodeLine(String line) {
+        if (!line[0].equals("#")) {
+            String[] l = line.split(" ", 2);
+
+            text.put()
+        }
+    }
 }

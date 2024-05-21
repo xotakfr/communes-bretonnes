@@ -1,0 +1,7 @@
+# Ligne avec # au début sont ignorées
+# Format button.save sauvegarder
+# nom espace texte affiché dans interface
+# Il suffit de faire getL("button.save") pour avoir le texte dans la langue choisie de l'utilisateur
+
+button.save sauvegarder
+menu.save_as Enregistrer sous
