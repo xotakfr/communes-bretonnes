@@ -35,7 +35,7 @@ public class BinarySearcher<T> {
         return found;
     }
 
-        /**
+    /**
      * Return the ID of the given parameter
      * @param arr ArrayListe of Type
      * @param obj object (Type) to search
