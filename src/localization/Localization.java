@@ -11,14 +11,28 @@ public class localization {
     private static String defaut = "fr";
     private static HashMap text;
 
-    public static boolean load(String lang) {
+    /**
+     * Load the user language
+     * @param lang String user language
+     */
+    public static boolean loadLocales(String lang) {
         try {
             Scanner scanner = new Scanner(new File("../../src/localization/loc/"+lang+".loc"));
             while(scanner.hasNextLine()) {
                 decodeLine(scanner.nextLine());
             }
             scanner.close();
-        } catch (IOException e) {}
+        } catch (IOException e) {
+            try {
+                lang = defaut;
+                Scanner scanner = new Scanner(new File("../../src/localization/loc/"+lang+".loc"));
+                while(scanner.hasNextLine()) {
+                    decodeLine(scanner.nextLine());
+                }
+            } catch (IOException e) {
+                System.err.println("Impossible de charger un langague\n"+e);
+            }
+        }
     }
 
     /**
@@ -29,7 +43,19 @@ public class localization {
         if (!line[0].equals("#")) {
             String[] l = line.split(" ", 2);
 
-            text.put()
+            text.put(l[0],l[1]);
         }
+    }
+
+    /**
+     * Getter for the translation according to the provided ID
+     * @param ID String
+     */
+    public static String getL(String ID) {
+        String t = text.get(ID);
+        if (t==null) {
+            t=ID;
+        }
+        return t;
     }
 }
