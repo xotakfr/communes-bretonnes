@@ -16,7 +16,7 @@ public class SimpleSearcher<T> implements ISearch {
 	public int search(ArrayList<T> arr, T obj) {
 		int index = -1;
 		int i=0;
-	    while ((!index==-1) && i<arr.length) {
+	    while ((!index==-1) && i<arr.size()) {
 		if (item.compareTo(obj)==0) {
 		    index = i;
 		}

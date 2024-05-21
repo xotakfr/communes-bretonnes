@@ -15,7 +15,7 @@ public class BinarySearcher<T> {
      */
     public boolean exists(ArrayList<T> arr, T obj) {
         int start = 0;
-        int end = arr.length-1;
+        int end = arr.size()-1;
         int mil;
 
         boolean found = false;
@@ -42,7 +42,7 @@ public class BinarySearcher<T> {
      */
     public int search(ArrayList<T> arr, T obj) {
         int start = 0;
-        int end = arr.length-1;
+        int end = arr.size()-1;
         int mil;
 
         int ret = -1;
