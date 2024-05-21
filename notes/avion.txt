@@ -1,0 +1,96 @@
+package modele;
+
+/**
+ * Classe représentant un aeroport.
+ * @author Tout le monde 
+ */
+public class Aeroport implements sortable, filtrable {
+    /** Le nom de l'aéroport */
+    private String nom;
+    /** L'adresse de l'aéroport */
+    private String adresse;
+    /** Le département associé à l'aéroport */
+    private Departement departementOrigine;
+
+    /**
+     * Constructeur de Aeroport 
+     * @param nom
+     * @param adresse
+     * @param departementOrigine
+     * @throw 
+     */
+    public Aeroport(String nom, String adresse, Departement departementOrigine) throws RuntimeException {
+        if (nom == null || nom.equals("")) throw new RuntimeException("avion : Paramètre de nom invalide");
+        if (adresse == null || nom.equals("")) throw new RuntimeException("avion : Paramètre d'adresse invalide);
+        if (departementOrigine == null) throw new RuntimeException("avion : Paramètre de département invalide);
+        this.nom = nom;
+        this.adresse = adresse;
+        this.departementOrigine = departementOrigine;
+    }
+
+    /**
+     * Renvoie le nom de l'aéroport
+     * @return Le nom de l'aéroport
+     */
+    public String getNom() {
+        return this.nom;
+    }
+
+    /**
+     * Renvoie l'adresse de l'aéroport
+     * @return L'adresse de l'aéroport
+     */
+    public String getAdresse() {
+        return this.adresse;
+    }
+
+    /**
+     * Renvoie le département associé à l'aéroport
+     * @return Le département associé à l'aéroport
+     */
+    public Departement getDepartementOrigine() {
+        return this.departementOrigine;
+    }
+
+    /**
+     * Permet de mettre à jour le nom de l'aéroport
+     * @param nom
+     * @throw
+     */
+    public void setNom(String nom) throws RuntimeException {
+        if (nom == null || nom.equals("")) throw new RuntimeException("BRUH);
+        this.nom = nom;
+    }
+
+    /**
+     * 
+     * @param adresse
+     * @throw
+     */
+    public void setAdresse(String adresse) throws RuntimeException {
+        if (adresse == null || adresse.equals("")) throw new RuntimeException("BRUH");
+        this.adresse = adresse;
+    }
+
+    /**
+     * 
+     * @param departementOrigine
+     * @throw
+     */
+    public void setDepartementOrigine(Departement departementOrigine) throws RuntimeException {
+        if (departementOrigine == null) throw new RuntimeException("BRUH");
+        this.departementOrigine = departementOrigine;
+    }
+
+    /**
+     * 
+     * @return 
+     */
+    public String toString() {
+        return "Aeroport{" +
+                "nom='" + nom + '\'' +
+                ", adresse='" + adresse + '\'' +
+                ", departementOrigine=" + departementOrigine +
+                '}';
+    }
+}

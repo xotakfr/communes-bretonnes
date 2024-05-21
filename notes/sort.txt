@@ -1,0 +1,10 @@
+/*
+ * sortable mode 
+ * @author LE MONDE
+ */
+public interface sortable {
+	/*
+	 * Permet de trier des trucs lorsqu'implémenté 
+	 * C.V l'interface ITRI du TP 6-8 
+	 */	
+}

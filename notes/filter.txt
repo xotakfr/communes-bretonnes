@@ -1,0 +1,10 @@
+/*
+ * filtering mode 
+ * @author LE MONDE
+ */
+public interface filterable {
+	/*
+	 * Permet de filter des trucs lorsqu'implémenté 
+	 */
+	private String filter(boolean[] filters){};	
+}

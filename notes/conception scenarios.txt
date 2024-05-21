@@ -1,0 +1,10 @@
+Première idée de scénario
+-------------------------
+Création des 4 départements de Bretagne puis remplissage progressif de chacun d'entre eux par ses communes
+
+Deuxième idée de scénario
+-------------------------
+Données mises en place, l'utilisateur cherche à trier/filtrer ses résultats de recherche 
+
+Troisième idée de scénario
+--------------------------

@@ -1,0 +1,28 @@
+public class Aeroport
+private String nom (faut-il respecter le côté unique des clés primaires ?)
+private String adresse
+private Département departementOrigine
+les getteurs, les setteurs, le toString (tous public), sa méthode unique
+
+public class Département
+private int idDep (faut-il respecter le côté unique des clés primaires ?)
+private String nomDep (== {liste des départements})
+private float invesCulturel2019
+les getteurs, les setteurs, le toString (tous public), sa méthode unique
+
+public class Commune
+private int idCommune
+private String nomCommune
+private ArrayList<Communes> voisins
+méthode d'ajout d'un voisin, de retirer un voisin, de retirer tous les voisins
+les getteurs, les setteurs, le toString (tous public), sa méthode unique (tri filtrage)
+
+public class Gare
+private int codeGare
+private String nomGare
+private boolean estFret
+private boolean estVoyageur
+private Commune communeOrigine
+les getteurs, les setteurs, le toString (tous public), sa méthode unique
+
+Section Année-Commune T.B.D par JL
