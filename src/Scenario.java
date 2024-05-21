@@ -1,5 +1,5 @@
 // Importation des autres module
-import localization.*;// Utilitaire de traduction
+import localization.Localization.*;// Utilitaire de traduction
 import modele.*;// Modèle de Base pour MVC
 import tri.*;//Algorithme de tri utiles
 

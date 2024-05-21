@@ -1,5 +1,7 @@
 package tri;
 
+import java.util.ArrayList;
+
 /**
  * public class ISearch
  */

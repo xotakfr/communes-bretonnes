@@ -29,8 +29,8 @@ public class Localization {
                 while(scanner.hasNextLine()) {
                     decodeLine(scanner.nextLine());
                 }
-            } catch (IOException e) {
-                System.err.println("Impossible de charger un langague\n"+e);
+            } catch (IOException er) {
+                System.err.println("Impossible de charger un langague\n"+er);
             }
         }
     }
@@ -40,7 +40,7 @@ public class Localization {
      * @param line String
      */
     private static void decodeLine(String line) {
-        if (!line[0].equals("#")) {
+        if (!line.charAt(0)=='#')) {
             String[] l = line.split(" ", 2);
 
             text.put(l[0],l[1]);
@@ -52,7 +52,7 @@ public class Localization {
      * @param ID String
      */
     public static String getL(String ID) {
-        String t = text.get(ID);
+        String t = ""+text.get(ID);
         if (t==null) {
             t=ID;
         }
