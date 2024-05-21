@@ -2,7 +2,7 @@ package tri;
 
 import java.util.ArrayList;
 
-public class SimpleSearcher<T> implements ISearch {
+public class SimpleSearcher<T extends Comparable<T>> implements ISearch {
 	public boolean exists(ArrayList<T> arr, T obj) {
 		boolean ret = false;
 	    for (T item : arr) {

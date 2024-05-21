@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * 
  * Type T must implement Comparable<T>
  */
-public class BinarySearcher<T> {
+public class BinarySearcher<T extends Comparable<T>> {
     /**
      * Return True If the given parameter exists
      * @param arr ArrayListe of Type

@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * 
  * element de type T doit implémenter comparableTo
  */
-public class TriParSelection<T> implements Itri {
+public class TriParSelection<T extends Comparable<T>> implements Itri {
 	/**
 	 * private arraylist tab
 	 */
