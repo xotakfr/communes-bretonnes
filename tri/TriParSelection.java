@@ -2,23 +2,23 @@ package tri;
 
 import java.util.ArrayList;
 
-import pays.*;
-
 /**
  * public class TriParSelection
  * Implements Itri
+ * 
+ * element de type T doit implémenter comparableTo
  */
 public class TriParSelection implements Itri {
 	/**
 	 * private arraylist tab
 	 */
-	private ArrayList<Pays> tab;
+	private ArrayList<T> tab;
 
 	/**
 	 * Create a new TriParSelection
-	 * @param tab Pays[]
+	 * @param tab T[]
 	 */
-	public TriParSelection(ArrayList<Pays> tab) {
+	public TriParSelection(ArrayList<T> tab) {
 		if (tab!=null) {
 			this.tab = tab;
 		} else {
@@ -34,8 +34,8 @@ public class TriParSelection implements Itri {
 	private int minimumPosition(int debut) {
 		int min = debut;
 		for (int a=debut+1;a<tab.size();a++) {
-			Pays p = this.tab.get(a);
-			Pays p2 = this.tab.get(min);
+			T p = this.tab.get(a);
+			T p2 = this.tab.get(min);
 			if (p.compareTo(this.tab.get(min))<0) {
 				min = a;
 			}
@@ -44,12 +44,12 @@ public class TriParSelection implements Itri {
 	}
 
 	/**
-	 * Swap two Pays in tab
+	 * Swap two T in tab
 	 * @param i int
 	 * @param j int
 	 */
 	private void swap(int i, int j) {
-		Pays temp = this.tab.get(i);
+		T temp = this.tab.get(i);
 		this.tab.set(i, this.tab.get(j));
 		this.tab.set(j, temp);
 	}
