@@ -2,20 +2,20 @@ package tri;
 
 import java.util.ArrayList;
 
-import pays.*;
-
 /**
  * Public Class BinarySearcher
+ * 
+ * Type T must implement Comparable<T>
  */
-public class BinarySearcher {
+public class BinarySearcher<T> {
     /**
-     * search
-     * @param tabPays Pays[]
-     * @param nom String
+     * Return True If the given parameter exists
+     * @param arr ArrayListe of Type
+     * @param obj object (Type) to search
      */
-    public static boolean search(Pays[] tabPays, String nom) {
+    public static boolean search(ArrayList<T> arr, T obj) {
         int start = 0;
-        int end = tabPays.length-1;
+        int end = arr.length-1;
         int mil;
 
         boolean found = false;
@@ -23,7 +23,7 @@ public class BinarySearcher {
         while (!found && start <= end) {
             mil = (start+end)/2;
 
-            if (tabPays[mil].getNom().equals(nom)) {
+            if (tabPays[mil].getNom().equals(obj)) {
                 found = true;
             } else if (nom.compareToIgnoreCase(tabPays[mil].getNom())<0) {
                 end = mil -1;
