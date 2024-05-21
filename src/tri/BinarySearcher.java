@@ -7,7 +7,8 @@ import java.util.ArrayList;
  * 
  * Type T must implement Comparable<T>
  */
-public class BinarySearcher<T extends Comparable<T>> {
+public class BinarySearcher<T extends Comparable<T>> implements ISearch<T> {
+    @Override
     /**
      * Return True If the given parameter exists
      * @param arr ArrayListe of Type
@@ -35,6 +36,7 @@ public class BinarySearcher<T extends Comparable<T>> {
         return found;
     }
 
+    @Override
     /**
      * Return the ID of the given parameter
      * @param arr ArrayListe of Type
@@ -43,11 +45,11 @@ public class BinarySearcher<T extends Comparable<T>> {
     public int search(ArrayList<T> arr, T obj) {
         int start = 0;
         int end = arr.size()-1;
-        int mil;
+        int mil = 0;
 
         int ret = -1;
 
-        while (!found && start <= end) {
+        while (ret==-1 && start <= end) {
             mil = (start+end)/2;
 
             if (arr.get(mil).compareTo(obj)==0) {

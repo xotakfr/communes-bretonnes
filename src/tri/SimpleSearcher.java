@@ -2,25 +2,26 @@ package tri;
 
 import java.util.ArrayList;
 
-public class SimpleSearcher<T extends Comparable<T>> implements ISearch {
+public class SimpleSearcher<T extends Comparable<T>> implements ISearch<T> {
+	@Override
 	public boolean exists(ArrayList<T> arr, T obj) {
 		boolean ret = false;
 	    for (T item : arr) {
-		if (item.compareTo(obj)==0) {
-		    ret = true;
-		}
+			if (item.compareTo(obj)==0) {
+				ret = true;
+			}
 	    }
 	    return ret;
 	}
-	
+	@Override
 	public int search(ArrayList<T> arr, T obj) {
 		int index = -1;
 		int i=0;
-	    while ((!index==-1) && i<arr.size()) {
-		if (item.compareTo(obj)==0) {
-		    index = i;
-		}
-		i++;
+	    while (!(index==-1) && i<arr.size()) {
+			if (arr.get(i).compareTo(obj)==0) {
+				index = i;
+			}
+			i++;
 	    }
 	    return i;
 	}

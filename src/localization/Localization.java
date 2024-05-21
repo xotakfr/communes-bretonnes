@@ -9,15 +9,16 @@ import java.util.Scanner;
 
 public class Localization {
     private static String defaut = "fr";
-    private static HashMap text;
+    private static HashMap<String,String> text;
 
     /**
      * Load the user language
      * @param lang String user language
      */
     public static void loadLocales(String lang) {
+        text = new HashMap<String,String>();
         try {
-            Scanner scanner = new Scanner(new File("../../src/localization/loc/"+lang+".loc"));
+            Scanner scanner = new Scanner(new File("../src/localization/loc/"+lang+".loc"));
             while(scanner.hasNextLine()) {
                 decodeLine(scanner.nextLine());
             }
@@ -25,7 +26,7 @@ public class Localization {
         } catch (IOException e) {
             try {
                 lang = defaut;
-                Scanner scanner = new Scanner(new File("../../src/localization/loc/"+lang+".loc"));
+                Scanner scanner = new Scanner(new File("../src/localization/loc/"+lang+".loc"));
                 while(scanner.hasNextLine()) {
                     decodeLine(scanner.nextLine());
                 }
@@ -40,10 +41,12 @@ public class Localization {
      * @param line String
      */
     private static void decodeLine(String line) {
-        if (!(line.charAt(0)=='#')) {
-            String[] l = line.split(" ", 2);
+        if (!(line.equals(""))) {
+            if (!(line.charAt(0)=='#')) {
+                String[] l = line.split(" ", 2);
 
-            text.put(l[0],l[1]);
+                text.put(l[0],l[1]);
+            }
         }
     }
 
