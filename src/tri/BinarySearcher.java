@@ -13,7 +13,7 @@ public class BinarySearcher<T> {
      * @param arr ArrayListe of Type
      * @param obj object (Type) to search
      */
-    public static boolean exists(ArrayList<T> arr, T obj) {
+    public boolean exists(ArrayList<T> arr, T obj) {
         int start = 0;
         int end = arr.length-1;
         int mil;
@@ -40,7 +40,7 @@ public class BinarySearcher<T> {
      * @param arr ArrayListe of Type
      * @param obj object (Type) to search
      */
-    public static int search(ArrayList<T> arr, T obj) {
+    public int search(ArrayList<T> arr, T obj) {
         int start = 0;
         int end = arr.length-1;
         int mil;
