@@ -64,7 +64,7 @@ public class DataLoader {
             ArrayList<Commune> voisines = new ArrayList<Commune>();
             int com = Integer.parseInt(da[0]);
             Commune current = communes.get(searcher.search(communes, new Commune(com, "Searching", null))); // Recherche de la commune actuelle
-            String[] near_c = da[3].split("|");// Séparation de chaque ville depuis le CSV
+            String[] near_c = da[3].split("\\|");// Séparation de chaque ville depuis le CSV
             for (String nea : near_c) {
                 Commune voisine = communes.get(searcher.search(communes, new Commune(Integer.parseInt(nea), "Searching", null)));
                 voisines.add(voisine); // Ajout de la voisine dans la liste des voisines
