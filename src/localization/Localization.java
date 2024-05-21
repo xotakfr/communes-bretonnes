@@ -15,7 +15,7 @@ public class Localization {
      * Load the user language
      * @param lang String user language
      */
-    public static boolean loadLocales(String lang) {
+    public static void loadLocales(String lang) {
         try {
             Scanner scanner = new Scanner(new File("../../src/localization/loc/"+lang+".loc"));
             while(scanner.hasNextLine()) {
@@ -40,7 +40,7 @@ public class Localization {
      * @param line String
      */
     private static void decodeLine(String line) {
-        if (!line.charAt(0)=='#')) {
+        if (!(line.charAt(0)=='#')) {
             String[] l = line.split(" ", 2);
 
             text.put(l[0],l[1]);

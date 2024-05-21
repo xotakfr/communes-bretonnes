@@ -1,5 +1,5 @@
 // Importation des autres module
-import localization.Localization.*;// Utilitaire de traduction
+import localization.*;// Utilitaire de traduction
 import modele.*;// Modèle de Base pour MVC
 import tri.*;//Algorithme de tri utiles
 
@@ -11,10 +11,10 @@ public class Scenario {
     }
 
     private static void testLocalization() {
-        loadLocales("fr");
-        System.out.println("Français : "+getL("button.save"));
-        loadLocales("en");
-        System.out.println("English : "+getL("button.save"));
+        Localization.loadLocales("fr");
+        System.out.println("Français : "+Localization.getL("button.save"));
+        Localization.loadLocales("en");
+        System.out.println("English : "+Localization.getL("button.save"));
     }
 
     private static void testModele() {
