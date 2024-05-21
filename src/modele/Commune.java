@@ -77,6 +77,19 @@ public class Commune implements Comparable<Commune>{
     }
 
     /**
+     * Méthode pour obtenir une représentation textuelle des voisins.
+     * Utilisée pour éviter un stackoverflow et avoir un bel affichage
+     * @return Une chaîne de caractères représentant les voisins.
+     */
+    public String voisinAsString() {
+        String s = "";
+        for (Commune voisin : this.voisins) {
+            s=s+voisin.nomCommune+"("+voisin.idCommune+");";
+        }
+        return s;
+    }
+
+    /**
      * Méthode pour obtenir une représentation textuelle de la commune.
      * @return Une chaîne de caractères représentant la commune.
      */
@@ -84,7 +97,7 @@ public class Commune implements Comparable<Commune>{
         return "Commune{" +
                 "idCommune=" + idCommune +
                 ", nomCommune='" + nomCommune + '\'' +
-                ", voisins=" + voisins +
+                ", voisins=" + voisinAsString() +
                 '}';
     }
 
