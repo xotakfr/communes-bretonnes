@@ -58,9 +58,18 @@ public class DataLoader {
         BinarySearcher<Commune> searcher = new BinarySearcher<Commune>();
         
         // Ajout des communes voisines
-        ArrayList<String[]> data_n = CSVReader(NEAR);
-        for 
-        searcher.search(communes, )
+        ArrayList<String[]> data_n = CSVReader(NEAR);// Lecture ville voisines CSV
+        for (String[] d : data_n) {
+            ArrayList<Commune> voisines = new ArrayList<Commune>();
+            int com = Integer.parseInt(d[0]);
+            Commune current = searcher.search(communes, new Commune(com, "Searching", null)); // Recherche de la commune actuelle
+            String[] near_c = d[3].split("|");// Séparation de chaque ville depuis le CSV
+            for (String nea : near_c) {
+                Commune voisine = searcher.search(communes, new Commune(Integer.parseInt(nea), "Searching", null));
+                voisines.add(voisine); // Ajout de la voisine dans la liste des voisines
+            }
+            current.setVoisins(voisines);
+        }
     }
 }
 

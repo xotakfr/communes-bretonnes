@@ -88,6 +88,11 @@ public class Commune implements Comparable<Commune>{
                 '}';
     }
 
+    /**
+     * Implémentation de Comparable
+     * Comparaison basé uniquement sur le CODE INSEE pour l'instant
+     * @param o Autre commune à comparer
+     */
     public int compareTo(Commune o) {
         int ret = 0;
         if (this.idCommune>o.idCommune) {
@@ -95,5 +100,6 @@ public class Commune implements Comparable<Commune>{
         } else if (this.idCommune<o.idCommune) {
             ret = 1;
         }
+        return ret;
     }
 }
