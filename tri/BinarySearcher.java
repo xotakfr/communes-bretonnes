@@ -23,11 +23,11 @@ public class BinarySearcher<T> {
         while (!found && start <= end) {
             mil = (start+end)/2;
 
-            if (tabPays[mil].getNom().equals(obj)) {
+            if (arr.get(mil).compareTo(obj)==0) {
                 found = true;
-            } else if (nom.compareToIgnoreCase(tabPays[mil].getNom())<0) {
+            } else if (obj.compareTo(arr.get(mil))<0) {
                 end = mil -1;
-            } else if (nom.compareToIgnoreCase(tabPays[mil].getNom())>0) {
+            } else if (obj.compareTo(arr.get(mil))>0) {
                 start = mil + 1;
             }
 
