@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Représente une commune.
  */
-public class Commune {
+public class Commune implements Comparable<Commune>{
     /** Identifiant de la commune */
     private int idCommune;
 
@@ -86,5 +86,14 @@ public class Commune {
                 ", nomCommune='" + nomCommune + '\'' +
                 ", voisins=" + voisins +
                 '}';
+    }
+
+    public int compareTo(Commune o) {
+        int ret = 0;
+        if (this.idCommune>o.idCommune) {
+            ret = -1;
+        } else if (this.idCommune<o.idCommune) {
+            ret = 1;
+        }
     }
 }

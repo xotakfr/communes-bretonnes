@@ -49,9 +49,18 @@ public class DataLoader {
         ArrayList<String[]> data = CSVReader(MUNICIPALITY_PATH);
         for (String[] d : data) {
             ArrayList<Commune> n = new ArrayList<Commune>();
-            communes.add(new Commune(d[1], d[2], n));
+            communes.add(new Commune(Integer.parseInt(d[1]), d[2], n));
         }
+        // La vitesse lente de l'algo de tri par séléction est compensé par la rapidité de la recherche dichotomique
+        // Il serait quand même préférable de tenter de réécrire un algorithme de tri autre
+        TriParSelection<Commune> trieur = new TriParSelection<Commune>(communes);
+        trieur.trier();
+        BinarySearcher<Commune> searcher = new BinarySearcher<Commune>();
+        
+        // Ajout des communes voisines
         ArrayList<String[]> data_n = CSVReader(NEAR);
+        for 
+        searcher.search(communes, )
     }
 }
 
