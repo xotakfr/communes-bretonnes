@@ -1,0 +1,7 @@
+# Lines with # at the beginning are ignored
+# Format button.save
+# name space text displayed in interface
+# Just do getL("button.save") to get the text in the user's chosen language
+
+button.save save
+menu.save_as Save As
