@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class localization {
+public class Localization {
     private static String defaut = "fr";
     private static HashMap text;
 
