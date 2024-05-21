@@ -34,6 +34,7 @@ public class DataLoader {
         ArrayList<String[]> az = new ArrayList<String[]>();
         try {
             Scanner scanner = new Scanner(new File(PATH+f));
+            scanner.nextLine();//On skip la première ligne
             while(scanner.hasNextLine()) {
                 String[] t = decodeLine(scanner.nextLine());
                 az.add(t);
@@ -59,11 +60,11 @@ public class DataLoader {
         
         // Ajout des communes voisines
         ArrayList<String[]> data_n = CSVReader(NEAR);// Lecture ville voisines CSV
-        for (String[] d : data_n) {
+        for (String[] da : data_n) {
             ArrayList<Commune> voisines = new ArrayList<Commune>();
-            int com = Integer.parseInt(d[0]);
+            int com = Integer.parseInt(da[0]);
             Commune current = communes.get(searcher.search(communes, new Commune(com, "Searching", null))); // Recherche de la commune actuelle
-            String[] near_c = d[3].split("|");// Séparation de chaque ville depuis le CSV
+            String[] near_c = da[3].split("|");// Séparation de chaque ville depuis le CSV
             for (String nea : near_c) {
                 Commune voisine = communes.get(searcher.search(communes, new Commune(Integer.parseInt(nea), "Searching", null)));
                 voisines.add(voisine); // Ajout de la voisine dans la liste des voisines
