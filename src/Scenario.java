@@ -24,6 +24,9 @@ public class Scenario {
 
         //System.out.println();
         DataLoader.loadCommunes();
+        for (Commune co : DataLoader.getCommunes()) {
+            System.out.println(co);
+        }
     }
     private static void testTri() {
         System.out.println("à faire");

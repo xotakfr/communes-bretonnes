@@ -72,5 +72,9 @@ public class DataLoader {
             current.setVoisins(voisines);
         }
     }
+
+    public static ArrayList<Commune> getCommunes() {
+        return communes;
+    }
 }
 
