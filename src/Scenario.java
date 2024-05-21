@@ -3,6 +3,8 @@ import localization.*;// Utilitaire de traduction
 import modele.*;// Modèle de Base pour MVC
 import tri.*;//Algorithme de tri utiles
 
+import java.util.stream;
+
 public class Scenario {
     public static void main(String[] args) {
         testLocalization();
@@ -12,9 +14,9 @@ public class Scenario {
 
     private static void testLocalization() {
         Localization.loadLocales("fr");
-        System.out.println("Français : "+Localization.getL("button.save"));
+        System.out.println("Français : "+Localization.getL("header.welcome")+" Jean Dupont");
         Localization.loadLocales("en");
-        System.out.println("English : "+Localization.getL("button.save"));
+        System.out.println("English : "+Localization.getL("header.welcome")+" Jean Dupont");
     }
 
     private static void testModele() {

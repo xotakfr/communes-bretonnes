@@ -5,3 +5,5 @@
 
 button.save sauvegarder
 menu.save_as Enregistrer sous
+header.welcome Bienvenue
+header.whatsee Que souhaitez-vous visualiser ?
