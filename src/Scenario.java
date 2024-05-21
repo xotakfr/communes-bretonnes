@@ -20,9 +20,10 @@ public class Scenario {
     }
 
     private static void testModele() {
-        Commune c = new Commune(545454, "Commune de test 1", new ArrayList<Commune>());
+        //Commune c = new Commune(545454, "Commune de test 1", new ArrayList<Commune>());
 
-        System.out.println();
+        //System.out.println();
+        DataLoader.loadCommunes();
     }
     private static void testTri() {
         System.out.println("à faire");
