@@ -8,9 +8,9 @@ new TriParSelection(ArrayList<Objet>)
 
 Et appelez juste la fonction .trier() lié à cet objet, l'arrayList sera alors trié selon la grandeur compareTo
 
-# Comment utiliser le binarySearcher
+# Comment utiliser une classe implémentant ISearch
 
-BinarySearcher suppose que l'arraylist est trié
+>  BinarySearcher suppose que l'arraylist est trié
 
 exists(ArrayList<Objet>, Objet à rechercher) -> Renvoie un booléen si l'objet existe dans l'arraylist
 search(ArrayList<Objet>, Objet à rechercher) -> Renvoie l'ID de la case de l'arrayList qui contient l'élément
