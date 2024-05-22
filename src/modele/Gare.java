@@ -4,6 +4,10 @@ package modele;
  * Classe représentant une gare.
  */
 public class Gare {
+    /** Filtre actuel - Voir comparableTo et SwitecherFilter */
+    private static String currentFilter = "codeGare";
+    /** Liste des filtres possibles */
+    private static String[] filtersList = new String[]{"codeGare", "nomGare", "estFret", "estVoyageur", "communeOrigine"};
     /** Code de la gare */
     private int codeGare;
 
@@ -127,5 +131,42 @@ public class Gare {
                 ", estVoyageur=" + estVoyageur +
                 ", communeOrigine=" + communeOrigine +
                 '}';
+    }
+
+    /**
+     * Implémentation de Comparable
+     * Comparaison basé sur le filtre - voir classe SwitcherFilter
+     * @param o Autre Gare à comparer
+     */
+    public int compareTo(Gare o) {
+        int ret = 0;
+
+        if (currentFilter.equals("codeGare")) {
+           ret = Integer.compare(this.codeGare, o.codeGare);
+        }
+        if (currentFilter.equals("nomGare")) {
+            ret = this.nomGare.compareTo(o.nomGare);
+        }
+        if (currentFilter.equals("estFret")) {
+            ret = Boolean.compare(this.estFret, o.estFret);
+        }
+        if (currentFilter.equals("estVoyageur")) {
+            ret = Boolean.compare(this.estVoyageur, o.estVoyageur);
+        }
+        if (currentFilter.equals("communeOrigine")) {
+            ret = this.communeOrigine.compareTo(o.communeOrigine);
+        }
+        return ret;
+    }
+
+    public static String[] getAllFilter() {
+        return filtersList;
+    }
+    public static void setFilter(String filter) {
+        for (String s : filtersList) {
+            if (s.equals(filter)) {
+                currentFilter = filter;
+            }
+        }
     }
 }

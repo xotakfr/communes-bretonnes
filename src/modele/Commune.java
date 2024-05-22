@@ -120,7 +120,7 @@ public class Commune implements Comparable<Commune>{
             ret = this.nomCommune.compareTo(o.nomCommune);
         }
         if (currentFilter.equals("voisins")) {
-            ret = Integer.compare(this.voisins.size(), o..voisins.size());
+            ret = Integer.compare(this.voisins.size(), o.voisins.size());
         }
         return ret;
     }
