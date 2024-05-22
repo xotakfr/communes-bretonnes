@@ -94,6 +94,19 @@ public class Commune implements Comparable<Commune>{
     }
 
     /**
+     * Méthode pour récupérer la population 2019 depuis DonneesAnnuelles
+     * @return population int
+     */
+    public int getPopulation() {
+        DonneesAnnuelles.setFilter("laCommune");
+        TriRapide<DonneesAnnuelles> trieur = new TriRapide<DonneesAnnuelles>(DataLoader.getDonneesAnnuelles());
+        trieur.trier();
+        BinarySearcher<DonneesAnnuelles> searcher = new BinarySearcher<DonneesAnnuelles>();
+        int idA = searcher.search(DataLoader.getDonneesAnnuelles(),this.idCommune);
+        return DataLoader.getDonneesAnnuelles().get(idA).getPopulation();
+    }
+
+    /**
      * Méthode pour obtenir une représentation textuelle de la commune.
      * @return Une chaîne de caractères représentant la commune.
      */
@@ -121,6 +134,9 @@ public class Commune implements Comparable<Commune>{
         }
         if (currentFilter.equals("voisins")) {
             ret = Integer.compare(this.voisins.size(), o.voisins.size());
+        }
+        if (currentFilter.equals("population")) {
+            ret = Integer.compare(this.getPopulation(), o.getPopulation());
         }
         return ret;
     }
