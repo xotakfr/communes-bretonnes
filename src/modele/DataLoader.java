@@ -196,9 +196,13 @@ public class DataLoader {
                 obj.add("0");
                 obj.add("Search");
 
+                obj.add("");
+                obj.add("0");
+
                 obj.set(getIndexOf(Commune.getAllFilter(), filter), str);
 
                 Commune search_co = new Commune(Integer.parseInt(obj.get(0)), obj.get(1), new ArrayList<Commune>());
+                search_co.setPopulation(Integer.parseInt(obj.get(3)));
                 for (Commune c : commune_temp) {
                     if (c.compareTo(search_co)>0) {
                         nec.add(c);
@@ -213,9 +217,13 @@ public class DataLoader {
                 obj.add("0");
                 obj.add("Search");
 
+                obj.add("");
+                obj.add("0");
+
                 obj.set(getIndexOf(Commune.getAllFilter(), filter), str);
 
                 Commune search_co = new Commune(Integer.parseInt(obj.get(0)), obj.get(1), new ArrayList<Commune>());
+                search_co.setPopulation(Integer.parseInt(obj.get(3)));
                 for (Commune c : commune_temp) {
                     if (c.compareTo(search_co)<0) {
                         nec.add(c);

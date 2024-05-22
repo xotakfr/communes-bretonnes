@@ -1,5 +1,7 @@
 package modele;
 
+import tri.*;
+
 import java.util.ArrayList;
 
 /**
@@ -18,6 +20,10 @@ public class Commune implements Comparable<Commune>{
 
     /** Liste des communes voisines */
     private ArrayList<Commune> voisins;
+
+
+
+    private int population = -1;
 
     /**
      * Constructeur de la classe Commune.
@@ -98,12 +104,19 @@ public class Commune implements Comparable<Commune>{
      * @return population int
      */
     public int getPopulation() {
-        DonneesAnnuelles.setFilter("laCommune");
-        TriRapide<DonneesAnnuelles> trieur = new TriRapide<DonneesAnnuelles>(DataLoader.getDonneesAnnuelles());
-        trieur.trier();
-        BinarySearcher<DonneesAnnuelles> searcher = new BinarySearcher<DonneesAnnuelles>();
-        int idA = searcher.search(DataLoader.getDonneesAnnuelles(),this.idCommune);
-        return DataLoader.getDonneesAnnuelles().get(idA).getPopulation();
+        int pop = this.population;
+        if (this.population==-1) {
+            DonneesAnnuelles.setFilter("laCommune");
+            TriRapide<DonneesAnnuelles> trieur = new TriRapide<DonneesAnnuelles>(DataLoader.getDonneesAnnuelles());
+            trieur.trier();
+            BinarySearcher<DonneesAnnuelles> searcher = new BinarySearcher<DonneesAnnuelles>();
+            int idA = searcher.search(DataLoader.getDonneesAnnuelles(),new DonneesAnnuelles(0,this.idCommune, 0, 0, 0f, 0f,0f, 0f, 0));
+            pop = DataLoader.getDonneesAnnuelles().get(idA).getPopulation();
+        }
+        return pop;
+    }
+    public void setPopulation(int a) {
+        this.population = a;
     }
 
     /**

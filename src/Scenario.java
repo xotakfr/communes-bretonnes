@@ -44,6 +44,12 @@ public class Scenario {
             System.out.println(co);
         }
 
+        System.out.println("Tri Dynamique selon la population (Exemple, l'utilisateur va chercher toute les communes qui ont entre 50000 et 100000 de population)");
+        ArrayList<Commune> d2 = DataLoader.getCommunes("population", ">50000;<100000");// entre 5000 et 100000
+        for (Commune co : d2) {
+            System.out.println(co);
+        }
+
         System.out.println("Tri Departement selon nom");
         Departement.setFilter("nomDep");
         TriRapide<Departement> trieur = new TriRapide<Departement>(DataLoader.getDepartements());

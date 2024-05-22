@@ -3,7 +3,7 @@ package modele;
 /**
  * Classe représentant les données annuelles.
  */
-public class DonneesAnnuelles {
+public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
     /** Filtre actuel - Voir comparableTo et SwitecherFilter */
     private static String currentFilter = "lAnnee";
     /** Liste des filtres possibles */
