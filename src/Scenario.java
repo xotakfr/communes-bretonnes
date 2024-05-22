@@ -24,8 +24,12 @@ public class Scenario {
 
         //System.out.println();
         DataLoader.loadCommunes();
+        DataLoader.loadDepartements();
         for (Commune co : DataLoader.getCommunes()) {
             System.out.println(co);
+        }
+        for (Departement de : DataLoader.getDepartements()) {
+            System.out.println(de);
         }
     }
     private static void testTri() {

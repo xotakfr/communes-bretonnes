@@ -73,8 +73,28 @@ public class DataLoader {
         }
     }
 
+    public static void loadDepartements() {
+        ArrayList<String[]> data = CSVReader(DEPARTEMENTS);
+        for (String[] d : data) {
+            departements.add(new Departement(d[0], d[1], 0));
+        }
+
+        Departement.setFilter("idDep");
+        TriRapide<Departement> trieur = new TriRapide<Departement>(departement);
+        trieur.trier();
+        ArrayList<String[]> data2 = CSVReader(CULTURAL_DEP);
+        BinarySearcher<Departement> searcher = new BinarySearcher<Departement>();
+        for (String[] d: data2) {
+            Departement current = departements.get(searcher.search(departements, new Departement(d[0])))
+            current.setInvesCulturel2019(d[2]);
+        }
+    }
+
     public static ArrayList<Commune> getCommunes() {
         return communes;
+    }
+    public static ArrayList<Departement> getDepartements() {
+        return departements;
     }
 }
 

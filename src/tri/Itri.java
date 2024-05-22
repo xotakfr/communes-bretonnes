@@ -1,7 +1,7 @@
 package tri;
 
 /**
- * public class Itri
+ * public interface Itri
  */
 public interface Itri {
 	/**
