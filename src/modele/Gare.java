@@ -159,9 +159,17 @@ public class Gare {
         return ret;
     }
 
+    /**
+     * Getter Filter
+     * @return String[]
+     */
     public static String[] getAllFilter() {
         return filtersList;
     }
+    /**
+     * Setter Filter
+     * @param filter String
+     */
     public static void setFilter(String filter) {
         for (String s : filtersList) {
             if (s.equals(filter)) {
