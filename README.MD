@@ -8,7 +8,7 @@ La Bretagne est considéré comme une région fran¸caise globalement attractive
 
 - Moteur de traduction
 
-- Possibilité de Trier selon différents filtres
+- Possibilité de Trier selon différents filtres (Par exemple : Commune.idCommune; Departement.nomDep; ...)
 
 ## TODO
 
