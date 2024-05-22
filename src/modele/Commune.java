@@ -112,6 +112,7 @@ public class Commune implements Comparable<Commune>{
             BinarySearcher<DonneesAnnuelles> searcher = new BinarySearcher<DonneesAnnuelles>();
             int idA = searcher.search(DataLoader.getDonneesAnnuelles(),new DonneesAnnuelles(0,this.idCommune, 0, 0, 0f, 0f,0f, 0f, 0));
             pop = DataLoader.getDonneesAnnuelles().get(idA).getPopulation();
+            setPopulation(pop);
         }
         return pop;
     }
