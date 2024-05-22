@@ -139,7 +139,13 @@ public class DataLoader {
         for (String[] d : data) {
             Commune sea = new Commune(Integer.parseInt(d[2]), "Searching",new ArrayList<Commune>());
             Commune currentCommune = communes.get(searcher.search(communes, sea));
-            donneesAnnuelles.add(new DonneesAnnuelles(Integer.parseInt(d[0]), Integer.parseInt(d[2]), -1, -1, -1.0f,-1.0f,Float.parseFloat(d[4]),Float.parseFloat(d[5]),Integer.parseInt(d[3])));
+            float va;
+            if (d.length>5) {
+                va = Float.parseFloat(d[5]);
+            } else {
+                va = -1.0f;
+            }
+            donneesAnnuelles.add(new DonneesAnnuelles(Integer.parseInt(d[0]), Integer.parseInt(d[2]), -1, -1, -1.0f,-1.0f,Float.parseFloat(d[4]),va,Integer.parseInt(d[3])));
         }
     }
 
