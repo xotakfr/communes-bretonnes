@@ -159,6 +159,79 @@ public class DataLoader {
         loadDonneesAnnuelles();
     }
 
+    private static int getIndexOf(String[] array, String target) {
+    for (int i = 0; i < array.length; i++) {
+        if (array[i].equals(target)) {
+            return i;
+        }
+    }
+    return -1; // Return -1 if the target string is not found in the array
+}
+
+
+    /**
+     * Getter for communes
+     * @param filterSelect select all datamatching the filter
+     * Exemple : "<54" ">-1" "=0" "<541;>54"
+     * @param filter
+     * @return ArrayList commune
+     */
+    public static ArrayList<Commune> getCommunes(String filter, String filterSelect) {
+        ArrayList<Commune> commune_temp = new ArrayList<Commune>();
+        ArrayList<Commune> nec = new ArrayList<Commune>();
+        for (Commune c : communes) {
+            commune_temp.add(c);
+        }
+
+        Commune.setFilter(filter);
+
+        // décodage
+        String[] a = filterSelect.split(";");
+        for (String b : a) {
+            if (b.charAt(0)=='>') {
+                String str = b.substring(1);// remove the charAt(0)
+                nec = new ArrayList<Commune>();
+
+                ArrayList<String> obj = new ArrayList<String>();
+                obj.add("0");
+                obj.add("Search");
+
+                obj.set(getIndexOf(Commune.getAllFilter(), filter), str);
+
+                Commune search_co = new Commune(Integer.parseInt(obj.get(0)), obj.get(1), new ArrayList<Commune>());
+                for (Commune c : commune_temp) {
+                    if (c.compareTo(search_co)>0) {
+                        nec.add(c);
+                    }
+                }
+            }
+            if (b.charAt(0)=='<') {
+                String str = b.substring(1);// remove the charAt(0)
+                nec = new ArrayList<Commune>();
+
+                ArrayList<String> obj = new ArrayList<String>();
+                obj.add("0");
+                obj.add("Search");
+
+                obj.set(getIndexOf(Commune.getAllFilter(), filter), str);
+
+                Commune search_co = new Commune(Integer.parseInt(obj.get(0)), obj.get(1), new ArrayList<Commune>());
+                for (Commune c : commune_temp) {
+                    if (c.compareTo(search_co)<0) {
+                        nec.add(c);
+                    }
+                }
+            }
+            commune_temp = new ArrayList<Commune>();;
+            for (Commune c : nec) {
+                commune_temp.add(c);
+            }
+        }
+        
+
+        return nec;
+    }
+
     /**
      * Getter for communes
      * @return ArrayList commune
