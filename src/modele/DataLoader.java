@@ -139,7 +139,7 @@ public class DataLoader {
         for (String[] d : data) {
             Commune sea = new Commune(Integer.parseInt(d[2]), "Searching",new ArrayList<Commune>());
             Commune currentCommune = communes.get(searcher.search(communes, sea));
-            donneesAnnuelles.add(new DonneesAnnuelles(Integer.parseInt(d[0]), Integer.parseInt(d[2]), -1, -1, -1.0,-1.0,Float.parseFloat(d[4]),Float.parseFloat(d[5]),Integer.parseInt(d[3])));
+            donneesAnnuelles.add(new DonneesAnnuelles(Integer.parseInt(d[0]), Integer.parseInt(d[2]), -1, -1, -1.0f,-1.0f,Float.parseFloat(d[4]),Float.parseFloat(d[5]),Integer.parseInt(d[3])));
         }
     }
 
@@ -150,7 +150,7 @@ public class DataLoader {
         loadCommunes();
         loadDepartements();
         loadGares();
-        //loadDonneesAnnuelles();
+        loadDonneesAnnuelles();
     }
 
     /**
