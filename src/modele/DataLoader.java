@@ -54,7 +54,7 @@ public class DataLoader {
         }
         // La vitesse lente de l'algo de tri par séléction est compensé par la rapidité de la recherche dichotomique
         // Il serait quand même préférable de tenter de réécrire un algorithme de tri autre
-        TriParSelection<Commune> trieur = new TriParSelection<Commune>(communes);
+        TriRapide<Commune> trieur = new TriRapide<Commune>(communes);
         trieur.trier();
         BinarySearcher<Commune> searcher = new BinarySearcher<Commune>();
         
