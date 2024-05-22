@@ -109,9 +109,8 @@ public class Departement implements Comparable<Departement>, SwitcherFilter{
 
     /**
      * Implémentation de Comparable
-     * Comparaison basé uniquement sur le CODE INSEE pour l'instant
-     * à baser sur le filtre
-     * @param o Autre commune à comparer
+     * Comparaison basé sur le filtre - voir classe SwitcherFilter
+     * @param o Autre Département à comparer
      */
     public int compareTo(Departement o) {
         int ret = 0;

@@ -6,6 +6,10 @@ import java.util.ArrayList;
  * Représente une commune.
  */
 public class Commune implements Comparable<Commune>{
+    /** Filtre actuel - Voir comparableTo et SwitecherFilter */
+    private static String currentFilter = "idCommune";
+    /** Liste des filtres possibles */
+    private static String[] filtersList = new String[]{"idCommune", "nomCommune", "voisins"};
     /** Identifiant de la commune */
     private int idCommune;
 
@@ -103,17 +107,32 @@ public class Commune implements Comparable<Commune>{
 
     /**
      * Implémentation de Comparable
-     * Comparaison basé uniquement sur le CODE INSEE pour l'instant
-     * à baser sur le filtre
-     * @param o Autre commune à comparer
+     * Comparaison basé sur le filtre - voir classe SwitcherFilter
+     * @param o Autre Commune à comparer
      */
     public int compareTo(Commune o) {
         int ret = 0;
-        if (this.idCommune>o.idCommune) {
-            ret = -1;
-        } else if (this.idCommune<o.idCommune) {
-            ret = 1;
+
+        if (currentFilter.equals("idCommune")) {
+           ret = Integer.compare(this.idCommune, o.idCommune);
+        }
+        if (currentFilter.equals("nomCommune")) {
+            ret = this.nomCommune.compareTo(o.nomCommune);
+        }
+        if (currentFilter.equals("voisins")) {
+            ret = Integer.compare(this.voisins.size(), o..voisins.size());
         }
         return ret;
+    }
+
+    public static String[] getAllFilter() {
+        return filtersList;
+    }
+    public static void setFilter(String filter) {
+        for (String s : filtersList) {
+            if (s.equals(filter)) {
+                currentFilter = filter;
+            }
+        }
     }
 }
