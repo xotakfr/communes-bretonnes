@@ -33,6 +33,22 @@ public class Scenario {
         }
     }
     private static void testTri() {
-        System.out.println("à faire");
+        System.out.println("\n\n\nTestTri");
+
+        System.out.println("Tri Departement selon nom");
+        Departement.setFilter("nomDep");
+        TriRapide<Departement> trieur = new TriRapide<Departement>(DataLoader.getDepartements());
+        trieur.trier();
+        for (Departement de : DataLoader.getDepartements()) {
+            System.out.println(de);
+        }
+
+        System.out.println("Tri Departement selon code INSEE");
+        Departement.setFilter("idDep");
+        trieur.trier();
+        for (Departement de : DataLoader.getDepartements()) {
+            System.out.println(de);
+        }
+
     }
 }
