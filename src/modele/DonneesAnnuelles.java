@@ -4,6 +4,11 @@ package modele;
  * Classe représentant les données annuelles.
  */
 public class DonneesAnnuelles {
+    /** Filtre actuel - Voir comparableTo et SwitecherFilter */
+    private static String currentFilter = "lAnnee";
+    /** Liste des filtres possibles */
+    private static String[] filtersList = new String[]{"lAnnee", "laCommune", "nbMaison", "nbAppart", "prixMoyen", "prixM2Moyen","depensesCulturellesTotales","budgetTotal", "population"};
+
     /** */
     private int lAnnee;
 
@@ -187,5 +192,62 @@ public class DonneesAnnuelles {
                 ", Budget Total=" + budgetTotal +
                 ", Population=" + population +
                 '}';
+    }
+
+    /**
+     * Implémentation de Comparable
+     * Comparaison basé sur le filtre - voir classe SwitcherFilter
+     * @param o Autre Commune à comparer
+     */
+    public int compareTo(DonneesAnnuelles o) {
+        int ret = 0;
+
+        if (currentFilter.equals("lAnnee")) {
+           ret = Integer.compare(this.lAnnee, o.lAnnee);
+        }
+        if (currentFilter.equals("laCommune")) {
+           ret = Integer.compare(this.laCommune, o.laCommune);
+        }
+        if (currentFilter.equals("nbMaison")) {
+           ret = Integer.compare(this.nbMaison, o.nbMaison);
+        }
+        if (currentFilter.equals("nbAppart")) {
+           ret = Integer.compare(this.nbAppart, o.nbAppart);
+        }
+        if (currentFilter.equals("prixMoyen")) {
+           ret = Float.compare(this.prixMoyen, o.prixMoyen);
+        }
+        if (currentFilter.equals("prixM2Moyen")) {
+           ret = Float.compare(this.prixM2Moyen, o.prixM2Moyen);
+        }
+        if (currentFilter.equals("depensesCulturellesTotales")) {
+           ret = Float.compare(this.depensesCulturellesTotales, o.depensesCulturellesTotales);
+        }
+        if (currentFilter.equals("budgetTotal")) {
+           ret = Float.compare(this.budgetTotal, o.budgetTotal);
+        }
+        if (currentFilter.equals("nbAppart")) {
+           ret = Integer.compare(this.population, o.population);
+        }
+        return ret;
+    }
+
+    /**
+     * Getter Filter
+     * @return String[]
+     */
+    public static String[] getAllFilter() {
+        return filtersList;
+    }
+    /**
+     * Setter Filter
+     * @param filter String
+     */
+    public static void setFilter(String filter) {
+        for (String s : filtersList) {
+            if (s.equals(filter)) {
+                currentFilter = filter;
+            }
+        }
     }
 }

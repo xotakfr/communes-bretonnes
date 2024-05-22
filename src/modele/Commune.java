@@ -9,7 +9,7 @@ public class Commune implements Comparable<Commune>{
     /** Filtre actuel - Voir comparableTo et SwitecherFilter */
     private static String currentFilter = "idCommune";
     /** Liste des filtres possibles */
-    private static String[] filtersList = new String[]{"idCommune", "nomCommune", "voisins"};
+    private static String[] filtersList = new String[]{"idCommune", "nomCommune", "voisins","population"};
     /** Identifiant de la commune */
     private int idCommune;
 
@@ -125,9 +125,17 @@ public class Commune implements Comparable<Commune>{
         return ret;
     }
 
+    /**
+     * Getter Filter
+     * @return String[]
+     */
     public static String[] getAllFilter() {
         return filtersList;
     }
+    /**
+     * Setter Filter
+     * @param filter String
+     */
     public static void setFilter(String filter) {
         for (String s : filtersList) {
             if (s.equals(filter)) {

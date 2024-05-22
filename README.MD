@@ -13,3 +13,9 @@ La Bretagne est considéré comme une région fran¸caise globalement attractive
 ## TODO
 
 - Finir implémentation filtres dans modèle
+
+- filtre population departement et communes
+
+- Filtre de Hidding
+
+- Faire commentaire dans DonneesAnnuelles.java
