@@ -15,5 +15,5 @@ public interface SwitcherFilter {
      * Change the current filter
      * The filter is used in compareTo
      */
-    public static void setFilter(String);
+    public static void setFilter(String filter);
 }
