@@ -7,29 +7,44 @@ import java.io.File;
 import java.io.IOException;
 
 import tri.*;
-
+/**
+ * Classe de gestions des données
+ * Permet le chargement des données
+ */
 public class DataLoader {
+    /** Chemin des données */
     private static final String PATH = "../data/";
+    /** fichiers data */
     private static final String AIRPORT_PATH = "aeroport.csv"; //Name; Departement number; location
     private static final String MUNICIPALITY_PATH = "communesBretonnes.csv";//Departement number; insee; name
     private static final String DEPARTEMENTS = "departement.csv"; //departement; name
     private static final String CULTURAL = "depensesCulturellesParCommune.csv"; // Year ;name;insee;popu;total_cultu;total_b
     private static final String TRAIN ="gare.csv"; //Code; name;fret;voya;commune;dep;code_co
     private static final String CULTURAL_DEP = "investissementCulturelParDep.csv"; // Year ;name;insee;popu;total_cultu;total_b
-
-
+    private static final String PRICE = "prixParCommune.csv";//INSEE_COM;Annee;NbMaisonsVendues;NbAppartsVendus;PrixMoyen;Prixm2Moyen;SurfaceMoy
+    private static final String INFLATION = "tauxInflationParAn.csv";//Annee; taux
     private static final String NEAR = "voisinageCommunesBretonnes.csv";//insee;nom;nbvoisins; insee voisins
 
+    /** The data as arraylist */
     private static ArrayList<Commune> communes = new ArrayList<Commune>();
     private static ArrayList<Departement> departements = new ArrayList<Departement>();
     private static ArrayList<DonneesAnnuelles> donneesAnnuelles = new ArrayList<DonneesAnnuelles>();
     private static ArrayList<Gare> gares = new ArrayList<Gare>();
 
-
+    /**
+     * Decode a CSV line
+     * @param line String
+     * @return String[]
+     */
     private static String[] decodeLine(String line) {
         String[] t = line.split(";");
         return t;
     }
+    /**
+     * Read a CSV file and parse it
+     * @param f String file name constant
+     * @return arraylist of string
+     */
     private static ArrayList<String[]> CSVReader(String f) {
         ArrayList<String[]> az = new ArrayList<String[]>();
         try {
@@ -46,6 +61,9 @@ public class DataLoader {
         return az;
     }
 
+    /**
+     * Load the communes
+     */
     public static void loadCommunes() {
         ArrayList<String[]> data = CSVReader(MUNICIPALITY_PATH);
         for (String[] d : data) {
@@ -73,6 +91,9 @@ public class DataLoader {
         }
     }
 
+    /**
+     * Load the departements
+     */
     public static void loadDepartements() {
         ArrayList<String[]> data = CSVReader(DEPARTEMENTS);
         for (String[] d : data) {
@@ -90,11 +111,33 @@ public class DataLoader {
         }
     }
 
+    /**
+     * Getter for communes
+     * @return ArrayList commune
+     */
     public static ArrayList<Commune> getCommunes() {
         return communes;
     }
+    /**
+     * Getter for departements
+     * @return ArrayList departements
+     */
     public static ArrayList<Departement> getDepartements() {
         return departements;
+    }
+    /**
+     * getter for gare
+     * @return ArrayList gares
+     */
+    public static ArrayList<Gare> getGares() {
+        return gares;
+    }
+    /**
+     * Getter donneesAnnuelles
+     * @return donneesAnnuelles
+     */
+    public static ArrayList<DonneesAnnuelles> getDonneesAnnuelles() {
+        return donneesAnnuelles;
     }
 }
 
