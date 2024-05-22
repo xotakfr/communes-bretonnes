@@ -50,5 +50,12 @@ public class Scenario {
             System.out.println(de);
         }
 
+        System.out.println("Tri Departement selon invesCulturel2019");
+        Departement.setFilter("invesCulturel2019");
+        trieur.trier();
+        for (Departement de : DataLoader.getDepartements()) {
+            System.out.println(de);
+        }
+
     }
 }
