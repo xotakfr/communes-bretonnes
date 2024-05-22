@@ -10,12 +10,12 @@ La Bretagne est considéré comme une région fran¸caise globalement attractive
 
 - Possibilité de Trier selon différents filtres (Par exemple : Commune.idCommune; Departement.nomDep; ...)
 
+- Filtrage conditionnel dynamique
+
 ## TODO
 
-- Finir implémentation filtres dans modèle
+- Finir implémentation filtres dans modèle (Département, Gare, DonnéesAnnuelles) : suivre base pour Commune
 
-- filtre population departement et communes
-
-- Filtre de Hidding
+- filtre population departement
 
 - Faire commentaire dans DonneesAnnuelles.java
