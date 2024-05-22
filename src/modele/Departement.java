@@ -6,7 +6,11 @@ import java.util.List;
 /**
  * Classe représentant un département.
  */
-public class Departement implements Comparable<Departement>{
+public class Departement implements Comparable<Departement>, SwitcherFilter{
+    /** Filtre actuel - Voir comparableTo et SwitecherFilter */
+    private static String currentFilter = "idDep";
+    /** Liste des filtres possibles */
+    private static String[] filtersList = new String[]{"idDep", "nomDep", "invesCulturel2019"};
     /** Identifiant du département */
     private int idDep;
 
@@ -111,15 +115,27 @@ public class Departement implements Comparable<Departement>{
      */
     public int compareTo(Departement o) {
         int ret = 0;
-        if (this.idDep>o.idDep) {
-            ret = -1;
-        } else if (this.idDep<o.idDep) {
-            ret = 1;
+
+        if (currentFilter.equals("idDep")) {
+           ret = Integer.compare(this.idDep, o.idDep);
+        }
+        if (currentFilter.equals("nomDep")) {
+            ret = this.nomDep.compareTo(o.nomDep);
+        }
+        if (currentFilter.equals("invesCulturel2019")) {
+            ret = Float.compare(this.invesCulturel2019, o.invesCulturel2019);
         }
         return ret;
     }
 
+    public static String[] getAllFilter() {
+        return filtersList;
+    }
     public static void setFilter(String filter) {
-        System.out.println("debug1 : à faire");
+        for (String s : filtersList) {
+            if (s.equals(filter)) {
+                currentFilter = filter;
+            }
+        }
     }
 }
