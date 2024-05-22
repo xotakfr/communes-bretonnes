@@ -1,7 +1,7 @@
 package modele;
 
 /**
- * public interface SwitcherFilter
+ * Public interface SwitcherFilter
  * Filter used with comparable
  */
 public interface SwitcherFilter {
@@ -9,11 +9,11 @@ public interface SwitcherFilter {
     /**
      * Get a list of all available filters
      */
-    public static String[] getAllFilter();
+    String[] getAllFilters();
 
     /**
      * Change the current filter
      * The filter is used in compareTo
      */
-    public static void setFilter(String filter);
+    void setFilter(String filter);
 }

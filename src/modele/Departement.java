@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Classe représentant un département.
  */
-public class Departement {
+public class Departement implements Comparable<Departement>{
     /** Identifiant du département */
     private int idDep;
 
@@ -17,7 +17,7 @@ public class Departement {
     private float invesCulturel2019;
 
     /** Liste des départements autorisés */
-    private static final List<String> DEPARTEMENTS_AUTORISES = Arrays.asList("MORBIHAN", "ILLE-ET-VILAINE", "COTES-D-ARMOR", "FINISTERE");
+    private static final List<String> DEPARTEMENTS_AUTORISES = Arrays.asList("MORBIHAN", "ILLE-ET-VILAINE", "COTES-D'ARMOR", "FINISTERE");
 
     /**
      * Constructeur de la classe Departement.
@@ -101,5 +101,25 @@ public class Departement {
      */
     public static boolean estCorrect(String nomDep) {
         return DEPARTEMENTS_AUTORISES.contains(nomDep.toUpperCase());
+    }
+
+    /**
+     * Implémentation de Comparable
+     * Comparaison basé uniquement sur le CODE INSEE pour l'instant
+     * à baser sur le filtre
+     * @param o Autre commune à comparer
+     */
+    public int compareTo(Departement o) {
+        int ret = 0;
+        if (this.idDep>o.idDep) {
+            ret = -1;
+        } else if (this.idDep<o.idDep) {
+            ret = 1;
+        }
+        return ret;
+    }
+
+    public static void setFilter(String filter) {
+        System.out.println("debug1 : à faire");
     }
 }

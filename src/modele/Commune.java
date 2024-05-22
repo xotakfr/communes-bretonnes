@@ -104,6 +104,7 @@ public class Commune implements Comparable<Commune>{
     /**
      * Implémentation de Comparable
      * Comparaison basé uniquement sur le CODE INSEE pour l'instant
+     * à baser sur le filtre
      * @param o Autre commune à comparer
      */
     public int compareTo(Commune o) {
