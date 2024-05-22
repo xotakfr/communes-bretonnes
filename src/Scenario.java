@@ -22,9 +22,8 @@ public class Scenario {
     private static void testModele() {
         //Commune c = new Commune(545454, "Commune de test 1", new ArrayList<Commune>());
 
-        //System.out.println();
-        DataLoader.loadCommunes();
-        DataLoader.loadDepartements();
+        DataLoader.loadAll();
+
         for (Commune co : DataLoader.getCommunes()) {
             System.out.println(co);
         }

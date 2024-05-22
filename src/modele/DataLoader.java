@@ -112,6 +112,48 @@ public class DataLoader {
     }
 
     /**
+     * Load the gares
+     */
+    public static void loadGares() {
+        ArrayList<String[]> data = CSVReader(TRAIN);
+        Commune.setFilter("idCommune");
+        TriRapide<Commune> trieur = new TriRapide<Commune>(communes);
+        trieur.trier();
+        BinarySearcher<Commune> searcher = new BinarySearcher<Commune>();
+        for (String[] d : data) {
+            Commune sea = new Commune(Integer.parseInt(d[6]), "Searching",new ArrayList<Commune>());
+            Commune currentCommune = communes.get(searcher.search(communes, sea));
+            gares.add(new Gare(Integer.parseInt(d[0]), d[1], Boolean.parseBoolean(d[2]), Boolean.parseBoolean(d[3]), currentCommune));
+        }
+    }
+
+    /**
+     * Load the DonnéesAnnuelles
+     */
+    public static void loadDonneesAnnuelles() {
+        ArrayList<String[]> data = CSVReader(CULTURAL);
+        Commune.setFilter("idCommune");
+        TriRapide<Commune> trieur = new TriRapide<Commune>(communes);
+        trieur.trier();
+        BinarySearcher<Commune> searcher = new BinarySearcher<Commune>();
+        for (String[] d : data) {
+            Commune sea = new Commune(Integer.parseInt(d[2]), "Searching",new ArrayList<Commune>());
+            Commune currentCommune = communes.get(searcher.search(communes, sea));
+            donneesAnnuelles.add(new DonneesAnnuelles(Integer.parseInt(d[0]), Integer.parseInt(d[2]), -1, -1, -1.0,-1.0,Float.parseFloat(d[4]),Float.parseFloat(d[5]),Integer.parseInt(d[3])));
+        }
+    }
+
+    /** 
+     * Load all the data
+     */
+    public static void loadAll() {
+        loadCommunes();
+        loadDepartements();
+        loadGares();
+        //loadDonneesAnnuelles();
+    }
+
+    /**
      * Getter for communes
      * @return ArrayList commune
      */
