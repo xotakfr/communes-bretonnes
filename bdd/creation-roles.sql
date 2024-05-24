@@ -1,11 +1,19 @@
+/*================
+Création des roles
+================*/
 CREATE ROLE 'connecte', 'adjoint', 'maire', 'prefet', 'appadmin', 'dbadmin';
 
+/*=========================
+Affectation des permissions
+=========================*/
+-- Role Utilisateur connecté : on donne l'accès en lecture a la BDD
 GRANT SELECT
     ON bdSAE.*
     TO 'connecte'
 ;
 
-GRANT 'connecte'
+-- Role adjoint au maire : Peut modifier des données annuelles
+GRANT connecte
     TO 'adjoint'
 ;
 
@@ -14,25 +22,27 @@ GRANT UPDATE(nbMaison, nbAppart, prixMoyen, prixM2Moyen, SurfaceMoy)
     TO 'adjoint'
 ;
 
-GRANT 'adjoint'
+-- Role maire : Peut créer des données annuelles, des gares ou des aéroports et les modifier
+GRANT adjoint
     TO 'maire';
 
-GRANT CREATE, UPDATE
+GRANT UPDATE, INSERT
     ON bdSAE.DonneesAnnuelles
     TO 'maire'
 ;
 
-GRANT CREATE, UPDATE
+GRANT INSERT, UPDATE
     ON bdSAE.Gare
     TO 'maire'
 ;
 
-GRANT CREATE, UPDATE
+GRANT INSERT, UPDATE
     ON bdSAE.Aeroport
     TO 'maire'
 ;
 
-GRANT 'maire'
+-- Role préfet : peut gérer les données annuelles, gares, aéroport et communes
+GRANT maire
     TO 'prefet'
 ;
 
@@ -51,55 +61,31 @@ GRANT DELETE
     TO 'prefet'
 ;
 
-GRANT CREATE, UPDATE, DELETE
-    ON bdSAE.Communes
+GRANT INSERT, UPDATE, DELETE
+    ON bdSAE.Commune
     TO 'prefet'
 ;
 
-GRANT CREATE, UPDATE, DELETE
+
+-- Role administrateur de l'application : possède l'accès à toutes les tables de la base de donnée
+GRANT INSERT, UPDATE, DELETE
     ON bdSAE.*
     TO 'appadmin'
+;
 
-GRANT CREATE, UPDATE, DELETE, ALTER, DROP
+-- Role administrateur de la BDD : Peut gérer l'entiereté de la BDD ainsi que transmetre des droits aux utilisateurs
+GRANT CREATE, UPDATE, DELETE, ALTER, DROP, INSERT
     ON bdSAE.*
     TO 'dbadmin'
     WITH GRANT OPTION
 ;
 
 
+/*==================
+Test des permissions
+==================*/
 
--- Parties pour les VUES :
-
--- VUES pour gerer les contraintes :
-
--- VUE: Vue pour s'assurer que les communes ont une population non negative
-CREATE VIEW V_PopulationPositive AS
-SELECT * FROM Communes WHERE population >= 0;
-
--- VUE: Vue pour verifier que les prix des maisons et appartements ne sont pas negatifs
-CREATE VIEW V_PrixNonNegatifs AS
-SELECT * FROM DonneesAnnuelles WHERE nbMaison >= 0 AND nbAppart >= 0 AND prixMoyen >= 0 AND prixM2Moyen >= 0 AND SurfaceMoy >= 0;
-
-
--- VUES pour gerer les infos derivables :
-
--- VUE: Vue pour calculer la moyenne des prix des maisons et appartements par commune
-CREATE VIEW V_MoyennePrixParCommune AS
-SELECT commune, AVG(prixMoyen) AS PrixMoyen, AVG(prixM2Moyen) AS PrixM2Moyen
-FROM DonneesAnnuelles
-GROUP BY commune;
-
--- VUE: Vue pour lister les gares et aéroports par commune
-CREATE VIEW V_GaresAeroportsParCommune AS
-SELECT c.commune, g.nom AS Gare, a.nom AS Aeroport
-FROM Communes c
-LEFT JOIN Gare g ON c.commune = g.commune
-LEFT JOIN Aeroport a ON c.commune = a.commune;
-
-
-
--- Test des PERMISSIONS :
-
+-- /!\ Ces instructions doivent être exécutés avec le compte root de la base de donnée
 
 -- Creation des utilisateurs :
 
@@ -120,23 +106,65 @@ GRANT 'prefet' TO 'user_prefet'@'localhost';
 GRANT 'appadmin' TO 'user_appadmin'@'localhost';
 GRANT 'dbadmin' TO 'user_dbadmin'@'localhost';
 
+-- Définition des roles par défaut.
 
--- Tests de permissions :
+SET DEFAULT ROLE ALL TO 
+	'user_connecte'@'localhost',
+    'user_adjoint'@'localhost',
+    'user_maire'@'localhost',
+    'user_prefet'@'localhost',
+    'user_appadmin'@'localhost',
+    'user_dbadmin'@'localhost';
 
--- Test des permissions pour l'utilisateur 'user_connecte'
-SELECT * FROM bdSAE.Communes;
 
--- Test des permissions pour l'utilisateur 'user_adjoint'
-UPDATE bdSAE.DonneesAnnuelles SET nbMaison = 100 WHERE id = 1;
+/*============== 
+Requêtes de test
+==============*/
 
--- Test des permissions pour l'utilisateur 'user_maire'
-CREATE TABLE TestMaire (id INT);
+------------------------------
+-- MySQL Workbench / user_connecte@localhost --
+-----------------------------
+SELECT * FROM bdSAE.Commune;
+INSERT INTO Annee
+VALUES (2024, 3.4);
 
--- Test des permissions pour l'utilisateur 'user_prefet'
-DELETE FROM bdSAE.DonneesAnnuelles WHERE id = 1;
+------------------------------
+-- MySQL Workbench / user_adjoint@localhost --
+-----------------------------
+UPDATE bdSAE.DonneesAnnuelles SET nbMaison = 100 WHERE lAnnee = 2018 AND laCommune = 22005;
+INSERT INTO Gare 
+VALUES  (2365, "Guégon", false, true, 56070);
 
--- Test des permissions pour l'utilisateur 'user_appadmin'
-CREATE TABLE TestAppAdmin (id INT);
+------------------------------
+-- MySQL Workbench / user_maire@localhost --
+-----------------------------
+INSERT INTO Gare 
+VALUES  (2365, "Guégon", false, true, 56070);
+CREATE TABLE TestMaire (
+	idMaire INT PRIMARY KEY
+);
 
--- Test des permissions pour l'utilisateur 'user_dbadmin'
-DROP TABLE bdSAE.TestMaire;
+------------------------------
+-- MySQL Workbench / user_prefet@localhost --
+-----------------------------
+DELETE FROM bdSAE.Gare WHERE codeGare = 2365;
+INSERT INTO Annee
+VALUES (2024, 3.4);
+
+------------------------------
+-- MySQL Workbench / user_appadmin@localhost --
+-----------------------------
+INSERT INTO Annee
+VALUES (2024, 3.4);
+CREATE TABLE TestAdmin (
+	idAdmin INT PRIMARY KEY
+);
+
+------------------------------
+-- MySQL Workbench / user_dbadmin@localhost --
+-----------------------------
+CREATE TABLE TestAdmin (
+	idAdmin INT PRIMARY KEY
+);
+DROP TABLE TestAdmin;
+CREATE DATABASE testDBAdmin;
