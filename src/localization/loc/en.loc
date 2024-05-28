@@ -1,9 +1,9 @@
 # Lines with # at the beginning are ignored
-# Format button.save
+# Format button.save Save
 # name space text displayed in interface
 # Just do getL("button.save") to get the text in the user's chosen language
 
-button.save save
+button.save Save
 menu.save_as Save As
 header.welcome Welcome
 header.whatsee What would you like to see ?

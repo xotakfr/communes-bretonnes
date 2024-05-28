@@ -1,11 +1,10 @@
 package localization;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
+
 
 public class Localization {
     private static String defaut = "fr";
@@ -25,11 +24,11 @@ public class Localization {
             scanner.close();
         } catch (IOException e) {
             try {
-                lang = defaut;
-                Scanner scanner = new Scanner(new File("../src/localization/loc/"+lang+".loc"));
+                Scanner scanner = new Scanner(new File("../src/localization/loc/"+defaut+".loc"));
                 while(scanner.hasNextLine()) {
                     decodeLine(scanner.nextLine());
                 }
+                scanner.close();
             } catch (IOException er) {
                 System.err.println("Impossible de charger un langague\n"+er);
             }
@@ -55,7 +54,7 @@ public class Localization {
      * @param ID String
      */
     public static String getL(String ID) {
-        String t = ""+text.get(ID);
+        String t = text.get(ID);
         if (t==null) {
             t=ID;
         }
