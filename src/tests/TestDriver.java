@@ -5,7 +5,7 @@ public class TestDriver {
 
     protected Connection getConnection() {
         try {
-            class.forname("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
             return DriverManager.getConnection("url", user, password);
         } catch (ClassNotFoundException e) {
