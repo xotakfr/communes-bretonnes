@@ -10,6 +10,8 @@ import java.util.List;
 
 public abstract class DAO<T> {
     private String url = "jdbc:mysql://127.0.0.1:3306/BDSAE";
+    private String user = "";
+    private String password = "";
     
     protected Connection getConnection() {
         try {
