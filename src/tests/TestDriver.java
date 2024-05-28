@@ -18,7 +18,7 @@ public class TestDriver {
 
             return DriverManager.getConnection("url", user, password);
         } catch (ClassNotFoundException e) {
-            System.err.println(e.stackTrace());
+            e.prinntStackTrace();
         }
     }
 
