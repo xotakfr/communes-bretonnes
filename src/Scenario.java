@@ -34,8 +34,6 @@ public class Scenario {
      * Methode de test pour le modele.
      */
     private static void testModele() {
-        //Commune c = new Commune(545454, "Commune de test 1", new ArrayList<Commune>());
-
         DataLoader.loadAll();
 
         for (Commune co : DataLoader.getCommunes()) {
