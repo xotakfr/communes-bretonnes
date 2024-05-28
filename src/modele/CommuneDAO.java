@@ -14,24 +14,30 @@ import java.util.List;
 public class CommuneDAO extends DAO<Commune> {
 
     protected static ArrayList<Commune> runSQLQuery(Connection connection, String sql) throws Exception {
-        ArrayList<Commune> results = new ArrayList<>();
+        ArrayList<Commune> results = new ArrayList<Commune>();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
 
+        /**
         while (resultSet.next()) {
-            Commune com = new Commune(resultSet.getObject(0),resultSet.getObject(1), resultSet.getObject(2));
+            Commune com = new Commune(resultSet.getInt(0),resultSet.getObject(1), resultSet.getObject(2));
             results.add(com);
         }
-
+        */
         resultSet.close();
         statement.close();
         return results;
     }
 
     public ArrayList<Commune> findAll() {
-        Connection = getConnection();
+        Connection co = getConnection();
+        ArrayList<Commune> arr = new ArrayList<Commune>();
 
-        ArrayList<Commune> arr = runSQLQuery("SELECT * FROM Communes;");
+        try {
+            arr = runSQLQuery(co, "SELECT * FROM Communes;");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         /**
         for (Commune commune : arr) {
@@ -47,4 +53,6 @@ public class CommuneDAO extends DAO<Commune> {
 
         return arr;
     }
+
+
 }
