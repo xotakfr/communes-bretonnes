@@ -19,7 +19,7 @@ public abstract class DAO<T> {
 
             return DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException e) {
-            e.prinntStackTrace();
+            e.printStackTrace();
         }
     }
 
