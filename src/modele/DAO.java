@@ -1,5 +1,13 @@
 package modele;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+
 public abstract class DAO<T> {
     private String url = "jdbc:mysql://127.0.0.1:3306/BDSAE";
     
@@ -12,6 +20,12 @@ public abstract class DAO<T> {
             System.err.println(e.stackTrace());
         }
     }
+
+    /**
+     * Utilitaire de lancement d'une requête SQL
+     * Voir exemple implémentation dans CommuneDAO
+     */
+    private abstract List<T> runSQLQuery(Connection connection, String sql) throws Exception;
 
     public abstract List<T> findAll();
     public abstract T findById(long id);
