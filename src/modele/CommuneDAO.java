@@ -12,6 +12,10 @@ import java.util.List;
  * Use all fonction in DAO for the Commune objects
  */
 public class CommuneDAO extends DAO<Commune> {
+    /** Filtre actuel - Voir comparableTo et SwitecherFilter */
+    private static String currentFilter = "idCommune";
+    /** Liste des filtres possibles */
+    private static String[] filtersList = new String[]{"idCommune", "nomCommune", "voisins","population"};
 
     protected static ArrayList<Commune> runSQLQuery(Connection connection, String sql) throws Exception {
         ArrayList<Commune> results = new ArrayList<Commune>();
