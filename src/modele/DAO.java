@@ -25,7 +25,7 @@ public abstract class DAO<T> {
      * Utilitaire de lancement d'une requête SQL
      * Voir exemple implémentation dans CommuneDAO
      */
-    private abstract List<T> runSQLQuery(Connection connection, String sql) throws Exception;
+    protected abstract List<T> runSQLQuery(Connection connection, String sql) throws Exception;
 
     public abstract List<T> findAll();
     public abstract T findById(long id);
