@@ -3,7 +3,7 @@
 CLASSSPATH="../class:../lib/*.jar"
 
 if [[ -n "$PATH_TO_FX" ]]; then
-    file=$(echo | zenity --entry --title="Entrer le nom de votre fichier à lancer")
+    file=$(echo | zenity --entry --title="Fichier à lancer" --text="Entrer le nom de votre fichier à lancer")
     java --module-path $PATH_TO_FX --add-modules javafx.controls,javafx.base,javafx.fxml "$file"
 else
   echo "\$PATH_TO_FX n'est pas défini, veuillez le définir dans votre .bashrc"
