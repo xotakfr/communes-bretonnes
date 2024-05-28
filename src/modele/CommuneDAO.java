@@ -33,6 +33,7 @@ public class CommuneDAO extends DAO<Commune> {
 
         ArrayList<Commune> arr = runSQLQuery("SELECT * FROM Communes;");
 
+        /**
         for (Commune commune : arr) {
             ArrayList<Commune> voisines = new ArrayList<Commune>();
             int com = Integer.parseInt(da[0]);
@@ -42,7 +43,8 @@ public class CommuneDAO extends DAO<Commune> {
                 voisines.add(voisine); // Ajout de la voisine dans la liste des voisines
             }
             current.setVoisins(voisines);
+        */
 
-        return 
+        return arr;
     }
 }
