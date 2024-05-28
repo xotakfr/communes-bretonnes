@@ -1,11 +1,13 @@
 package tri;
 
 /**
- * public interface Itri
+ * Interface pour les algorithmes de tri.
+ * 
+ * Cette interface définit une méthode pour effectuer le tri d'une collection.
  */
 public interface Itri {
 	/**
-	 * sort
-	 */
+     * Trie la collection.
+     */
 	public void trier();
 }

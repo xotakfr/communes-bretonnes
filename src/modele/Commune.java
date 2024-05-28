@@ -10,8 +10,10 @@ import java.util.ArrayList;
 public class Commune implements Comparable<Commune>{
     /** Filtre actuel - Voir comparableTo et SwitecherFilter */
     private static String currentFilter = "idCommune";
+
     /** Liste des filtres possibles */
     private static String[] filtersList = new String[]{"idCommune", "nomCommune", "voisins","population"};
+    
     /** Identifiant de la commune */
     private int idCommune;
 
@@ -20,8 +22,6 @@ public class Commune implements Comparable<Commune>{
 
     /** Liste des communes voisines */
     private ArrayList<Commune> voisins;
-
-
 
     private int population = -1;
 
@@ -40,6 +40,7 @@ public class Commune implements Comparable<Commune>{
 
     /**
      * Obtient l'identifiant de la commune.
+     * 
      * @return L'identifiant de la commune.
      */
     public int getIdCommune() {
@@ -48,6 +49,7 @@ public class Commune implements Comparable<Commune>{
 
     /**
      * Obtient le nom de la commune.
+     * 
      * @return Le nom de la commune.
      */
     public String getNomCommune() {
@@ -56,6 +58,7 @@ public class Commune implements Comparable<Commune>{
 
     /**
      * Obtient la liste des communes voisines.
+     * 
      * @return La liste des communes voisines.
      */
     public ArrayList<Commune> getVoisins() {
@@ -64,6 +67,7 @@ public class Commune implements Comparable<Commune>{
 
     /**
      * Définit l'identifiant de la commune.
+     * 
      * @param idCommune Le nouvel identifiant de la commune.
      */
     public void setIdCommune(int idCommune) {
@@ -72,6 +76,7 @@ public class Commune implements Comparable<Commune>{
 
     /**
      * Définit le nom de la commune.
+     * 
      * @param nomCommune Le nouveau nom de la commune.
      */
     public void setNomCommune(String nomCommune) {
@@ -80,6 +85,7 @@ public class Commune implements Comparable<Commune>{
 
     /**
      * Définit la liste des communes voisines.
+     * 
      * @param voisins La nouvelle liste des communes voisines.
      */
     public void setVoisins(ArrayList<Commune> voisins) {
@@ -88,7 +94,8 @@ public class Commune implements Comparable<Commune>{
 
     /**
      * Méthode pour obtenir une représentation textuelle des voisins.
-     * Utilisée pour éviter un stackoverflow et avoir un bel affichage
+     * Utilisée pour éviter un stackoverflow et avoir un bel affichage.
+     * 
      * @return Une chaîne de caractères représentant les voisins.
      */
     public String voisinAsString() {
@@ -101,6 +108,7 @@ public class Commune implements Comparable<Commune>{
 
     /**
      * Méthode pour récupérer la population 2019 depuis DonneesAnnuelles
+     * 
      * @return population int
      */
     public int getPopulation() {
@@ -116,12 +124,19 @@ public class Commune implements Comparable<Commune>{
         }
         return pop;
     }
+
+    /**
+     * Définit la population de la commune.
+     * 
+     * @param a La nouvelle population de la commune.
+     */
     public void setPopulation(int a) {
         this.population = a;
     }
 
     /**
      * Méthode pour obtenir une représentation textuelle de la commune.
+     * 
      * @return Une chaîne de caractères représentant la commune.
      */
     public String toString() {
@@ -135,6 +150,7 @@ public class Commune implements Comparable<Commune>{
     /**
      * Implémentation de Comparable
      * Comparaison basé sur le filtre - voir classe SwitcherFilter
+     * 
      * @param o Autre Commune à comparer
      */
     public int compareTo(Commune o) {
@@ -157,6 +173,7 @@ public class Commune implements Comparable<Commune>{
 
     /**
      * Getter Filter
+     * 
      * @return String[]
      */
     public static String[] getAllFilter() {
