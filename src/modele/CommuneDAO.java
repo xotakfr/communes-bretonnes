@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class CommuneDAO extends DAO<Commune> {
 
-    private static ArrayList<Commune runSQLQuery(Connection connection, String sql) throws Exception {
+    private static ArrayList<Commune> runSQLQuery(Connection connection, String sql) throws Exception {
         ArrayList<Commune> results = new ArrayList<>();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
