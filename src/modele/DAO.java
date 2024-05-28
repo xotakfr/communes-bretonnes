@@ -41,8 +41,8 @@ public abstract class DAO<T> {
      * @param filterSelect Filtre de séléction (Accepte plusieurs instructions via ;)
      */
     public abstract T findByFilter(String filter, String filterSelect);
-    private abstract static String[] filtersList;
-    private abstract static String currentFilter;
+    protected abstract static String[] filtersList;
+    protected abstract static String currentFilter;
 
     
 }
