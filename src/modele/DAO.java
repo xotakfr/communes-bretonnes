@@ -14,5 +14,17 @@ public abstract class DAO<T> {
     }
 
     public abstract List<T> findAll();
+    public abstract T findById(long id);
+    /**
+     * Voir documentation de SwitcherFilter
+     * 
+     * Est censé proposer un accès de recherche en limitant les instructions SQL "dangeureuses"
+     * @param filter Filtre de recherche (liste de filtres accessibles dans Object.filtersList)
+     * @param filterSelect Filtre de séléction (Accepte plusieurs instructions via ;)
+     */
+    public abstract T findByFilter(String filter, String filterSelect);
+    public abstract void update(T element); 
+    public abstract void create(T element);
+    public abstract void delete(T element);
     
 }
