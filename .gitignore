@@ -1,2 +1,3 @@
-
+lib/
+**/.ipynb_checkpoints
 *.class
