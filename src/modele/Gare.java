@@ -6,8 +6,10 @@ package modele;
 public class Gare {
     /** Filtre actuel - Voir comparableTo et SwitecherFilter */
     private static String currentFilter = "codeGare";
+
     /** Liste des filtres possibles */
     private static String[] filtersList = new String[]{"codeGare", "nomGare", "estFret", "estVoyageur", "communeOrigine"};
+
     /** Code de la gare */
     private int codeGare;
 
@@ -25,6 +27,7 @@ public class Gare {
 
     /**
      * Constructeur de la classe Gare.
+     * 
      * @param codeGare Le code de la gare.
      * @param nomGare Le nom de la gare.
      * @param estFret Indique si la gare est destinée au fret.
@@ -41,6 +44,7 @@ public class Gare {
 
     /**
      * Obtient le code de la gare.
+     * 
      * @return Le code de la gare.
      */
     public int getCodeGare() {
@@ -49,6 +53,7 @@ public class Gare {
 
     /**
      * Obtient le nom de la gare.
+     * 
      * @return Le nom de la gare.
      */
     public String getNomGare() {
@@ -57,6 +62,7 @@ public class Gare {
 
     /**
      * Vérifie si la gare est destinée au fret.
+     * 
      * @return true si la gare est destinée au fret, sinon false.
      */
     public boolean isEstFret() {
@@ -65,6 +71,7 @@ public class Gare {
 
     /**
      * Vérifie si la gare est destinée aux voyageurs.
+     * 
      * @return true si la gare est destinée aux voyageurs, sinon false.
      */
     public boolean isEstVoyageur() {
@@ -73,6 +80,7 @@ public class Gare {
 
     /**
      * Obtient la commune d'origine de la gare.
+     * 
      * @return La commune d'origine de la gare.
      */
     public Commune getCommuneOrigine() {
@@ -81,6 +89,7 @@ public class Gare {
 
     /**
      * Définit le code de la gare.
+     * 
      * @param codeGare Le nouveau code de la gare.
      */
     public void setCodeGare(int codeGare) {
@@ -89,6 +98,7 @@ public class Gare {
 
     /**
      * Définit le nom de la gare.
+     * 
      * @param nomGare Le nouveau nom de la gare.
      */
     public void setNomGare(String nomGare) {
@@ -97,6 +107,7 @@ public class Gare {
 
     /**
      * Définit si la gare est destinée au fret.
+     * 
      * @param estFret true si la gare est destinée au fret, sinon false.
      */
     public void setEstFret(boolean estFret) {
@@ -105,6 +116,7 @@ public class Gare {
 
     /**
      * Définit si la gare est destinée aux voyageurs.
+     * 
      * @param estVoyageur true si la gare est destinée aux voyageurs, sinon false.
      */
     public void setEstVoyageur(boolean estVoyageur) {
@@ -113,6 +125,7 @@ public class Gare {
 
     /**
      * Définit la commune d'origine de la gare.
+     * 
      * @param communeOrigine La nouvelle commune d'origine de la gare.
      */
     public void setCommuneOrigine(Commune communeOrigine) {
@@ -121,6 +134,7 @@ public class Gare {
 
     /**
      * Méthode pour obtenir une représentation textuelle de la gare.
+     * 
      * @return Une chaîne de caractères représentant la gare.
      */
     public String toString() {
@@ -136,6 +150,7 @@ public class Gare {
     /**
      * Implémentation de Comparable
      * Comparaison basé sur le filtre - voir classe SwitcherFilter
+     * 
      * @param o Autre Gare à comparer
      */
     public int compareTo(Gare o) {
@@ -160,15 +175,18 @@ public class Gare {
     }
 
     /**
-     * Getter Filter
-     * @return String[]
+     * Obtient la liste des filtres possibles pour la classe Gare.
+     * 
+     * @return Un tableau de chaînes de caractères représentant les filtres possibles.
      */
     public static String[] getAllFilter() {
         return filtersList;
     }
+    
     /**
-     * Setter Filter
-     * @param filter String
+     * Définit le filtre à utiliser pour la comparaison des gares.
+     * 
+     * @param filter Le nom du filtre à utiliser.
      */
     public static void setFilter(String filter) {
         for (String s : filtersList) {

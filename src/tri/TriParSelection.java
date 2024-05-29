@@ -3,21 +3,19 @@ package tri;
 import java.util.ArrayList;
 
 /**
- * public class TriParSelection
- * Implements Itri
+ * Implémentation du tri par sélection pour une liste d'éléments comparables.
  * 
- * element de type T doit implémenter comparableTo
+ * @param <T> Le type des éléments à trier, qui doit implémenter l'interface Comparable<T>.
  */
 public class TriParSelection<T extends Comparable<T>> implements Itri {
-	/**
-	 * private arraylist tab
-	 */
+	/** La liste à trier */
 	private ArrayList<T> tab;
 
 	/**
-	 * Create a new TriParSelection
-	 * @param tab T[]
-	 */
+     * Crée une nouvelle instance de TriParSelection avec la liste donnée.
+     * 
+     * @param tab La liste à trier.
+     */
 	public TriParSelection(ArrayList<T> tab) {
 		if (tab!=null) {
 			this.tab = tab;
@@ -27,10 +25,11 @@ public class TriParSelection<T extends Comparable<T>> implements Itri {
 	}
 
 	/**
-	 * Return the position or the min in the tab
-	 * @param debut int
-	 * @return int
-	 */
+     * Retourne la position du plus petit élément dans la liste à partir de l'indice donné.
+     * 
+     * @param debut L'indice à partir duquel rechercher.
+     * @return La position du plus petit élément.
+     */
 	private int minimumPosition(int debut) {
 		int min = debut;
 		for (int a=debut+1;a<tab.size();a++) {
@@ -44,10 +43,11 @@ public class TriParSelection<T extends Comparable<T>> implements Itri {
 	}
 
 	/**
-	 * Swap two T in tab
-	 * @param i int
-	 * @param j int
-	 */
+     * Échange deux éléments dans la liste.
+     * 
+     * @param i L'indice du premier élément.
+     * @param j L'indice du deuxième élément.
+     */
 	private void swap(int i, int j) {
 		T temp = this.tab.get(i);
 		this.tab.set(i, this.tab.get(j));
@@ -55,8 +55,8 @@ public class TriParSelection<T extends Comparable<T>> implements Itri {
 	}
 
 	/**
-	 * Sort the tab
-	 */
+     * Trie la liste en utilisant l'algorithme de tri par sélection.
+     */
 	public void trier() {
 		for (int a=0; a<this.tab.size(); a++) {
 			int min = this.minimumPosition(a);

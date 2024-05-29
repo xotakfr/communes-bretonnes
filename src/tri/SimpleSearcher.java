@@ -2,7 +2,20 @@ package tri;
 
 import java.util.ArrayList;
 
+/**
+ * Implémentation simple de l'interface ISearch.
+ * 
+ * Cette implémentation parcourt linéairement la liste pour rechercher un élément.
+ * Elle compare chaque élément de la liste avec l'objet recherché en utilisant la méthode compareTo().
+ */
 public class SimpleSearcher<T extends Comparable<T>> implements ISearch<T> {
+	/**
+     * Vérifie si l'objet donné existe dans la liste.
+     * 
+     * @param arr La liste dans laquelle rechercher.
+     * @param obj L'objet à rechercher.
+     * @return true si l'objet existe dans la liste, sinon false.
+     */
 	@Override
 	public boolean exists(ArrayList<T> arr, T obj) {
 		boolean ret = false;
@@ -13,6 +26,14 @@ public class SimpleSearcher<T extends Comparable<T>> implements ISearch<T> {
 	    }
 	    return ret;
 	}
+
+	/**
+     * Recherche l'index de l'objet donné dans la liste.
+     * 
+     * @param arr La liste dans laquelle rechercher.
+     * @param obj L'objet à rechercher.
+     * @return L'index de l'objet dans la liste, ou -1 si l'objet n'est pas trouvé.
+     */
 	@Override
 	public int search(ArrayList<T> arr, T obj) {
 		int index = -1;
