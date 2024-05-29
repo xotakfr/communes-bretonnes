@@ -3,10 +3,11 @@ package modele;
 import java.util.ArrayList;
 
 /**
- * Une instance de cette classe permet de représenter une commune
+ * Une instance de cette classe permet de représenter une commune.
+ * Cette classe implémente l'interface Comparable pour permettre la comparaison des communes
+ * selon différents critères définis par un filtre
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
- * @see comparableTo
- * @see SwitcherFilter
+ * @see Comparable
  */
 public class Commune implements Comparable<Commune> {
     /** Filtre de base */
@@ -109,8 +110,9 @@ public class Commune implements Comparable<Commune> {
     public static String[] getAllFilter() {
         return filtersList;
     }
+
     /**
-     * Permet de définir le nouveau filtre à utiliser
+     * Permet de définir le filtre à utiliser
      * @param filter Le nouveau filtre à utiliser
      */
     public static void setFilter(String filter) {
@@ -125,7 +127,6 @@ public class Commune implements Comparable<Commune> {
      * Implémentation de l'interface Comparable.
      * Comparaison basée sur le filtre actuellement choisi
      * @param o Une autre instance de la classe Commune à comparer
-     * @see SwitcherFilter
      */
     public int compareTo(Commune o) {
         int ret = 0;

@@ -6,43 +6,30 @@ import java.util.List;
 /**
  * Une instance de cette classe permet de représenter un département.
  * Cette classe implémente l'interface Comparable pour permettre la comparaison des départements
- * selon différents critères définis par un filtre.
- * Elle implémente également l'interface SwitcherFilter pour gérer le filtre actuel.
- * 
+ * selon différents critères définis par un filtre
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  * @see Comparable
- * @see SwitcherFilter
- * 
- * @autor Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
-public class Departement implements Comparable<Departement>, SwitcherFilter{
-    /** Filtre de base - voir implémentation de comparableTo.java et SwitecherFilter.java */
+public class Departement implements Comparable<Departement> {
+    /** Filtre de base */
     private static String currentFilter = "idDep";
-
-    /** Identifiant du département */
-    private int idDep;
-    
-    /** Nom du département. Il est limité au contenu de DEPARTEMENTS_AUTORISES */
-    private String nomDep;
-    
-    /** Investissement culturel en 2019 */
-    private float invesCulturel2019;
-    
     /** Liste des départements autorisés */
     private static final List<String> DEPARTEMENTS_AUTORISES = Arrays.asList("MORBIHAN", "ILLE-ET-VILAINE", "COTES-D'ARMOR", "FINISTERE");
-    
     /** Liste des filtres autorisés */
     private static final String[] FILTERLIST = new String[]{"idDep", "nomDep", "invesCulturel2019"};
+    /** Identifiant du département */
+    private int idDep;
+    /** Nom du département */
+    private String nomDep;
+    /** Investissement culturel en 2019 */
+    private float invesCulturel2019;
 
     /**
-     * Constructeur de la classe Departement.
-     * 
+     * Permet de construire une instance de la classe Departement
      * @param idDep L'identifiant du département
      * @param nomDep Le nom du département. Il est limité au contenu de DEPARTEMENTS_AUTORISES
      * @param invesCulturel2019 L'investissement culturel en 2019
-     * @throws IllegalArgumentException si un des paramètres est invalide :
-     * - idDep doit être supérieur à 0
-     * - nomDep doit être dans la liste des départements autorisés
-     * - invesCulturel2019 doit être supérieur ou égal à 0
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
     public Departement(int idDep, String nomDep, float invesCulturel2019) throws IllegalArgumentException {
         if (idDep <= 0) {
@@ -61,7 +48,6 @@ public class Departement implements Comparable<Departement>, SwitcherFilter{
 
     /**
      * Renvoie l'identifiant du département.
-     * 
      * @return L'identifiant du département
      */
     public int getIdDep() {
@@ -69,10 +55,9 @@ public class Departement implements Comparable<Departement>, SwitcherFilter{
     }
 
     /**
-     * Permet de définir le nouvel identifiant du département.
-     * 
+     * Permet de définir le nouvel identifiant du département
      * @param idDep Le nouvel identifiant du département
-     * @throws IllegalArgumentException si idDep est inférieur ou égal à 0
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
     public void setIdDep(int idDep) throws Exception {
         if (idDep <= 0) {
@@ -82,8 +67,7 @@ public class Departement implements Comparable<Departement>, SwitcherFilter{
     }
 
     /**
-     * Renvoie le nom du département.
-     * 
+     * Renvoie le nom du département
      * @return Le nom du département
      */
     public String getNomDep() {
@@ -91,10 +75,9 @@ public class Departement implements Comparable<Departement>, SwitcherFilter{
     }
 
     /**
-     * Permet de définir le nouveau nom du département.
-     * 
+     * Permet de définir le nouveau nom du département
      * @param nomDep Le nouveau nom du département
-     * @throws IllegalArgumentException si nomDep n'est pas dans la liste des départements autorisés
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
     public void setNomDep(String nomDep) {
         if (!departementEstCorrect(nomDep)) {
@@ -104,8 +87,7 @@ public class Departement implements Comparable<Departement>, SwitcherFilter{
     }
 
     /**
-     * Renvoie l'investissement culturel en 2019.
-     * 
+     * Renvoie l'investissement culturel en 2019
      * @return L'investissement culturel en 2019
      */
     public float getInvesCulturel2019() {
@@ -113,10 +95,9 @@ public class Departement implements Comparable<Departement>, SwitcherFilter{
     }
 
     /**
-     * Permet de définir le nouvel investissement culturel en 2019.
-     * 
+     * Permet de définir le nouvel investissement culturel en 2019
      * @param invesCulturel2019 Le nouvel investissement culturel en 2019
-     * @throws IllegalArgumentException si invesCulturel2019 est inférieur à 0
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
     public void setInvesCulturel2019(float invesCulturel2019) {
         if (invesCulturel2019 < 0) {
@@ -127,7 +108,6 @@ public class Departement implements Comparable<Departement>, SwitcherFilter{
 
     /**
      * Renvoie la liste des filtres autorisés.
-     * 
      * @return La liste des filtres autorisés
      */
     public static String[] getAllFilter() {
@@ -136,7 +116,6 @@ public class Departement implements Comparable<Departement>, SwitcherFilter{
 
     /**
      * Permet de définir le filtre à utiliser.
-     * 
      * @param filter Le filtre à utiliser
      */
     public static void setFilter(String filter) {
@@ -148,8 +127,7 @@ public class Departement implements Comparable<Departement>, SwitcherFilter{
     }
 
     /**
-     * Permet de vérifier si le nom du département est correct.
-     * 
+     * Permet de vérifier si le nom du département est correct
      * @param nomDep Le nom du département à vérifier
      * @return true si le département est autorisé, sinon false
      */
@@ -159,17 +137,12 @@ public class Departement implements Comparable<Departement>, SwitcherFilter{
 
     /**
      * Implémentation de l'interface Comparable.
-     * Comparaison basée sur le filtre - voir SwitcherFilter.java
-     * 
+     * Comparaison basée sur le filtre actuel
      * @param o Autre instance de la classe Departement à comparer
-     * @return Un entier représentant le résultat de la comparaison :
-     * - négatif si this < o
-     * - zéro si this == o
-     * - positif si this > o
+     * @return Un entier représentant le résultat de la comparaison
      */
     public int compareTo(Departement o) {
         int ret = 0;
-
         if (currentFilter.equals("idDep")) {
            ret = Integer.compare(this.idDep, o.idDep);
         }
@@ -183,15 +156,14 @@ public class Departement implements Comparable<Departement>, SwitcherFilter{
     }
 
     /**
-     * Renvoie une représentation textuelle d'une instance de la classe Departement.
-     * 
+     * Renvoie une représentation textuelle d'une instance de la classe Departement
      * @return Une représentation textuelle d'une instance de la classe Departement
      */
     public String toString() {
         return "Departement{" +
                 "idDep = " + this.idDep +
-                ", nomDep = '" + this.nomDep +
+                ", nomDep = " + this.nomDep +
                 ", invesCulturel2019 = " + this.invesCulturel2019 +
-                "}";
+                "} ";
     }
 }
