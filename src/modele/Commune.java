@@ -1,187 +1,117 @@
 package modele;
 
-import tri.*;
 import java.util.ArrayList;
 
 /**
- * Une instance de cette classe permet de représenter une commune.
+ * Une instance de cette classe permet de représenter une commune
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
+ * @see comparableTo
+ * @see SwitcherFilter
  */
-public class Commune implements Comparable<Commune>{
-    /** Filtre actuel - Voir comparableTo et SwitecherFilter */
+public class Commune implements Comparable<Commune> {
+    /** Filtre de base */
     private static String currentFilter = "idCommune";
-
-    /** Liste des filtres possibles */
+    /** Liste des filtres autorisés */
     private static String[] filtersList = new String[]{"idCommune", "nomCommune", "voisins","population"};
-    
     /** Identifiant de la commune */
     private int idCommune;
-
     /** Nom de la commune */
     private String nomCommune;
-
     /** Liste des communes voisines */
     private ArrayList<Commune> voisins;
 
-    private int population = -1;
-
     /**
-     * Constructeur de la classe Commune.
-     *
-     * @param idCommune L'identifiant de la commune.
-     * @param nomCommune Le nom de la commune.
-     * @param voisins La liste des communes voisines.
+     * Permet d'initialiser une instance de la classe Commune
+     * @param idCommune L'identifiant de la commune
+     * @param nomCommune Le nom de la commune
+     * @param voisins La liste des communes voisines
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public Commune(int idCommune, String nomCommune, ArrayList<Commune> voisins) {
+    public Commune(int idCommune, String nomCommune, ArrayList<Commune> voisins) throws IllegalArgumentException {
+        if (idCommune <= 0) {
+            throw new IllegalArgumentException("Commune.java : paramètre idCommune invalide");
+        }
+        if (nomCommune.equals("") || nomCommune == null) {
+            throw new IllegalArgumentException("Commune.java : paramètre nomCommune invalide");
+        }
+        if (voisins == null) {
+            throw new IllegalArgumentException("Commune.java : paramètre voisins invalide");
+        }
         this.idCommune = idCommune;
         this.nomCommune = nomCommune;
         this.voisins = voisins;
     }
 
     /**
-     * Obtient l'identifiant de la commune.
-     * 
-     * @return L'identifiant de la commune.
+     * Renvoie l'identifiant de la commune
+     * @return L'identifiant de la commune
      */
     public int getIdCommune() {
         return this.idCommune;
     }
 
     /**
-     * Obtient le nom de la commune.
-     * 
-     * @return Le nom de la commune.
+     * Permet de définir le nouvel identifiant de la commune
+     * @param idCommune Le nouvel identifiant de la commune
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
+     */
+    public void setIdCommune(int idCommune) throws IllegalArgumentException {
+        if (idCommune <= 0) {
+            throw new IllegalArgumentException("Commune.java : paramètre idCommune invalide");
+        }
+        this.idCommune = idCommune;
+    }
+
+    /**
+     * Renvoie le nom de la commune
+     * @return Le nom de la commune
      */
     public String getNomCommune() {
         return this.nomCommune;
     }
 
     /**
-     * Obtient la liste des communes voisines.
-     * 
-     * @return La liste des communes voisines.
+     * Permet de définir le nouveau nom de la commune
+     * @param nomCommune Le nouveau nom de la commune
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
+     */
+    public void setNomCommune(String nomCommune) throws IllegalArgumentException {
+        if (nomCommune.contains("") || nomCommune == null) {
+            throw new IllegalArgumentException("Commune.java : paramètre nomCommune invalide");
+        }
+        this.nomCommune = nomCommune;
+    }
+
+    /**
+     * Renvoie la liste des communes voisines
+     * @return La liste des communes voisines
      */
     public ArrayList<Commune> getVoisins() {
         return this.voisins;
     }
 
     /**
-     * Définit l'identifiant de la commune.
-     * 
-     * @param idCommune Le nouvel identifiant de la commune.
+     * Permet de définir la nouvelle liste des communes voisines
+     * @param voisins La nouvelle liste des communes voisines
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public void setIdCommune(int idCommune) {
-        this.idCommune = idCommune;
-    }
-
-    /**
-     * Définit le nom de la commune.
-     * 
-     * @param nomCommune Le nouveau nom de la commune.
-     */
-    public void setNomCommune(String nomCommune) {
-        this.nomCommune = nomCommune;
-    }
-
-    /**
-     * Définit la liste des communes voisines.
-     * 
-     * @param voisins La nouvelle liste des communes voisines.
-     */
-    public void setVoisins(ArrayList<Commune> voisins) {
+    public void setVoisins(ArrayList<Commune> voisins) throws IllegalArgumentException {
+        if (voisins == null) {
+            throw new IllegalArgumentException("Commune.java : paramètre voisins invalide");
+        }
         this.voisins = voisins;
     }
 
     /**
-     * Méthode pour obtenir une représentation textuelle des voisins.
-     * Utilisée pour éviter un stackoverflow et avoir un bel affichage.
-     * 
-     * @return Une chaîne de caractères représentant les voisins.
-     */
-    public String voisinAsString() {
-        String s = "";
-        for (Commune voisin : this.voisins) {
-            s=s+voisin.nomCommune+"("+voisin.idCommune+");";
-        }
-        return s;
-    }
-
-    /**
-     * Méthode pour récupérer la population 2019 depuis DonneesAnnuelles
-     * 
-     * @return population int
-     */
-    public int getPopulation() {
-        int pop = this.population;
-        if (this.population==-1) {
-            DonneesAnnuelles.setFilter("laCommune");
-            TriRapide<DonneesAnnuelles> trieur = new TriRapide<DonneesAnnuelles>(DataLoader.getDonneesAnnuelles());
-            trieur.trier();
-            BinarySearcher<DonneesAnnuelles> searcher = new BinarySearcher<DonneesAnnuelles>();
-            int idA = searcher.search(DataLoader.getDonneesAnnuelles(),new DonneesAnnuelles(0,this.idCommune, 0, 0, 0f, 0f,0f, 0f, 0));
-            pop = DataLoader.getDonneesAnnuelles().get(idA).getPopulation();
-            setPopulation(pop);
-        }
-        return pop;
-    }
-
-    /**
-     * Définit la population de la commune.
-     * 
-     * @param a La nouvelle population de la commune.
-     */
-    public void setPopulation(int a) {
-        this.population = a;
-    }
-
-    /**
-     * Méthode pour obtenir une représentation textuelle de la commune.
-     * 
-     * @return Une chaîne de caractères représentant la commune.
-     */
-    public String toString() {
-        return "Commune{" +
-                "idCommune=" + idCommune +
-                ", nomCommune='" + nomCommune + '\'' +
-                ", voisins=" + voisinAsString() +
-                '}';
-    }
-
-    /**
-     * Implémentation de Comparable
-     * Comparaison basé sur le filtre - voir classe SwitcherFilter
-     * 
-     * @param o Autre Commune à comparer
-     */
-    public int compareTo(Commune o) {
-        int ret = 0;
-
-        if (currentFilter.equals("idCommune")) {
-           ret = Integer.compare(this.idCommune, o.idCommune);
-        }
-        if (currentFilter.equals("nomCommune")) {
-            ret = this.nomCommune.compareTo(o.nomCommune);
-        }
-        if (currentFilter.equals("voisins")) {
-            ret = Integer.compare(this.voisins.size(), o.voisins.size());
-        }
-        if (currentFilter.equals("population")) {
-            ret = Integer.compare(this.getPopulation(), o.getPopulation());
-        }
-        return ret;
-    }
-
-    /**
-     * Getter Filter
-     * 
-     * @return String[]
+     * Renvoie la liste de tous les filtres autorisés
+     * @return La liste de tous les filtres autorisés
      */
     public static String[] getAllFilter() {
         return filtersList;
     }
     /**
-     * Setter Filter
-     * @param filter String
+     * Permet de définir le nouveau filtre à utiliser
+     * @param filter Le nouveau filtre à utiliser
      */
     public static void setFilter(String filter) {
         for (String s : filtersList) {
@@ -189,5 +119,52 @@ public class Commune implements Comparable<Commune>{
                 currentFilter = filter;
             }
         }
+    }
+
+    /**
+     * Implémentation de l'interface Comparable.
+     * Comparaison basée sur le filtre actuellement choisi
+     * @param o Une autre instance de la classe Commune à comparer
+     * @see SwitcherFilter
+     */
+    public int compareTo(Commune o) {
+        int ret = 0;
+        if (currentFilter.equals("idCommune")) {
+           ret = Integer.compare(this.idCommune, o.idCommune);
+        }
+        if (currentFilter.equals("nomCommune")) {
+            ret = this.nomCommune.compareTo(o.nomCommune);
+        }
+        return ret;
+    }
+
+    /**
+     * Renvoie une représentation textuelle des voisins de la commune concernée
+     * @return Une chaîne de caractères représentant les voisins de la commune concernée
+     */
+    public String voisinAsString() {
+        String s = "";
+        int i = 0;
+        for (Commune voisin : this.voisins) {
+            if (i != this.voisins.size()) {
+                s+= voisin.idCommune + " (" + voisin.nomCommune + ") -";
+            } else {
+                s+= voisin.idCommune + " (" + voisin.nomCommune + ")";
+            }
+            i++;
+        }
+        return s;
+    }
+
+    /**
+     * Renvoie une représentation textuelle de la commune concernée
+     * @return Une chaîne de caractères représentant la commune concernée
+     */
+    public String toString() {
+        return "Commune{" +
+                "idCommune = " + idCommune +
+                ", nomCommune = '" + nomCommune +
+                ", voisins = " + voisinAsString() +
+                "} ";
     }
 }
