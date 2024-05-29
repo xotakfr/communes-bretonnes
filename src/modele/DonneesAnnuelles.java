@@ -11,7 +11,7 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
     /** Filtre de base */
     private static String currentFilter = "lAnnee";
     /** Liste des filtres autorisés */
-    private static String[] filtersList = new String[]{"lAnnee", "laCommune", "nbMaison", "nbAppart", "prixMoyen", "prixM2Moyen","depensesCulturellesTotales","budgetTotal", "population"};
+    private static String[] FILTERLIST = new String[]{"lAnnee", "laCommune", "nbMaison", "nbAppart", "prixMoyen", "prixM2Moyen","depensesCulturellesTotales","budgetTotal", "population"};
     /** Année associée aux données */
     private int lAnnee;
     /** Identifiant de la commune */
@@ -262,7 +262,7 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
      * @return La liste des filtres possibles pour la comparaison des données annuelles
      */
     public static String[] getAllFilter() {
-        return filtersList;
+        return FILTERLIST;
     }
     
     /**
@@ -270,7 +270,7 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
      * @param filter Le filtre à utiliser pour la comparaison des données annuelles
      */
     public static void setFilter(String filter) {
-        for (String s : filtersList) {
+        for (String s : FILTERLIST) {
             if (s.equals(filter)) {
                 currentFilter = filter;
             }
