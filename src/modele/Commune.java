@@ -1,11 +1,11 @@
 package modele;
 
 import tri.*;
-
 import java.util.ArrayList;
 
 /**
- * Représente une commune.
+ * Une instance de cette classe permet de représenter une commune.
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public class Commune implements Comparable<Commune>{
     /** Filtre actuel - Voir comparableTo et SwitecherFilter */
