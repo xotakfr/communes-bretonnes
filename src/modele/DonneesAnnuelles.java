@@ -1,5 +1,6 @@
 package modele;
 
+// TODO : javadoc ici 
 /**
  * Classe représentant les données annuelles.
  * Cette classe implémente l'interface Comparable pour permettre la comparaison des données annuelles
@@ -8,9 +9,9 @@ package modele;
  * @see Comparable
  */
 public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
-    /** Filtre actuel - Voir comparableTo et SwitecherFilter */
+    /** Filtre de base - Voir comparableTo.java et SwitecherFilter.java */
     private static String currentFilter = "lAnnee";
-    /** Liste des filtres possibles */
+    /** Liste des filtres autorisés */
     private static String[] filtersList = new String[]{"lAnnee", "laCommune", "nbMaison", "nbAppart", "prixMoyen", "prixM2Moyen","depensesCulturellesTotales","budgetTotal", "population"};
 
     /** Année des données */
