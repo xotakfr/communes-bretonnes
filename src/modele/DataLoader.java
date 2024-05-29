@@ -2,48 +2,73 @@ package modele;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import java.io.File;
 import java.io.IOException;
-
 import tri.*;
+
 /**
- * Classe de gestions des données
- * Permet le chargement des données
+ * Classe de gestion des données.
+ * Permet le chargement des données depuis des fichiers CSV.
  */
 public class DataLoader {
     /** Chemin des données */
     private static final String PATH = "../data/";
-    /** fichiers data */
+
+    /** Chemin du fichier des aéroports */
     private static final String AIRPORT_PATH = "aeroport.csv"; //Name; Departement number; location
+
+    /** Chemin du fichier des communes */
     private static final String MUNICIPALITY_PATH = "communesBretonnes.csv";//Departement number; insee; name
+
+    /** Chemin du fichier des départements */
     private static final String DEPARTEMENTS = "departement.csv"; //departement; name
+    
+    /** Chemin du fichier des dépenses culturelles par commune */
     private static final String CULTURAL = "depensesCulturellesParCommune.csv"; // Year ;name;insee;popu;total_cultu;total_b
+    
+    /** Chemin du fichier des gares */
     private static final String TRAIN ="gare.csv"; //Code; name;fret;voya;commune;dep;code_co
+    
+    /** Chemin du fichier des investissements culturels par département */
     private static final String CULTURAL_DEP = "investissementCulturelParDep.csv"; // Year ;name;insee;popu;total_cultu;total_b
+    
+    /** Chemin du fichier des prix par commune */
     private static final String PRICE = "prixParCommune.csv";//INSEE_COM;Annee;NbMaisonsVendues;NbAppartsVendus;PrixMoyen;Prixm2Moyen;SurfaceMoy
+    
+    /** Chemin du fichier des taux d'inflation par an */
     private static final String INFLATION = "tauxInflationParAn.csv";//Annee; taux
+    
+    /** Chemin du fichier des voisinages des communes bretonnes */
     private static final String NEAR = "voisinageCommunesBretonnes.csv";//insee;nom;nbvoisins; insee voisins
 
-    /** The data as arraylist */
+    /** Liste des communes chargées */
     private static ArrayList<Commune> communes = new ArrayList<Commune>();
+
+    /** Liste des départements chargés */
     private static ArrayList<Departement> departements = new ArrayList<Departement>();
+    
+    /** Liste des données annuelles chargées */
     private static ArrayList<DonneesAnnuelles> donneesAnnuelles = new ArrayList<DonneesAnnuelles>();
+    
+    /** Liste des gares chargées */
     private static ArrayList<Gare> gares = new ArrayList<Gare>();
 
     /**
-     * Decode a CSV line
-     * @param line String
-     * @return String[]
+     * Décode une ligne CSV.
+     * 
+     * @param line La ligne CSV à décoder.
+     * @return Un tableau de chaînes de caractères.
      */
     private static String[] decodeLine(String line) {
         String[] t = line.split(";");
         return t;
     }
+    
     /**
-     * Read a CSV file and parse it
-     * @param f String file name constant
-     * @return arraylist of string
+     * Lit un fichier CSV et le parse.
+     * 
+     * @param f Nom du fichier constant.
+     * @return Une ArrayList de tableaux de chaînes de caractères.
      */
     private static ArrayList<String[]> CSVReader(String f) {
         ArrayList<String[]> az = new ArrayList<String[]>();
@@ -62,7 +87,7 @@ public class DataLoader {
     }
 
     /**
-     * Load the communes
+     * Charge les communes.
      */
     public static void loadCommunes() {
         ArrayList<String[]> data = CSVReader(MUNICIPALITY_PATH);
@@ -92,7 +117,7 @@ public class DataLoader {
     }
 
     /**
-     * Load the departements
+     * Charge les départements.
      */
     public static void loadDepartements() {
         ArrayList<String[]> data = CSVReader(DEPARTEMENTS);
@@ -112,7 +137,7 @@ public class DataLoader {
     }
 
     /**
-     * Load the gares
+     * Charge les gares.
      */
     public static void loadGares() {
         ArrayList<String[]> data = CSVReader(TRAIN);
@@ -128,7 +153,7 @@ public class DataLoader {
     }
 
     /**
-     * Load the DonnéesAnnuelles
+     * Charge les données annuelles.
      */
     public static void loadDonneesAnnuelles() {
         ArrayList<String[]> data = CSVReader(CULTURAL);
@@ -150,7 +175,7 @@ public class DataLoader {
     }
 
     /** 
-     * Load all the data
+     * Charge toutes les données.
      */
     public static void loadAll() {
         loadCommunes();
@@ -159,22 +184,28 @@ public class DataLoader {
         loadDonneesAnnuelles();
     }
 
+    /**
+     * Récupère l'index d'un élément dans un tableau de chaînes de caractères.
+     * 
+     * @param array Le tableau de chaînes de caractères.
+     * @param target La chaîne de caractères cible.
+     * @return L'index de la chaîne de caractères cible dans le tableau, ou -1 si elle n'est pas trouvée.
+     */
     private static int getIndexOf(String[] array, String target) {
-    for (int i = 0; i < array.length; i++) {
-        if (array[i].equals(target)) {
-            return i;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(target)) {
+                return i;
+            }
         }
+        return -1; // Return -1 if the target string is not found in the array
     }
-    return -1; // Return -1 if the target string is not found in the array
-}
 
 
     /**
-     * Getter for communes
-     * @param filterSelect select all datamatching the filter
-     * Exemple : "<54" ">-1" "=0" "<541;>54"
-     * @param filter
-     * @return ArrayList commune
+     * Getter pour les communes avec un filtre.
+     * @param filter Le filtre à appliquer (nom de la colonne).
+     * @param filterSelect La condition de sélection (par exemple : "<54", ">-1", "=0", "<541;>54").
+     * @return Une ArrayList de communes correspondant au filtre.
      */
     public static ArrayList<Commune> getCommunes(String filter, String filterSelect) {
         ArrayList<Commune> commune_temp = new ArrayList<Commune>();
@@ -241,29 +272,36 @@ public class DataLoader {
     }
 
     /**
-     * Getter for communes
-     * @return ArrayList commune
+     * Getter pour les communes.
+     * 
+     * @return Une ArrayList de communes.
      */
     public static ArrayList<Commune> getCommunes() {
         return communes;
     }
+
     /**
-     * Getter for departements
-     * @return ArrayList departements
+     * Getter pour les départements.
+     * 
+     * @return Une ArrayList de départements.
      */
     public static ArrayList<Departement> getDepartements() {
         return departements;
     }
+
     /**
-     * getter for gare
-     * @return ArrayList gares
+     * Getter pour les gares.
+     * 
+     * @return Une ArrayList de gares.
      */
     public static ArrayList<Gare> getGares() {
         return gares;
     }
+    
     /**
-     * Getter donneesAnnuelles
-     * @return donneesAnnuelles
+     * Getter pour les données annuelles.
+     * 
+     * @return Une ArrayList de données annuelles.
      */
     public static ArrayList<DonneesAnnuelles> getDonneesAnnuelles() {
         return donneesAnnuelles;

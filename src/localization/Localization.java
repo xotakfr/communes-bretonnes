@@ -1,19 +1,24 @@
 package localization;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
 
+/**
+ * Classe de gestion de la localisation des textes dans différentes langues.
+ */
 public class Localization {
+    /** Langue par défaut si la langue spécifiée n'est pas trouvée */
     private static String defaut = "fr";
+
+    /** Dictionnaire contenant les traductions pour la langue courante */
     private static HashMap<String,String> text;
 
     /**
-     * Load the user language
-     * @param lang String user language
+     * Charge la localisation pour la langue de l'utilisateur.
+     *
+     * @param lang Langue de l'utilisateur sous forme de chaîne de caractères.
      */
     public static void loadLocales(String lang) {
         text = new HashMap<String,String>();
@@ -25,11 +30,11 @@ public class Localization {
             scanner.close();
         } catch (IOException e) {
             try {
-                lang = defaut;
-                Scanner scanner = new Scanner(new File("../src/localization/loc/"+lang+".loc"));
+                Scanner scanner = new Scanner(new File("../src/localization/loc/"+defaut+".loc"));
                 while(scanner.hasNextLine()) {
                     decodeLine(scanner.nextLine());
                 }
+                scanner.close();
             } catch (IOException er) {
                 System.err.println("Impossible de charger un langague\n"+er);
             }
@@ -37,8 +42,9 @@ public class Localization {
     }
 
     /**
-     * Fonction utilitaire pour décoder les lignes et les stocker dans la hashmap
-     * @param line String
+     * Fonction utilitaire pour décoder les lignes et les stocker dans la hashmap.
+     *
+     * @param line Ligne de texte à décoder.
      */
     private static void decodeLine(String line) {
         if (!(line.equals(""))) {
@@ -51,11 +57,13 @@ public class Localization {
     }
 
     /**
-     * Getter for the translation according to the provided ID
-     * @param ID String
+     * Récupère la traduction correspondant à l'ID fourni.
+     *
+     * @param ID Identifiant de la chaîne de caractères à traduire.
+     * @return La traduction associée à l'ID ou l'ID lui-même si aucune traduction n'est trouvée.
      */
     public static String getL(String ID) {
-        String t = ""+text.get(ID);
+        String t = text.get(ID);
         if (t==null) {
             t=ID;
         }
