@@ -3,18 +3,23 @@ package tri;
 import java.util.ArrayList;
 
 /**
- * Implémentation du tri par sélection pour une liste d'éléments comparables.
+ * Implémentation du tri par sélection pour une liste d'éléments comparables
  * 
- * @param <T> Le type des éléments à trier, qui doit implémenter l'interface Comparable<T>.
+ * @param <T> Le type des éléments à trier, qui doit implémenter l'interface Comparable<T>
+ * 
+ * @see Comparable
+ * @see Itri
+ * 
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public class TriParSelection<T extends Comparable<T>> implements Itri {
 	/** La liste à trier */
 	private ArrayList<T> tab;
 
 	/**
-     * Crée une nouvelle instance de TriParSelection avec la liste donnée.
+     * Crée une nouvelle instance de TriParSelection avec la liste donnée
      * 
-     * @param tab La liste à trier.
+     * @param tab La liste à trier
      */
 	public TriParSelection(ArrayList<T> tab) {
 		if (tab!=null) {
@@ -25,14 +30,14 @@ public class TriParSelection<T extends Comparable<T>> implements Itri {
 	}
 
 	/**
-     * Retourne la position du plus petit élément dans la liste à partir de l'indice donné.
+     * Retourne la position du plus petit élément dans la liste à partir de l'indice donné
      * 
-     * @param debut L'indice à partir duquel rechercher.
-     * @return La position du plus petit élément.
+     * @param debut L'indice à partir duquel rechercher
+     * @return La position du plus petit élément
      */
 	private int minimumPosition(int debut) {
 		int min = debut;
-		for (int a=debut+1;a<tab.size();a++) {
+		for (int a=debut+1;a<this.tab.size();a++) {
 			T p = this.tab.get(a);
 			T p2 = this.tab.get(min);
 			if (p.compareTo(this.tab.get(min))<0) {
@@ -43,10 +48,10 @@ public class TriParSelection<T extends Comparable<T>> implements Itri {
 	}
 
 	/**
-     * Échange deux éléments dans la liste.
+     * Échange deux éléments dans la liste
      * 
-     * @param i L'indice du premier élément.
-     * @param j L'indice du deuxième élément.
+     * @param i L'indice du premier élément
+     * @param j L'indice du deuxième élément
      */
 	private void swap(int i, int j) {
 		T temp = this.tab.get(i);
@@ -55,7 +60,7 @@ public class TriParSelection<T extends Comparable<T>> implements Itri {
 	}
 
 	/**
-     * Trie la liste en utilisant l'algorithme de tri par sélection.
+     * Trie la liste en utilisant l'algorithme de tri par sélection
      */
 	public void trier() {
 		for (int a=0; a<this.tab.size(); a++) {

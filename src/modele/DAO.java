@@ -8,7 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Data Access Object
+ * 
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
+ */
 public abstract class DAO<T> {
     private static String url = "jdbc:mysql://127.0.0.1:3306/BDSAE";
     private static String user = "";

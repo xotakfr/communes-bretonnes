@@ -6,13 +6,15 @@ import tri.*;//Algorithme de tri utiles
 import java.util.ArrayList;
 
 /**
- * Classe Scenario qui simule une utilisation normale des autres classes.
+ * Classe Scenario qui simule une utilisation normale des autres classes
+ * 
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public class Scenario {
     /**
-     * Méthode principale pour exécuter les tests de localisation, modèle et tri.
+     * Méthode principale pour exécuter les tests de localisation, modèle et tri
      *
-     * @param args Arguments de la ligne de commande.
+     * @param args Arguments de la ligne de commande
      */
     public static void main(String[] args) {
         testLocalization();
@@ -21,7 +23,7 @@ public class Scenario {
     }
 
     /**
-     * Méthode de test pour les localisations.
+     * Méthode de test pour les localisations
      */
     private static void testLocalization() {
         Localization.loadLocales("fr");
@@ -31,7 +33,7 @@ public class Scenario {
     }
 
     /**
-     * Méthode de test pour le modèle.
+     * Méthode de test pour le modèle
      */
     private static void testModele() {
         DataLoader.loadAll();
@@ -63,7 +65,7 @@ public class Scenario {
     }
 
     /**
-     * Méthode statique de test pour les différents tris.
+     * Méthode statique de test pour les différents tris
      */
     private static void testTri() {
         System.out.println("Tri Departement selon nom");

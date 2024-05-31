@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Une instance de cette classe permet de représenter un département.
+ * Une instance de cette classe permet de représenter un département
  * Cette classe implémente l'interface Comparable pour permettre la comparaison des départements
  * selon différents critères définis par un filtre
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
@@ -32,7 +32,7 @@ public class Departement implements Comparable<Departement> {
     /**
      * Permet de construire une instance de la classe Departement
      * @param idDep L'identifiant du département
-     * @param nomDep Le nom du département. Il est limité au contenu de DEPARTEMENTS_AUTORISES
+     * @param nomDep Le nom du département, il est limité au contenu de DEPARTEMENTS_AUTORISES
      * @param invesCulturel2019 L'investissement culturel en 2019
      * @param communes Liste des communes du département
      * @param aeroports Liste des aéroports du département
@@ -62,7 +62,8 @@ public class Departement implements Comparable<Departement> {
     }
 
     /**
-     * Renvoie l'identifiant du département.
+     * Renvoie l'identifiant du département
+     * 
      * @return L'identifiant du département
      */
     public int getIdDep() {
@@ -170,7 +171,7 @@ public class Departement implements Comparable<Departement> {
     }
 
     /**
-     * Permet de définir le filtre à utiliser.
+     * Permet de définir le filtre à utiliser
      * @param filter Le filtre à utiliser
      */
     public static void setFilter(String filter) {
@@ -191,7 +192,7 @@ public class Departement implements Comparable<Departement> {
     }
 
     /**
-     * Implémentation de l'interface Comparable.
+     * Implémentation de l'interface Comparable
      * Comparaison basée sur le filtre actuel
      * @param o Autre instance de la classe Departement à comparer
      * @return Un entier représentant le résultat de la comparaison

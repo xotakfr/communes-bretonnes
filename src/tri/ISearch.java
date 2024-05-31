@@ -8,6 +8,8 @@ import java.util.ArrayList;
  * Cette interface définit deux méthodes pour effectuer la recherche d'un élément dans une liste.
  * 
  * @param <T> Le type des éléments dans la liste.
+ * 
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public interface ISearch<T> {
 	/**
