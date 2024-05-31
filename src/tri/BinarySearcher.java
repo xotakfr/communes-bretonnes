@@ -3,18 +3,23 @@ package tri;
 import java.util.ArrayList;
 
 /**
- * Recherche binaire dans une liste triée.
+ * Recherche binaire dans une liste triée
  * 
- * Cette classe permet de rechercher des éléments dans une liste triée en utilisant l'algorithme de recherche binaire.
- * Le type T doit implémenter l'interface Comparable<T>.
+ * Cette classe permet de rechercher des éléments dans une liste triée en utilisant l'algorithme de recherche binaire
+ * Le type T doit implémenter l'interface Comparable<T>
+ * 
+ * @see BinarySearcher
+ * @see ISearch
+ * 
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public class BinarySearcher<T extends Comparable<T>> implements ISearch<T> {
     /**
-     * Vérifie si un élément donné existe dans la liste triée.
+     * Vérifie si un élément donné existe dans la liste triée
      * 
-     * @param arr La liste triée dans laquelle rechercher.
-     * @param obj L'objet (de type T) à rechercher.
-     * @return true si l'objet est trouvé dans la liste, false sinon.
+     * @param arr La liste triée dans laquelle rechercher
+     * @param obj L'objet (de type T) à rechercher
+     * @return true si l'objet est trouvé dans la liste, false sinon
      */
     @Override
     public boolean exists(ArrayList<T> arr, T obj) {
@@ -40,11 +45,11 @@ public class BinarySearcher<T extends Comparable<T>> implements ISearch<T> {
     }
 
     /**
-     * Recherche l'indice de l'élément donné dans la liste triée.
+     * Recherche l'indice de l'élément donné dans la liste triée
      * 
-     * @param arr La liste triée dans laquelle rechercher.
-     * @param obj L'objet (de type T) à rechercher.
-     * @return L'indice de l'objet dans la liste, -1 s'il n'est pas trouvé.
+     * @param arr La liste triée dans laquelle rechercher
+     * @param obj L'objet (de type T) à rechercher
+     * @return L'indice de l'objet dans la liste, -1 s'il n'est pas trouvé
      */
     @Override
     /**

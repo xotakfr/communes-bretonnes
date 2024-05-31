@@ -6,7 +6,9 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Classe de gestion de la localisation des textes dans différentes langues.
+ * Classe de gestion de la localisation des textes dans différentes langues
+ * 
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public class Localization {
     /** Langue par défaut si la langue spécifiée n'est pas trouvée */
@@ -16,9 +18,9 @@ public class Localization {
     private static HashMap<String,String> text;
 
     /**
-     * Charge la localisation pour la langue de l'utilisateur.
+     * Charge la localisation pour la langue de l'utilisateur
      *
-     * @param lang Langue de l'utilisateur sous forme de chaîne de caractères.
+     * @param lang Langue de l'utilisateur sous forme de chaîne de caractères
      */
     public static void loadLocales(String lang) {
         text = new HashMap<String,String>();
@@ -42,9 +44,9 @@ public class Localization {
     }
 
     /**
-     * Fonction utilitaire pour décoder les lignes et les stocker dans la hashmap.
+     * Fonction utilitaire pour décoder les lignes et les stocker dans la hashmap
      *
-     * @param line Ligne de texte à décoder.
+     * @param line Ligne de texte à décoder
      */
     private static void decodeLine(String line) {
         if (!(line.equals(""))) {
@@ -57,10 +59,10 @@ public class Localization {
     }
 
     /**
-     * Récupère la traduction correspondant à l'ID fourni.
+     * Récupère la traduction correspondant à l'ID fourni
      *
-     * @param ID Identifiant de la chaîne de caractères à traduire.
-     * @return La traduction associée à l'ID ou l'ID lui-même si aucune traduction n'est trouvée.
+     * @param ID Identifiant de la chaîne de caractères à traduire
+     * @return La traduction associée à l'ID ou l'ID lui-même si aucune traduction n'est trouvée
      */
     public static String getL(String ID) {
         String t = text.get(ID);

@@ -3,6 +3,8 @@ package modele;
 /**
  * Interface publique SwitcherFilter
  * Filtre utilisé avec Comparable
+ * 
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public interface SwitcherFilter {
 

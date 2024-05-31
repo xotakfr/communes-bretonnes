@@ -7,8 +7,10 @@ import java.io.IOException;
 import tri.*;
 
 /**
- * Classe de gestion des données.
- * Permet le chargement des données depuis des fichiers CSV.
+ * Classe de gestion des données
+ * Permet le chargement des données depuis des fichiers CSV
+ * 
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public class DataLoader {
     /** Chemin des données */
@@ -54,10 +56,10 @@ public class DataLoader {
     private static ArrayList<Gare> gares = new ArrayList<Gare>();
 
     /**
-     * Décode une ligne CSV.
+     * Décode une ligne CSV
      * 
-     * @param line La ligne CSV à décoder.
-     * @return Un tableau de chaînes de caractères.
+     * @param line La ligne CSV à décoder
+     * @return Un tableau de chaînes de caractères
      */
     private static String[] decodeLine(String line) {
         String[] t = line.split(";");
@@ -65,10 +67,10 @@ public class DataLoader {
     }
     
     /**
-     * Lit un fichier CSV et le parse.
+     * Lit un fichier CSV et le parse
      * 
-     * @param f Nom du fichier constant.
-     * @return Une ArrayList de tableaux de chaînes de caractères.
+     * @param f Nom du fichier constant
+     * @return Une ArrayList de tableaux de chaînes de caractères
      */
     private static ArrayList<String[]> CSVReader(String f) {
         ArrayList<String[]> az = new ArrayList<String[]>();
@@ -87,7 +89,7 @@ public class DataLoader {
     }
 
     /**
-     * Charge les communes.
+     * Charge les communes
      */
     public static void loadCommunes() {
         ArrayList<String[]> data = CSVReader(MUNICIPALITY_PATH);
@@ -117,7 +119,7 @@ public class DataLoader {
     }
 
     /**
-     * Charge les départements.
+     * Charge les départements
      */
     public static void loadDepartements() {
         ArrayList<String[]> data = CSVReader(DEPARTEMENTS);
@@ -137,7 +139,7 @@ public class DataLoader {
     }
 
     /**
-     * Charge les gares.
+     * Charge les gares
      */
     public static void loadGares() {
         ArrayList<String[]> data = CSVReader(TRAIN);
@@ -153,7 +155,7 @@ public class DataLoader {
     }
 
     /**
-     * Charge les données annuelles.
+     * Charge les données annuelles
      */
     public static void loadDonneesAnnuelles() {
         ArrayList<String[]> data = CSVReader(CULTURAL);
@@ -175,7 +177,7 @@ public class DataLoader {
     }
 
     /** 
-     * Charge toutes les données.
+     * Charge toutes les données
      */
     public static void loadAll() {
         loadCommunes();
@@ -185,11 +187,11 @@ public class DataLoader {
     }
 
     /**
-     * Récupère l'index d'un élément dans un tableau de chaînes de caractères.
+     * Récupère l'index d'un élément dans un tableau de chaînes de caractères
      * 
-     * @param array Le tableau de chaînes de caractères.
-     * @param target La chaîne de caractères cible.
-     * @return L'index de la chaîne de caractères cible dans le tableau, ou -1 si elle n'est pas trouvée.
+     * @param array Le tableau de chaînes de caractères
+     * @param target La chaîne de caractères cible
+     * @return L'index de la chaîne de caractères cible dans le tableau, ou -1 si elle n'est pas trouvée
      */
     private static int getIndexOf(String[] array, String target) {
         for (int i = 0; i < array.length; i++) {
@@ -202,10 +204,10 @@ public class DataLoader {
 
 
     /**
-     * Getter pour les communes avec un filtre.
-     * @param filter Le filtre à appliquer (nom de la colonne).
-     * @param filterSelect La condition de sélection (par exemple : "<54", ">-1", "=0", "<541;>54").
-     * @return Une ArrayList de communes correspondant au filtre.
+     * Getter pour les communes avec un filtre
+     * @param filter Le filtre à appliquer (nom de la colonne)
+     * @param filterSelect La condition de sélection (par exemple : "<54", ">-1", "=0", "<541;>54")
+     * @return Une ArrayList de communes correspondant au filtre
      */
     public static ArrayList<Commune> getCommunes(String filter, String filterSelect) {
         ArrayList<Commune> commune_temp = new ArrayList<Commune>();
@@ -272,36 +274,36 @@ public class DataLoader {
     }
 
     /**
-     * Getter pour les communes.
+     * Getter pour les communes
      * 
-     * @return Une ArrayList de communes.
+     * @return Une ArrayList de communes
      */
     public static ArrayList<Commune> getCommunes() {
         return communes;
     }
 
     /**
-     * Getter pour les départements.
+     * Getter pour les départements
      * 
-     * @return Une ArrayList de départements.
+     * @return Une ArrayList de départements
      */
     public static ArrayList<Departement> getDepartements() {
         return departements;
     }
 
     /**
-     * Getter pour les gares.
+     * Getter pour les gares
      * 
-     * @return Une ArrayList de gares.
+     * @return Une ArrayList de gares
      */
     public static ArrayList<Gare> getGares() {
         return gares;
     }
     
     /**
-     * Getter pour les données annuelles.
+     * Getter pour les données annuelles
      * 
-     * @return Une ArrayList de données annuelles.
+     * @return Une ArrayList de données annuelles
      */
     public static ArrayList<DonneesAnnuelles> getDonneesAnnuelles() {
         return donneesAnnuelles;

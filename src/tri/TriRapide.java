@@ -3,18 +3,23 @@ package tri;
 import java.util.ArrayList;
 
 /**
- * Implémentation du tri rapide (quicksort) pour une liste d'éléments comparables.
+ * Implémentation du tri rapide (quicksort) pour une liste d'éléments comparables
  * 
- * @param <T> Le type des éléments à trier, qui doit implémenter l'interface Comparable<T>.
+ * @param <T> Le type des éléments à trier, qui doit implémenter l'interface Comparable<T>
+ * 
+ * @see TriRapide
+ * @see ISearch
+ * 
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public class TriRapide<T extends Comparable<T>> implements Itri {
     /** La liste à trier */
     private ArrayList<T> tab;
 
     /**
-     * Crée une nouvelle instance de TriRapide avec la liste donnée.
+     * Crée une nouvelle instance de TriRapide avec la liste donnée
      * 
-     * @param tab La liste à trier.
+     * @param tab La liste à trier
      */
     public TriRapide(ArrayList<T> tab) {
         if (tab!= null) {
@@ -25,11 +30,11 @@ public class TriRapide<T extends Comparable<T>> implements Itri {
     }
 
     /**
-     * Partitionne le tableau en utilisant le dernier élément comme pivot.
+     * Partitionne le tableau en utilisant le dernier élément comme pivot
      * 
-     * @param low L'indice du premier élément.
-     * @param high L'indice du dernier élément.
-     * @return L'indice du pivot après le partitionnement.
+     * @param low L'indice du premier élément
+     * @param high L'indice du dernier élément
+     * @return L'indice du pivot après le partitionnement
      */
     private int partition(int low, int high) {
         T pivot = this.tab.get(high); // Pivot
@@ -47,10 +52,10 @@ public class TriRapide<T extends Comparable<T>> implements Itri {
     }
 
     /**
-     * Fonction récursive pour trier le tableau.
+     * Fonction récursive pour trier le tableau
      * 
-     * @param low L'indice de départ.
-     * @param high L'indice de fin.
+     * @param low L'indice de départ
+     * @param high L'indice de fin
      */
     private void quickSort(int low, int high) {
         if (low < high) {
@@ -64,10 +69,10 @@ public class TriRapide<T extends Comparable<T>> implements Itri {
     }
 
     /**
-     * Échange deux éléments dans le tableau.
+     * Échange deux éléments dans le tableau
      * 
-     * @param i L'indice du premier élément.
-     * @param j L'indice du deuxième élément.
+     * @param i L'indice du premier élément
+     * @param j L'indice du deuxième élément
      */
     private void swap(int i, int j) {
         T temp = this.tab.get(i);
@@ -76,7 +81,7 @@ public class TriRapide<T extends Comparable<T>> implements Itri {
     }
 
     /**
-     * Trie la liste en utilisant l'algorithme de tri rapide.
+     * Trie la liste en utilisant l'algorithme de tri rapide
      */
     public void trier() {
         int n = this.tab.size();

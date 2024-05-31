@@ -10,6 +10,8 @@ import java.util.List;
 
 /**
  * Classe de test pour vérifier la connexion à une base de données MySQL en utilisant JDBC.
+ * 
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public class TestDriver {
     /** URL de la base de données MySQL */
