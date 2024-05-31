@@ -12,10 +12,10 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
     private static String currentFilter = "lAnnee";
     /** Liste des filtres autorisés */
     private static String[] FILTERLIST = new String[]{"lAnnee", "laCommune", "nbMaison", "nbAppart", "prixMoyen", "prixM2Moyen","depensesCulturellesTotales","budgetTotal", "population"};
-    /** Année associée aux données */
-    private int lAnnee;
-    /** Identifiant de la commune */
-    private int laCommune;
+    /** Instance de la classe Annee associée aux données */
+    private Annee lAnnee;
+    /** Instance de la classe Commune associée aux données */
+    private Commune laCommune;
     /** Nombre de maisons dans la commune */
     private int nbMaison;
     /** Nombre d'appartements dans la commune */
@@ -35,8 +35,8 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
      * Permet de construire une instance de la classe DonneesAnnuelles.
      * Cette classe implémente l'interface Comparable pour permettre la comparaison des données annuelles
      * selon différents critères définis par un filtre
-     * @param lAnnee L'année associée aux données
-     * @param laCommune L'identifiant de la commune
+     * @param lAnnee Instance de la classe Annee associée aux données
+     * @param laCommune Instance de la classe Commune associée aux données
      * @param nbMaison Le nombre de maisons dans la commune
      * @param nbAppart Le nombre d'appartements dans la commune
      * @param prixMoyen Le prix moyen des biens immobiliers dans la commune
@@ -46,9 +46,12 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
      * @param population La population de la commune
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public DonneesAnnuelles(int lAnnee, int laCommune, int nbMaison, int nbAppart, float prixMoyen, float prixM2Moyen, float depensesCulturellesTotales, float budgetTotal, int population) throws IllegalArgumentException {
+    public DonneesAnnuelles(Annee lAnnee, Commune laCommune, int nbMaison, int nbAppart, float prixMoyen, float prixM2Moyen, float depensesCulturellesTotales, float budgetTotal, int population) throws IllegalArgumentException {
+        if (lAnnee == null) {
+            throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre lAnnee invalide");
+        }
         this.lAnnee = lAnnee;
-        if (laCommune <= 0) {
+        if (laCommune == null) {
             throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre laCommune invalide");
         }
         this.laCommune = laCommune;
@@ -83,18 +86,18 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
     }
 
     /**
-     * Renvoie l'année des données
-     * @return L'année des données
+     * Renvoie l'instance de la classe Annee associée aux données
+     * @return L'instance de la classe Annee associée aux données
      */
-    public int getAnnee() {
+    public Annee getAnnee() {
         return this.lAnnee;
     }
 
     /**
-     * Renvoie l'identifiant de la commune
-     * @return L'identifiant de la commune
+     * Renvoie l'instance de la classe Commune associée aux données
+     * @return L'instance de la classe Commune associée aux données
      */
-    public int getCommune() {
+    public Commune getCommune() {
         return this.laCommune;
     }
 
@@ -155,20 +158,24 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
     }
 
     /**
-     * Permet de définir la nouvelle année des données
-     * @param lAnnee La nouvelle année des données
+     * Permet de définir la nouvelle instance de la classe Annee associée aux données
+     * @param lAnnee La nouvelle instance de la classe Annee associée aux données
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public void setAnnee(int lAnnee) {
+    public void setAnnee(Annee lAnnee) throws IllegalArgumentException {
+        if (lAnnee == null) {
+            throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre lAnnee invalide");
+        }
         this.lAnnee = lAnnee;
     }
 
     /**
-     * Permet de définir le nouvel identifiant de la commune
-     * @param laCommune Le nouvel identifiant de la commune
+     * Permet de définir la nouvelle instance de la classe Commune associée aux données
+     * @param laCommune La nouvelle instance de la classe Commune associée aux données
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public void setCommune(int laCommune) throws IllegalArgumentException {
-        if (laCommune < 0) {
+    public void setCommune(Commune laCommune) throws IllegalArgumentException {
+        if (laCommune == null) {
             throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre laCommune invalide");
         }
         this.laCommune = laCommune;
@@ -278,24 +285,6 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
     }
 
     /**
-     * Renvoie une représentation textuelle d'une instance de la classe DonneesAnnuelles.
-     * @return Une représentation textuelle d'une instance de la classe DonneesAnnuelles
-     */
-    public String toString() {
-        return "DonneesAnnuelles{" +
-                "Annee = " + lAnnee +
-                ", Commune = " + laCommune +
-                ", Nombre de maisons = " + nbMaison +
-                ", Nombre d'appartements = " + nbAppart +
-                ", Prix moyen = " + prixMoyen +
-                ", Prix moyen au metre carre = " + prixM2Moyen +
-                ", Depenses culturelles totales = " + depensesCulturellesTotales +
-                ", Budget total = " + budgetTotal +
-                ", Population = " + population +
-                "} ";
-    }
-
-    /**
      * Implémentation de l'interface Comparable.
      * Comparaison basée sur le filtre
      * @param o Autre instance de DonneesAnnuelles à comparer
@@ -305,10 +294,10 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
         int ret = 0;
 
         if (currentFilter.equals("lAnnee")) {
-           ret = Integer.compare(this.lAnnee, o.lAnnee);
+           ret = this.lAnnee.compareTo(o.lAnnee);
         }
         if (currentFilter.equals("laCommune")) {
-           ret = Integer.compare(this.laCommune, o.laCommune);
+           ret = this.laCommune.compareTo(o.laCommune);
         }
         if (currentFilter.equals("nbMaison")) {
            ret = Integer.compare(this.nbMaison, o.nbMaison);
@@ -332,5 +321,23 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
            ret = Integer.compare(this.population, o.population);
         }
         return ret;
+    }
+
+    /**
+     * Renvoie une représentation textuelle d'une instance de la classe DonneesAnnuelles.
+     * @return Une représentation textuelle d'une instance de la classe DonneesAnnuelles
+     */
+    public String toString() {
+        return "DonneesAnnuelles{" +
+                "Annee = " + this.lAnnee.getDateAnnee() +
+                ", Commune = " + this.laCommune.getIdCommune() +
+                ", Nombre de maisons = " + this.nbMaison +
+                ", Nombre d'appartements = " + this.nbAppart +
+                ", Prix moyen = " + this.prixMoyen +
+                ", Prix moyen au metre carre = " + this.prixM2Moyen +
+                ", Depenses culturelles totales = " + this.depensesCulturellesTotales +
+                ", Budget total = " + this.budgetTotal +
+                ", Population = " + this.population +
+                "} ";
     }
 }

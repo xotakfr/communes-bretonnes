@@ -1,5 +1,6 @@
 package modele;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,15 +24,21 @@ public class Departement implements Comparable<Departement> {
     private String nomDep;
     /** Investissement culturel en 2019 */
     private float invesCulturel2019;
+    /** Liste des communes du département */
+    private ArrayList<Commune> communes;
+    /** Liste des aéroports du département */
+    private ArrayList<Aeroport> aeroports;
 
     /**
      * Permet de construire une instance de la classe Departement
      * @param idDep L'identifiant du département
      * @param nomDep Le nom du département. Il est limité au contenu de DEPARTEMENTS_AUTORISES
      * @param invesCulturel2019 L'investissement culturel en 2019
+     * @param communes Liste des communes du département
+     * @param aeroports Liste des aéroports du département
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public Departement(int idDep, String nomDep, float invesCulturel2019) throws IllegalArgumentException {
+    public Departement(int idDep, String nomDep, float invesCulturel2019, ArrayList<Commune> communes, ArrayList<Aeroport> aeroports) throws IllegalArgumentException {
         if (idDep <= 0) {
             throw new IllegalArgumentException("Departement.java : paramètre idDep invalide");
         }
@@ -41,9 +48,17 @@ public class Departement implements Comparable<Departement> {
         if (invesCulturel2019 < 0) {
             throw new IllegalArgumentException("Departement.java : paramètre invesCulturel2019 invalide"); 
         }
-        setNomDep(nomDep);
+        if (communes == null) {
+            throw new IllegalArgumentException("Departement.java : paramètre communes invalide");
+        }
+        if (aeroports == null) {
+            throw new IllegalArgumentException("Departement.java : paramètre aeroports invalide");
+        }
+        this.nomDep = nomDep;
         this.idDep = idDep;
         this.invesCulturel2019 = invesCulturel2019;
+        this.communes = communes;
+        this.aeroports = aeroports;
     }
 
     /**
@@ -59,7 +74,7 @@ public class Departement implements Comparable<Departement> {
      * @param idDep Le nouvel identifiant du département
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public void setIdDep(int idDep) throws Exception {
+    public void setIdDep(int idDep) throws IllegalArgumentException {
         if (idDep <= 0) {
             throw new IllegalArgumentException("Departement.java : paramètre idDep invalide");
         }
@@ -79,7 +94,7 @@ public class Departement implements Comparable<Departement> {
      * @param nomDep Le nouveau nom du département
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public void setNomDep(String nomDep) {
+    public void setNomDep(String nomDep) throws IllegalArgumentException {
         if (!departementEstCorrect(nomDep)) {
             throw new IllegalArgumentException("Departement.java : paramètre nomDep invalide");
         }
@@ -99,12 +114,52 @@ public class Departement implements Comparable<Departement> {
      * @param invesCulturel2019 Le nouvel investissement culturel en 2019
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public void setInvesCulturel2019(float invesCulturel2019) {
+    public void setInvesCulturel2019(float invesCulturel2019) throws IllegalArgumentException {
         if (invesCulturel2019 < 0) {
             throw new IllegalArgumentException("Departement.java : paramètre invesCulture2019 invalide");
         }
         this.invesCulturel2019 = invesCulturel2019;
     }
+
+    /**
+     * Renvoie la liste des communes du département
+     * @return La liste des communes du département
+     */
+    public ArrayList<Commune> getCommunes() {
+        return this.communes;
+    }
+
+    /**
+     * Permet de définir la nouvelle liste des communes du département
+     * @param communes La nouvelle liste des communes du département
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
+     */
+    public void setCommunes(ArrayList<Commune> communes) throws IllegalArgumentException {
+        if (communes == null) {
+            throw new IllegalArgumentException("Departement.java : paramètre communes invalide");
+        }
+        this.communes = communes;
+    }
+
+    /**
+     * Renvoie la liste des aéroports du département
+     * @return La liste des aéroports du département
+     */
+    public ArrayList<Aeroport> getAeroports() {
+        return this.aeroports;
+    }
+
+    /**
+     * Permet de définir la nouvelle liste des aéroports du département
+     * @param aeroports La nouvelle liste des aéroports du département
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
+     */
+    public void setAeroports(ArrayList<Aeroport> aeroports) throws IllegalArgumentException {
+        if (aeroports == null) {
+            throw new IllegalArgumentException("Departement.java : paramètre aeroports invalide");
+        }
+        this.aeroports = aeroports;
+    } 
 
     /**
      * Renvoie la liste des filtres autorisés.
@@ -166,4 +221,5 @@ public class Departement implements Comparable<Departement> {
                 ", invesCulturel2019 = " + this.invesCulturel2019 +
                 "} ";
     }
+    // TODO : modifier le toString pour rajouter les listes 
 }

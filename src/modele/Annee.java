@@ -1,0 +1,110 @@
+package modele;
+
+/**
+ * Une instance de cette classe permet de représenter une année.
+ * Cette classe implémente l'interface Comparable pour permettre la comparaison entre les années
+ * selon différents critères définis par un filtre
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
+ * @see Comparable
+ */
+public class Annee implements Comparable<Annee> {
+    /** Filtre de base */
+    private static String currentFilter = "annee";
+    /** Liste des filtres autorisés */
+    private static String[] FILTERLIST = new String[]{"annee", "tauxInflation"};
+    /** Identifiant de l'année (correspond aussi à l'année réelle) */
+    private int annee;
+    /** Taux d'inflation associé à l'année */
+    private float tauxInflation;
+
+    /**
+     * Permet d'initialiser une instance de la classe Annee.
+     * On considère qu'il n'est pas possible d'utilisé des paramètres invalide puisque
+     * l'ensemble des paramètres possibles sont valides dans ce contexte.
+     * @param annee Identifiant de l'année (correspond aussi à l'année réelle)
+     * @param tauxInflation Taux d'inflation associé à l'année
+     */
+    public Annee(int annee, float tauxInflation) {
+        this.annee = annee;
+        this.tauxInflation = tauxInflation;
+    }
+
+    /**
+     * Renvoie l'identifiant de l'année
+     * @return L'identifiant de l'année
+     */
+    public int getDateAnnee() {
+        return this.annee;
+    }
+
+    /**
+     * Permet de définir le nouveau identifiant de l'année
+     * @param annee Le nouveau identifiant de l'année
+     */
+    public void setDateAnnee(int annee) {
+        this.annee = annee;
+    }
+
+    /**
+     * Renvoie le taux d'inflation de l'année
+     * @return Le taux d'inflation de l'année
+     */
+    public float getTauxInflation() {
+        return this.tauxInflation;
+    }
+
+    /**
+     * Permet de définir le nouveau taux d'inflation de l'année
+     * @param tauxInflation Le nouveau taux d'inflation de l'année
+     */
+    public void setTauxInflation(float tauxInflation) {
+        this.tauxInflation = tauxInflation;
+    }
+
+    /**
+     * Renvoie la liste de tous les filtres autorisés
+     * @return La liste de tous les filtres autorisés
+     */
+    public static String[] getAllFilter() {
+        return FILTERLIST;
+    }
+
+    /**
+     * Permet de définir le filtre à utiliser
+     * @param filter Le nouveau filtre à utiliser
+     */
+    public static void setFilter(String filter) {
+        for (String s : FILTERLIST) {
+            if (s.equals(filter)) {
+                currentFilter = filter;
+            }
+        }
+    }
+
+    /**
+     * Implémentation de l'interface Comparable.
+     * Comparaison basée sur le filtre actuellement choisi
+     * @param o Une autre instance de la classe Commune à comparer
+     */
+    public int compareTo(Annee o) {
+        int ret = 0;
+        if (currentFilter.equals("annee")) {
+           ret = Integer.compare(this.annee, o.annee);
+        }
+        if (currentFilter.equals("tauxInflation")) {
+            ret = Float.compare(this.tauxInflation, o.tauxInflation);
+        }
+        return ret;
+    }
+
+    /**
+     * Renvoie une représentation textuelle de l'année concernée
+     * @return Une chaîne de caractères représentant l'année concernée
+     */
+    public String toString() {
+        return "Annee{" +
+                "annee = " + this.annee +
+                ", tauxInflation = " + this.tauxInflation +
+                "} ";
+    }
+}
