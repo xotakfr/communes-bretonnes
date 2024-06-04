@@ -30,15 +30,16 @@ public class Departement implements Comparable<Departement> {
     private ArrayList<Aeroport> aeroports;
 
     /**
-     * Permet de construire une instance de la classe Departement
+     * Permet de construire une instance de la classe Departement.
+     * Cette classe implémente l'interface Comparable pour permettre la comparaison de départements
+     * selon différents critères définis par un filtre.
+     * La liste des communes ainsi que la liste des aéroports associés au département sont initialisées à vide.
      * @param idDep L'identifiant du département
      * @param nomDep Le nom du département, il est limité au contenu de DEPARTEMENTS_AUTORISES
      * @param invesCulturel2019 L'investissement culturel en 2019
-     * @param communes Liste des communes du département
-     * @param aeroports Liste des aéroports du département
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public Departement(int idDep, String nomDep, float invesCulturel2019, ArrayList <Commune> communes, ArrayList<Aeroport> aeroports) throws IllegalArgumentException {
+    public Departement(int idDep, String nomDep, float invesCulturel2019) throws IllegalArgumentException {
         if (idDep <= 0) {
             throw new IllegalArgumentException("Departement.java : paramètre idDep invalide");
         }
@@ -48,17 +49,11 @@ public class Departement implements Comparable<Departement> {
         if (invesCulturel2019 < 0) {
             throw new IllegalArgumentException("Departement.java : paramètre invesCulturel2019 invalide"); 
         }
-        if (communes == null) {
-            throw new IllegalArgumentException("Departement.java : paramètre communes invalide");
-        }
-        if (aeroports == null) {
-            throw new IllegalArgumentException("Departement.java : paramètre aeroports invalide");
-        }
         this.nomDep = nomDep;
         this.idDep = idDep;
         this.invesCulturel2019 = invesCulturel2019;
-        this.communes = communes;
-        this.aeroports = aeroports;
+        this.communes = new ArrayList<Commune>();
+        this.aeroports = new ArrayList<Aeroport>();
     }
 
     /**
@@ -131,15 +126,30 @@ public class Departement implements Comparable<Departement> {
     }
 
     /**
-     * Permet de définir la nouvelle liste des communes du département
-     * @param communes La nouvelle liste des communes du département
+     * Permet d'ajouter une commune à la liste des commune du département concerné par l'appel de la méthode
+     * @param commune La commune qu'on veut ajouter à la liste des communes du département concerné par l'appel de la méthode
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public void setCommunes(ArrayList<Commune> communes) throws IllegalArgumentException {
-        if (communes == null) {
-            throw new IllegalArgumentException("Departement.java : paramètre communes invalide");
+    public void ajouteCommune(Commune commune) throws IllegalArgumentException {
+        if (commune == null) {
+            throw new IllegalArgumentException("Departement.java : paramètre commune invalide");
         }
-        this.communes = communes;
+        this.communes.add(commune);
+    }
+
+    /**
+     * Permet de retirer une commune de la liste des communes du département concerné par l'appel de la méthode
+     * @param commune La commune qu'on veut retirer de la liste des communes du département concerné par l'appel de la méthode
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
+     */
+    public void retireCommune(Commune commune) throws IllegalArgumentException {
+        if (commune == null) {
+            throw new IllegalArgumentException("Departement.java : paramètre commune invalide");
+        }
+        boolean ret = this.communes.remove(commune);
+        if (!ret) {
+            System.out.println("La commune passée en paramètre n'est pas une des communes du département suivant : " + this.nomDep);
+        }
     }
 
     /**
@@ -151,16 +161,31 @@ public class Departement implements Comparable<Departement> {
     }
 
     /**
-     * Permet de définir la nouvelle liste des aéroports du département
-     * @param aeroports La nouvelle liste des aéroports du département
+     * Permet d'ajouter un aéroport à la liste des aéroports du département concerné par l'appel de la méthode
+     * @param aeroport L'aéroport qu'on veut ajouter à la liste des aéroports du département concerné par l'appel de la méthode
+     * @throws IllegalArgumentException - qaund un paramètre invalide est utilisé
+     */
+    public void ajouteAeroport(Aeroport aeroport) throws IllegalArgumentException {
+        if (aeroport == null) {
+            throw new IllegalArgumentException("Departement.java : paramètre aeroport invalide");
+        }
+        this.aeroports.add(aeroport);
+    }
+
+    /**
+     * Permet de retirer un aéroport de la liste des aéroports du département concerné par l'appel de la méthode
+     * @param aeroport L'aéroport qu'on veut retirer de la liste des aéroports du département concerné par l'appel de la méthode
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public void setAeroports(ArrayList<Aeroport> aeroports) throws IllegalArgumentException {
-        if (aeroports == null) {
-            throw new IllegalArgumentException("Departement.java : paramètre aeroports invalide");
+    public void retireAeroport(Aeroport aeroport) throws IllegalArgumentException {
+        if (aeroport == null) {
+            throw new IllegalArgumentException("Departement.java : paramètre aeroport invalide");
         }
-        this.aeroports = aeroports;
-    } 
+        boolean ret = this.aeroports.remove(aeroport);
+        if (!ret) {
+            System.out.println("L'aéroport passé en paramètre n'est pas l'un des aéroports du département suivant : " + this.nomDep);
+        }
+    }
 
     /**
      * Renvoie la liste des filtres autorisés.
@@ -202,10 +227,10 @@ public class Departement implements Comparable<Departement> {
         if (currentFilter.equals("idDep")) {
            ret = Integer.compare(this.idDep, o.idDep);
         }
-        if (currentFilter.equals("nomDep")) {
+        else if (currentFilter.equals("nomDep")) {
             ret = this.nomDep.compareTo(o.nomDep);
         }
-        if (currentFilter.equals("invesCulturel2019")) {
+        else if (currentFilter.equals("invesCulturel2019")) {
             ret = Float.compare(this.invesCulturel2019, o.invesCulturel2019);
         }
         return ret;

@@ -293,10 +293,10 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
     public int compareTo(DonneesAnnuelles o) {
         int ret = 0;
         if (currentFilter.equals("lAnnee")) {
-           ret = this.lAnnee.compareTo(o.lAnnee);
+           ret = Integer.compare(this.lAnnee.getDateAnnee(), o.lAnnee.getDateAnnee());
         }
         else if (currentFilter.equals("laCommune")) {
-           ret = this.laCommune.compareTo(o.laCommune);
+           ret = Integer.compare(this.laCommune.getIdCommune(), o.laCommune.getIdCommune());
         }
         else if (currentFilter.equals("nbMaison")) {
            ret = Integer.compare(this.nbMaison, o.nbMaison);
@@ -320,7 +320,6 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
            ret = Integer.compare(this.population, o.population);
         }
         return ret;
-        // TODO : modifier les comparaisons
     }
 
     /**

@@ -27,7 +27,7 @@ public class Commune implements Comparable<Commune> {
 
     /**
      * Permet d'initialiser une instance de la classe Commune.
-     * La liste des gares ainsi que la liste des voisins d'une commune sont initialisée à vide.
+     * La liste des gares ainsi que la liste des voisins d'une commune sont initialisées à vide.
      * @param idCommune L'identifiant de la commune
      * @param nomCommune Le nom de la commune
      * @param leDepartement L'instance de la classe Departement associée aux données
@@ -101,7 +101,7 @@ public class Commune implements Comparable<Commune> {
      * @param gare La gare qu'on veut ajouter à la liste des gares de la commune concernée par l'appel de la méthode
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public void ajoutGare(Gare gare) throws IllegalArgumentException {
+    public void ajouteGare(Gare gare) throws IllegalArgumentException {
         if (gare == null) {
             throw new IllegalArgumentException("Commune.java : paramètre gare invalide");
         }
@@ -136,7 +136,7 @@ public class Commune implements Comparable<Commune> {
      * @param voisin La commune qu'on veut ajouter à la liste des communes voisines de la commune concernée par l'appel de la méthode
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public void ajoutVoisin(Commune voisin) throws IllegalArgumentException {
+    public void ajouteVoisin(Commune voisin) throws IllegalArgumentException {
         if (voisin == null) {
             throw new IllegalArgumentException("Commune.java : paramètre voisin invalide");
         }
