@@ -17,7 +17,7 @@
          <children>
             <BorderPane prefHeight="57.0" prefWidth="1257.0">
                <right>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" text="Crédits" BorderPane.alignment="CENTER">
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" styleClass="main-button" text="Crédits" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets left="10.0" right="10.0" />
                      </BorderPane.margin>
