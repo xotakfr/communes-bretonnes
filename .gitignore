@@ -1,6 +1,6 @@
 lib/
 **/.ipynb_checkpoints
-*.class
+**/*.class
 *.iml
 .vscode/
 .idea/
