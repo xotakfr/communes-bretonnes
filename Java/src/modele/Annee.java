@@ -19,8 +19,8 @@ public class Annee implements Comparable<Annee> {
 
     /**
      * Permet d'initialiser une instance de la classe Annee.
-     * On considère qu'il n'est pas possible d'utilisé des paramètres invalide puisque
-     * l'ensemble des paramètres possibles sont valides dans ce contexte.
+     * On considère qu'il n'est pas possible d'utiliser des paramètres invalides puisque
+     * l'univers des paramètres possibles est valide dans ce contexte.
      * @param annee Identifiant de l'année (correspond aussi à l'année réelle)
      * @param tauxInflation Taux d'inflation associé à l'année
      */
@@ -70,7 +70,7 @@ public class Annee implements Comparable<Annee> {
     }
 
     /**
-     * Permet de définir le filtre à utiliser
+     * Permet de définir le nouveau filtre à utiliser
      * @param filter Le nouveau filtre à utiliser
      */
     public static void setFilter(String filter) {
@@ -84,7 +84,7 @@ public class Annee implements Comparable<Annee> {
     /**
      * Implémentation de l'interface Comparable.
      * Comparaison basée sur le filtre actuellement choisi
-     * @param o Une autre instance de la classe Commune à comparer
+     * @param o Une autre instance de la classe Annee à comparer
      */
     public int compareTo(Annee o) {
         int ret = 0;

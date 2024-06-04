@@ -21,39 +21,32 @@ public class Commune implements Comparable<Commune> {
     /** Liste des gares de la commune */
     private ArrayList<Gare> gares;
     /** Liste des communes voisines */
-    private ArrayList<Commune> voisins; // TODO : voisins vide au début et méthode d'ajout de voisins, pareil pour toutes les listes 
+    private ArrayList<Commune> voisins;
     /** Instance de la classe Departement associée aux données */
     private Departement leDepartement;
 
     /**
-     * Permet d'initialiser une instance de la classe Commune
+     * Permet d'initialiser une instance de la classe Commune.
+     * La liste des gares ainsi que la liste des voisins d'une commune sont initialisée à vide.
      * @param idCommune L'identifiant de la commune
      * @param nomCommune Le nom de la commune
-     * @param gares La liste des gares de la commune
-     * @param voisins La liste des communes voisines
      * @param leDepartement L'instance de la classe Departement associée aux données
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public Commune(int idCommune, String nomCommune, ArrayList<Gare> gares, ArrayList<Commune> voisins, Departement leDepartement) throws IllegalArgumentException {
+    public Commune(int idCommune, String nomCommune, Departement leDepartement) throws IllegalArgumentException {
         if (idCommune <= 0) {
             throw new IllegalArgumentException("Commune.java : paramètre idCommune invalide");
         }
-        if (nomCommune.equals("") || nomCommune == null) {
+        if (nomCommune == null || nomCommune.equals("")) {
             throw new IllegalArgumentException("Commune.java : paramètre nomCommune invalide");
-        }
-        if (gares == null) {
-            throw new IllegalArgumentException("Commune.java : paramètre gares invalide");
-        }
-        if (voisins == null) {
-            throw new IllegalArgumentException("Commune.java : paramètre voisins invalide");
         }
         if (leDepartement == null) {
             throw new IllegalArgumentException("Commune.java : paramètre leDepartement invalide");
         }
         this.idCommune = idCommune;
         this.nomCommune = nomCommune;
-        this.gares = gares;
-        this.voisins = voisins;
+        this.gares = new ArrayList<Gare>();
+        this.voisins = new ArrayList<Commune>();
         this.leDepartement = leDepartement;
     }
 
@@ -91,7 +84,7 @@ public class Commune implements Comparable<Commune> {
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
     public void setNomCommune(String nomCommune) throws IllegalArgumentException {
-        if (nomCommune.contains("") || nomCommune == null) {
+        if (nomCommune == null || nomCommune.contains("")) {
             throw new IllegalArgumentException("Commune.java : paramètre nomCommune invalide");
         }
         this.nomCommune = nomCommune;
@@ -106,15 +99,30 @@ public class Commune implements Comparable<Commune> {
     }
 
     /**
-     * Permet de définir la nouvelle liste des gares de la commune
-     * @param gares La nouvelle liste des gares de la commune
-     * @throws IllegalArgumentException  quand un paramètre invalide est utilisé
+     * Permet d'ajouter une gare à la liste des gares de la commune concernée par l'appel de la méthode
+     * @param gare La gare qu'on veut ajouter à la liste des gares de la commune concernée par l'appel de la méthode
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public void setGares(ArrayList<Gare> gares) throws IllegalArgumentException {
-        if (gares == null) {
-            throw new IllegalArgumentException("Commune.java : paramètre gares invalide");
+    public void ajoutGare(Gare gare) throws IllegalArgumentException {
+        if (gare == null) {
+            throw new IllegalArgumentException("Commune.java : paramètre gare invalide");
         }
-        this.gares = gares;
+        this.gares.add(gare);
+    }
+
+    /**
+     * Permet de retirer une gare de la liste des gares de la commune concernée par l'appel de la méthode
+     * @param gare La gare qu'on veut retirer de la liste des gares de la commune concernée par l'appel de la méthode
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
+     */
+    public void retireGare(Gare gare) throws IllegalArgumentException {
+        if (gare == null) {
+            throw new IllegalArgumentException("Commune.java : paramètre gare invalide");
+        }
+        boolean ret = this.gares.remove(gare);
+        if (!ret) {
+            System.out.println("La gare passée en paramètre n'est pas une des gares de la commune de " + this.nomCommune);
+        }
     }
 
     /**
@@ -126,15 +134,30 @@ public class Commune implements Comparable<Commune> {
     }
 
     /**
-     * Permet de définir la nouvelle liste des communes voisines
-     * @param voisins La nouvelle liste des communes voisines
+     * Permet d'ajouter une commune à la liste des communes voisines de la commune concernée par l'appel de la méthode
+     * @param voisin La commune qu'on veut ajouter à la liste des communes voisines de la commune concernée par l'appel de la méthode
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public void setVoisins(ArrayList<Commune> voisins) throws IllegalArgumentException {
-        if (voisins == null) {
-            throw new IllegalArgumentException("Commune.java : paramètre voisins invalide");
+    public void ajoutVoisin(Commune voisin) throws IllegalArgumentException {
+        if (voisin == null) {
+            throw new IllegalArgumentException("Commune.java : paramètre voisin invalide");
         }
-        this.voisins = voisins;
+        this.voisins.add(voisin);
+    }
+
+    /**
+     * Permet de retirer une commune de la liste des communes voisines de la commune concernée par l'appel de la méthode
+     * @param voisin La commune qu'on veut retirer de la liste des communes voisines de la commune concernée par l'appel de la méthode
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
+     */
+    public void retireVoisin(Commune voisin) throws IllegalArgumentException {
+        if (voisin == null) {
+            throw new IllegalArgumentException("Commune.java : paramètre voisin invalide");
+        }
+        boolean ret = this.voisins.remove(voisin);
+        if (!ret) {
+            System.out.println("La commune passée en paramètre n'est pas une commune voisine de la commune de " + this.nomCommune);
+        }
     }
 
     /**
@@ -191,43 +214,55 @@ public class Commune implements Comparable<Commune> {
             ret = this.nomCommune.compareTo(o.nomCommune);
         }
         if (currentFilter.equals("leDepartement")) {
-            ret = this.leDepartement.compareTo(o.leDepartement);
+            ret = Integer.compare(this.leDepartement.getIdDep(), o.leDepartement.getIdDep());
         }
         return ret;
     }
 
     /**
-     * Renvoie une représentation textuelle des gares de la commune concernée
+     * Renvoie une représentation textuelle des gares de la commune concernée.
+     * Ici, la variable i est utilisée pour modifier l'ajout à la chaîne de caractères lorsqu'on
+     * atteint la fin de la liste
      * @return Une chaîne de caractères représentant les gares de la commune concernée
      */
     public String garesAsString() {
         String s = "";
         int i = 0;
-        for (Gare gare : this.gares) {
-            if (i != this.gares.size()) {
-                s += gare.getCodeGare() + " (" + gare.getNomGare() + ") -";
-            } else {
-                s += gare.getCodeGare() + " (" + gare.getNomGare() + ")";
+        if (this.gares.size() == 0) {
+            s += "NaN";
+        } else {
+            for (Gare gare : this.gares) {
+                if (i != this.gares.size()) {
+                    s += gare.getCodeGare() + " (" + gare.getNomGare() + ") -";
+                } else {
+                    s += gare.getCodeGare() + " (" + gare.getNomGare() + ")";
+                }
+                i++;
             }
-            i++;
         }
         return s;
     }
 
     /**
-     * Renvoie une représentation textuelle des voisins de la commune concernée
+     * Renvoie une représentation textuelle des voisins de la commune concernée.
+     * Ici, la variable i est utilisée pour modifier l'ajout à la chaîne de caractères lorsqu'on
+     * atteint la fin de la liste
      * @return Une chaîne de caractères représentant les voisins de la commune concernée
      */
     public String voisinAsString() {
         String s = "";
         int i = 0;
-        for (Commune voisin : this.voisins) {
-            if (i != this.voisins.size()) {
-                s += voisin.idCommune + " (" + voisin.nomCommune + ") -";
-            } else {
-                s += voisin.idCommune + " (" + voisin.nomCommune + ")";
+        if (this.voisins.size() == 0) {
+            s += "NaN";
+        } else {
+            for (Commune voisin : this.voisins) {
+                if (i != this.voisins.size()) {
+                    s += voisin.idCommune + " (" + voisin.nomCommune + ") -";
+                } else {
+                    s += voisin.idCommune + " (" + voisin.nomCommune + ")";
+                }
+                i++;
             }
-            i++;
         }
         return s;
     }
