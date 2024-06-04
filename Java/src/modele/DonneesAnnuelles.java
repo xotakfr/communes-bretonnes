@@ -50,38 +50,38 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
         if (lAnnee == null) {
             throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre lAnnee invalide");
         }
-        this.lAnnee = lAnnee;
         if (laCommune == null) {
             throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre laCommune invalide");
         }
-        this.laCommune = laCommune;
         if (nbMaison < 0) {
             throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre nbMaison invalide");
         }
-        this.nbMaison = nbMaison;
         if (nbAppart < 0) {
             throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre nbAppart invalide");
         }
-        this.nbAppart = nbAppart;
         if (prixMoyen < 0) {
             throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre prixMoyen invalide");
         }
-        this.prixMoyen = prixMoyen;
         if (prixM2Moyen < 0) {
             throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre prixM2Moyen invalide");
         }
-        this.prixM2Moyen = prixM2Moyen;
         if (depensesCulturellesTotales < 0) {
             throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre depensesCulturellesTotales invalide");
         }
-        this.depensesCulturellesTotales = depensesCulturellesTotales;
         if (budgetTotal < 0) {
             throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre budgetTotal invalide");
         }
-        this.budgetTotal = budgetTotal;
         if (population < 0) {
             throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre population invalide");
         }
+        this.lAnnee = lAnnee;
+        this.laCommune = laCommune;
+        this.nbMaison = nbMaison;
+        this.nbAppart = nbAppart;
+        this.prixMoyen = prixMoyen;
+        this.prixM2Moyen = prixM2Moyen;
+        this.depensesCulturellesTotales = depensesCulturellesTotales;
+        this.budgetTotal = budgetTotal;
         this.population = population;
     }
 
@@ -91,70 +91,6 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
      */
     public Annee getAnnee() {
         return this.lAnnee;
-    }
-
-    /**
-     * Renvoie l'instance de la classe Commune associée aux données
-     * @return L'instance de la classe Commune associée aux données
-     */
-    public Commune getCommune() {
-        return this.laCommune;
-    }
-
-    /**
-     * Renvoie le nombre de maisons
-     * @return Le nombre de maisons
-     */
-    public int getNbMaison() {
-        return this.nbMaison;
-    }
-
-    /**
-     * Renvoie le nombre d'appartements
-     * @return Le nombre d'appartements
-     */
-    public int getNbAppart() {
-        return this.nbAppart;
-    }
-
-    /**
-     * Renvoie le prix moyen des biens immobiliers
-     * @return Le prix moyen des biens immobiliers
-     */
-    public float getPrixMoyen() {
-        return this.prixMoyen;
-    }
-
-    /**
-     * Renvoie le prix moyen au mètre carré
-     * @return Le prix moyen au mètre carré
-     */
-    public float getPrixM2Moyen() {
-        return this.prixM2Moyen;
-    }
-
-    /**
-     * Renvoie les dépenses culturelles totales
-     * @return Les dépenses culturelles totales
-     */
-    public float getDepensesCulturellesTotales() {
-        return this.depensesCulturellesTotales;
-    }
-
-    /**
-     * Renvoie le budget total
-     * @return Le budget total
-     */
-    public float getBudgetTotal() {
-        return this.budgetTotal;
-    }
-
-    /**
-     * Renvoie la population de la commune
-     * @return La population de la commune
-     */
-    public int getPopulation() {
-        return this.population;
     }
 
     /**
@@ -170,6 +106,14 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
     }
 
     /**
+     * Renvoie l'instance de la classe Commune associée aux données
+     * @return L'instance de la classe Commune associée aux données
+     */
+    public Commune getCommune() {
+        return this.laCommune;
+    }
+
+    /**
      * Permet de définir la nouvelle instance de la classe Commune associée aux données
      * @param laCommune La nouvelle instance de la classe Commune associée aux données
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
@@ -179,6 +123,14 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
             throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre laCommune invalide");
         }
         this.laCommune = laCommune;
+    }
+
+    /**
+     * Renvoie le nombre de maisons
+     * @return Le nombre de maisons
+     */
+    public int getNbMaison() {
+        return this.nbMaison;
     }
 
     /**
@@ -194,6 +146,14 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
     }
 
     /**
+     * Renvoie le nombre d'appartements
+     * @return Le nombre d'appartements
+     */
+    public int getNbAppart() {
+        return this.nbAppart;
+    }
+
+    /**
      * Permet de définir le nouveau nombre d'appartements dans une commune
      * @param nbAppart Le nouveau nombre d'appartements dans une commune
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
@@ -203,6 +163,14 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
             throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre nbAppart invalide");
         }
         this.nbAppart = nbAppart;
+    }
+
+    /**
+     * Renvoie le prix moyen des biens immobiliers
+     * @return Le prix moyen des biens immobiliers
+     */
+    public float getPrixMoyen() {
+        return this.prixMoyen;
     }
 
     /**
@@ -218,6 +186,14 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
     }
 
     /**
+     * Renvoie le prix moyen au mètre carré
+     * @return Le prix moyen au mètre carré
+     */
+    public float getPrixM2Moyen() {
+        return this.prixM2Moyen;
+    }
+
+    /**
      * Permet de définir le nouveau prix moyen au mètre carré
      * @param prixM2Moyen Le nouveau prix moyen au mètre carré
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
@@ -227,6 +203,14 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
             throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre prixM2Moyen invalide");
         }
         this.prixM2Moyen = prixM2Moyen;
+    }
+
+    /**
+     * Renvoie les dépenses culturelles totales
+     * @return Les dépenses culturelles totales
+     */
+    public float getDepensesCulturellesTotales() {
+        return this.depensesCulturellesTotales;
     }
 
     /**
@@ -242,6 +226,14 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
     }
 
     /**
+     * Renvoie le budget total
+     * @return Le budget total
+     */
+    public float getBudgetTotal() {
+        return this.budgetTotal;
+    }
+
+    /**
      * Permet de définir le nouveau budget total
      * @param budgetTotal Le nouveau budget total
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
@@ -251,6 +243,14 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
             throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre budgetTotal invalide");
         }
         this.budgetTotal = budgetTotal;
+    }
+
+    /**
+     * Renvoie la population de la commune
+     * @return La population de la commune
+     */
+    public int getPopulation() {
+        return this.population;
     }
 
     /**
@@ -265,16 +265,16 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
     }
 
     /**
-     * Renvoie la liste des filtres possibles pour la comparaison des données annuelles
-     * @return La liste des filtres possibles pour la comparaison des données annuelles
+     * Renvoie la liste de tous les filtres autorisés
+     * @return La liste de tous les filtres autorisés
      */
     public static String[] getAllFilter() {
         return FILTERLIST;
     }
-    
+
     /**
-     * Permet de définir le filtre à utiliser pour la comparaison des données annuelles
-     * @param filter Le filtre à utiliser pour la comparaison des données annuelles
+     * Permet de définir le nouveau filtre à utiliser
+     * @param filter Le nouveau filtre à utiliser
      */
     public static void setFilter(String filter) {
         for (String s : FILTERLIST) {
@@ -286,46 +286,46 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
 
     /**
      * Implémentation de l'interface Comparable.
-     * Comparaison basée sur le filtre
+     * Comparaison basée sur le filtre actuellement choisi
      * @param o Autre instance de DonneesAnnuelles à comparer
-     * @return Un entier représentant le résultat de la comparaison :
+     * @return Un entier représentant le résultat de la comparaison
      */
     public int compareTo(DonneesAnnuelles o) {
         int ret = 0;
-
         if (currentFilter.equals("lAnnee")) {
            ret = this.lAnnee.compareTo(o.lAnnee);
         }
-        if (currentFilter.equals("laCommune")) {
+        else if (currentFilter.equals("laCommune")) {
            ret = this.laCommune.compareTo(o.laCommune);
         }
-        if (currentFilter.equals("nbMaison")) {
+        else if (currentFilter.equals("nbMaison")) {
            ret = Integer.compare(this.nbMaison, o.nbMaison);
         }
-        if (currentFilter.equals("nbAppart")) {
+        else if (currentFilter.equals("nbAppart")) {
            ret = Integer.compare(this.nbAppart, o.nbAppart);
         }
-        if (currentFilter.equals("prixMoyen")) {
+        else if (currentFilter.equals("prixMoyen")) {
            ret = Float.compare(this.prixMoyen, o.prixMoyen);
         }
-        if (currentFilter.equals("prixM2Moyen")) {
+        else if (currentFilter.equals("prixM2Moyen")) {
            ret = Float.compare(this.prixM2Moyen, o.prixM2Moyen);
         }
-        if (currentFilter.equals("depensesCulturellesTotales")) {
+        else if (currentFilter.equals("depensesCulturellesTotales")) {
            ret = Float.compare(this.depensesCulturellesTotales, o.depensesCulturellesTotales);
         }
-        if (currentFilter.equals("budgetTotal")) {
+        else if (currentFilter.equals("budgetTotal")) {
            ret = Float.compare(this.budgetTotal, o.budgetTotal);
         }
-        if (currentFilter.equals("nbAppart")) {
+        else if (currentFilter.equals("nbAppart")) {
            ret = Integer.compare(this.population, o.population);
         }
         return ret;
+        // TODO : modifier les comparaisons
     }
 
     /**
-     * Renvoie une représentation textuelle d'une instance de la classe DonneesAnnuelles.
-     * @return Une représentation textuelle d'une instance de la classe DonneesAnnuelles
+     * Renvoie une représentation textuelle des données annuelles concernées
+     * @return Une représentation textuelle des données annuelles concernées
      */
     public String toString() {
         return "DonneesAnnuelles{" +

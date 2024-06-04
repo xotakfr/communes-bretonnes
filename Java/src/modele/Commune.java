@@ -204,16 +204,17 @@ public class Commune implements Comparable<Commune> {
      * Implémentation de l'interface Comparable.
      * Comparaison basée sur le filtre actuellement choisi
      * @param o Une autre instance de la classe Commune à comparer
+     * @return Un entier représentant le résultat de la comparaison
      */
     public int compareTo(Commune o) {
         int ret = 0;
         if (currentFilter.equals("idCommune")) {
            ret = Integer.compare(this.idCommune, o.idCommune);
         }
-        if (currentFilter.equals("nomCommune")) {
+        else if (currentFilter.equals("nomCommune")) {
             ret = this.nomCommune.compareTo(o.nomCommune);
         }
-        if (currentFilter.equals("leDepartement")) {
+        else if (currentFilter.equals("leDepartement")) {
             ret = Integer.compare(this.leDepartement.getIdDep(), o.leDepartement.getIdDep());
         }
         return ret;

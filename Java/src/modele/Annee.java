@@ -85,13 +85,14 @@ public class Annee implements Comparable<Annee> {
      * Implémentation de l'interface Comparable.
      * Comparaison basée sur le filtre actuellement choisi
      * @param o Une autre instance de la classe Annee à comparer
+     * @return Un entier représentant le résultat de la comparaison
      */
     public int compareTo(Annee o) {
         int ret = 0;
         if (currentFilter.equals("annee")) {
            ret = Integer.compare(this.annee, o.annee);
         }
-        if (currentFilter.equals("tauxInflation")) {
+        else if (currentFilter.equals("tauxInflation")) {
             ret = Float.compare(this.tauxInflation, o.tauxInflation);
         }
         return ret;

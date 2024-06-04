@@ -125,16 +125,17 @@ public class Aeroport implements Comparable<Aeroport> {
      * Implémentation de l'interface Comparable.
      * Comparaison basée sur le filtre actuellement choisi
      * @param o Une autre instance de la classe Aeroport à comparer
+     * @return Un entier représentant le résultat de la comparaison
      */
     public int compareTo(Aeroport o) {
         int ret = 0;
         if (currentFilter.equals("nom")) {
             ret = this.nom.compareTo(o.nom);
         }
-        if (currentFilter.equals("adresse")) {
+        else if (currentFilter.equals("adresse")) {
             ret = this.adresse.compareTo(o.adresse);
         }
-        if (currentFilter.equals("leDepartement")) {
+        else if (currentFilter.equals("leDepartement")) {
             ret = Integer.compare(this.leDepartement.getIdDep(), o.leDepartement.getIdDep());
         }
         return ret;
@@ -148,7 +149,7 @@ public class Aeroport implements Comparable<Aeroport> {
         return "Aeroport{" +
                 "nom = " + this.nom +
                 ", adresse = " + this.adresse +
-                ", leDepartement = " + this.leDepartement +
+                ", leDepartement = " + this.leDepartement.getIdDep() +
                 "} ";
     }
 }
