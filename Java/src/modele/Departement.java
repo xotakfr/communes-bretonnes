@@ -38,7 +38,7 @@ public class Departement implements Comparable<Departement> {
      * @param aeroports Liste des aéroports du département
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public Departement(int idDep, String nomDep, float invesCulturel2019, ArrayList<Commune> communes, ArrayList<Aeroport> aeroports) throws IllegalArgumentException {
+    public Departement(int idDep, String nomDep, float invesCulturel2019, ArrayList <Commune> communes, ArrayList<Aeroport> aeroports) throws IllegalArgumentException {
         if (idDep <= 0) {
             throw new IllegalArgumentException("Departement.java : paramètre idDep invalide");
         }
@@ -212,15 +212,65 @@ public class Departement implements Comparable<Departement> {
     }
 
     /**
+     * Renvoie une représentation textuelle des communes du département concerné.
+     * Ici, la variable i est utilisée pour modifier l'ajout à la chaîne de caractères lorsqu'on
+     * atteint la fin de la liste
+     * @return Une chaîne de caractères représentant les communes du département concerné
+     */
+    public String communesAsString() {
+        String s = "";
+        int i = 0;
+        if (this.communes.isEmpty()) {
+            s += "Aucune commune";
+        } else {
+            for (Commune commune : this.communes) {
+                if (i != this.communes.size()) {
+                    s += commune.getIdCommune() + " (" + commune.getNomCommune() + ") -";
+                } else {
+                    s += commune.getIdCommune() + " (" + commune.getNomCommune() + ")";
+                }
+                i++;
+            }
+        }
+        return s;
+    }
+
+    /**
+     * Renvoie une représentation textuelle des aéropots du département concerné.
+     * Ici, la variable i est utilisée pour modifier l'ajout à la chaîne de caractères lorsqu'on
+     * atteint la fin de la liste
+     * @return Une chaîne de caractères représentant les aéropots du département concerné
+     */
+    public String aeroportsAsString() {
+        String s = "";
+        int i = 0;
+        if (this.aeroports.isEmpty()) {
+            s += "Aucune gare";
+        } else {
+            for (Aeroport aeroport : this.aeroports) {
+                if (i != this.aeroports.size()) {
+                    s += aeroport.getNom() + " (" + aeroport.getAdresse() + ") -";
+                } else {
+                    s += aeroport.getNom() + " (" + aeroport.getAdresse() + ")";
+                }
+                i++;
+            }
+        }
+        return s;
+    }
+
+    /**
      * Renvoie une représentation textuelle d'une instance de la classe Departement
      * @return Une représentation textuelle d'une instance de la classe Departement
      */
     public String toString() {
         return "Departement{" +
                 "idDep = " + this.idDep +
-                ", nomDep = " + this.nomDep +
+                ", nomCommune = " + this.nomDep +
+                ", communes = " + this.communesAsString() +
+                ", aeroports = " + this.aeroportsAsString() +
                 ", invesCulturel2019 = " + this.invesCulturel2019 +
                 "} ";
     }
-    // TODO : modifier le toString pour rajouter les listes 
+
 }

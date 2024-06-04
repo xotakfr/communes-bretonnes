@@ -19,9 +19,9 @@ public class Commune implements Comparable<Commune> {
     /** Nom de la commune */
     private String nomCommune;
     /** Liste des gares de la commune */
-    private ArrayList<Gare> gares;
+    private ArrayList<Gare> gares = new ArrayList<>();
     /** Liste des communes voisines */
-    private ArrayList<Commune> voisins;
+    private ArrayList<Commune> voisins = new ArrayList<>();
     /** Instance de la classe Departement associée aux données */
     private Departement leDepartement;
 
@@ -37,7 +37,7 @@ public class Commune implements Comparable<Commune> {
         if (idCommune <= 0) {
             throw new IllegalArgumentException("Commune.java : paramètre idCommune invalide");
         }
-        if (nomCommune == null || nomCommune.equals("")) {
+        if (nomCommune.isEmpty() || nomCommune == null) {
             throw new IllegalArgumentException("Commune.java : paramètre nomCommune invalide");
         }
         if (leDepartement == null) {
@@ -45,8 +45,6 @@ public class Commune implements Comparable<Commune> {
         }
         this.idCommune = idCommune;
         this.nomCommune = nomCommune;
-        this.gares = new ArrayList<Gare>();
-        this.voisins = new ArrayList<Commune>();
         this.leDepartement = leDepartement;
     }
 
@@ -230,7 +228,7 @@ public class Commune implements Comparable<Commune> {
         String s = "";
         int i = 0;
         if (this.gares.size() == 0) {
-            s += "NaN";
+            s += "Aucune gare";
         } else {
             for (Gare gare : this.gares) {
                 if (i != this.gares.size()) {
@@ -254,7 +252,7 @@ public class Commune implements Comparable<Commune> {
         String s = "";
         int i = 0;
         if (this.voisins.size() == 0) {
-            s += "NaN";
+            s += "Aucun voisin";
         } else {
             for (Commune voisin : this.voisins) {
                 if (i != this.voisins.size()) {
