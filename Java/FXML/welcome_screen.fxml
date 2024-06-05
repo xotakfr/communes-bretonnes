@@ -25,7 +25,7 @@
                   </Button>
                </right>
                <left>
-                  <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="86.0" BorderPane.alignment="CENTER">
+                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="90.0" text="Déconnexion" textAlignment="RIGHT" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </BorderPane.margin>
@@ -33,6 +33,9 @@
                         <String fx:value="logout-button" />
                         <String fx:value="button" />
                      </styleClass>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
                   </Button>
                </left>
             </BorderPane>
@@ -73,7 +76,7 @@
                <center>
                   <HBox alignment="CENTER" prefHeight="75.0" prefWidth="1257.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextField prefHeight="45.0" prefWidth="377.0" />
+                        <TextField prefHeight="45.0" prefWidth="377.0" styleClass="text-entry" />
                         <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="96.0">
                            <styleClass>
                               <String fx:value="search-button" />
@@ -91,7 +94,7 @@
             </BorderPane>
             <HBox alignment="CENTER" prefHeight="184.0" prefWidth="1257.0">
                <children>
-                  <ListView prefHeight="200.0" prefWidth="200.0">
+                  <ListView prefHeight="200.0" prefWidth="200.0" styleClass="text-entry">
                      <opaqueInsets>
                         <Insets top="50.0" />
                      </opaqueInsets>

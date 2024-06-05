@@ -1,6 +1,7 @@
 .button {
     -fx-border-radius: 7px;
     -fx-cursor: hand;
+    -fx-background-color: #d9d9d9;
 }
 
 .text-entry {
@@ -31,9 +32,19 @@
 }
 
 .logout-button {
+    -fx-text-fill: rgba(255,255,255,0);
+    -fx-min-width: 90px;
     -fx-background-image: url("./assets/img/logout.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
+    -fx-background-size: contain;
+}
+.logout-button:hover {
+    -fx-text-fill: #000000;
+    -fx-min-width: 210px;
+    -fx-background-image: url("./assets/img/logout.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
     -fx-background-size: contain;
 }
 
