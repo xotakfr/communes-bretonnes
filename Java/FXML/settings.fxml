@@ -9,6 +9,8 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.BorderPane?>
@@ -97,7 +99,7 @@
                                   <Tab text="Utilisateur">
                                        <content>
                                           <BorderPane prefHeight="200.0" prefWidth="200.0">
-                                             <center>
+                                             <left>
                                                 <GridPane BorderPane.alignment="CENTER">
                                                   <columnConstraints>
                                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="462.0" minWidth="10.0" prefWidth="215.0" />
@@ -186,15 +188,40 @@
                                                       </Text>
                                                       <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                                       <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Accès :" GridPane.rowIndex="4">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                         <GridPane.margin>
+                                                            <Insets left="50.0" />
+                                                         </GridPane.margin>
+                                                      </Text>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Aucun Accès : " GridPane.rowIndex="5">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                         <GridPane.margin>
+                                                            <Insets left="50.0" />
+                                                         </GridPane.margin>
+                                                      </Text>
                                                    </children>
                                                 </GridPane>
-                                             </center>
+                                             </left>
                                           </BorderPane>
                                        </content>
                                     </Tab>
                                   <Tab text="Suppression">
                                        <content>
-                                          <BorderPane prefHeight="200.0" prefWidth="200.0" />
+                                          <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                             <center>
+                                                <Button mnemonicParsing="false" text="Supprimer l'utilisateur" BorderPane.alignment="CENTER">
+                                                   <styleClass>
+                                                      <String fx:value="warning_button_go" />
+                                                      <String fx:value="warning_button" />
+                                                   </styleClass>
+                                                </Button>
+                                             </center>
+                                          </BorderPane>
                                        </content>
                                     </Tab>
                                 </tabs>
@@ -208,17 +235,116 @@
                   </Tab>
                 <Tab text="Gestion des données">
                      <content>
-                        <BorderPane prefHeight="200.0" prefWidth="200.0" />
+                        <BorderPane prefHeight="200.0" prefWidth="200.0">
+                           <right>
+                              <GridPane prefHeight="701.0" prefWidth="259.0" BorderPane.alignment="CENTER">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Charger depuis CSV">
+                                       <GridPane.margin>
+                                          <Insets left="50.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" text="Supression" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets left="50.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" text="Sauvegarder en CSV" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="50.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                 </children>
+                              </GridPane>
+                           </right>
+                           <center>
+                              <TableView prefHeight="725.0" prefWidth="554.0" BorderPane.alignment="CENTER">
+                                <columns>
+                                  <TableColumn prefWidth="75.0" text="C1" />
+                                  <TableColumn prefWidth="75.0" text="C2" />
+                                </columns>
+                              </TableView>
+                           </center>
+                        </BorderPane>
                      </content>
                   </Tab>
                   <Tab text="Langage">
                      <content>
-                        <BorderPane prefHeight="200.0" prefWidth="200.0" />
+                        <BorderPane prefHeight="200.0" prefWidth="200.0">
+                           <center>
+                              <MenuButton mnemonicParsing="false" styleClass="text-entry" text="Langage" BorderPane.alignment="CENTER">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                                  <MenuItem mnemonicParsing="false" text="Action 2" />
+                                </items>
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </MenuButton>
+                           </center>
+                           <top>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                 <center>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Votre langage actuel : Français" BorderPane.alignment="CENTER">
+                                       <font>
+                                          <Font size="33.0" />
+                                       </font>
+                                    </Text>
+                                 </center>
+                              </BorderPane>
+                           </top>
+                        </BorderPane>
                      </content>
                   </Tab>
                   <Tab text="Mon profil">
                      <content>
-                        <BorderPane prefHeight="200.0" prefWidth="200.0" />
+                        <BorderPane prefHeight="200.0" prefWidth="200.0">
+                           <center>
+                              <GridPane BorderPane.alignment="CENTER">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="462.0" minWidth="10.0" prefWidth="210.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="779.0" minWidth="10.0" prefWidth="723.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom Affiché : ">
+                                       <GridPane.margin>
+                                          <Insets left="50.0" />
+                                       </GridPane.margin>
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField prefHeight="55.0" prefWidth="672.0" styleClass="text-entry" GridPane.columnIndex="1">
+                                       <GridPane.margin>
+                                          <Insets right="50.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Communes que vous gérez :" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="50.0" />
+                                       </GridPane.margin>
+                                    </Text>
+                                    <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                 </children>
+                              </GridPane>
+                           </center>
+                        </BorderPane>
                      </content>
                   </Tab>
               </tabs>
