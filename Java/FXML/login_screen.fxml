@@ -55,16 +55,18 @@
                               <Insets />
                            </opaqueInsets>
                            <GridPane.margin>
-                              <Insets right="20.0" />
+                              <Insets right="50.0" />
                            </GridPane.margin>
                         </TextField>
                         <TextField prefHeight="49.0" prefWidth="336.0" styleClass="text-entry" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
-                              <Insets right="20.0" />
+                              <Insets right="50.0" />
                            </GridPane.margin>
                         </TextField>
                         <ImageView fitHeight="85.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fitHeight="85.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input_label" text="Identifiant" GridPane.columnIndex="1" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="input_label" text="Mot de passe" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                      <opaqueInsets>
                         <Insets right="10.0" />

@@ -76,7 +76,11 @@
                <center>
                   <HBox alignment="CENTER" prefHeight="75.0" prefWidth="1257.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextField prefHeight="45.0" prefWidth="377.0" styleClass="text-entry" />
+                        <TextField prefHeight="45.0" prefWidth="377.0">
+                           <styleClass>
+                              <String fx:value="text-entry" />
+                              <String fx:value="search_input" />
+                           </styleClass></TextField>
                         <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="96.0">
                            <styleClass>
                               <String fx:value="search-button" />
