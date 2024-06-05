@@ -189,8 +189,15 @@
     -fx-background-color: #E63946;
     -fx-text-fill: white;
 }
+.warning_button_go:hover {
+    -fx-background-color: #A60916;
+}
 
 .warning_button_no {
     -fx-background-color: #ECE6F0;
     -fx-text-fill: black;
+}
+
+.warning_button_no:hover {
+    -fx-background-color: #BCB6C0;
 }
