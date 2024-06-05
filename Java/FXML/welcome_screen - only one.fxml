@@ -84,7 +84,7 @@
                 <RowConstraints maxHeight="145.0" minHeight="10.0" prefHeight="126.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <VBox.margin>
-                  <Insets left="500.0" right="500.0" top="50.0" />
+                  <Insets bottom="100.0" left="500.0" right="500.0" top="50.0" />
                </VBox.margin>
                <children>
                   <Button mnemonicParsing="false" prefHeight="359.0" prefWidth="1.0E21" styleClass="card_button" text="Auray" textAlignment="RIGHT">
@@ -92,7 +92,7 @@
                         <Font size="23.0" />
                      </font>
                   </Button>
-                  <Pane prefHeight="200.0" prefWidth="200.0" styleClass="card_image" GridPane.rowIndex="1" />
+                  <Pane prefHeight="9.99999999E8" prefWidth="9.99999999E8" styleClass="card_image" GridPane.rowIndex="1" />
                   <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" styleClass="card_letter_icon" text="A">
                      <font>
                         <Font name="System Bold" size="12.0" />
