@@ -9,6 +9,12 @@
 
 .text-entry {
     -fx-background-color: #E6E0E9;
+    -fx-background-radius: 4px 4px 0px 0px;
+}
+
+.input_label {
+    -fx-translate-y: -15px;
+    -fx-translate-x: 5px;
 }
 
 .main-button {
@@ -27,7 +33,11 @@
     -fx-background-color: #9a8dbd;
 }
 
+.search_input {
+    -fx-background-radius: 7px 0px 0px 7px;
+}
 .search-button {
+    -fx-background-radius: 0px 7px 7px 0px;
     -fx-background-image: url("./assets/img/search.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
