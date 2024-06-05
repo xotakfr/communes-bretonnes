@@ -95,6 +95,23 @@
     -fx-background-size: contain;
 }
 
+.back-button {
+    -fx-text-fill: rgba(255,255,255,0);
+    -fx-min-width: 20px;
+    -fx-background-image: url("./assets/img/back.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
+.back-button:hover {
+    -fx-text-fill: #000000;
+    -fx-min-width: 100px;
+    -fx-background-image: url("./assets/img/back.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+    -fx-background-size: contain;
+}
+
 .bg_login {
     -fx-background-image: url("./assets/img/bgs/bg_login.jpg");
     -fx-background-repeat: no-repeat;
@@ -105,4 +122,33 @@
 .login_box {
     -fx-background-color: rgba(254, 247, 255, 0.80);
     -fx-background-radius: 5;
+}
+
+.stats_sidebar {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 0px 28px 0px 0px;
+}
+
+.stats_sidebar > .stats_sidebar_1_top {
+    -fx-background-color: #d9d9d9;
+    -fx-border-width: 0px 0px 1px 0px;
+    -fx-border-color: #000000;
+    -fx-background-radius: 0px 28px 0px 0px;
+}
+
+.stats_sidebar > .stats_sidebar_1 {
+    -fx-background-color: #d9d9d9;
+}
+
+.stats_sidebar > .stats_sidebar_2 {
+    -fx-background-color: #FEF7FF;
+}
+
+.stats_sidebar > .stats_sidebar_2_top {
+    -fx-background-color: #ECE6F0;
+    -fx-background-radius: 28px 28px 0px 0px;
+}
+
+.stats_sidebar_2_top > .discret_stats_back {
+    -fx-background-color: #ECE6F0;
 }
