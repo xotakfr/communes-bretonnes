@@ -138,6 +138,8 @@
 
 .stats_sidebar > .stats_sidebar_1 {
     -fx-background-color: #d9d9d9;
+    -fx-border-width: 1px 0px 0px 0px;
+    -fx-border-color: #000000;
 }
 
 .stats_sidebar > .stats_sidebar_2 {
