@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -77,7 +82,7 @@
                                           </Text>
                                        </center>
                                     </BorderPane>
-                                    <MenuButton mnemonicParsing="false" text="Utilisateur - Choix par identifiant" GridPane.columnIndex="1">
+                                    <MenuButton mnemonicParsing="false" styleClass="text-entry" text="Utilisateur - Choix par identifiant" GridPane.columnIndex="1">
                                       <items>
                                         <MenuItem mnemonicParsing="false" text="Action 1" />
                                         <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -86,8 +91,120 @@
                                  </children>
                               </GridPane>
                            </top>
+                           <center>
+                              <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+                                <tabs>
+                                  <Tab text="Utilisateur">
+                                       <content>
+                                          <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                             <center>
+                                                <GridPane BorderPane.alignment="CENTER">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="462.0" minWidth="10.0" prefWidth="215.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="718.0" minWidth="10.0" prefWidth="718.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom Affiché : ">
+                                                         <GridPane.margin>
+                                                            <Insets left="50.0" right="50.0" />
+                                                         </GridPane.margin>
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <TextField prefHeight="55.0" prefWidth="607.0" styleClass="text-entry" GridPane.columnIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets left="50.0" right="50.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rôle : " GridPane.rowIndex="1">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                         <GridPane.margin>
+                                                            <Insets left="50.0" right="50.0" />
+                                                         </GridPane.margin>
+                                                      </Text>
+                                                      <MenuButton mnemonicParsing="false" styleClass="text-entry" text="Rôle - Utilisateur" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                        <items>
+                                                          <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                          <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                        </items>
+                                                         <GridPane.margin>
+                                                            <Insets left="50.0" right="50.0" />
+                                                         </GridPane.margin>
+                                                      </MenuButton>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Données : " GridPane.rowIndex="2">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                         <GridPane.margin>
+                                                            <Insets left="50.0" right="50.0" />
+                                                         </GridPane.margin>
+                                                      </Text>
+                                                      <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                         <center>
+                                                            <HBox prefHeight="19.0" prefWidth="718.0" BorderPane.alignment="CENTER">
+                                                               <children>
+                                                                  <BorderPane prefHeight="111.0" prefWidth="253.0">
+                                                                     <center>
+                                                                        <CheckBox alignment="CENTER" mnemonicParsing="false" text="Peut lire toute les données" BorderPane.alignment="CENTER">
+                                                                           <BorderPane.margin>
+                                                                              <Insets left="50.0" />
+                                                                           </BorderPane.margin>
+                                                                        </CheckBox>
+                                                                     </center>
+                                                                  </BorderPane>
+                                                                  <BorderPane prefHeight="111.0" prefWidth="308.0">
+                                                                     <center>
+                                                                        <CheckBox mnemonicParsing="false" text="Peut modifier les données" BorderPane.alignment="CENTER">
+                                                                           <BorderPane.margin>
+                                                                              <Insets left="50.0" />
+                                                                           </BorderPane.margin>
+                                                                        </CheckBox>
+                                                                     </center>
+                                                                  </BorderPane>
+                                                               </children>
+                                                            </HBox>
+                                                         </center>
+                                                      </BorderPane>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Communes que l'utilisateur peut gérer :" GridPane.rowIndex="3">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                         <GridPane.margin>
+                                                            <Insets left="50.0" />
+                                                         </GridPane.margin>
+                                                      </Text>
+                                                      <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                      <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                   </children>
+                                                </GridPane>
+                                             </center>
+                                          </BorderPane>
+                                       </content>
+                                    </Tab>
+                                  <Tab text="Suppression">
+                                       <content>
+                                          <BorderPane prefHeight="200.0" prefWidth="200.0" />
+                                       </content>
+                                    </Tab>
+                                </tabs>
+                              </TabPane>
+                           </center>
                         </BorderPane>
                      </content>
+                     <tooltip>
+                        <Tooltip text="Administrateur - Modifier les utilisateurs" />
+                     </tooltip>
                   </Tab>
                 <Tab text="Gestion des données">
                      <content>
@@ -95,6 +212,11 @@
                      </content>
                   </Tab>
                   <Tab text="Langage">
+                     <content>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0" />
+                     </content>
+                  </Tab>
+                  <Tab text="Mon profil">
                      <content>
                         <BorderPane prefHeight="200.0" prefWidth="200.0" />
                      </content>
