@@ -3,6 +3,10 @@
     -fx-cursor: hand;
 }
 
+.text-entry {
+    -fx-background-color: #E6E0E9;
+}
+
 .main-button {
     -fx-background-color: #6750a4;
     -fx-text-fill: white;
