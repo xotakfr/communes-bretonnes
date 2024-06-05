@@ -1,3 +1,8 @@
+.button {
+    -fx-border-radius: 7px;
+    -fx-cursor: hand;
+}
+
 .main-button {
     -fx-background-color: #6750a4;
     -fx-text-fill: white;
@@ -5,12 +10,25 @@
     -fx-border-radius: 100px;
     -fx-font-size: 14px;
     -fx-line-spacing: 1.5em;
-    -fx-cursor: hand;
     -fx-transition-property: -fx-background-color;
     -fx-transition-duration: 0.2s;
     -fx-transition-timing-function: ease-in-out;
 }
 
 .main-button:hover {
-    -fx-background-color: #6750a4;
+    -fx-background-color: #9a8dbd;
+}
+
+.search-button {
+    -fx-background-image: url("./assets/img/search.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
+
+.logout-button {
+    -fx-background-image: url("./assets/img/logout.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;
 }

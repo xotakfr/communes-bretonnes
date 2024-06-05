@@ -24,7 +24,7 @@
                   </Button>
                </right>
                <left>
-                  <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="86.0" text="Disconnect.SVG" BorderPane.alignment="CENTER">
+                  <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="86.0" styleClass="logout-button" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </BorderPane.margin>
@@ -69,7 +69,7 @@
                   <HBox alignment="CENTER" prefHeight="75.0" prefWidth="1257.0" BorderPane.alignment="CENTER">
                      <children>
                         <TextField prefHeight="45.0" prefWidth="377.0" />
-                        <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="96.0" text="Recherche.SVG" />
+                        <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="96.0" styleClass="search-button" />
                      </children>
                      <opaqueInsets>
                         <Insets bottom="500.0" left="500.0" right="500.0" top="500.0" />
