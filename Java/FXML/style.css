@@ -24,9 +24,6 @@
     -fx-background-radius: 100px;
     -fx-font-size: 14px;
     -fx-line-spacing: 1.5em;
-    -fx-transition-property: -fx-background-color;
-    -fx-transition-duration: 0.2s;
-    -fx-transition-timing-function: ease-in-out;
 }
 
 .main-button:hover {
@@ -77,4 +74,5 @@
 
 .login_box {
     -fx-background-color: rgba(254, 247, 255, 0.80);
+    -fx-background-radius: 5;
 }
