@@ -78,6 +78,13 @@
     -fx-background-size: cover;
 }
 
+.tab {
+    -fx-border-width: 1px;
+    -fx-border-color: #d1cbd5;
+    -fx-border-radius: 12px 12px 0px 0px;
+    -fx-background-radius: 12px 12px 0px 0px;
+}
+
 .logout-button {
     -fx-text-fill: rgba(255,255,255,0);
     -fx-min-width: 90px;
@@ -142,16 +149,16 @@
     -fx-border-color: #000000;
 }
 
-.stats_sidebar > .stats_sidebar_2 {
+.stats_sidebar_2 {
     -fx-background-color: #FEF7FF;
 }
 
-.stats_sidebar > .stats_sidebar_2_top {
+.stats_sidebar_2_top {
     -fx-background-color: #ECE6F0;
     -fx-background-radius: 28px 28px 0px 0px;
 }
 
-.stats_sidebar_2_top > .discret_stats_back {
+.discret_stats_back {
     -fx-background-color: #ECE6F0;
 }
 
