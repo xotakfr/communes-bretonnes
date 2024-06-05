@@ -47,16 +47,8 @@
                   </Button>
                </left>
             </BorderPane>
-            <GridPane prefHeight="1.0E18" styleClass="stats_sidebar_2" GridPane.columnIndex="1" GridPane.rowIndex="1">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="247.0" minHeight="0.0" prefHeight="28.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="654.0" minHeight="10.0" prefHeight="641.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-            </GridPane>
             <ListView prefHeight="9.999999999999E12" prefWidth="9.999999999999E12" styleClass="stats_sidebar_1" GridPane.rowIndex="1" />
+            <ListView prefHeight="9.999999999999E12" prefWidth="9.999999999999E12" styleClass="stats_sidebar_2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </left>
