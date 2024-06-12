@@ -8,23 +8,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Data Access for DonneesAnnuelle
- * Use all fonction in DAO for the DonneesAnnuelle objects
+ * Data Acces for DonneesAnnuelles
+ * Use all fonction in DAO for the DonneesAnnuelles objects
  */
-public class DonneesAnnuelleDAO extends DAO<DonneesAnnuelle> {
+public clas DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
     /** Filtre actuel - Voir comparableTo et SwitecherFilter */
     private static String currentFilter = "idCommune";
-    /** Liste des filtres possibles */
+    /** Liste des filtres posibles */
     private static String[] filtersList = new String[]{"idDep", "nomDep", "invesCulturel2019"};
 
-    protected static ArrayList<DonneesAnnuelle> runSQLQuery(Connection connection, String sql) throws Exception {
-        ArrayList<DonneesAnnuelle> results = new ArrayList<DonneesAnnuelle>();
+    protected static ArrayList<DonneesAnnuelles> runSQLQuery(Connection connection, String sql) throws Exception {
+        ArrayList<DonneesAnnuelles> results = new ArrayList<DonneesAnnuelles>();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
 
         
         while (resultSet.next()) {
-            DonneesAnnuelle com = new DonneesAnnuelle(resultSet.getInt(0),resultSet.getObject(1), resultSet.getObject(2));
+            DonneesAnnuelles com = new DonneesAnnuelles(resultSet.getInt(0),resultSet.getObject(1), resultSet.getObject(2));
             results.add(com);
         }
         
@@ -33,9 +33,9 @@ public class DonneesAnnuelleDAO extends DAO<DonneesAnnuelle> {
         return results;
     }
 
-    public static ArrayList<DonneesAnnuelle> findAll() {
+    public static ArrayList<DonneesAnnuelles> findAll() {
         Connection co = getConnection();
-        ArrayList<DonneesAnnuelle> arr = new ArrayList<DonneesAnnuelle>();
+        ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
 
         try {
             arr = runSQLQuery(co, "SELECT * FROM DonneesAnnuelles;");
@@ -58,9 +58,9 @@ public class DonneesAnnuelleDAO extends DAO<DonneesAnnuelle> {
         return arr;
     }
 
-    public static DonneesAnnuelle findByID(int Id) {
+    public static DonneesAnnuelles findByID(int Id) {
         Connection co = getConnection();
-        ArrayList<DonneesAnnuelle> arr = new ArrayList<DonneesAnnuelle>();
+        ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
 
         try {
             arr = runSQLQuery(co, "SELECT * FROM DonneesAnnuelles WHERE \"DonneesAnnuelles.idCommune\" = "+Id+";");
@@ -83,9 +83,9 @@ public class DonneesAnnuelleDAO extends DAO<DonneesAnnuelle> {
         return arr.get(0);
     }
 
-    public static ArrayList<DonneesAnnuelle> findByFilter(String filter, String instruction) {
+    public static ArrayList<DonneesAnnuelles> findByFilter(String filter, String instruction) {
         Connection co = getConnection();
-        ArrayList<DonneesAnnuelle> arr = new ArrayList<DonneesAnnuelle>();
+        ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
 
         try {
             arr = runSQLQuery(co, "SELECT * FROM DonneesAnnuelles WHERE \"DonneesAnnuelles."+filter+"\""+instruction+";");
