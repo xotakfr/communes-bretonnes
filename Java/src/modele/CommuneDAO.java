@@ -17,7 +17,7 @@ public class CommuneDAO extends DAO<Commune> {
     /** Liste des filtres possibles */
     private static String[] filtersList = new String[]{"idCommune", "nomCommune", "voisins","population"};
 
-    protected static ArrayList<Commune> runSQLQuery(Connection connection, String sql) throws Exception {
+    protected  ArrayList<Commune> runSQLQuery(Connection connection, String sql) throws Exception {
         ArrayList<Commune> results = new ArrayList<Commune>();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
@@ -34,7 +34,7 @@ public class CommuneDAO extends DAO<Commune> {
     }
 
     @Override
-    public static ArrayList<Commune> findAll() {
+    public  ArrayList<Commune> findAll() {
         Connection co = getConnection();
         ArrayList<Commune> arr = new ArrayList<Commune>();
 
@@ -60,7 +60,7 @@ public class CommuneDAO extends DAO<Commune> {
     }
 
     @Override
-    public static Commune findByID(int Id) {
+    public  Commune findByID(int Id) {
         Connection co = getConnection();
         ArrayList<Commune> arr = new ArrayList<Commune>();
 
@@ -86,7 +86,7 @@ public class CommuneDAO extends DAO<Commune> {
     }
 
     @Override
-    public static ArrayList<Commune> findByFilter(String filter, String instruction) {
+    public  ArrayList<Commune> findByFilter(String filter, String instruction) {
         Connection co = getConnection();
         ArrayList<Commune> arr = new ArrayList<Commune>();
 

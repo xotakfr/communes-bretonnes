@@ -17,7 +17,7 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
     /** Liste des filtres posibles */
     private static String[] filtersList = new String[]{"idDep", "nomDep", "invesCulturel2019"};
 
-    protected static ArrayList<DonneesAnnuelles> runSQLQuery(Connection connection, String sql) throws Exception {
+    protected  ArrayList<DonneesAnnuelles> runSQLQuery(Connection connection, String sql) throws Exception {
         ArrayList<DonneesAnnuelles> results = new ArrayList<DonneesAnnuelles>();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
@@ -34,7 +34,7 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
     }
 
     @Override
-    public static ArrayList<DonneesAnnuelles> findAll() {
+    public  ArrayList<DonneesAnnuelles> findAll() {
         Connection co = getConnection();
         ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
 
@@ -59,7 +59,7 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
         return arr;
     }
 
-    public static DonneesAnnuelles findByID(int Id) {
+    public  DonneesAnnuelles findByID(int Id) {
         Connection co = getConnection();
         ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
 
@@ -84,7 +84,7 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
         return arr.get(0);
     }
 
-    public static ArrayList<DonneesAnnuelles> findByFilter(String filter, String instruction) {
+    public  ArrayList<DonneesAnnuelles> findByFilter(String filter, String instruction) {
         Connection co = getConnection();
         ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
 

@@ -55,6 +55,11 @@ public class DataLoader {
     /** Liste des gares chargées */
     private static ArrayList<Gare> gares = new ArrayList<Gare>();
 
+    private static CommuneDAO communeDAO = new CommuneDAO();
+    private static DepartementDAO departementDAO = new DepartementDAO();
+    private static GareDAO gareDAO = new GareDAO();
+    private static DonneesAnnuellesDAO donneesAnnuellesDAO = new DonneesAnnuellesDAO();
+
     /**
      * Décode une ligne CSV
      * 
@@ -222,7 +227,7 @@ public class DataLoader {
     public static ArrayList<Commune> getCommunes(String filter, String filterSelect) {
         ArrayList<Commune> nec;
         // à faire : implémenter une sanitization des inputs de filtres
-        nec = CommuneDAO.findByFilter(filter, filterSelect);
+        nec = communeDAO.findByFilter(filter, filterSelect);
         /**
         ArrayList<Commune> commune_temp = new ArrayList<Commune>();
         ArrayList<Commune> nec = new ArrayList<Commune>();
@@ -295,7 +300,7 @@ public class DataLoader {
      */
     public static ArrayList<Commune> getCommunes() {
         ArrayList<Commune> communes;
-        communes = CommuneDAO.findAll();
+        communes = communeDAO.findAll();
         return communes;
     }
 
@@ -306,7 +311,7 @@ public class DataLoader {
      */
     public static ArrayList<Departement> getDepartements() {
         ArrayList<Departement> departements;
-        departements = DepartementDAO.findAll();
+        departements = departementDAO.findAll();
         return departements;
     }
 
@@ -317,7 +322,7 @@ public class DataLoader {
      */
     public static ArrayList<Gare> getGares() {
         ArrayList<Gare> gares;
-        gares = GareDAO.findAll();
+        gares = gareDAO.findAll();
         return gares;
     }
     
@@ -328,7 +333,7 @@ public class DataLoader {
      */
     public static ArrayList<DonneesAnnuelles> getDonneesAnnuelles() {
         ArrayList<DonneesAnnuelles> donneesAnnuelles;
-        donneesAnnuelles = DonneesAnnuellesDAO.findAll();
+        donneesAnnuelles = donneesAnnuellesDAO.findAll();
         return donneesAnnuelles;
     }
 }

@@ -17,7 +17,7 @@ public class GareDAO extends DAO<Gare> {
     /** Liste des filtres possibles */
     private static String[] filtersList = new String[]{"idDep", "nomDep", "invesCulturel2019"};
 
-    protected static ArrayList<Gare> runSQLQuery(Connection connection, String sql) throws Exception {
+    protected  ArrayList<Gare> runSQLQuery(Connection connection, String sql) throws Exception {
         ArrayList<Gare> results = new ArrayList<Gare>();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
@@ -34,7 +34,7 @@ public class GareDAO extends DAO<Gare> {
     }
 
     @Override
-    public static ArrayList<Gare> findAll() {
+    public  ArrayList<Gare> findAll() {
         Connection co = getConnection();
         ArrayList<Gare> arr = new ArrayList<Gare>();
 
@@ -59,7 +59,7 @@ public class GareDAO extends DAO<Gare> {
         return arr;
     }
 
-    public static Gare findByID(int Id) {
+    public  Gare findByID(int Id) {
         Connection co = getConnection();
         ArrayList<Gare> arr = new ArrayList<Gare>();
 
@@ -84,7 +84,7 @@ public class GareDAO extends DAO<Gare> {
         return arr.get(0);
     }
 
-    public static ArrayList<Gare> findByFilter(String filter, String instruction) {
+    public  ArrayList<Gare> findByFilter(String filter, String instruction) {
         Connection co = getConnection();
         ArrayList<Gare> arr = new ArrayList<Gare>();
 
