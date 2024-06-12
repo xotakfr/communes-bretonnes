@@ -57,7 +57,7 @@ public abstract class DAO<T> {
      * @param filter Filtre de recherche (liste de filtres accessibles dans ObjectDAO.filtersList)
      * @param filterSelect Filtre de séléction (Accepte plusieurs instructions via ;)
      */
-    public abstract T findByFilter(String filter, String filterSelect);
+    public abstract ArrayList<T> findByFilter(String filter, String filterSelect);
     //protected abstract static String[] filtersList;
     //protected abstract static String currentFilter;
 
