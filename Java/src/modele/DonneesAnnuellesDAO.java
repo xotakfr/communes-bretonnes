@@ -11,7 +11,7 @@ import java.util.List;
  * Data Acces for DonneesAnnuelles
  * Use all fonction in DAO for the DonneesAnnuelles objects
  */
-public clas DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
+public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
     /** Filtre actuel - Voir comparableTo et SwitecherFilter */
     private static String currentFilter = "idCommune";
     /** Liste des filtres posibles */
