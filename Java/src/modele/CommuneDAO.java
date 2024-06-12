@@ -105,7 +105,7 @@ public class CommuneDAO extends DAO<Commune> {
             current.setVoisins(voisines);
         */
 
-        return arr.get(0);
+        return arr;
     }
 
 
