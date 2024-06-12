@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Une instance de cette classe permet de représenter une commune.
  * Cette classe implémente l'interface Comparable pour permettre la comparaison des communes
- * selon différents critères définis par un filtre
+ * selon différents critères définis par un filtre.
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  * @see Comparable
  */
@@ -37,7 +37,7 @@ public class Commune implements Comparable<Commune> {
         if (idCommune <= 0) {
             throw new IllegalArgumentException("Commune.java : paramètre idCommune invalide");
         }
-        if (nomCommune.isEmpty() || nomCommune == null) {
+        if (nomCommune == null || nomCommune.isEmpty()) {
             throw new IllegalArgumentException("Commune.java : paramètre nomCommune invalide");
         }
         if (leDepartement == null) {
@@ -82,7 +82,7 @@ public class Commune implements Comparable<Commune> {
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
     public void setNomCommune(String nomCommune) throws IllegalArgumentException {
-        if (nomCommune == null || nomCommune.contains("")) {
+        if (nomCommune == null || nomCommune.isEmpty()) {
             throw new IllegalArgumentException("Commune.java : paramètre nomCommune invalide");
         }
         this.nomCommune = nomCommune;
@@ -202,10 +202,14 @@ public class Commune implements Comparable<Commune> {
      * Implémentation de l'interface Comparable.
      * Comparaison basée sur le filtre actuellement choisi
      * @param o Une autre instance de la classe Commune à comparer
+     * @throws NullPointerException - si o est à null
      * @return Un entier représentant le résultat de la comparaison
      */
-    public int compareTo(Commune o) {
+    public int compareTo(Commune o) throws NullPointerException {
         int ret = 0;
+        if (o == null) {
+            throw new NullPointerException("Commune.java : paramètre o invalide");
+        }
         if (currentFilter.equals("idCommune")) {
            ret = Integer.compare(this.idCommune, o.idCommune);
         }

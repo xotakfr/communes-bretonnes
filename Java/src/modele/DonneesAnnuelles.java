@@ -288,10 +288,14 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
      * Implémentation de l'interface Comparable.
      * Comparaison basée sur le filtre actuellement choisi
      * @param o Autre instance de DonneesAnnuelles à comparer
+     * @throws NullPointerException - si o est à null
      * @return Un entier représentant le résultat de la comparaison
      */
-    public int compareTo(DonneesAnnuelles o) {
+    public int compareTo(DonneesAnnuelles o) throws NullPointerException {
         int ret = 0;
+        if (o == null) {
+            throw new NullPointerException("DonneesAnnuelles.java : paramètre o invalide");
+        }
         if (currentFilter.equals("lAnnee")) {
            ret = Integer.compare(this.lAnnee.getDateAnnee(), o.lAnnee.getDateAnnee());
         }
@@ -315,6 +319,9 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
         }
         else if (currentFilter.equals("budgetTotal")) {
            ret = Float.compare(this.budgetTotal, o.budgetTotal);
+        }
+        else if (currentFilter.equals("population")) {
+           ret = Integer.compare(this.population, o.population);
         }
         return ret;
     }

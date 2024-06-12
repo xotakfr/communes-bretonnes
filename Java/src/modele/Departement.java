@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Une instance de cette classe permet de représenter un département
  * Cette classe implémente l'interface Comparable pour permettre la comparaison des départements
- * selon différents critères définis par un filtre
+ * selon différents critères définis par un filtre.
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  * @see Comparable
  */
@@ -57,8 +57,7 @@ public class Departement implements Comparable<Departement> {
     }
 
     /**
-     * Renvoie l'identifiant du département
-     * 
+     * Renvoie l'identifiant du département.
      * @return L'identifiant du département
      */
     public int getIdDep() {
@@ -66,7 +65,7 @@ public class Departement implements Comparable<Departement> {
     }
 
     /**
-     * Permet de définir le nouvel identifiant du département
+     * Permet de définir le nouvel identifiant du département.
      * @param idDep Le nouvel identifiant du département
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
@@ -220,11 +219,15 @@ public class Departement implements Comparable<Departement> {
      * Implémentation de l'interface Comparable
      * Comparaison basée sur le filtre actuel
      * @param o Autre instance de la classe Departement à comparer
+     * @throws NullPointerException - si o est à null
      * @return Un entier représentant le résultat de la comparaison
      */
-    public int compareTo(Departement o) {
+    public int compareTo(Departement o) throws NullPointerException {
         int ret = 0;
-        if (currentFilter.equals("idDep")) {
+        if (o == null) {
+            throw new NullPointerException("Departement.java : paramètre o est null");
+        }
+        else if (currentFilter.equals("idDep")) {
            ret = Integer.compare(this.idDep, o.idDep);
         }
         else if (currentFilter.equals("nomDep")) {
@@ -249,7 +252,7 @@ public class Departement implements Comparable<Departement> {
             s += "Aucune commune";
         } else {
             for (Commune commune : this.communes) {
-                if (i != this.communes.size()) {
+                if (i != this.communes.size() - 1) {
                     s += commune.getIdCommune() + " (" + commune.getNomCommune() + ") -";
                 } else {
                     s += commune.getIdCommune() + " (" + commune.getNomCommune() + ")";
@@ -273,7 +276,7 @@ public class Departement implements Comparable<Departement> {
             s += "Aucune gare";
         } else {
             for (Aeroport aeroport : this.aeroports) {
-                if (i != this.aeroports.size()) {
+                if (i != this.aeroports.size() - 1) {
                     s += aeroport.getNom() + " (" + aeroport.getAdresse() + ") -";
                 } else {
                     s += aeroport.getNom() + " (" + aeroport.getAdresse() + ")";
