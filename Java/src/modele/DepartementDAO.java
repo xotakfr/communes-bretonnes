@@ -8,23 +8,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Data Access for Commune
- * Use all fonction in DAO for the Commune objects
+ * Data Access for Departement
+ * Use all fonction in DAO for the Departement objects
  */
-public class CommuneDAO extends DAO<Commune> {
+public class DepartementDAO extends DAO<Departement> {
     /** Filtre actuel - Voir comparableTo et SwitecherFilter */
     private static String currentFilter = "idCommune";
     /** Liste des filtres possibles */
-    private static String[] filtersList = new String[]{"idCommune", "nomCommune", "voisins","population"};
+    private static String[] filtersList = new String[]{"idDep", "nomDep", "invesCulturel2019"};
 
-    protected static ArrayList<Commune> runSQLQuery(Connection connection, String sql) throws Exception {
-        ArrayList<Commune> results = new ArrayList<Commune>();
+    protected static ArrayList<Departement> runSQLQuery(Connection connection, String sql) throws Exception {
+        ArrayList<Departement> results = new ArrayList<Departement>();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
 
         
         while (resultSet.next()) {
-            Commune com = new Commune(resultSet.getInt(0),resultSet.getObject(1), resultSet.getObject(2));
+            Departement com = new Departement(resultSet.getInt(0),resultSet.getObject(1), resultSet.getObject(2));
             results.add(com);
         }
         
@@ -33,12 +33,12 @@ public class CommuneDAO extends DAO<Commune> {
         return results;
     }
 
-    public ArrayList<Commune> findAll() {
+    public ArrayList<Departement> findAll() {
         Connection co = getConnection();
-        ArrayList<Commune> arr = new ArrayList<Commune>();
+        ArrayList<Departement> arr = new ArrayList<Departement>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM Communes;");
+            arr = runSQLQuery(co, "SELECT * FROM Departements;");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -58,12 +58,12 @@ public class CommuneDAO extends DAO<Commune> {
         return arr;
     }
 
-    public Commune findByID(int Id) {
+    public Departement findByID(int Id) {
         Connection co = getConnection();
-        ArrayList<Commune> arr = new ArrayList<Commune>();
+        ArrayList<Departement> arr = new ArrayList<Departement>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM Communes WHERE \"Communes.idCommune\" = "+Id+";");
+            arr = runSQLQuery(co, "SELECT * FROM Departements WHERE \"Departements.idCommune\" = "+Id+";");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -83,12 +83,12 @@ public class CommuneDAO extends DAO<Commune> {
         return arr.get(0);
     }
 
-    public ArrayList<Commune> findByFilter(String filter, String instruction) {
+    public ArrayList<Departement> findByFilter(String filter, String instruction) {
         Connection co = getConnection();
-        ArrayList<Commune> arr = new ArrayList<Commune>();
+        ArrayList<Departement> arr = new ArrayList<Departement>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM Communes WHERE \"Communes."+filter+"\""+instruction+";");
+            arr = runSQLQuery(co, "SELECT * FROM Departements WHERE \"Departements."+filter+"\""+instruction+";");
         } catch (Exception e) {
             e.printStackTrace();
         }
