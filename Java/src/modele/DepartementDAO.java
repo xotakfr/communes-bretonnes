@@ -24,7 +24,7 @@ public class DepartementDAO extends DAO<Departement> {
 
         
         while (resultSet.next()) {
-            Departement com = new Departement(resultSet.getInt(0),resultSet.getObject(1), resultSet.getObject(2));
+            Departement com = new Departement(resultSet.getInt(0),resultSet.getString(1), resultSet.getFloat(2));
             results.add(com);
         }
         

@@ -22,11 +22,13 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
 
-        
+        /**
+         * à refaire via le shéma SQL
         while (resultSet.next()) {
             DonneesAnnuelles com = new DonneesAnnuelles(resultSet.getInt(0),resultSet.getObject(1), resultSet.getObject(2));
             results.add(com);
         }
+        */
         
         resultSet.close();
         statement.close();
