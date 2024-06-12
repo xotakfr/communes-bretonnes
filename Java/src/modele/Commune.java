@@ -13,7 +13,7 @@ public class Commune implements Comparable<Commune> {
     /** Filtre de base */
     private static String currentFilter = "idCommune";
     /** Liste des filtres autorisés */
-    private static String[] FILTERLIST = new String[]{"idCommune", "nomCommune", "leDepartement"};
+    private static final String[] FILTER_LIST = new String[]{"idCommune", "nomCommune", "leDepartement"};
     /** Identifiant de la commune */
     private int idCommune;
     /** Nom de la commune */
@@ -183,7 +183,7 @@ public class Commune implements Comparable<Commune> {
      * @return La liste de tous les filtres autorisés
      */
     public static String[] getAllFilter() {
-        return FILTERLIST;
+        return FILTER_LIST;
     }
 
     /**
@@ -191,7 +191,7 @@ public class Commune implements Comparable<Commune> {
      * @param filter Le nouveau filtre à utiliser
      */
     public static void setFilter(String filter) {
-        for (String s : FILTERLIST) {
+        for (String s : FILTER_LIST) {
             if (s.equals(filter)) {
                 currentFilter = filter;
             }

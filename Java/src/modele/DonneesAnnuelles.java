@@ -11,7 +11,7 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
     /** Filtre de base */
     private static String currentFilter = "lAnnee";
     /** Liste des filtres autorisés */
-    private static String[] FILTERLIST = new String[]{"lAnnee", "laCommune", "nbMaison", "nbAppart", "prixMoyen", "prixM2Moyen","depensesCulturellesTotales","budgetTotal", "population"};
+    private static final String[] FILTER_LIST = new String[]{"lAnnee", "laCommune", "nbMaison", "nbAppart", "prixMoyen", "prixM2Moyen","depensesCulturellesTotales","budgetTotal", "population"};
     /** Instance de la classe Annee associée aux données */
     private Annee lAnnee;
     /** Instance de la classe Commune associée aux données */
@@ -269,7 +269,7 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
      * @return La liste de tous les filtres autorisés
      */
     public static String[] getAllFilter() {
-        return FILTERLIST;
+        return FILTER_LIST;
     }
 
     /**
@@ -277,7 +277,7 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
      * @param filter Le nouveau filtre à utiliser
      */
     public static void setFilter(String filter) {
-        for (String s : FILTERLIST) {
+        for (String s : FILTER_LIST) {
             if (s.equals(filter)) {
                 currentFilter = filter;
             }
@@ -315,9 +315,6 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
         }
         else if (currentFilter.equals("budgetTotal")) {
            ret = Float.compare(this.budgetTotal, o.budgetTotal);
-        }
-        else if (currentFilter.equals("nbAppart")) {
-           ret = Integer.compare(this.population, o.population);
         }
         return ret;
     }

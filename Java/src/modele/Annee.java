@@ -11,7 +11,7 @@ public class Annee implements Comparable<Annee> {
     /** Filtre de base */
     private static String currentFilter = "annee";
     /** Liste des filtres autorisés */
-    private static String[] FILTERLIST = new String[]{"annee", "tauxInflation"};
+    private static final String[] FILTER_LIST = new String[]{"annee", "tauxInflation"};
     /** Identifiant de l'année (correspond aussi à l'année réelle) */
     private int annee;
     /** Taux d'inflation associé à l'année */
@@ -66,7 +66,7 @@ public class Annee implements Comparable<Annee> {
      * @return La liste de tous les filtres autorisés
      */
     public static String[] getAllFilter() {
-        return FILTERLIST;
+        return FILTER_LIST;
     }
 
     /**
@@ -74,7 +74,7 @@ public class Annee implements Comparable<Annee> {
      * @param filter Le nouveau filtre à utiliser
      */
     public static void setFilter(String filter) {
-        for (String s : FILTERLIST) {
+        for (String s : FILTER_LIST) {
             if (s.equals(filter)) {
                 currentFilter = filter;
             }

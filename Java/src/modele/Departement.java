@@ -17,7 +17,7 @@ public class Departement implements Comparable<Departement> {
     /** Liste des départements autorisés */
     private static final List<String> DEPARTEMENTS_AUTORISES = Arrays.asList("MORBIHAN", "ILLE-ET-VILAINE", "COTES-D'ARMOR", "FINISTERE");
     /** Liste des filtres autorisés */
-    private static final String[] FILTERLIST = new String[]{"idDep", "nomDep", "invesCulturel2019"};
+    private static final String[] FILTER_LIST = new String[]{"idDep", "nomDep", "invesCulturel2019"};
     /** Identifiant du département */
     private int idDep;
     /** Nom du département */
@@ -192,7 +192,7 @@ public class Departement implements Comparable<Departement> {
      * @return La liste des filtres autorisés
      */
     public static String[] getAllFilter() {
-        return FILTERLIST;
+        return FILTER_LIST;
     }
 
     /**
@@ -200,7 +200,7 @@ public class Departement implements Comparable<Departement> {
      * @param filter Le filtre à utiliser
      */
     public static void setFilter(String filter) {
-        for (String s : FILTERLIST) {
+        for (String s : FILTER_LIST) {
             if (s.equals(filter)) {
                 currentFilter = filter;
             }

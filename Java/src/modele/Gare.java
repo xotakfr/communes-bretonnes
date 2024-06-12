@@ -11,7 +11,7 @@ public class Gare implements Comparable<Gare> {
     /** Filtre de base */
     private static String currentFilter = "codeGare";
     /** Liste des filtres autorisés */
-    private static String[] FILTERLIST = new String[]{"codeGare", "nomGare", "estFret", "estVoyageur", "laCommune"};
+    private static final String[] FILTER_LIST = new String[]{"codeGare", "nomGare", "estFret", "estVoyageur", "laCommune"};
     /** Code de la gare */
     private int codeGare;
     /** Nom de la gare */
@@ -36,7 +36,7 @@ public class Gare implements Comparable<Gare> {
         if (codeGare <= 0) {
             throw new IllegalArgumentException("Gare.java : paramètre codeGare invalide");
         }
-        if (nomGare == null || nomGare.equals("")) {
+        if (nomGare == null || nomGare.isEmpty()) {
             throw new IllegalArgumentException("Gare.java : paramètre nomGare invalide");
         }
         if (laCommune == null) {
@@ -80,10 +80,10 @@ public class Gare implements Comparable<Gare> {
     /**
      * Permet de définir le nouveau nom de la gare
      * @param nomGare Le nouveau nom de la gare
-     * @throws IllegalArgumentException
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
     public void setNomGare(String nomGare) throws IllegalArgumentException {
-        if (nomGare == null || nomGare.equals("")) {
+        if (nomGare == null || nomGare.isEmpty()) {
             throw new IllegalArgumentException("Gare.java : paramètre nomGare invalide");
         }
         this.nomGare = nomGare;
@@ -146,7 +146,7 @@ public class Gare implements Comparable<Gare> {
      * @return La liste de tous les filtres autorisés
      */
     public static String[] getAllFilter() {
-        return FILTERLIST;
+        return FILTER_LIST;
     }
 
     /**
@@ -154,7 +154,7 @@ public class Gare implements Comparable<Gare> {
      * @param filter Le nouveau filtre à utiliser
      */
     public static void setFilter(String filter) {
-        for (String s : FILTERLIST) {
+        for (String s : FILTER_LIST) {
             if (s.equals(filter)) {
                 currentFilter = filter;
             }

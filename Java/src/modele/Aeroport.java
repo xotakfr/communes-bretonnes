@@ -11,7 +11,7 @@ public class Aeroport implements Comparable<Aeroport> {
     /** Filtre de base */
     private static String currentFilter = "nom";
     /** Liste des filtres autorisés */
-    private static String[] FILTERLIST = new String[]{"nom", "adresse", "leDepartement"};
+    private static final String[] FILTER_LIST = new String[]{"nom", "adresse", "leDepartement"};
     /** Nom de l'aéroport */
     private String nom;
     /** Adresse de l'aéroport */
@@ -27,10 +27,10 @@ public class Aeroport implements Comparable<Aeroport> {
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
     public Aeroport(String nom, String adresse, Departement leDepartement) throws IllegalArgumentException {
-        if (nom == null || nom.equals("")) {
+        if (nom == null || nom.isEmpty()) {
             throw new IllegalArgumentException("Aeroport.java : paramètre nom invalide");
         }
-        if (adresse == null || adresse.equals("")) {
+        if (adresse == null || adresse.isEmpty()) {
             throw new IllegalArgumentException("Aeroport.java : paramètre adresse invalide");
         }
         if (leDepartement == null) {
@@ -51,11 +51,11 @@ public class Aeroport implements Comparable<Aeroport> {
 
     /**
      * Permet de définir le nouveau nom de l'aéroport
-     * @param codeGare Le nouveau nom de l'aéroport
+     * @param nom Le nouveau nom de l'aéroport
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
     public void setNom(String nom) throws IllegalArgumentException {
-        if (nom == null || nom.equals("")) {
+        if (nom == null || nom.isEmpty()) {
             throw new IllegalArgumentException("Aeroport.java : paramètre nom invalide");
         }
         this.nom = nom;
@@ -71,11 +71,11 @@ public class Aeroport implements Comparable<Aeroport> {
     
     /**
      * Permet de définir la nouvelle addresse de l'aéroport
-     * @param codeGare La nouvelle addresse de l'aéroport
+     * @param adresse La nouvelle addresse de l'aéroport
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
     public void setAdresse(String adresse) throws IllegalArgumentException {
-        if (adresse == null || adresse.equals("")) {
+        if (adresse == null || adresse.isEmpty()) {
             throw new IllegalArgumentException("Aeroport.java : paramètre adresse invalide");
         }
         this.adresse = adresse;
@@ -106,7 +106,7 @@ public class Aeroport implements Comparable<Aeroport> {
      * @return La liste de tous les filtres autorisés
      */
     public static String[] getAllFilter() {
-        return FILTERLIST;
+        return FILTER_LIST;
     }
 
     /**
@@ -114,7 +114,7 @@ public class Aeroport implements Comparable<Aeroport> {
      * @param filter Le nouveau filtre à utiliser
      */
     public static void setFilter(String filter) {
-        for (String s : FILTERLIST) {
+        for (String s : FILTER_LIST) {
             if (s.equals(filter)) {
                 currentFilter = filter;
             }
