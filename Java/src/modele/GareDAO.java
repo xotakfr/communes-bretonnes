@@ -84,7 +84,7 @@ public class GareDAO extends DAO<Gare> {
         return arr.get(0);
     }
 
-    public  ArrayList<Gare> findByFilter(String filter, String instruction) {
+    public  ArrayList<Gare> findByFilter(String filter, String filterSelect) {
         Connection co = getConnection();
         ArrayList<Gare> arr = new ArrayList<Gare>();
 

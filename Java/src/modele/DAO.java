@@ -42,8 +42,9 @@ public abstract class DAO<T> {
 
     public abstract List<T> findAll();
 
+    
+    public abstract T findByID(long id);
     /**
-    public abstract T findById(long id);
     public abstract void update(T element); 
     public abstract void create(T element);
     public abstract void delete(T element);
@@ -56,7 +57,7 @@ public abstract class DAO<T> {
      * @param filter Filtre de recherche (liste de filtres accessibles dans ObjectDAO.filtersList)
      * @param filterSelect Filtre de séléction (Accepte plusieurs instructions via ;)
      */
-    //public abstract T findByFilter(String filter, String filterSelect);
+    public abstract T findByFilter(String filter, String filterSelect);
     //protected abstract static String[] filtersList;
     //protected abstract static String currentFilter;
 

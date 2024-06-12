@@ -60,7 +60,7 @@ public class CommuneDAO extends DAO<Commune> {
     }
 
     @Override
-    public  Commune findByID(int Id) {
+    public Commune findByID(int Id) {
         Connection co = getConnection();
         ArrayList<Commune> arr = new ArrayList<Commune>();
 
@@ -86,7 +86,7 @@ public class CommuneDAO extends DAO<Commune> {
     }
 
     @Override
-    public  ArrayList<Commune> findByFilter(String filter, String instruction) {
+    public  ArrayList<Commune> findByFilter(String filter, String filterSelect) {
         Connection co = getConnection();
         ArrayList<Commune> arr = new ArrayList<Commune>();
 

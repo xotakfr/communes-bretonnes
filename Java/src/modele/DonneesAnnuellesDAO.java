@@ -84,7 +84,7 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
         return arr.get(0);
     }
 
-    public  ArrayList<DonneesAnnuelles> findByFilter(String filter, String instruction) {
+    public  ArrayList<DonneesAnnuelles> findByFilter(String filter, String filterSelect) {
         Connection co = getConnection();
         ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
 

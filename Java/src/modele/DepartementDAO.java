@@ -84,7 +84,7 @@ public class DepartementDAO extends DAO<Departement> {
         return arr.get(0);
     }
 
-    public  ArrayList<Departement> findByFilter(String filter, String instruction) {
+    public  ArrayList<Departement> findByFilter(String filter, String filterSelect) {
         Connection co = getConnection();
         ArrayList<Departement> arr = new ArrayList<Departement>();
 
