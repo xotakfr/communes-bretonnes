@@ -137,16 +137,12 @@ public class Aeroport implements Comparable<Aeroport> {
         if (o == null) {
             throw new NullPointerException("Aeroport.java : paramètre o est null");
         }
-        // else -> switch ... -> default: throw new IllegalArgumentException("Aeroport.java : paramètre o invalide");
-        if (currentFilter.equals("nom")) {
-            ret = this.nom.compareTo(o.nom);
-        }
-        else if (currentFilter.equals("adresse")) {
-            ret = this.adresse.compareTo(o.adresse);
-        }
-        else if (currentFilter.equals("leDepartement")) {
-            ret = Integer.compare(this.leDepartement.getIdDep(), o.leDepartement.getIdDep());
-        }
+        ret = switch (currentFilter) {
+            case "nom" -> this.nom.compareTo(o.nom);
+            case "adresse" -> this.adresse.compareTo(o.adresse);
+            case "leDepartement" -> Integer.compare(this.leDepartement.getIdDep(), o.leDepartement.getIdDep());
+            default -> ret;
+        };
         return ret;
     }
 

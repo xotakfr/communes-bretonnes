@@ -52,8 +52,8 @@ public class Departement implements Comparable<Departement> {
         this.nomDep = nomDep.toUpperCase();
         this.idDep = idDep;
         this.invesCulturel2019 = invesCulturel2019;
-        this.communes = new ArrayList<Commune>();
-        this.aeroports = new ArrayList<Aeroport>();
+        this.communes = new ArrayList<>();
+        this.aeroports = new ArrayList<>();
     }
 
     /**
@@ -125,7 +125,7 @@ public class Departement implements Comparable<Departement> {
     }
 
     /**
-     * Permet d'ajouter une commune à la liste des commune du département concerné par l'appel de la méthode
+     * Permet d'ajouter une commune à la liste de la commune du département concerné par l'appel de la méthode
      * @param commune La commune qu'on veut ajouter à la liste des communes du département concerné par l'appel de la méthode
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
@@ -230,15 +230,12 @@ public class Departement implements Comparable<Departement> {
         if (o == null) {
             throw new NullPointerException("Departement.java : paramètre o est null");
         }
-        else if (currentFilter.equals("idDep")) {
-           ret = Integer.compare(this.idDep, o.idDep);
-        }
-        else if (currentFilter.equals("nomDep")) {
-            ret = this.nomDep.compareTo(o.nomDep);
-        }
-        else if (currentFilter.equals("invesCulturel2019")) {
-            ret = Float.compare(this.invesCulturel2019, o.invesCulturel2019);
-        }
+        ret = switch (currentFilter) {
+            case "idDep" -> Integer.compare(this.idDep, o.idDep);
+            case "nomDep" -> this.nomDep.compareTo(o.nomDep);
+            case "invesCulturel2019" -> Float.compare(this.invesCulturel2019, o.invesCulturel2019);
+            default -> ret;
+        };
         return ret;
     }
 

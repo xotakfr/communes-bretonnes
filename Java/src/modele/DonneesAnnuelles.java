@@ -300,33 +300,19 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
         if (o == null) {
             throw new NullPointerException("DonneesAnnuelles.java : paramètre o invalide");
         }
-        if (currentFilter.equals("lAnnee")) {
-           ret = Integer.compare(this.lAnnee.getAnnee(), o.lAnnee.getAnnee());
-        }
-        else if (currentFilter.equals("laCommune")) {
-           ret = Integer.compare(this.laCommune.getIdCommune(), o.laCommune.getIdCommune());
-        }
-        else if (currentFilter.equals("nbMaison")) {
-           ret = Integer.compare(this.nbMaison, o.nbMaison);
-        }
-        else if (currentFilter.equals("nbAppart")) {
-           ret = Integer.compare(this.nbAppart, o.nbAppart);
-        }
-        else if (currentFilter.equals("prixMoyen")) {
-           ret = Float.compare(this.prixMoyen, o.prixMoyen);
-        }
-        else if (currentFilter.equals("prixM2Moyen")) {
-           ret = Float.compare(this.prixM2Moyen, o.prixM2Moyen);
-        }
-        else if (currentFilter.equals("depensesCulturellesTotales")) {
-           ret = Float.compare(this.depensesCulturellesTotales, o.depensesCulturellesTotales);
-        }
-        else if (currentFilter.equals("budgetTotal")) {
-           ret = Float.compare(this.budgetTotal, o.budgetTotal);
-        }
-        else if (currentFilter.equals("population")) {
-           ret = Integer.compare(this.population, o.population);
-        }
+        ret = switch (currentFilter) {
+            case "lAnnee" -> Integer.compare(this.lAnnee.getAnnee(), o.lAnnee.getAnnee());
+            case "laCommune" -> Integer.compare(this.laCommune.getIdCommune(), o.laCommune.getIdCommune());
+            case "nbMaison" -> Integer.compare(this.nbMaison, o.nbMaison);
+            case "nbAppart" -> Integer.compare(this.nbAppart, o.nbAppart);
+            case "prixMoyen" -> Float.compare(this.prixMoyen, o.prixMoyen);
+            case "prixM2Moyen" -> Float.compare(this.prixM2Moyen, o.prixM2Moyen);
+            case "depensesCulturellesTotales" ->
+                    Float.compare(this.depensesCulturellesTotales, o.depensesCulturellesTotales);
+            case "budgetTotal" -> Float.compare(this.budgetTotal, o.budgetTotal);
+            case "population" -> Integer.compare(this.population, o.population);
+            default -> ret;
+        };
         return ret;
     }
 

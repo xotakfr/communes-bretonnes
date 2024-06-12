@@ -212,15 +212,12 @@ public class Commune implements Comparable<Commune> {
         if (o == null) {
             throw new NullPointerException("Commune.java : paramètre o invalide");
         }
-        if (currentFilter.equals("idCommune")) {
-           ret = Integer.compare(this.idCommune, o.idCommune);
-        }
-        else if (currentFilter.equals("nomCommune")) {
-            ret = this.nomCommune.compareTo(o.nomCommune);
-        }
-        else if (currentFilter.equals("leDepartement")) {
-            ret = Integer.compare(this.leDepartement.getIdDep(), o.leDepartement.getIdDep());
-        }
+        ret = switch (currentFilter) {
+            case "idCommune" -> Integer.compare(this.idCommune, o.idCommune);
+            case "nomCommune" -> this.nomCommune.compareTo(o.nomCommune);
+            case "leDepartement" -> Integer.compare(this.leDepartement.getIdDep(), o.leDepartement.getIdDep());
+            default -> ret;
+        };
         return ret;
     }
 

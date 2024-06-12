@@ -176,21 +176,14 @@ public class Gare implements Comparable<Gare> {
         if (o == null) {
             throw new NullPointerException("Gare.java : paramètre o invalide");
         }
-        if (currentFilter.equals("codeGare")) {
-            ret = Integer.compare(this.codeGare, o.codeGare);
-        }
-        else if (currentFilter.equals("nomGare")) {
-            ret = this.nomGare.compareTo(o.nomGare);
-        }
-        else if (currentFilter.equals("estFret")) {
-            ret = Boolean.compare(this.estFret, o.estFret);
-        }
-        else if (currentFilter.equals("estVoyageur")) {
-            ret = Boolean.compare(this.estVoyageur, o.estVoyageur);
-        }
-        else if (currentFilter.equals("laCommune")) {
-            ret = Integer.compare(this.laCommune.getIdCommune(), o.laCommune.getIdCommune());
-        }
+        ret = switch (currentFilter) {
+            case "codeGare" -> Integer.compare(this.codeGare, o.codeGare);
+            case "nomGare" -> this.nomGare.compareTo(o.nomGare);
+            case "estFret" -> Boolean.compare(this.estFret, o.estFret);
+            case "estVoyageur" -> Boolean.compare(this.estVoyageur, o.estVoyageur);
+            case "laCommune" -> Integer.compare(this.laCommune.getIdCommune(), o.laCommune.getIdCommune());
+            default -> ret;
+        };
         return ret;
     }
 
