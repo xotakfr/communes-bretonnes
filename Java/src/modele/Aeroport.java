@@ -3,7 +3,7 @@ package modele;
 /**
  * Une instance de cette classe permet de représenter un aéroport.
  * Cette classe implémente l'interface Comparable pour permettre la comparaison entre les aéroports
- * selon différents critères définis par un filtre
+ * selon différents critères définis par un filtre.
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  * @see Comparable
  */
@@ -125,10 +125,14 @@ public class Aeroport implements Comparable<Aeroport> {
      * Implémentation de l'interface Comparable.
      * Comparaison basée sur le filtre actuellement choisi
      * @param o Une autre instance de la classe Aeroport à comparer
+     * @throws NullPointerException - si o est à null
      * @return Un entier représentant le résultat de la comparaison
      */
-    public int compareTo(Aeroport o) {
+    public int compareTo(Aeroport o) throws NullPointerException {
         int ret = 0;
+        if (o == null) {
+            throw new NullPointerException("Aeroport.java : paramètre o est null");
+        }
         if (currentFilter.equals("nom")) {
             ret = this.nom.compareTo(o.nom);
         }

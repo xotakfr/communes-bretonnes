@@ -3,7 +3,7 @@ package modele;
 /**
  * Une instance de cette classe permet de représenter une année.
  * Cette classe implémente l'interface Comparable pour permettre la comparaison entre les années
- * selon différents critères définis par un filtre
+ * selon différents critères définis par un filtre.
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  * @see Comparable
  */
@@ -85,10 +85,14 @@ public class Annee implements Comparable<Annee> {
      * Implémentation de l'interface Comparable.
      * Comparaison basée sur le filtre actuellement choisi
      * @param o Une autre instance de la classe Annee à comparer
+     * @throws NullPointerException - si o est à null
      * @return Un entier représentant le résultat de la comparaison
      */
-    public int compareTo(Annee o) {
+    public int compareTo(Annee o) throws NullPointerException {
         int ret = 0;
+        if (o == null) {
+            throw new NullPointerException("Annee.java : paramètre o est null");
+        }
         if (currentFilter.equals("annee")) {
            ret = Integer.compare(this.annee, o.annee);
         }

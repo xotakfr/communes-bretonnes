@@ -309,4 +309,3 @@ public class DataLoader {
         return donneesAnnuelles;
     }
 }
-
