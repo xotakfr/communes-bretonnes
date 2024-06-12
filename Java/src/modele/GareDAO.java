@@ -24,7 +24,7 @@ public class GareDAO extends DAO<Gare> {
 
         
         while (resultSet.next()) {
-            Gare com = new Gare(resultSet.getInt(0),resultSet.getObject(1), resultSet.getBoolean(2), resultSet.getBoolean(3), new CommuneDAO().findByID(resultSet.getInt(4)));
+            Gare com = new Gare(resultSet.getInt(0),resultSet.getString(1), resultSet.getBoolean(2), resultSet.getBoolean(3), new CommuneDAO().findByID(resultSet.getInt(4)));
             results.add(com);
         }
         
