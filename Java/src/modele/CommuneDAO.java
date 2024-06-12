@@ -17,6 +17,7 @@ public class CommuneDAO extends DAO<Commune> {
     /** Liste des filtres possibles */
     private static String[] filtersList = new String[]{"idCommune", "nomCommune", "voisins","population"};
 
+    @Override
     protected  ArrayList<Commune> runSQLQuery(Connection connection, String sql) throws Exception {
         ArrayList<Commune> results = new ArrayList<Commune>();
         Statement statement = connection.createStatement();

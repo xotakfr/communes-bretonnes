@@ -17,6 +17,7 @@ public class DepartementDAO extends DAO<Departement> {
     /** Liste des filtres possibles */
     private static String[] filtersList = new String[]{"idDep", "nomDep", "invesCulturel2019"};
 
+    @Override
     protected static ArrayList<Departement> runSQLQuery(Connection connection, String sql) throws Exception {
         ArrayList<Departement> results = new ArrayList<Departement>();
         Statement statement = connection.createStatement();

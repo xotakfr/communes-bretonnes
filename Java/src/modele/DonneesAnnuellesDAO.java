@@ -17,6 +17,7 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
     /** Liste des filtres posibles */
     private static String[] filtersList = new String[]{"idDep", "nomDep", "invesCulturel2019"};
 
+    @Override
     protected  ArrayList<DonneesAnnuelles> runSQLQuery(Connection connection, String sql) throws Exception {
         ArrayList<DonneesAnnuelles> results = new ArrayList<DonneesAnnuelles>();
         Statement statement = connection.createStatement();

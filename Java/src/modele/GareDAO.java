@@ -17,6 +17,7 @@ public class GareDAO extends DAO<Gare> {
     /** Liste des filtres possibles */
     private static String[] filtersList = new String[]{"codeGare", "nomGare", "estFret", "estVoyageur", "laCommune"};
 
+    @Override
     protected  ArrayList<Gare> runSQLQuery(Connection connection, String sql) throws Exception {
         ArrayList<Gare> results = new ArrayList<Gare>();
         Statement statement = connection.createStatement();
