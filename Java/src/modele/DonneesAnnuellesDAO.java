@@ -60,12 +60,12 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
     }
 
     @Override
-    public  DonneesAnnuelles findByID(int Id) {
+    public  DonneesAnnuelles findByID(long id) {
         Connection co = getConnection();
         ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM DonneesAnnuelles WHERE \"DonneesAnnuelles.idCommune\" = "+Id+";");
+            arr = runSQLQuery(co, "SELECT * FROM DonneesAnnuelles WHERE \"DonneesAnnuelles.idCommune\" = "+id+";");
         } catch (Exception e) {
             e.printStackTrace();
         }

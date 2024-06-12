@@ -60,12 +60,12 @@ public class GareDAO extends DAO<Gare> {
     }
 
     @Override
-    public  Gare findByID(int Id) {
+    public  Gare findByID(long id) {
         Connection co = getConnection();
         ArrayList<Gare> arr = new ArrayList<Gare>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM Gares WHERE \"Gares.idCommune\" = "+Id+";");
+            arr = runSQLQuery(co, "SELECT * FROM Gares WHERE \"Gares.idCommune\" = "+id+";");
         } catch (Exception e) {
             e.printStackTrace();
         }

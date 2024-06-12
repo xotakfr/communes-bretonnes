@@ -60,12 +60,12 @@ public class DepartementDAO extends DAO<Departement> {
     }
 
     @Override
-    public Departement findByID(int Id) {
+    public Departement findByID(long id) {
         Connection co = getConnection();
         ArrayList<Departement> arr = new ArrayList<Departement>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM Departements WHERE \"Departements.idCommune\" = "+Id+";");
+            arr = runSQLQuery(co, "SELECT * FROM Departements WHERE \"Departements.idCommune\" = "+id+";");
         } catch (Exception e) {
             e.printStackTrace();
         }

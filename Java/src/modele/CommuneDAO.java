@@ -60,12 +60,12 @@ public class CommuneDAO extends DAO<Commune> {
     }
 
     @Override
-    public Commune findByID(int Id) {
+    public Commune findByID(long id) {
         Connection co = getConnection();
         ArrayList<Commune> arr = new ArrayList<Commune>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM Communes WHERE \"Communes.idCommune\" = "+Id+";");
+            arr = runSQLQuery(co, "SELECT * FROM Communes WHERE \"Communes.idCommune\" = "+id+";");
         } catch (Exception e) {
             e.printStackTrace();
         }
