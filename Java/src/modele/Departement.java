@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Une instance de cette classe permet de représenter un département
  * Cette classe implémente l'interface Comparable pour permettre la comparaison des départements
- * selon différents critères définis par un filtre.
+ * selon différents critères définis par un filtre
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  * @see Comparable
  */
