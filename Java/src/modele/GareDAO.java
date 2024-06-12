@@ -15,7 +15,7 @@ public class GareDAO extends DAO<Gare> {
     /** Filtre actuel - Voir comparableTo et SwitecherFilter */
     private static String currentFilter = "idCommune";
     /** Liste des filtres possibles */
-    private static String[] filtersList = new String[]{"idDep", "nomDep", "invesCulturel2019"};
+    private static String[] filtersList = new String[]{"codeGare", "nomGare", "estFret", "estVoyageur", "laCommune"};
 
     protected  ArrayList<Gare> runSQLQuery(Connection connection, String sql) throws Exception {
         ArrayList<Gare> results = new ArrayList<Gare>();
@@ -24,7 +24,7 @@ public class GareDAO extends DAO<Gare> {
 
         
         while (resultSet.next()) {
-            Gare com = new Gare(resultSet.getInt(0),resultSet.getObject(1), resultSet.getObject(2));
+            Gare com = new Gare(resultSet.getInt(0),resultSet.getObject(1), resultSet.getBoolean(2), resultSet.getBoolean(3), new CommuneDAO().findByID(resultSet.getInt(4)));
             results.add(com);
         }
         
