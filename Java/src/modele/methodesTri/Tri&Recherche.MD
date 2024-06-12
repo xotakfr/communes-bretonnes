@@ -1,0 +1,19 @@
+> Toute les classes Objet cité ici doivent implémenter [Comparable (Java Platform SE 8 )](https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html)
+
+# Comment utiliser une classe implémentant Itri
+
+Pour utiliser une classe implémentant Itri, commencez par créer un objet :
+Exemple : 
+new TriParSelection(ArrayList<Objet>)
+
+Et appelez juste la fonction .trier() lié à cet objet, l'arrayList sera alors trié selon la grandeur compareTo
+
+# Comment utiliser une classe implémentant ISearch
+
+>  BinarySearcher suppose que l'arraylist est trié
+Commencez par créer un objet implémentant ISearch :
+Exemple :
+new BinarySearcher();
+
+.exists(ArrayList<Objet>, Objet à rechercher) -> Renvoie un booléen si l'objet existe dans l'arraylist
+.search(ArrayList<Objet>, Objet à rechercher) -> Renvoie l'ID de la case de l'arrayList qui contient l'élément

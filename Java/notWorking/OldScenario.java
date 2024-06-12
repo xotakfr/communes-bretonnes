@@ -4,26 +4,56 @@ import java.util.Arrays;
 import java.util.ArrayList;
 
 /**
- * Cette classe permet de mettre en place des scénarios pour chaque classe du modèle. Nous recommandons de 
- * lancer l'exécution du programme dans un terminal en mode plein écran et de diminuer la taille du texte
- * en raison de la quantité d'informations renvoyées par la méthode testTri()
+ * Cette classe permet de mettre en place des scénarios d'utilisation normal pour chaque classe du modèle
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
-public class Scenario {
+public class OldScenario {
 
     /**
      * Le point d'entrée de notre programme
      * @param args Arguments de la ligne de commande
      */
     public static void main(String[] args) {
-        System.out.println("***** TEST DU TRI CROISSANT DES DONNEES DE CHAQUE CLASSE DU MODELE POUR CHACUN DE LEURS FILTRES *****");
+        System.out.println("***** TEST SUR LE TRI DES DONNEES DE CHAQUE CLASSE DU MODELE POUR CHACUN DE LEURS FILTRES *****");
         testTri();
-        System.out.println("***** TRI CROISSANT DES DONNEES SUR UN CAS ISOLE ET ILLUSTRE PAR UN DIAGRAMME DE SEQUENCE (VOIR ./UML) *****");
-        triPourDiagrammeDeSequence();
+        System.out.println("***** TEST SUR LE FILTRAGE DES DONNEES D'UNE CLASSE EN FONCTION DE VALEURS NUMERIQUES *****");
+        testModele();
     }
 
     /**
-     * Cette méthode permet de tester le tri croissant des données sur chaque filtre de chaque
+     * Méthode de test pour le modèle
+     */
+    private static void testModele() {
+        DataLoader.loadAll();
+
+        for (Commune co : DataLoader.getCommunes()) {
+            System.out.println(co);
+        }
+        for (Departement de : DataLoader.getDepartements()) {
+            System.out.println(de);
+        }
+
+        ArrayList<Commune> d = DataLoader.getCommunes("idCommune", ">29000;<30000");
+        for (Commune co : d) {
+            System.out.println(co);
+        }
+        
+        System.out.println("\n\n\nTests Filtres");
+        System.out.println("Filtre selon le nom (Exemple, l'utilisateur va chercher toute les communes qui commencent par \"QU\")");
+        ArrayList<Commune> d1 = DataLoader.getCommunes("nomCommune", ">QT;<QV");// Recherche de toute les communes dont le nom commence par QU
+        for (Commune co : d1) {
+            System.out.println(co);
+        }
+
+        System.out.println("Filtre selon la population (Exemple, l'utilisateur va chercher toute les communes qui ont entre 50000 et 100000 de population)");
+        ArrayList<Commune> d2 = DataLoader.getCommunes("population", ">50000;<100000");// entre 5000 et 100000
+        for (Commune co : d2) {
+            System.out.println(co);
+        }
+    }
+
+    /**
+     * Cette méthode permet de tester le tri des données sur chaque filtre de chaque
      * classe du modèle à partir de trois instances puis imprime le résultat obtenu dans la console
      */
     private static void testTri() {
@@ -38,35 +68,6 @@ public class Scenario {
                 // tri et imprime le résultat pour les données
                 useCurrentFilter(i, filtre, (Object[]) lesInstancesDeClasses[i]);
             }
-        }
-    }
-
-    /**
-     * Cette méthode consiste en le tri croissant des données pour un filtre en particulier de
-     * la classe Departement à partir de trois instances dont le résultat est imprimé dans la console.
-     * Plus spécifiquement, cette méthode sert à l'illustration des envois de messages entre les méthodes
-     * utilisées lors d'un tri croissant des données. 
-     * Cette illustration est accompagnée d'un diagramme de séquence se trouvant dans ./UML
-     */
-    public static void triPourDiagrammeDeSequence() {
-        // initialisation des données
-        Departement[] lesDepartements = {
-            new Departement(56, "MORBIHAN", 1000),
-            new Departement(22, "COTES-D'ARMOR", 5000),
-            new Departement(29, "FINISTERE", 10)
-        };
-        String filtre = "invesCulturel2019";
-        // modification du filtre en appelant la classe correspondante
-        Departement.setFilter(filtre);
-        // convertir notre liste vers une ArrayList
-        ArrayList<Departement> notreArrayList = new ArrayList<Departement>(Arrays.asList(lesDepartements));
-        System.out.println("Tri sur des données de la classe Departement selon " + filtre);
-        // obtenir une instance de TriRapide à partir de l'ArrayList
-        TriRapide<Departement> notreTrieur = new TriRapide<Departement>(notreArrayList);
-        // utiliser la méthode trier() de l'instance obtenue pour trier l'ArrayList selon un ordre croissant 
-        notreTrieur.trier();
-        for (Departement leDepartement : notreArrayList) {
-            System.out.println(leDepartement);
         }
     }
 
@@ -91,19 +92,18 @@ public class Scenario {
             new Aeroport("C", "1", lesDepartements[2])
         };
         Commune[] lesCommunes = {
-            new Commune(3, "A", lesDepartements[0]),
+            new Commune(3, "C", lesDepartements[0]),
             new Commune(2, "B", lesDepartements[1]),
-            new Commune(1, "C", lesDepartements[2])
+            new Commune(1, "A", lesDepartements[2])
         };
         Gare[] lesGares = {
-            new Gare(1, "C", true, false, lesCommunes[0]),
+            new Gare(1, "C", true, false, lesCommunes[2]),
             new Gare(2, "B", true, false, lesCommunes[1]),
-            new Gare(3, "A", false, true, lesCommunes[2])
+            new Gare(3, "A", false, true, lesCommunes[0])
         };
         DonneesAnnuelles[] lesDonneesAnnuelles = {
             new DonneesAnnuelles(lesAnnees[2], lesCommunes[0], 1, 3, 500, 10, 1000, 3, 10000),
             new DonneesAnnuelles(lesAnnees[1], lesCommunes[1], 2, 2, 5000, 100, 10000, 2, 1000),
-            new DonneesAnnuelles(lesAnnees[0], lesCommunes[2], 3, 1, 50, 1, 100, 1, 100)
 
         };
         Object[] lesInstances = {lesAnnees, lesDepartements, lesAeroports, lesCommunes, lesGares, lesDonneesAnnuelles};
@@ -144,78 +144,71 @@ public class Scenario {
 
     /**
      * Tri et imprime dans le terminal le résultat du tri sur les données fournies en paramètre. 
-     * Le tri est effectué en fonction de la valeur de i qui détermine le type abstrat de TriRapide
-     * et la valeur de filtre qui détermine le filtre utilisé par l'instance de TriRapide obtenue
-     * @param i La valeur qui détermine le type abstrait de TriRapide
+     * Le tri est effectué en fonction de la valeur de i qui détermine le type T de TriRapide<T>
+     * et la valeur de filtre qui détermine le filtre utilisé par l'instance de TriRapide<T>
+     * @param i La valeur qui détermine le type T de TriRapide<T>
      * @param filtre Le filtre qui détermine comment sont triées les instances
      * @param listeInstances Les instances qu'on trie selon le filtre
      */
     public static void useCurrentFilter(int i, String filtre, Object[] listeInstances) {
-        System.out.println();
         switch(i) {
             case 0:
-                Annee.setFilter(filtre);
                 ArrayList<Annee> liste0 = new ArrayList<Annee>(Arrays.asList((Annee[]) listeInstances.clone()));
                 System.out.println("Tri sur des données de la classe Annee selon " + filtre);
                 TriRapide<Annee> trieur0 = new TriRapide<Annee>(liste0);    
                 trieur0.trier();
                 for (Annee instance : liste0) {
-                    System.out.println(instance);
+                    System.out.print(instance.toString());
                 }
                 System.out.println();
                 break;
             case 1:
-                Departement.setFilter(filtre);
                 ArrayList<Departement> liste1 = new ArrayList<Departement>(Arrays.asList((Departement[]) listeInstances.clone()));
                 System.out.println("Tri sur des données de la classe Departement selon " + filtre);
                 TriRapide<Departement> trieur1 = new TriRapide<Departement>(liste1);
                 trieur1.trier();
                 for (Departement instance : liste1) {
-                    System.out.println(instance);
+                    System.out.print(instance.toString());
                 }
                 System.out.println();
                 break;
             case 2:
-                Aeroport.setFilter(filtre);
                 ArrayList<Aeroport> liste2 = new ArrayList<Aeroport>(Arrays.asList((Aeroport[]) listeInstances.clone()));
                 System.out.println("Tri sur des données de la classe Aeroport selon " + filtre);
                 TriRapide<Aeroport> trieur2 = new TriRapide<Aeroport>(liste2);
                 trieur2.trier();
                 for (Aeroport instance : liste2) {
-                    System.out.println(instance);
+                    System.out.print(instance.toString());
                 }
                 System.out.println();
                 break;
             case 3:
-                Commune.setFilter(filtre);
                 ArrayList<Commune> liste3 = new ArrayList<Commune>(Arrays.asList((Commune[]) listeInstances.clone()));
                 System.out.println("Tri sur des données de la classe Commune selon " + filtre);
                 TriRapide<Commune> trieur3 = new TriRapide<Commune>(liste3);
                 trieur3.trier();
                 for (Commune instance : liste3) {
-                    System.out.println(instance);
+                    System.out.print(instance.toString());
                 }
                 System.out.println();
                 break;
             case 4:
-                Gare.setFilter(filtre);
                 ArrayList<Gare> liste4 = new ArrayList<Gare>(Arrays.asList((Gare[]) listeInstances.clone()));
                 System.out.println("Tri sur des données de la classe Gare selon " + filtre);
                 TriRapide<Gare> trieur4 = new TriRapide<Gare>(liste4);
                 trieur4.trier();
                 for (Gare instance : liste4) {
-                    System.out.println(instance);
+                    System.out.print(instance.toString());
                 }
                 System.out.println();
                 break;
             case 5:
-                DonneesAnnuelles.setFilter(filtre);
                 ArrayList<DonneesAnnuelles> liste5 = new ArrayList<DonneesAnnuelles>(Arrays.asList((DonneesAnnuelles[]) listeInstances.clone()));
                 System.out.println("Tri sur des données de la classe DonneesAnnuelles selon " + filtre);
                 TriRapide<DonneesAnnuelles> trieur5 = new TriRapide<DonneesAnnuelles>(liste5);
                 trieur5.trier();
                 for (DonneesAnnuelles instance : liste5) {
-                    System.out.println(instance);
+                    System.out.print(instance.toString());
                 }
                 System.out.println();
                 break;
