@@ -59,6 +59,7 @@ public class GareDAO extends DAO<Gare> {
         return arr;
     }
 
+    @Override
     public  Gare findByID(int Id) {
         Connection co = getConnection();
         ArrayList<Gare> arr = new ArrayList<Gare>();
@@ -84,6 +85,7 @@ public class GareDAO extends DAO<Gare> {
         return arr.get(0);
     }
 
+    @Override
     public  ArrayList<Gare> findByFilter(String filter, String filterSelect) {
         Connection co = getConnection();
         ArrayList<Gare> arr = new ArrayList<Gare>();

@@ -59,6 +59,7 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
         return arr;
     }
 
+    @Override
     public  DonneesAnnuelles findByID(int Id) {
         Connection co = getConnection();
         ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
@@ -84,6 +85,7 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
         return arr.get(0);
     }
 
+    @Override
     public  ArrayList<DonneesAnnuelles> findByFilter(String filter, String filterSelect) {
         Connection co = getConnection();
         ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();

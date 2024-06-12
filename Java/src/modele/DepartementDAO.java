@@ -34,7 +34,7 @@ public class DepartementDAO extends DAO<Departement> {
     }
 
     @Override
-    public  ArrayList<Departement> findAll() {
+    public ArrayList<Departement> findAll() {
         Connection co = getConnection();
         ArrayList<Departement> arr = new ArrayList<Departement>();
 
@@ -59,7 +59,8 @@ public class DepartementDAO extends DAO<Departement> {
         return arr;
     }
 
-    public  Departement findByID(int Id) {
+    @Override
+    public Departement findByID(int Id) {
         Connection co = getConnection();
         ArrayList<Departement> arr = new ArrayList<Departement>();
 
@@ -84,6 +85,7 @@ public class DepartementDAO extends DAO<Departement> {
         return arr.get(0);
     }
 
+    @Override
     public  ArrayList<Departement> findByFilter(String filter, String filterSelect) {
         Connection co = getConnection();
         ArrayList<Departement> arr = new ArrayList<Departement>();
