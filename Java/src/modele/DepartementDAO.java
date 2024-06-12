@@ -18,7 +18,7 @@ public class DepartementDAO extends DAO<Departement> {
     private static String[] filtersList = new String[]{"idDep", "nomDep", "invesCulturel2019"};
 
     @Override
-    protected static ArrayList<Departement> runSQLQuery(Connection connection, String sql) throws Exception {
+    protected ArrayList<Departement> runSQLQuery(Connection connection, String sql) throws Exception {
         ArrayList<Departement> results = new ArrayList<Departement>();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
