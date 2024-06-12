@@ -1,11 +1,10 @@
 package modele;
-
 import java.util.ArrayList;
 
 /**
  * Une instance de cette classe permet de représenter une commune.
  * Cette classe implémente l'interface Comparable pour permettre la comparaison des communes
- * selon différents critères définis par un filtre.
+ * selon différents critères définis par un filtre
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  * @see Comparable
  */
@@ -27,7 +26,7 @@ public class Commune implements Comparable<Commune> {
 
     /**
      * Permet d'initialiser une instance de la classe Commune.
-     * La liste des gares ainsi que la liste des voisins d'une commune sont initialisées à vide.
+     * La liste des gares ainsi que la liste des voisins d'une commune sont initialisées à vide
      * @param idCommune L'identifiant de la commune
      * @param nomCommune Le nom de la commune
      * @param leDepartement L'instance de la classe Departement associée aux données
@@ -101,7 +100,7 @@ public class Commune implements Comparable<Commune> {
      * @param gare La gare qu'on veut ajouter à la liste des gares de la commune concernée par l'appel de la méthode
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public void ajouteGare(Gare gare) throws IllegalArgumentException {
+    public void addGare(Gare gare) throws IllegalArgumentException {
         if (gare == null) {
             throw new IllegalArgumentException("Commune.java : paramètre gare invalide");
         }
@@ -113,7 +112,7 @@ public class Commune implements Comparable<Commune> {
      * @param gare La gare qu'on veut retirer de la liste des gares de la commune concernée par l'appel de la méthode
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public void retireGare(Gare gare) throws IllegalArgumentException {
+    public void removeGare(Gare gare) throws IllegalArgumentException {
         if (gare == null) {
             throw new IllegalArgumentException("Commune.java : paramètre gare invalide");
         }
@@ -136,7 +135,7 @@ public class Commune implements Comparable<Commune> {
      * @param voisin La commune qu'on veut ajouter à la liste des communes voisines de la commune concernée par l'appel de la méthode
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public void ajouteVoisin(Commune voisin) throws IllegalArgumentException {
+    public void addVoisin(Commune voisin) throws IllegalArgumentException {
         if (voisin == null) {
             throw new IllegalArgumentException("Commune.java : paramètre voisin invalide");
         }
@@ -148,7 +147,7 @@ public class Commune implements Comparable<Commune> {
      * @param voisin La commune qu'on veut retirer de la liste des communes voisines de la commune concernée par l'appel de la méthode
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public void retireVoisin(Commune voisin) throws IllegalArgumentException {
+    public void removeVoisin(Commune voisin) throws IllegalArgumentException {
         if (voisin == null) {
             throw new IllegalArgumentException("Commune.java : paramètre voisin invalide");
         }
@@ -183,19 +182,22 @@ public class Commune implements Comparable<Commune> {
      * @return La liste de tous les filtres autorisés
      */
     public static String[] getAllFilter() {
-        return FILTER_LIST;
+        return FILTER_LIST.clone();
     }
 
     /**
      * Permet de définir le filtre à utiliser
      * @param filter Le nouveau filtre à utiliser
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
     public static void setFilter(String filter) {
         for (String s : FILTER_LIST) {
             if (s.equals(filter)) {
                 currentFilter = filter;
+                return; // empêche d'atteindre le lancement d'IAE si on trouve le filtre
             }
         }
+        throw new IllegalArgumentException("Commune.java : paramètre filter invalide");
     }
 
     /**
@@ -235,7 +237,7 @@ public class Commune implements Comparable<Commune> {
             s += "Aucune gare";
         } else {
             for (Gare gare : this.gares) {
-                if (i != this.gares.size()) {
+                if (i != this.gares.size() - 1) {
                     s += gare.getCodeGare() + " (" + gare.getNomGare() + ") -";
                 } else {
                     s += gare.getCodeGare() + " (" + gare.getNomGare() + ")";
@@ -259,7 +261,7 @@ public class Commune implements Comparable<Commune> {
             s += "Aucun voisin";
         } else {
             for (Commune voisin : this.voisins) {
-                if (i != this.voisins.size()) {
+                if (i != this.voisins.size() - 1) {
                     s += voisin.idCommune + " (" + voisin.nomCommune + ") -";
                 } else {
                     s += voisin.idCommune + " (" + voisin.nomCommune + ")";

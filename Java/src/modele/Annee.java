@@ -3,7 +3,7 @@ package modele;
 /**
  * Une instance de cette classe permet de représenter une année.
  * Cette classe implémente l'interface Comparable pour permettre la comparaison entre les années
- * selon différents critères définis par un filtre.
+ * selon différents critères définis par un filtre
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  * @see Comparable
  */
@@ -20,7 +20,7 @@ public class Annee implements Comparable<Annee> {
     /**
      * Permet d'initialiser une instance de la classe Annee.
      * On considère qu'il n'est pas possible d'utiliser des paramètres invalides puisque
-     * l'univers des paramètres possibles est valide dans ce contexte.
+     * l'univers des paramètres possibles est valide dans ce contexte
      * @param annee Identifiant de l'année (correspond aussi à l'année réelle)
      * @param tauxInflation Taux d'inflation associé à l'année
      */
@@ -33,7 +33,7 @@ public class Annee implements Comparable<Annee> {
      * Renvoie l'identifiant de l'année
      * @return L'identifiant de l'année
      */
-    public int getDateAnnee() {
+    public int getAnnee() {
         return this.annee;
     }
 
@@ -41,7 +41,7 @@ public class Annee implements Comparable<Annee> {
      * Permet de définir le nouveau identifiant de l'année
      * @param annee Le nouveau identifiant de l'année
      */
-    public void setDateAnnee(int annee) {
+    public void setAnnee(int annee) {
         this.annee = annee;
     }
 
@@ -66,19 +66,22 @@ public class Annee implements Comparable<Annee> {
      * @return La liste de tous les filtres autorisés
      */
     public static String[] getAllFilter() {
-        return FILTER_LIST;
+        return FILTER_LIST.clone();
     }
 
     /**
      * Permet de définir le nouveau filtre à utiliser
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      * @param filter Le nouveau filtre à utiliser
      */
-    public static void setFilter(String filter) {
+    public static void setFilter(String filter) throws IllegalArgumentException {
         for (String s : FILTER_LIST) {
             if (s.equals(filter)) {
                 currentFilter = filter;
+                return; // empêche d'atteindre le lancement d'IAE si on trouve le filtre
             }
         }
+        throw new IllegalArgumentException("Annee.java : paramètre filter invalide");
     }
 
     /**
@@ -88,6 +91,7 @@ public class Annee implements Comparable<Annee> {
      * @throws NullPointerException - si o est à null
      * @return Un entier représentant le résultat de la comparaison
      */
+    @Override
     public int compareTo(Annee o) throws NullPointerException {
         int ret = 0;
         if (o == null) {

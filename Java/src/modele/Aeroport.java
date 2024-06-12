@@ -3,7 +3,7 @@ package modele;
 /**
  * Une instance de cette classe permet de représenter un aéroport.
  * Cette classe implémente l'interface Comparable pour permettre la comparaison entre les aéroports
- * selon différents critères définis par un filtre.
+ * selon différents critères définis par un filtre
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  * @see Comparable
  */
@@ -62,16 +62,16 @@ public class Aeroport implements Comparable<Aeroport> {
     }
     
     /**
-     * Renvoie l'addresse de l'aéroport
-     * @return L'addresse de l'aéroport
+     * Renvoie l'adresse de l'aéroport
+     * @return L'adresse de l'aéroport
      */
     public String getAdresse(){
         return this.adresse;
     }
     
     /**
-     * Permet de définir la nouvelle addresse de l'aéroport
-     * @param adresse La nouvelle addresse de l'aéroport
+     * Permet de définir la nouvelle adresse de l'aéroport
+     * @param adresse La nouvelle adresse de l'aéroport
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
     public void setAdresse(String adresse) throws IllegalArgumentException {
@@ -106,19 +106,22 @@ public class Aeroport implements Comparable<Aeroport> {
      * @return La liste de tous les filtres autorisés
      */
     public static String[] getAllFilter() {
-        return FILTER_LIST;
+        return FILTER_LIST.clone();
     }
 
     /**
      * Permet de définir le nouveau filtre à utiliser
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      * @param filter Le nouveau filtre à utiliser
      */
-    public static void setFilter(String filter) {
+    public static void setFilter(String filter) throws IllegalArgumentException {
         for (String s : FILTER_LIST) {
             if (s.equals(filter)) {
                 currentFilter = filter;
+                return; // empêche d'atteindre le lancement d'IAE si on trouve le filtre
             }
         }
+        throw new IllegalArgumentException("Aeroport.java : paramètre filter invalide");
     }
 
     /**
@@ -128,11 +131,13 @@ public class Aeroport implements Comparable<Aeroport> {
      * @throws NullPointerException - si o est à null
      * @return Un entier représentant le résultat de la comparaison
      */
+    @Override
     public int compareTo(Aeroport o) throws NullPointerException {
         int ret = 0;
         if (o == null) {
             throw new NullPointerException("Aeroport.java : paramètre o est null");
         }
+        // else -> switch ... -> default: throw new IllegalArgumentException("Aeroport.java : paramètre o invalide");
         if (currentFilter.equals("nom")) {
             ret = this.nom.compareTo(o.nom);
         }

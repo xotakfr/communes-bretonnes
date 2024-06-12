@@ -49,7 +49,7 @@ public class Departement implements Comparable<Departement> {
         if (invesCulturel2019 < 0) {
             throw new IllegalArgumentException("Departement.java : paramètre invesCulturel2019 invalide"); 
         }
-        this.nomDep = nomDep;
+        this.nomDep = nomDep.toUpperCase();
         this.idDep = idDep;
         this.invesCulturel2019 = invesCulturel2019;
         this.communes = new ArrayList<Commune>();
@@ -129,7 +129,7 @@ public class Departement implements Comparable<Departement> {
      * @param commune La commune qu'on veut ajouter à la liste des communes du département concerné par l'appel de la méthode
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public void ajouteCommune(Commune commune) throws IllegalArgumentException {
+    public void addCommune(Commune commune) throws IllegalArgumentException {
         if (commune == null) {
             throw new IllegalArgumentException("Departement.java : paramètre commune invalide");
         }
@@ -141,7 +141,7 @@ public class Departement implements Comparable<Departement> {
      * @param commune La commune qu'on veut retirer de la liste des communes du département concerné par l'appel de la méthode
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public void retireCommune(Commune commune) throws IllegalArgumentException {
+    public void removeCommune(Commune commune) throws IllegalArgumentException {
         if (commune == null) {
             throw new IllegalArgumentException("Departement.java : paramètre commune invalide");
         }
@@ -164,7 +164,7 @@ public class Departement implements Comparable<Departement> {
      * @param aeroport L'aéroport qu'on veut ajouter à la liste des aéroports du département concerné par l'appel de la méthode
      * @throws IllegalArgumentException - qaund un paramètre invalide est utilisé
      */
-    public void ajouteAeroport(Aeroport aeroport) throws IllegalArgumentException {
+    public void addAeroport(Aeroport aeroport) throws IllegalArgumentException {
         if (aeroport == null) {
             throw new IllegalArgumentException("Departement.java : paramètre aeroport invalide");
         }
@@ -176,7 +176,7 @@ public class Departement implements Comparable<Departement> {
      * @param aeroport L'aéroport qu'on veut retirer de la liste des aéroports du département concerné par l'appel de la méthode
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public void retireAeroport(Aeroport aeroport) throws IllegalArgumentException {
+    public void removeAeroport(Aeroport aeroport) throws IllegalArgumentException {
         if (aeroport == null) {
             throw new IllegalArgumentException("Departement.java : paramètre aeroport invalide");
         }
@@ -191,19 +191,22 @@ public class Departement implements Comparable<Departement> {
      * @return La liste des filtres autorisés
      */
     public static String[] getAllFilter() {
-        return FILTER_LIST;
+        return FILTER_LIST.clone();
     }
 
     /**
      * Permet de définir le filtre à utiliser
      * @param filter Le filtre à utiliser
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public static void setFilter(String filter) {
+    public static void setFilter(String filter) throws IllegalArgumentException {
         for (String s : FILTER_LIST) {
             if (s.equals(filter)) {
                 currentFilter = filter;
+                return; // empêche d'atteindre le lancement d'IAE si on trouve le filtre
             }
         }
+        throw new IllegalArgumentException("Departement.java : paramètre filter invalide");
     }
 
     /**

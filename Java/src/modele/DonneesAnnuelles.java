@@ -3,7 +3,7 @@ package modele;
 /**
  * Une instance de cette classe permet de représenter les données annuelles.
  * Cette classe implémente l'interface Comparable pour permettre la comparaison des données annuelles
- * selon différents critères définis par un filtre.
+ * selon différents critères définis par un filtre
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  * @see Comparable
  */
@@ -256,8 +256,9 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
     /**
      * Permet de définir la nouvelle population de la commune
      * @param population La nouvelle population de la commune
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public void setPopulation(int population) {
+    public void setPopulation(int population) throws IllegalArgumentException {
         if (population < 0) {
             throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre population invalide");
         }
@@ -269,19 +270,22 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
      * @return La liste de tous les filtres autorisés
      */
     public static String[] getAllFilter() {
-        return FILTER_LIST;
+        return FILTER_LIST.clone();
     }
 
     /**
      * Permet de définir le nouveau filtre à utiliser
      * @param filter Le nouveau filtre à utiliser
+     * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public static void setFilter(String filter) {
+    public static void setFilter(String filter) throws IllegalArgumentException {
         for (String s : FILTER_LIST) {
             if (s.equals(filter)) {
                 currentFilter = filter;
+                return; // empêche d'atteindre le lancement d'IAE si on trouve le filtre
             }
         }
+        throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre filter invalide");
     }
 
     /**
@@ -297,7 +301,7 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
             throw new NullPointerException("DonneesAnnuelles.java : paramètre o invalide");
         }
         if (currentFilter.equals("lAnnee")) {
-           ret = Integer.compare(this.lAnnee.getDateAnnee(), o.lAnnee.getDateAnnee());
+           ret = Integer.compare(this.lAnnee.getAnnee(), o.lAnnee.getAnnee());
         }
         else if (currentFilter.equals("laCommune")) {
            ret = Integer.compare(this.laCommune.getIdCommune(), o.laCommune.getIdCommune());
@@ -332,7 +336,7 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
      */
     public String toString() {
         return "DonneesAnnuelles{" +
-                "Annee = " + this.lAnnee.getDateAnnee() +
+                "Annee = " + this.lAnnee.getAnnee() +
                 ", Commune = " + this.laCommune.getIdCommune() +
                 ", Nombre de maisons = " + this.nbMaison +
                 ", Nombre d'appartements = " + this.nbAppart +
