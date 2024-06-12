@@ -91,7 +91,7 @@ public class GareDAO extends DAO<Gare> {
         ArrayList<Gare> arr = new ArrayList<Gare>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM Gares WHERE \"Gares."+filter+"\""+instruction+";");
+            arr = runSQLQuery(co, "SELECT * FROM Gares WHERE \"Gares."+filter+"\""+filterSelect+";");
         } catch (Exception e) {
             e.printStackTrace();
         }

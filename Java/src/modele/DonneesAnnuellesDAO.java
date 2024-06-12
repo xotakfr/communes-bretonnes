@@ -91,7 +91,7 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
         ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM DonneesAnnuelles WHERE \"DonneesAnnuelles."+filter+"\""+instruction+";");
+            arr = runSQLQuery(co, "SELECT * FROM DonneesAnnuelles WHERE \"DonneesAnnuelles."+filter+"\""+filterSelect+";");
         } catch (Exception e) {
             e.printStackTrace();
         }

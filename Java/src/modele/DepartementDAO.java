@@ -91,7 +91,7 @@ public class DepartementDAO extends DAO<Departement> {
         ArrayList<Departement> arr = new ArrayList<Departement>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM Departements WHERE \"Departements."+filter+"\""+instruction+";");
+            arr = runSQLQuery(co, "SELECT * FROM Departements WHERE \"Departements."+filter+"\""+filterSelect+";");
         } catch (Exception e) {
             e.printStackTrace();
         }

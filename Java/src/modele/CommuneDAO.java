@@ -91,7 +91,7 @@ public class CommuneDAO extends DAO<Commune> {
         ArrayList<Commune> arr = new ArrayList<Commune>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM Communes WHERE \"Communes."+filter+"\""+instruction+";");
+            arr = runSQLQuery(co, "SELECT * FROM Communes WHERE \"Communes."+filter+"\""+filterSelect+";");
         } catch (Exception e) {
             e.printStackTrace();
         }
