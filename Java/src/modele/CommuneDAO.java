@@ -24,7 +24,7 @@ public class CommuneDAO extends DAO<Commune> {
 
         
         while (resultSet.next()) {
-            Commune com = new Commune(resultSet.getInt(0),resultSet.getString(1), resultSet.getString(2));
+            Commune com = new Commune(resultSet.getInt(0),resultSet.getString(1), new DepartementDAO().findByID(resultSet.getInt(2)));
             results.add(com);
         }
         
