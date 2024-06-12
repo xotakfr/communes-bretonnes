@@ -33,6 +33,7 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
         return results;
     }
 
+    @Override
     public static ArrayList<DonneesAnnuelles> findAll() {
         Connection co = getConnection();
         ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();

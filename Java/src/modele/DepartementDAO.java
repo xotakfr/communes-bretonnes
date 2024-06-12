@@ -33,6 +33,7 @@ public class DepartementDAO extends DAO<Departement> {
         return results;
     }
 
+    @Override
     public static ArrayList<Departement> findAll() {
         Connection co = getConnection();
         ArrayList<Departement> arr = new ArrayList<Departement>();

@@ -33,6 +33,7 @@ public class CommuneDAO extends DAO<Commune> {
         return results;
     }
 
+    @Override
     public static ArrayList<Commune> findAll() {
         Connection co = getConnection();
         ArrayList<Commune> arr = new ArrayList<Commune>();
@@ -58,6 +59,7 @@ public class CommuneDAO extends DAO<Commune> {
         return arr;
     }
 
+    @Override
     public static Commune findByID(int Id) {
         Connection co = getConnection();
         ArrayList<Commune> arr = new ArrayList<Commune>();
@@ -83,6 +85,7 @@ public class CommuneDAO extends DAO<Commune> {
         return arr.get(0);
     }
 
+    @Override
     public static ArrayList<Commune> findByFilter(String filter, String instruction) {
         Connection co = getConnection();
         ArrayList<Commune> arr = new ArrayList<Commune>();

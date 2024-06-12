@@ -33,6 +33,7 @@ public class GareDAO extends DAO<Gare> {
         return results;
     }
 
+    @Override
     public static ArrayList<Gare> findAll() {
         Connection co = getConnection();
         ArrayList<Gare> arr = new ArrayList<Gare>();

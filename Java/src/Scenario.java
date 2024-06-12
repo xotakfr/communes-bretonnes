@@ -36,7 +36,7 @@ public class Scenario {
      * Méthode de test pour le modèle
      */
     private static void testModele() {
-        DataLoader.loadAll();
+        /**DataLoader.loadAll();*/
 
         for (Commune co : DataLoader.getCommunes()) {
             System.out.println(co);
