@@ -33,7 +33,7 @@ public class CommuneDAO extends DAO<Commune> {
         return results;
     }
 
-    public ArrayList<Commune> findAll() {
+    public static ArrayList<Commune> findAll() {
         Connection co = getConnection();
         ArrayList<Commune> arr = new ArrayList<Commune>();
 
@@ -58,7 +58,7 @@ public class CommuneDAO extends DAO<Commune> {
         return arr;
     }
 
-    public Commune findByID(int Id) {
+    public static Commune findByID(int Id) {
         Connection co = getConnection();
         ArrayList<Commune> arr = new ArrayList<Commune>();
 
@@ -83,7 +83,7 @@ public class CommuneDAO extends DAO<Commune> {
         return arr.get(0);
     }
 
-    public ArrayList<Commune> findByFilter(String filter, String instruction) {
+    public static ArrayList<Commune> findByFilter(String filter, String instruction) {
         Connection co = getConnection();
         ArrayList<Commune> arr = new ArrayList<Commune>();
 

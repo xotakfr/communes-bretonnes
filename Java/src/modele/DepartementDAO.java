@@ -33,7 +33,7 @@ public class DepartementDAO extends DAO<Departement> {
         return results;
     }
 
-    public ArrayList<Departement> findAll() {
+    public static ArrayList<Departement> findAll() {
         Connection co = getConnection();
         ArrayList<Departement> arr = new ArrayList<Departement>();
 
@@ -58,7 +58,7 @@ public class DepartementDAO extends DAO<Departement> {
         return arr;
     }
 
-    public Departement findByID(int Id) {
+    public static Departement findByID(int Id) {
         Connection co = getConnection();
         ArrayList<Departement> arr = new ArrayList<Departement>();
 
@@ -83,7 +83,7 @@ public class DepartementDAO extends DAO<Departement> {
         return arr.get(0);
     }
 
-    public ArrayList<Departement> findByFilter(String filter, String instruction) {
+    public static ArrayList<Departement> findByFilter(String filter, String instruction) {
         Connection co = getConnection();
         ArrayList<Departement> arr = new ArrayList<Departement>();
 
