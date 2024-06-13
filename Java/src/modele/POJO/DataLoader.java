@@ -1,10 +1,10 @@
-package modele.classes;
+package modele.POJO;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
-import modele.methodesTri.*;;
+import modele.classesDAO.*;
 
 /**
  * Classe de gestion des données
@@ -96,7 +96,7 @@ public class DataLoader {
     /**
      * Charge les communes
      */
-    /**
+    /*
     public static void loadCommunes() {
         ArrayList<String[]> data = CSVReader(MUNICIPALITY_PATH);
         for (String[] d : data) {
@@ -127,7 +127,7 @@ public class DataLoader {
     /**
      * Charge les départements
      */
-    /**
+    /*
     public static void loadDepartements() {
         ArrayList<String[]> data = CSVReader(DEPARTEMENTS);
         for (String[] d : data) {
@@ -148,7 +148,7 @@ public class DataLoader {
     /**
      * Charge les gares
      */
-    /**
+    /*
     public static void loadGares() {
         ArrayList<String[]> data = CSVReader(TRAIN);
         Commune.setFilter("idCommune");
@@ -166,7 +166,7 @@ public class DataLoader {
     /**
      * Charge les données annuelles
      */
-    /**
+    /*
     public static void loadDonneesAnnuelles() {
         ArrayList<String[]> data = CSVReader(CULTURAL);
         Commune.setFilter("idCommune");
@@ -190,7 +190,7 @@ public class DataLoader {
     /** 
      * Charge toutes les données
      */
-    /**
+    /*
     public static void loadAll() {
         loadCommunes();
         loadDepartements();
@@ -206,7 +206,7 @@ public class DataLoader {
      * @param target La chaîne de caractères cible
      * @return L'index de la chaîne de caractères cible dans le tableau, ou -1 si elle n'est pas trouvée
      */
-    /**
+    /*
     private static int getIndexOf(String[] array, String target) {
         for (int i = 0; i < array.length; i++) {
             if (array[i].equals(target)) {
@@ -218,7 +218,7 @@ public class DataLoader {
     */
 
 
-    /**
+    /*
      * Getter pour les communes avec un filtre
      * @param filter Le filtre à appliquer (nom de la colonne)
      * @param filterSelect La condition de sélection (par exemple : "<54", ">-1", "=0", "<541;>54")

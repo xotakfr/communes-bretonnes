@@ -1,0 +1,21 @@
+on:
+  push:
+    branches:
+    - main
+  workflow_dispatch: ~
+jobs:
+  build:
+    runs-on: ubuntu:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Java
+        uses: actions/setup-java@v3       
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Install GNU Make
+        run: sudo apt install make
+      - name: Compile
+        working-directory: ./Java/ws
+        run: make
