@@ -1,4 +1,4 @@
-package modele.classes;
+package modele.POJO;
 
 /**
  * Une instance de cette classe permet de représenter un aéroport.
