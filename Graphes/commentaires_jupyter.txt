@@ -1,0 +1,11 @@
+partie cleanup
+--------------
+fixer un problème avec les doublons
+mettre tous les imports dans le même bloc
+séparer les parties en section (titres)
+
+partie technique
+----------------
+calcul_eccentricity d'abord avec max(single_source_path_length(G, sommet))
+puis création de notre propre méthode pour le parcours de Dijkstrat (à faire)
+puis passage au parcours de ? (à trouver, plus efficace que Dijsktrat dans notre cas)

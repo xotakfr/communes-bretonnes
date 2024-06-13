@@ -1,0 +1,10 @@
+scénarios
+---------
+rien :sob:
+
+centralitées à implementées et pourquoi
+------------------------
+centralitée de degrée/de prestige, découvrir les communes les plus influentes de Bretagne 
+centralitée de proximité, ???
+centralitée d'intermédiaritée, découvrir les chemins/communes les plus importantes à garder dans le vert 
+https://networkx.org/documentation/stable/reference/algorithms/centrality.html : toutes les centralitées de networkx 
