@@ -1,5 +1,5 @@
 package modele.DAO;
-import modele.classes.Commune;
+import modele.POJO.Commune;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,7 +18,7 @@ public class CommuneDAO extends DAO<Commune> {
     /** Liste des filtres possibles */
     private static String[] filtersList = new String[]{"idCommune", "nomCommune", "voisins","population"};
 
-    @Override
+
     protected  ArrayList<Commune> runSQLQuery(Connection connection, String sql) throws Exception {
         ArrayList<Commune> results = new ArrayList<Commune>();
         Statement statement = connection.createStatement();
@@ -61,7 +61,7 @@ public class CommuneDAO extends DAO<Commune> {
         return arr;
     }
 
-    @Override
+
     public Commune findByID(long id) {
         Connection co = getConnection();
         ArrayList<Commune> arr = new ArrayList<Commune>();
@@ -87,7 +87,7 @@ public class CommuneDAO extends DAO<Commune> {
         return arr.get(0);
     }
 
-    @Override
+
     public  ArrayList<Commune> findByFilter(String filter, String filterSelect) {
         Connection co = getConnection();
         ArrayList<Commune> arr = new ArrayList<Commune>();

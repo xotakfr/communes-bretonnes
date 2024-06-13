@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import modele.classes.Gare;;
+import modele.POJO.Gare;;
 
 /**
  * Data Access for Gare
@@ -18,7 +18,7 @@ public class GareDAO extends DAO<Gare> {
     /** Liste des filtres possibles */
     private static String[] filtersList = new String[]{"codeGare", "nomGare", "estFret", "estVoyageur", "laCommune"};
 
-    @Override
+
     protected  ArrayList<Gare> runSQLQuery(Connection connection, String sql) throws Exception {
         ArrayList<Gare> results = new ArrayList<Gare>();
         Statement statement = connection.createStatement();
@@ -61,7 +61,7 @@ public class GareDAO extends DAO<Gare> {
         return arr;
     }
 
-    @Override
+
     public  Gare findByID(long id) {
         Connection co = getConnection();
         ArrayList<Gare> arr = new ArrayList<Gare>();
@@ -87,7 +87,7 @@ public class GareDAO extends DAO<Gare> {
         return arr.get(0);
     }
 
-    @Override
+
     public  ArrayList<Gare> findByFilter(String filter, String filterSelect) {
         Connection co = getConnection();
         ArrayList<Gare> arr = new ArrayList<Gare>();

@@ -6,31 +6,29 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import modele.classes.DonneesAnnuelles;
+import modele.POJO.Departement;
 
 /**
- * Data Acces for DonneesAnnuelles
- * Use all fonction in DAO for the DonneesAnnuelles objects
+ * Data Access for Departement
+ * Use all fonction in DAO for the Departement objects
  */
-public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
+public class DepartementDAO extends DAO<Departement> {
     /** Filtre actuel - Voir comparableTo et SwitecherFilter */
     private static String currentFilter = "idCommune";
-    /** Liste des filtres posibles */
+    /** Liste des filtres possibles */
     private static String[] filtersList = new String[]{"idDep", "nomDep", "invesCulturel2019"};
 
-    @Override
-    protected  ArrayList<DonneesAnnuelles> runSQLQuery(Connection connection, String sql) throws Exception {
-        ArrayList<DonneesAnnuelles> results = new ArrayList<DonneesAnnuelles>();
+
+    protected ArrayList<Departement> runSQLQuery(Connection connection, String sql) throws Exception {
+        ArrayList<Departement> results = new ArrayList<Departement>();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
 
-        /**
-         * à refaire via le shéma SQL
+        
         while (resultSet.next()) {
-            DonneesAnnuelles com = new DonneesAnnuelles(resultSet.getInt(0),resultSet.getObject(1), resultSet.getObject(2));
+            Departement com = new Departement(resultSet.getInt(0),resultSet.getString(1), resultSet.getFloat(2));
             results.add(com);
         }
-        */
         
         resultSet.close();
         statement.close();
@@ -38,12 +36,12 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
     }
 
     @Override
-    public  ArrayList<DonneesAnnuelles> findAll() {
+    public ArrayList<Departement> findAll() {
         Connection co = getConnection();
-        ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
+        ArrayList<Departement> arr = new ArrayList<Departement>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM DonneesAnnuelles;");
+            arr = runSQLQuery(co, "SELECT * FROM Departements;");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -63,18 +61,18 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
         return arr;
     }
 
-    @Override
-    public  DonneesAnnuelles findByID(long id) {
+
+    public Departement findByID(long id) {
         Connection co = getConnection();
-        ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
+        ArrayList<Departement> arr = new ArrayList<Departement>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM DonneesAnnuelles WHERE \"DonneesAnnuelles.idCommune\" = "+id+";");
+            arr = runSQLQuery(co, "SELECT * FROM Departements WHERE \"Departements.idCommune\" = "+id+";");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        /**
+        /*
         for (Commune commune : arr) {
             ArrayList<Commune> voisines = new ArrayList<Commune>();
             int com = Integer.parseInt(da[0]);
@@ -89,18 +87,18 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
         return arr.get(0);
     }
 
-    @Override
-    public  ArrayList<DonneesAnnuelles> findByFilter(String filter, String filterSelect) {
+
+    public  ArrayList<Departement> findByFilter(String filter, String filterSelect) {
         Connection co = getConnection();
-        ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
+        ArrayList<Departement> arr = new ArrayList<Departement>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM DonneesAnnuelles WHERE \"DonneesAnnuelles."+filter+"\""+filterSelect+";");
+            arr = runSQLQuery(co, "SELECT * FROM Departements WHERE \"Departements."+filter+"\""+filterSelect+";");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        /**
+        /*
         for (Commune commune : arr) {
             ArrayList<Commune> voisines = new ArrayList<Commune>();
             int com = Integer.parseInt(da[0]);
