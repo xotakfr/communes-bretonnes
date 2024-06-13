@@ -62,7 +62,7 @@ public class Scenario {
         ArrayList<Departement> notreArrayList = new ArrayList<Departement>(Arrays.asList(lesDepartements));
         System.out.println("Tri sur des données de la classe Departement selon " + filtre);
         // obtenir une instance de TriRapide à partir de l'ArrayList
-        TriRapide<Departement> notreTrieur = new TriRapide<Departement>(notreArrayList);
+        TriParSelection<Departement> notreTrieur = new TriParSelection<>(notreArrayList);
         // utiliser la méthode trier() de l'instance obtenue pour trier l'ArrayList selon un ordre croissant 
         notreTrieur.trier();
         for (Departement leDepartement : notreArrayList) {
