@@ -14,11 +14,9 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Install GNU Make
-        run: sudo apt install make
       - name: Setup Deps
         working-directory: ./Java/ws
-        run: ./Java/ws/setupDeps.sh
+        run: ./setupDeps.sh
       - name: Compile
         working-directory: ./Java/ws
         run: make
