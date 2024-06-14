@@ -59,7 +59,7 @@ public class TriParSelection<T extends Comparable<T>> implements Itri {
      * Trie la liste en utilisant l'algorithme de tri par sélection
      */
 	public void trier() {
-		for (int a = 0; a < this.tab.size(); a++) {
+		for (int a = 0; a < this.tab.size() - 1; a++) {
 			int min = this.minimumPosition(a);
 			this.swap(a, min);
 		}

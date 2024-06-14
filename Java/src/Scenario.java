@@ -23,8 +23,9 @@ public class Scenario {
     }
 
     /**
-     * Cette méthode permet de tester le tri croissant des données sur chaque filtre de chaque
-     * classe du modèle à partir de trois instances puis imprime le résultat obtenu dans la console
+     * Cette méthode permet de tester le tri croissant des données par la méthode du tri rapide
+     * sur chaque filtre de chaque classe du modèle à partir de trois instances puis imprime le 
+     * résultat obtenu dans la console afin qu'il puisse être comparé à ce qu'il est attendu
      */
     private static void testTri() {
         // initialisation des données
@@ -42,26 +43,25 @@ public class Scenario {
     }
 
     /**
-     * Cette méthode consiste en le tri croissant des données pour un filtre en particulier de
-     * la classe Departement à partir de trois instances dont le résultat est imprimé dans la console.
-     * Plus spécifiquement, cette méthode sert à l'illustration des envois de messages entre les méthodes
-     * utilisées lors d'un tri croissant des données. 
+     * Cette méthode consiste en le tri croissant des données par la méthode du tri par sélection
+     * pour un filtre en particulier de la classe Departement à partir de trois instances dont le 
+     * résultat est imprimé dans la console. Plus spécifiquement, cette méthode sert à l'illustration 
+     * des envois de messages entre les méthodes utilisées lors d'un tri croissant des données par la
+     * méthode du tri par sélection. 
      * Cette illustration est accompagnée d'un diagramme de séquence se trouvant dans ./UML
      */
     public static void triPourDiagrammeDeSequence() {
+        // modification du filtre de la classe Departement
+        Departement.setFilter("nomDep");
         // initialisation des données
-        Departement[] lesDepartements = {
-            new Departement(56, "MORBIHAN", 1000),
-            new Departement(22, "COTES-D'ARMOR", 5000),
-            new Departement(29, "FINISTERE", 10)
-        };
-        String filtre = "invesCulturel2019";
-        // modification du filtre en appelant la classe correspondante
-        Departement.setFilter(filtre);
+        Departement D1 = new Departement(56, "MORBIHAN", 1000);
+        Departement D2 = new Departement(22, "COTES-D'ARMOR", 5000);
+        Departement D3 = new Departement(29, "FINISTERE", 10);
+        Departement[] lesDepartements = {D1, D2, D3};
         // convertir notre liste vers une ArrayList
         ArrayList<Departement> notreArrayList = new ArrayList<Departement>(Arrays.asList(lesDepartements));
-        System.out.println("Tri sur des données de la classe Departement selon " + filtre);
-        // obtenir une instance de TriRapide à partir de l'ArrayList
+        System.out.println("Tri sur des données de la classe Departement selon nomDep");
+        // obtenir une instance de TriParSelection à partir de l'ArrayList
         TriParSelection<Departement> notreTrieur = new TriParSelection<>(notreArrayList);
         // utiliser la méthode trier() de l'instance obtenue pour trier l'ArrayList selon un ordre croissant 
         notreTrieur.trier();
