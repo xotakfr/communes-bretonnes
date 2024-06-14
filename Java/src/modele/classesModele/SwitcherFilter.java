@@ -1,4 +1,4 @@
-package modele.classes;
+package modele.classesModele;
 
 /**
  * Interface publique SwitcherFilter

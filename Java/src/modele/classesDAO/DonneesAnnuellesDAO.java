@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import modele.POJO.DonneesAnnuelles;
+import modele.classesModele.DonneesAnnuelles;
 
 /**
  * Data Acces for DonneesAnnuelles

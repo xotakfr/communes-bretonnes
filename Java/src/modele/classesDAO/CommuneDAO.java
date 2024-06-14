@@ -1,10 +1,10 @@
 package modele.classesDAO;
-import modele.POJO.Commune;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import modele.classesModele.Commune;
 
 /**
  * Data Access for Commune

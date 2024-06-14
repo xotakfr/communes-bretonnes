@@ -1,4 +1,4 @@
-import modele.POJO.*;
+import modele.classesModele.*;
 import modele.methodesTri.*;
 import java.util.Arrays;
 import java.util.ArrayList;

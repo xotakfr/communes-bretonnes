@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import modele.POJO.Gare;;
+import modele.classesModele.Gare;;
 
 /**
  * Data Access for Gare

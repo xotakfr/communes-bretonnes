@@ -1,4 +1,4 @@
-package modele.POJO;
+package modele.classesModele;
 
 /**
  * Une instance de cette classe permet de représenter une année.
