@@ -1,0 +1,5 @@
+problèmes diagramme de classe
+
+pas de mention des interfaces <<interface X>>
+pas de mention des dépendes faibles/fortes (flèches pointillées pour dépendances faibles)
+pas de mention des {frozen} et {leaf}
