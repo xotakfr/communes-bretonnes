@@ -18,7 +18,7 @@ jobs:
         run: sudo apt install make
       - name: Setup Deps
         working-directory: ./Java/ws
-        run ./Java/ws/setupDeps.sh
+        run: ./Java/ws/setupDeps.sh
       - name: Compile
         working-directory: ./Java/ws
         run: make
