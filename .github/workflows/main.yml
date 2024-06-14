@@ -16,7 +16,7 @@ jobs:
           java-version: '17'
       - name: Setup Deps
         working-directory: ./Java/ws
-        run: ./setupDeps.sh
+        run: sudo apt install wget && ./setupDeps.sh
       - name: Compile
         working-directory: ./Java/ws
         run: make
