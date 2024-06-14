@@ -1,0 +1,10 @@
+notebook
+numpy
+pandas
+seaborn
+geopy
+scipy
+networkx
+matplotlib
+pyparallel
+ipyparellel
