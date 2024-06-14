@@ -3,13 +3,10 @@ package modele.methodesTri;
 import java.util.ArrayList;
 
 /**
- * Implémentation du tri rapide (quicksort) pour une liste d'éléments comparables
- * 
- * @param <T> Le type des éléments à trier, qui doit implémenter l'interface Comparable<T>
- * 
+ * Implémentation de l'algorithme du tri rapide pour une liste d'éléments comparables.
+ * @param <T> Le type des éléments à trier, qui doit implémenter l'interface Comparable
  * @see TriRapide
  * @see ISearch
- * 
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public class TriRapide<T extends Comparable<T>> implements Itri {
@@ -17,33 +14,35 @@ public class TriRapide<T extends Comparable<T>> implements Itri {
     private ArrayList<T> tab;
 
     /**
-     * Crée une nouvelle instance de TriRapide avec la liste donnée
-     * 
+     * Permet de créer une nouvelle instance de TriRapide avec la liste donnée
+     * en paramètre qui consiste en la liste à trier
      * @param tab La liste à trier
      */
     public TriRapide(ArrayList<T> tab) {
-        if (tab!= null) {
+        if (tab != null) {
             this.tab = tab;
-        } else {
+        } 
+        else {
             System.err.println("Error null");
         }
     }
 
     /**
      * Partitionne le tableau en utilisant le dernier élément comme pivot
-     * 
      * @param low L'indice du premier élément
      * @param high L'indice du dernier élément
      * @return L'indice du pivot après le partitionnement
      */
     private int partition(int low, int high) {
-        T pivot = this.tab.get(high); // Pivot
-        int i = (low - 1); // Index of smaller element
+        // On récupère le pivot
+        T pivot = this.tab.get(high);
+        // On récupère l'index du plus petit élément
+        int i = (low - 1);
 
         for (int j = low; j < high; j++) {
-            // If current element is smaller than or equal to pivot
+            // Si l'élément actuel est inférieur ou égal au pivot
             if (this.tab.get(j).compareTo(pivot) <= 0) {
-                i++; // increment index of smaller element
+                i++;
                 swap(i, j);
             }
         }
@@ -52,25 +51,23 @@ public class TriRapide<T extends Comparable<T>> implements Itri {
     }
 
     /**
-     * Fonction récursive pour trier le tableau
-     * 
+     * Fonction récursive utilisée pour trier le tableau
      * @param low L'indice de départ
      * @param high L'indice de fin
      */
     private void quickSort(int low, int high) {
         if (low < high) {
-            // pi is partitioning index, arr[p] is now at right place
+            // on récupère et positionne le pivot
             int pi = partition(low, high);
 
-            // Separately sort elements before partition and after partition
+            // Tri rapide effectué sur les partitions restantes après et avant la position du pivot
             quickSort(low, pi - 1);
             quickSort(pi + 1, high);
         }
     }
 
     /**
-     * Échange deux éléments dans le tableau
-     * 
+     * Échange deux éléments d'un tableau
      * @param i L'indice du premier élément
      * @param j L'indice du deuxième élément
      */
