@@ -5,7 +5,6 @@ import java.util.ArrayList;
 /**
  * Cette classe permet de rechercher des éléments dans une liste triée en utilisant l'algorithme de recherche binaire.
  * L'instance de type T doit implémenter l'interface Comparable afin que le programme soit fonctionnel
- * @see BinarySearcher
  * @see ISearch
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */

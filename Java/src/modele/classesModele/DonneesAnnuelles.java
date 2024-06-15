@@ -307,8 +307,7 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
             case "nbAppart" -> Integer.compare(this.nbAppart, o.nbAppart);
             case "prixMoyen" -> Float.compare(this.prixMoyen, o.prixMoyen);
             case "prixM2Moyen" -> Float.compare(this.prixM2Moyen, o.prixM2Moyen);
-            case "depensesCulturellesTotales" ->
-                    Float.compare(this.depensesCulturellesTotales, o.depensesCulturellesTotales);
+            case "depensesCulturellesTotales" -> Float.compare(this.depensesCulturellesTotales, o.depensesCulturellesTotales);
             case "budgetTotal" -> Float.compare(this.budgetTotal, o.budgetTotal);
             case "population" -> Integer.compare(this.population, o.population);
             default -> ret;

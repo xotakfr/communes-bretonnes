@@ -1,4 +1,5 @@
 package modele.classesModele;
+
 import java.util.ArrayList;
 
 /**
@@ -251,7 +252,7 @@ public class Commune implements Comparable<Commune> {
      * atteint la fin de la liste
      * @return Une chaîne de caractères représentant les voisins de la commune concernée
      */
-    public String voisinAsString() {
+    public String voisinsAsString() {
         String s = "";
         int i = 0;
         if (this.voisins.size() == 0) {
@@ -278,7 +279,7 @@ public class Commune implements Comparable<Commune> {
                 "idCommune = " + this.idCommune +
                 ", nomCommune = " + this.nomCommune +
                 ", gares = " + this.garesAsString() +
-                ", voisins = " + this.voisinAsString() +
+                ", voisins = " + this.voisinsAsString() +
                 ", leDepartement = " + this.leDepartement.getIdDep() +
                 "} ";
     }

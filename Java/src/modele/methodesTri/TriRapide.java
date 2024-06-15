@@ -5,11 +5,11 @@ import java.util.ArrayList;
 /**
  * Implémentation de l'algorithme du tri rapide pour une liste d'éléments comparables.
  * @param <T> Le type des éléments à trier, qui doit implémenter l'interface Comparable
- * @see TriRapide
+ * @see Comparable
  * @see ISearch
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
-public class TriRapide<T extends Comparable<T>> implements Itri {
+public class TriRapide<T extends Comparable<T>> implements ITri {
     /** La liste à trier */
     private ArrayList<T> tab;
 

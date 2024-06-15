@@ -300,5 +300,4 @@ public class Departement implements Comparable<Departement> {
                 ", invesCulturel2019 = " + this.invesCulturel2019 +
                 "} ";
     }
-
 }

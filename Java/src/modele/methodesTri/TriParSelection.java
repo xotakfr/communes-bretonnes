@@ -6,10 +6,10 @@ import java.util.ArrayList;
  * Implémentation de l'algorithme du tri par sélection pour une liste d'éléments comparables.
  * @param <T> Le type des éléments à trier, qui doit implémenter l'interface Comparable
  * @see Comparable
- * @see Itri
+ * @see ITri
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
-public class TriParSelection<T extends Comparable<T>> implements Itri {
+public class TriParSelection<T extends Comparable<T>> implements ITri {
 	/** La liste à trier */
 	private ArrayList<T> tab;
 
@@ -50,9 +50,10 @@ public class TriParSelection<T extends Comparable<T>> implements Itri {
      * @param j L'indice du deuxième élément
      */
 	private void swap(int i, int j) {
-		T temp = this.tab.get(i);
-		this.tab.set(i, this.tab.get(j));
-		this.tab.set(j, temp);
+		T tempI = this.tab.get(i);
+		T tempJ = this.tab.get(j);
+		this.tab.set(i, tempJ);
+		this.tab.set(j, tempI);
 	}
 
 	/**

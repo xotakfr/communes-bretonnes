@@ -6,7 +6,7 @@ package modele.methodesTri;
  * effectuer le tri d'une collection
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
-public interface Itri {
+public interface ITri {
 	/**
       * Trie la collection
       */
