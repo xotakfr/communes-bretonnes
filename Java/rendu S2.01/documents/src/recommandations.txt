@@ -1,0 +1,2 @@
+1. Nous recommandons d'utiliser -encoding utf8 lors de la compilation des classes fournies puisque celles-ci renvoient du texte en français dans le terminal
+2. Lors de l'exécution de Scenario.java, nous recommandons d'utiliser un terminal en mode plein écrant dont le texte est dézoomé puisque qu'une grande quantité de texte est renvoyée

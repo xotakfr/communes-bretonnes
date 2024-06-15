@@ -1,0 +1,2 @@
+Pour chaque diagramme, vous avez la possiblité d'ouvrir le fichier .drawio sur https://draw.io ou alors vous pouvez aussi ouvrir le fichier
+au format SVG à l'aide d'un navigateur web.
