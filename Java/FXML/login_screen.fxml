@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="1260.0" styleClass="bg_login" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="1260.0" styleClass="bg_login" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -39,7 +39,7 @@
             </BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
                <bottom>
-                  <Button mnemonicParsing="false" styleClass="main-button" text="Se Connecter" BorderPane.alignment="CENTER" />
+                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handle" styleClass="main-button" text="Se Connecter" BorderPane.alignment="CENTER" />
                </bottom>
                <center>
                   <GridPane prefHeight="164.0" prefWidth="396.0" BorderPane.alignment="CENTER">
@@ -52,7 +52,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TextField prefHeight="49.0" prefWidth="332.0" styleClass="text-entry" GridPane.columnIndex="1">
+                        <TextField fx:id="usernameField" prefHeight="49.0" prefWidth="332.0" styleClass="text-entry" GridPane.columnIndex="1">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -60,7 +60,7 @@
                               <Insets right="50.0" />
                            </GridPane.margin>
                         </TextField>
-                        <PasswordField prefHeight="49.0" prefWidth="287.0" styleClass="text-entry" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <PasswordField fx:id="passwordField" prefHeight="49.0" prefWidth="287.0" styleClass="text-entry" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets right="50.0" />
                            </GridPane.margin>
