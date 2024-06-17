@@ -2,6 +2,7 @@ package utils;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.utils.ArrayList;
 
 /**
  * Public class python laucher
@@ -23,10 +24,10 @@ public class PythonLauncher {
 
         // Fusion des deux tableaux en une seule ArrayList
         ArrayList<String> listeFusionnee = new ArrayList<String>();
-        for (String element : tableau1) {
+        for (String element : call) {
             listeFusionnee.add(element);
         }
-        for (String element : tableau2) {
+        for (String element : args) {
             listeFusionnee.add(element);
         }
 
