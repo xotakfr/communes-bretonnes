@@ -2,6 +2,7 @@ scénarios
 ---------
 commune X souhaite se lier aux Y communes les plus importantes de Bretagne, découvrir celles-ci et le chemin le plus court de X vers {Y}
 La région Bretagne souhaite découvrir les lignes de chemin de fer les plus importantes à garder aux normes -> découvrir les arrêtes les plus importantes du territoire
+scénario 3, la région Bretagne souhaite étendre son réseau de rails en commencant par les communes à la fois les plus proches du plus de gares et les plus proches d'un aéroport (double condition de distance minimale), découvrir ces communes et les illustrées sur la carte 
 
 centralitées à implementées et pourquoi
 ------------------------
