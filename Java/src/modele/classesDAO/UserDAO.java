@@ -20,7 +20,7 @@ public class UserDAO {
     protected  String runSQLQuery(Connection connection, String sql) throws Exception {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
-        String com;
+        String com = "";
 
         
         while (resultSet.next()) {
@@ -33,7 +33,7 @@ public class UserDAO {
     }
 
     public String getName(Connection co, long id) {
-        String str;
+        String str = "";
 
         try {
             str = runSQLQuery(co, "SELECT nomUser FROM Users WHERE \"Users.idUser\" = "+id+";");
