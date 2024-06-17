@@ -49,14 +49,19 @@ public class UserDAO {
 
     public ArrayList<Commune> getAccesCommunes(long id) {
         Connection co = getConnection();
+        ArrayList<Commune> arr = new ArrayList<Commune>();
 
         try {
             String str = runSQLQuery(co, "SELECT * FROM Users WHERE \"Users.idUser\""+filterSelect+";");
+            String[] a = str.split(";");
+            for (String s : a) {
+                arr.add(new Commune(s,"Commune Sans Nom", new Departement(56, "Département Sans Nom", 0));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
 
-        return str;
+        return arr;
     }
 }
