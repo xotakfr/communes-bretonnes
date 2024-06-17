@@ -17,7 +17,7 @@ public class UserDAO {
     private static String[] filtersList = new String[]{"idUser", "nomUser","communes"};
 
 
-    protected  String runSQLQuery(Connection connection, String sql) throws Exception {
+    protected static String runSQLQuery(Connection connection, String sql) throws Exception {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
         String com = "";
@@ -32,7 +32,7 @@ public class UserDAO {
         return com;
     }
 
-    public String getName(Connection co, long id) {
+    public static String getName(Connection co, long id) {
         String str = "";
 
         try {
@@ -46,7 +46,7 @@ public class UserDAO {
     }
 
 
-    public ArrayList<Commune> getAccesCommunes(Connection co, long id) {
+    public static ArrayList<Commune> getAccesCommunes(Connection co, long id) {
         ArrayList<Commune> arr = new ArrayList<Commune>();
 
         try {
