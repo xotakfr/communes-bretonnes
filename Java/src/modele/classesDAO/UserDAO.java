@@ -20,10 +20,11 @@ public class UserDAO {
     protected  String runSQLQuery(Connection connection, String sql) throws Exception {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
+        String com;
 
         
         while (resultSet.next()) {
-            String com = resultSet.getString(0);
+            com = resultSet.getString(0);
         }
         
         resultSet.close();
@@ -31,11 +32,11 @@ public class UserDAO {
         return com;
     }
 
-    public String getName(long id) {
-        Connection co = getConnection();
+    public String getName(Connection co, long id) {
+        String str;
 
         try {
-            String str = runSQLQuery(co, "SELECT nomUser FROM Users WHERE \"Users.idUser\" = "+id+";");
+            str = runSQLQuery(co, "SELECT nomUser FROM Users WHERE \"Users.idUser\" = "+id+";");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -45,8 +46,7 @@ public class UserDAO {
     }
 
 
-    public ArrayList<Commune> getAccesCommunes(long id) {
-        Connection co = getConnection();
+    public ArrayList<Commune> getAccesCommunes(Connection co, long id) {
         ArrayList<Commune> arr = new ArrayList<Commune>();
 
         try {
