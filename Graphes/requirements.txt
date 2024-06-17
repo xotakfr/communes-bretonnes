@@ -8,3 +8,4 @@ networkx
 matplotlib
 pyparallel
 ipyparellel
+queue
