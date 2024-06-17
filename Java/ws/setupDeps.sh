@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
 if ! command -v wget &> /dev/null
 then
 	echo "wget est introuvable, veuillez l'installer"
 	exit 1
 fi
-if ! command -v wget &> /dev/null
+if ! command -v unzip &> /dev/null
 then
 	echo "unzip est introuvable, veuillez l'installer"
 	exit 1
