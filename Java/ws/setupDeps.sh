@@ -11,6 +11,8 @@ then
 	exit 1
 fi
 
+mkdir ../lib
+
 echo "Setting up JavaFX (for Java 17)"
 wget "https://download2.gluonhq.com/openjfx/17.0.11/openjfx-17.0.11_linux-x64_bin-sdk.zip"
 unzip openjfx-17.0.11_linux-x64_bin-sdk.zip "javafx-sdk-17.0.11/lib/*"
