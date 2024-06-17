@@ -50,10 +50,10 @@ public class UserDAO {
         ArrayList<Commune> arr = new ArrayList<Commune>();
 
         try {
-            String str = runSQLQuery(co, "SELECT * FROM Users WHERE \"Users.idUser\""+filterSelect+";");
+            String str = runSQLQuery(co, "SELECT * FROM Users WHERE \"Users.idUser\""+id+";");
             String[] a = str.split(";");
             for (String s : a) {
-                arr.add(new Commune(s,"Commune Sans Nom", new Departement(56, "Département Sans Nom", 0)));
+                arr.add(new Commune(Integer.parseInt(s),"Commune Sans Nom", new Departement(56, "Département Sans Nom", 0)));
             }
         } catch (Exception e) {
             e.printStackTrace();
