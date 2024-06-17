@@ -20,3 +20,7 @@ jobs:
       - name: Compile
         working-directory: ./Java/ws
         run: make
+      - name: Upload build arifacts
+        uses: actions/upload-artifact@v4.3.3
+        with:
+          path: ./Java/class
