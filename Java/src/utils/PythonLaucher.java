@@ -49,6 +49,6 @@ public class PythonLauncher {
      * @param args String[]
      */
     public static void main(String[] args) {
-        launch("carte.py", new String[] {"../../../python/image.png"})
+        launch("carte.py", new String[] {"../../../python/image.png"});
     }
 }
