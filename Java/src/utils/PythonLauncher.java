@@ -11,7 +11,7 @@ public class PythonLauncher {
     /**
      * private string path
      */
-    private static String path = "../../../python";
+    private static String path = "../../../python/";
 
     /**
      * Fonction utilitaire de lancement de script
