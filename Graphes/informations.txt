@@ -1,4 +1,4 @@
-Nous avons ajouté gares.csv au répertoire DonneesFourniesGraphes. 
+Nous avons ajouté gare.csv au répertoire DonneesFourniesGraphes. 
 Ce fichier csv nous a été fourni dans le cadre de la partie SQL et est nécessaire au fonctionnement de notre troisième scénario.
 
 Le lien vers la vidéo se trouve dans ???.
