@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import modele.classesModele.Departement;
+import modele.classesModele.Commune;
 /**
  * Data Access for User
  * Use all fonction in DAO for the User objects
