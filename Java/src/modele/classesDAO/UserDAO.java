@@ -18,19 +18,17 @@ public class UserDAO {
 
 
     protected  String runSQLQuery(Connection connection, String sql) throws Exception {
-        ArrayList<User> results = new ArrayList<User>();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
 
         
         while (resultSet.next()) {
             String com = resultSet.getString(0);
-            results.add(com);
         }
         
         resultSet.close();
         statement.close();
-        return results;
+        return com;
     }
 
     public String getName(long id) {
