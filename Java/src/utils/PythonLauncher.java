@@ -21,11 +21,17 @@ public class PythonLauncher {
         // Préparation de l'éxécution
         String[] call = {"python3", path+script};
 
-        // Calculer la taille du nouveau tableau
-        int tailleNouveauTableau = call.length + args.length;
+        // Fusion des deux tableaux en une seule ArrayList
+        ArrayList<String> listeFusionnee = new ArrayList<String>();
+        for (String element : tableau1) {
+            listeFusionnee.add(element);
+        }
+        for (String element : tableau2) {
+            listeFusionnee.add(element);
+        }
 
-        // Créer le nouveau tableau avec une taille suffisante
-        String[] callAndArgs = new String[tailleNouveauTableau];
+        // Conversion de l'ArrayList en tableau
+        String[] callAndArgs = listeFusionnee.toArray(new String[0]);
 
         Process p = Runtime.getRuntime().exec(callAndArgs);
         
