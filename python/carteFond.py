@@ -24,7 +24,7 @@ warnings.filterwarnings('ignore')
 plt.rcParams["figure.figsize"] = (20,15)
 
 # importation du fichier csv comme un panda dataframe
-communes=pd.read_csv("../Graphes/DonneesFourniesGraphes/voisinageCommunesBretonnes.csv", sep=';')
+communes=pd.read_csv("../../Graphes/DonneesFourniesGraphes/voisinageCommunesBretonnes.csv", sep=';')
 
 #on enlève les voisins non bretons (22+29+35+56) et les boucles
 
@@ -52,7 +52,7 @@ G = nx.from_dict_of_lists(voisins_dict)
 
 #lecture des informations geographique
 
-geo=pd.read_csv("../Graphes/DonneesFourniesGraphes/communes-geo.csv", sep=';')
+geo=pd.read_csv("../../Graphes/DonneesFourniesGraphes/communes-geo.csv", sep=';')
 
 geo.head()
 geo_lite = geo.iloc[:,[0,1,17,19]]
@@ -94,7 +94,7 @@ def label_insee(G,data):
 label_insee = label_insee(G,geo_lite)
 
 import geopandas
-region = geopandas.read_file("../Graphes/DonneesFourniesGraphes/communes-geo.geojson")
+region = geopandas.read_file("../../Graphes/DonneesFourniesGraphes/communes-geo.geojson")
 
 
 plt.close()

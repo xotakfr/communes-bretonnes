@@ -137,6 +137,9 @@ def calculate_eccentricity(G):
 
 eccentricities = calculate_eccentricity(G)
 
+import geopandas
+region = geopandas.read_file("../../Graphes/DonneesFourniesGraphes/communes-geo.geojson")
+
 # Création d'une visualisation à partir de l'eccentricité
 
 plt.close()
