@@ -94,4 +94,6 @@ def label_insee(G,data):
 label_insee = label_insee(G,geo_lite)
 
 nx.draw(G,pos=pos_insee,node_size=10, alpha=0.4, edge_color="r", font_size=10, labels=label_insee)
-plt.save(args[0])
+plt.savefig(args[0])
+
+plt.show() # Si la carte s'affiche, tout est parfait
