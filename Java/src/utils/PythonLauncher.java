@@ -57,7 +57,7 @@ public class PythonLauncher {
      */
     public static void main(String[] args) {
         try {
-            launch("carte.py", new String[] {"../../../python/image.png"});
+            launch("carte.py", new String[] {"../../python/image-test.png"});
         } catch (Exception e) {
             e.printStackTrace();
         }
