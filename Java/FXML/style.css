@@ -126,6 +126,33 @@
     -fx-background-size: cover;
 }
 
+.bg_credits {
+    -fx-background-image: url("./assets/img/bgs/bg_credits.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+.credits_box {
+    -fx-background-radius: 10;
+    -fx-background-insets: 30px;
+}
+.credits_box1 {
+    -fx-background-color: #6750a4;
+    -fx-text-fill: white;
+}
+.credits_box2 {
+    -fx-background-color: #ECE6F0;
+    -fx-text-fill: rgba(255,255,255,0);
+}
+
+.list_txt {
+    -fx-translate: 20px;
+}
+.list_txt+.list_txt {
+    -fx-translate: 20px;
+}
+
 .login_box {
     -fx-background-color: rgba(254, 247, 255, 0.80);
     -fx-background-radius: 5;
