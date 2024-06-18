@@ -6,23 +6,27 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import modele.classesDAO.UserDAO;
 import modele.classesModele.Commune;
 import view.scenes.LoginScene;
+import view.scenes.StatsScene;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class WelcomeController {
+public class SingleWelcomeController {
+
+    @FXML
+    private Button communeButton;
+
     @FXML
     private Button logoutButton;
 
     @FXML
-    private ListView<String> communesList;
+    private Button subButton;
 
     @FXML
     private Text nameText;
@@ -36,28 +40,26 @@ public class WelcomeController {
             LoginScene.loadScene(stage);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+
         }
     }
 
     @FXML
-    public void handleLoad(Connection c, String username) {
-        ArrayList<Commune> communes = UserDAO.getAccesCommunes(c, username);
-        ObservableList<String> entries = FXCollections.observableArrayList();
-        for(Commune commune: communes) {
-            entries.add(commune.getNomCommune());
-        }
-        communesList.setItems(entries);
-        String nom = UserDAO.getName(c, username);
-        nameText.setText("Bienvenue " + nom);
+    void loadData(ActionEvent event) {
+        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        StatsScene.loadScene(stage, communeButton.getText());
     }
 
-    public static int detectCommunes(Connection c, String username) {
-        int res;
-        if (username.equals("root")) {
-            res = 2;
-        } else {
-            res = UserDAO.getAccesCommunes(c, username).size();
-        }
-        return res;
+    public void handleLoad(Connection c, String username) {
+        String nom = UserDAO.getName(c, username);
+        System.out.println(nom);
+        nameText.setText("Bienvenue " + nom);
+
+        ArrayList<Commune> communes = UserDAO.getAccesCommunes(c, username);
+        Commune commune = communes.get(0);
+        String nomCommune = commune.getNomCommune();
+        communeButton.setText(nomCommune);
+        subButton.setText(nomCommune.substring(0, 1));
     }
+
 }
