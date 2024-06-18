@@ -135,7 +135,7 @@ public class CommuneDAO extends DAO<Commune> {
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
             pstmt.setString(1, commune.getNomCommune());
-            pstmt.setInt(2, commune.getDepartement().getIdDepartement());
+            pstmt.setInt(2, commune.getLeDepartement().getIdDep());
             pstmt.setLong(3, id);
 
             pstmt.executeUpdate();
@@ -151,7 +151,7 @@ public class CommuneDAO extends DAO<Commune> {
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
             pstmt.setInt(1, commune.getIdCommune());
             pstmt.setString(2, commune.getNomCommune());
-            pstmt.setInt(3, commune.getDepartement().getIdDepartement());
+            pstmt.setInt(3, commune.getLeDepartement().getIdDep());
 
             pstmt.executeUpdate();
         } catch (Exception e) {
