@@ -12,7 +12,7 @@ import modele.classesModele.Annee;
  * Data Access for Annee
  * Use all fonction in DAO for the Annee objects
  */
-public class AnneeDAO {
+public class AnneeDAO extends DAO<Annee>{
     /** Filtre actuel - Voir comparableTo et SwitecherFilter */
     private static String currentFilter = "annee";
     /** Liste des filtres possibles */
