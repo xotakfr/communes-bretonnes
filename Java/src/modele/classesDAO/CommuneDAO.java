@@ -114,4 +114,16 @@ public class CommuneDAO extends DAO<Commune> {
 
         return arr;
     }
+
+    public Commune findByName(Connection c, String name) {
+        ArrayList<Commune> arr = new ArrayList<>();
+        try {
+            arr = runSQLQuery(c, "SELECT * FROM Commune WHERE nomCommune LIKE \""+name+"\";");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return arr.get(0);
+    }
 }

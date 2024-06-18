@@ -27,8 +27,8 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
 
         while (resultSet.next()) {
             DonneesAnnuelles com = new DonneesAnnuelles(
-                                        (Annee) AnneeDAO.getFromId(connection, resultSet.getInt(0)), 
-                                        (Commune) resultSet.getObject(2), 
+                                        AnneeDAO.getFromId(connection, resultSet.getInt(1)),
+                                        new CommuneDAO().findByID(connection, resultSet.getInt(2)),
                                         resultSet.getInt(3), 
                                         resultSet.getInt(4), 
                                         resultSet.getFloat(5), 
@@ -124,5 +124,16 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
         return arr;
     }
 
+    public DonneesAnnuelles findByCommuneAndYear(Connection c, int id, int annee) {
+        ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
+
+        try {
+            arr = runSQLQuery(c, "SELECT * FROM DonneesAnnuelles WHERE laCommune = " + id + " AND lAnnee = " + annee + ";");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return arr.get(0);
+    }
 
 }
