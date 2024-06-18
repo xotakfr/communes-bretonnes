@@ -235,3 +235,12 @@
 .warning_button_no:hover {
     -fx-background-color: #BCB6C0;
 }
+
+.stats_sidebar_2_button {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: black;
+}
+.stats_sidebar_2_button:hover {
+    -fx-background-color: #6750A4;
+    -fx-text-fill: white;
+}
