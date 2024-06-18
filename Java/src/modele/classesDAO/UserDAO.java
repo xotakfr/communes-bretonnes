@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.sql.PreparedStatement;
 
 import modele.classesModele.Departement;
 import modele.classesModele.Commune;
@@ -64,5 +65,45 @@ public class UserDAO {
 
 
         return arr;
+    }
+
+    public void update(Connection co, int id, String username, String communes) {
+        String sql = "UPDATE Users SET username = ?, communes = ? WHERE id = ?";
+
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setString(1, username);
+            pstmt.setString(2, communes);
+            pstmt.setInt(3, id);
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void create(Connection co, int id, String username, String communes) {
+        String sql = "INSERT INTO Users (id, username, communes) VALUES (?, ?, ?)";
+
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+            pstmt.setString(2, username);
+            pstmt.setString(3, communes);
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(Connection co, int id) {
+        String sql = "DELETE FROM Users WHERE id = ?";
+
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
