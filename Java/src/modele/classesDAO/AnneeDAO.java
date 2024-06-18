@@ -12,7 +12,7 @@ import modele.classesModele.Annee;
  * Data Access for Annee
  * Use all fonction in DAO for the Annee objects
  */
-public class AnneeDAO extends DAO<Annee>{
+public class AnneeDAO extends {
     /** Filtre actuel - Voir comparableTo et SwitecherFilter */
     private static String currentFilter = "annee";
     /** Liste des filtres possibles */
@@ -48,8 +48,7 @@ public class AnneeDAO extends DAO<Annee>{
         return str;
     }
 
-    public void update(int id, Annee annee) {
-        Connection co = getConnection();
+    public void update(Connection co, int id, Annee annee) {
         String sql = "UPDATE Annees SET tauxInflation = ? WHERE annee = ?";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
@@ -62,8 +61,7 @@ public class AnneeDAO extends DAO<Annee>{
         }
     }
 
-    public void create(Annee annee) {
-        Connection co = getConnection();
+    public void create(Connection co, Annee annee) {
         String sql = "INSERT INTO Annees (annee, tauxInflation) VALUES (?, ?)";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
@@ -76,8 +74,7 @@ public class AnneeDAO extends DAO<Annee>{
         }
     }
 
-    public void delete(Annee annee) {
-        Connection co = getConnection();
+    public void delete(Connection co, Annee annee) {
         String sql = "DELETE FROM Annees WHERE annee = ?";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
