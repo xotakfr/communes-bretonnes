@@ -1,13 +1,11 @@
 package modele.classesModele;
 
+import java.io.*;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
 
 import modele.classesDAO.*;
-import modeme.classesModele;
 
 /**
  * Classe de gestion des données
@@ -397,9 +395,9 @@ public class DataLoader {
      * 
      * @return Une ArrayList de communes
      */
-    public static ArrayList<Commune> getCommunes() {
+    public static ArrayList<Commune> getCommunes(Connection c) {
         ArrayList<Commune> communes;
-        communes = communeDAO.findAll();
+        communes = communeDAO.findAll(c);
         return communes;
     }
 
@@ -408,9 +406,9 @@ public class DataLoader {
      * 
      * @return Une ArrayList de départements
      */
-    public static ArrayList<Departement> getDepartements() {
+    public static ArrayList<Departement> getDepartements(Connection c) {
         ArrayList<Departement> departements;
-        departements = departementDAO.findAll();
+        departements = departementDAO.findAll(c);
         return departements;
     }
 
@@ -419,9 +417,9 @@ public class DataLoader {
      * 
      * @return Une ArrayList de gares
      */
-    public static ArrayList<Gare> getGares() {
+    public static ArrayList<Gare> getGares(Connection c) {
         ArrayList<Gare> gares;
-        gares = gareDAO.findAll();
+        gares = gareDAO.findAll(c);
         return gares;
     }
     
@@ -430,9 +428,9 @@ public class DataLoader {
      * 
      * @return Une ArrayList de données annuelles
      */
-    public static ArrayList<DonneesAnnuelles> getDonneesAnnuelles() {
+    public static ArrayList<DonneesAnnuelles> getDonneesAnnuelles(Connection c) {
         ArrayList<DonneesAnnuelles> donneesAnnuelles;
-        donneesAnnuelles = donneesAnnuellesDAO.findAll();
+        donneesAnnuelles = donneesAnnuellesDAO.findAll(c);
         return donneesAnnuelles;
     }
 }
