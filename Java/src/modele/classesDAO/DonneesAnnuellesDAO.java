@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.sql.PreparedStatement;
 
 import modele.classesModele.Annee;
 import modele.classesModele.Commune;
@@ -135,6 +136,64 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
             e.printStackTrace();
         }
         return arr.get(0);
+    }
+
+    public void update(long id, DonneesAnnuelles donneesAnnuelles) {
+        Connection co = getConnection();
+        String sql = "UPDATE DonneesAnnuelles SET idAnnee = ?, idCommune = ?, nbMaison = ?, nbAppart = ?, prixMoyen = ?, prixM2Moyen = ?, surfaceMoyenne = ?, depensesCulturellesTotales = ?, budgetTotal = ?, population = ? WHERE id = ?";
+
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setInt(1, donneesAnnuelles.getAnnee().getAnnee());
+            pstmt.setInt(2, donneesAnnuelles.getCommune().getIdCommune());
+            pstmt.setInt(3, donneesAnnuelles.getNbMaison());
+            pstmt.setInt(4, donneesAnnuelles.getNbAppart());
+            pstmt.setFloat(5, donneesAnnuelles.getPrixMoyen());
+            pstmt.setFloat(6, donneesAnnuelles.getPrixM2Moyen());
+            pstmt.setFloat(7, donneesAnnuelles.getSurfaceMoyenne());
+            pstmt.setFloat(8, donneesAnnuelles.getDepensesCulturellesTotales());
+            pstmt.setFloat(9, donneesAnnuelles.getBudgetTotal());
+            pstmt.setInt(10, donneesAnnuelles.getPopulation());
+            pstmt.setLong(11, id);
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void create(DonneesAnnuelles donneesAnnuelles) {
+        Connection co = getConnection();
+        String sql = "INSERT INTO DonneesAnnuelles (idAnnee, idCommune, nbMaison, nbAppart, prixMoyen, prixM2Moyen, surfaceMoyenne, depensesCulturellesTotales, budgetTotal, population) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setInt(1, donneesAnnuelles.getAnnee().getAnnee());
+            pstmt.setInt(2, donneesAnnuelles.getCommune().getIdCommune());
+            pstmt.setInt(3, donneesAnnuelles.getNbMaison());
+            pstmt.setInt(4, donneesAnnuelles.getNbAppart());
+            pstmt.setFloat(5, donneesAnnuelles.getPrixMoyen());
+            pstmt.setFloat(6, donneesAnnuelles.getPrixM2Moyen());
+            pstmt.setFloat(7, donneesAnnuelles.getSurfaceMoyenne());
+            pstmt.setFloat(8, donneesAnnuelles.getDepensesCulturellesTotales());
+            pstmt.setFloat(9, donneesAnnuelles.getBudgetTotal());
+            pstmt.setInt(10, donneesAnnuelles.getPopulation());
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(DonneesAnnuelles donneesAnnuelles) {
+        Connection co = getConnection();
+        String sql = "DELETE FROM DonneesAnnuelles WHERE id = ?";
+
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setLong(1, donneesAnnuelles.getId());
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
