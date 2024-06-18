@@ -1,5 +1,6 @@
+package utils;
+
 import javafx.scene.text.Font;
-import javafx.scene.text.TextBounds;
 import javafx.scene.text.Text;
 
 public class FontOptimizer {
@@ -15,8 +16,8 @@ public class FontOptimizer {
             // changement de taille et mise à jour
             textObject.setFont(Font.font(fontSize));
             
-            TextBounds bounds = textObject.getLayoutBounds();
-            
+            javafx.geometry.Bounds bounds = textObject.getLayoutBounds();
+
             if (bounds.getWidth() <= width && bounds.getHeight() <= height) {
                 fontSize += 0.5;
             } else {

@@ -16,29 +16,26 @@ public class PythonLauncher {
     /**
      * Permet de lancer un script python depuis la classe
      * @param script Le script qu'il veut lancer
-     * @param args Arguments additionels
+     * @param args Arguments additionnels
      */
-    public static void launch(String script,String[] args) throws Exception {
+    public static void launch(String script, String[] args) throws Exception {
         // Préparation à l'exécution du script
-        String[] call = {"python3", path+script};
+        ArrayList<String> commande = new ArrayList<>();
+        commande.add("python3");
+        commande.add(path + script);
 
-        // Fusion des deux tableaux en une seule ArrayList
-        ArrayList<String> listeFusionnee = new ArrayList<String>();
-        for (String element : call) {
-            listeFusionnee.add(element);
-        }
-        for (String element : args) {
-            listeFusionnee.add(element);
+        // Ajout des arguments supplémentaires
+        for (String arg : args) {
+            commande.add(arg);
         }
 
-        // Conversion de l'ArrayList en tableau
-        String[] callAndArgs = listeFusionnee.toArray(new String[0]);
+        // Utilisation de ProcessBuilder au lieu de Runtime
+        ProcessBuilder pb = new ProcessBuilder(commande);
+        Process p = pb.start();
 
-        Process p = Runtime.getRuntime().exec(callAndArgs);
-        
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
         BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-        
+
         // Lecture pour le debug
         String s;
         while ((s = stdInput.readLine())!= null) {
@@ -53,13 +50,12 @@ public class PythonLauncher {
 
     /**
      * Test de l'exécution d'un script python afin de vérifier le bon fonctionnement du programme
-     * @param args Arguments additionels 
+     * @param args Arguments additionnels 
      */
     public static void main(String[] args) {
         try {
-            launch("carte.py", new String[] {"../../python/image-test.png"});
-        } 
-        catch (Exception e) {
+            launch("carte.py", new String[]{"../../python/image-test.png"});
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

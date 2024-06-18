@@ -12,18 +12,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="1257.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WelcomeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="1257.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WelcomeController">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
             <BorderPane prefHeight="57.0" prefWidth="1257.0">
-               <right>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" styleClass="main-button" text="Crédits" BorderPane.alignment="CENTER">
-                     <BorderPane.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </BorderPane.margin>
-                  </Button>
-               </right>
                <left>
                   <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogout" prefHeight="55.0" prefWidth="90.0" text="Déconnexion" textAlignment="RIGHT" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
@@ -38,13 +31,22 @@
                      </font>
                   </Button>
                </left>
-               <center>
-                  <Button mnemonicParsing="false" onAction="#handleSettings" text="Paramètres" BorderPane.alignment="CENTER">
-                     <BorderPane.margin>
-                        <Insets />
-                     </BorderPane.margin>
-                  </Button>
-               </center>
+               <right>
+                  <HBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="57.0" prefWidth="327.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="95.0" styleClass="settings-button" text="Paramètres" onAction="#handleSettings">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" styleClass="main-button" text="Crédits" textAlignment="RIGHT">
+                           <HBox.margin>
+                              <Insets right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </right>
             </BorderPane>
             <BorderPane prefHeight="91.0" prefWidth="1257.0">
                <center>
