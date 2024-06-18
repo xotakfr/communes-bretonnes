@@ -172,7 +172,7 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
             pstmt.setInt(4, donneesAnnuelles.getNbAppart());
             pstmt.setFloat(5, donneesAnnuelles.getPrixMoyen());
             pstmt.setFloat(6, donneesAnnuelles.getPrixM2Moyen());
-            pstmt.setFloat(7, donneesAnnuelles.getSurfaceMoy());
+            pstmt.setFloat(7, donneesAnnuelles.getSurfaceMoyenne());
             pstmt.setFloat(8, donneesAnnuelles.getDepensesCulturellesTotales());
             pstmt.setFloat(9, donneesAnnuelles.getBudgetTotal());
             pstmt.setInt(10, donneesAnnuelles.getPopulation());
@@ -185,10 +185,11 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
 
     public void delete(DonneesAnnuelles donneesAnnuelles) {
         Connection co = getConnection();
-        String sql = "DELETE FROM DonneesAnnuelles WHERE id = ?";
+        String sql = "DELETE FROM DonneesAnnuelles WHERE lAnnee = ? AND laCommune = ?";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
-            pstmt.setLong(1, donneesAnnuelles.getId());
+            pstmt.setLong(1, donneesAnnuelles.getAnnee().getAnnee());
+            pstmt.setLong(1, donneesAnnuelles.getCommune().getIdCommune());
 
             pstmt.executeUpdate();
         } catch (Exception e) {
