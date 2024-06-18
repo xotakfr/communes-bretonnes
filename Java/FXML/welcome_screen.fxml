@@ -53,7 +53,7 @@
             </BorderPane>
             <BorderPane prefHeight="27.0" prefWidth="1257.0">
                <center>
-                  <Text fx:id="nameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue Jean Dupont" wrappingWidth="385.1396484375" BorderPane.alignment="CENTER" wrapText="false">
+                  <Text fx:id="nameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue Jean Dupont" wrappingWidth="999999999" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="System Bold" size="34.0" />
                      </font>
@@ -62,7 +62,7 @@
             </BorderPane>
             <BorderPane prefHeight="49.0" prefWidth="1257.0">
                <center>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Que souhaitez-vous visualiser ?" wrappingWidth="347.2109375" BorderPane.alignment="CENTER" wrapText="false">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Que souhaitez-vous visualiser ?" wrappingWidth="999999999" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="25.0" />
                      </font>
