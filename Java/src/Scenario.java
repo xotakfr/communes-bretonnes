@@ -101,9 +101,9 @@ public class Scenario {
             new Gare(3, "A", false, true, lesCommunes[2])
         };
         DonneesAnnuelles[] lesDonneesAnnuelles = {
-            new DonneesAnnuelles(lesAnnees[2], lesCommunes[0], 1, 3, 500, 10, 1000, 3, 10000),
-            new DonneesAnnuelles(lesAnnees[1], lesCommunes[1], 2, 2, 5000, 100, 10000, 2, 1000),
-            new DonneesAnnuelles(lesAnnees[0], lesCommunes[2], 3, 1, 50, 1, 100, 1, 100)
+            new DonneesAnnuelles(lesAnnees[2], lesCommunes[0], 1, 3, 500, 10, 100, 1000, 3, 10000),
+            new DonneesAnnuelles(lesAnnees[1], lesCommunes[1], 2, 2, 5000, 100, 10, 10000, 2, 1000),
+            new DonneesAnnuelles(lesAnnees[0], lesCommunes[2], 3, 1, 50, 1, 1, 100, 1, 100)
 
         };
         Object[] lesInstances = {lesAnnees, lesDepartements, lesAeroports, lesCommunes, lesGares, lesDonneesAnnuelles};

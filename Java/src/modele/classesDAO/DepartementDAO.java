@@ -115,5 +115,48 @@ public class DepartementDAO extends DAO<Departement> {
         return arr;
     }
 
+    public void update(long id, Departement departement) {
+        Connection co = getConnection();
+        String sql = "UPDATE Departements SET nomDep = ?, invesCulturel2019 = ? WHERE idDep = ?";
+
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setString(1, departement.getNomDep());
+            pstmt.setFloat(2, departement.getInvesCulturel2019());
+            pstmt.setLong(3, id);
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void create(Departement departement) {
+        Connection co = getConnection();
+        String sql = "INSERT INTO Departements (idDep, nomDep, invesCulturel2019) VALUES (?, ?, ?)";
+
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setInt(1, departement.getIdDep());
+            pstmt.setString(2, departement.getNomDep());
+            pstmt.setFloat(3, departement.getInvesCulturel2019());
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(Departement departement) {
+        Connection co = getConnection();
+        String sql = "DELETE FROM Departements WHERE idDep = ?";
+
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setInt(1, departement.getIdDep());
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

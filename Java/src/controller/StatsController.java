@@ -72,9 +72,22 @@ public class StatsController {
         this.appartText.setText(Integer.toString(data.getNbAppart()));
         this.avgText.setText(Float.toString(data.getPrixMoyen()));
         this.avgm2Text.setText(Float.toString(data.getPrixM2Moyen()));
-        this.culturalText.setText(Float.toString(data.getDepensesCulturellesTotales()));
-        this.budgetText.setText(Float.toString(data.getBudgetTotal()));
-        this.popText.setText(Float.toString(data.getPopulation()));
+        this.avgAreaText.setText(Float.toString(data.getSurfaceMoyenne()));
+        if (data.getDepensesCulturellesTotales() == -1) {
+            this.culturalText.setText("Données manquantes");
+        } else {
+            this.culturalText.setText(Float.toString(data.getDepensesCulturellesTotales()));
+        }
+        if (data.getBudgetTotal() == -1) {
+            this.budgetText.setText("Données manquantes");
+        } else {
+            this.budgetText.setText(Float.toString(data.getBudgetTotal()));
+        }
+        if (data.getPopulation() == -1) {
+            this.popText.setText("Données manquantes");
+        } else {
+            this.popText.setText(Float.toString(data.getPopulation()));
+        }
     }
 
     public void handleLoad(String commune) {
