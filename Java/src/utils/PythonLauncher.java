@@ -5,21 +5,21 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
- * Public class python laucher
+ * Cette classe java nous permet de lancer l'exécution de nos programmes python.
+ * Ceux-ci sont nottament utilisés lors de la création de nos graphes
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public class PythonLauncher {
-    /**
-     * private string path
-     */
+    /** Chemin vers le répertoire contenant nos scripts python */
     private static String path = "../../python/";
 
     /**
-     * Fonction utilitaire de lancement de script
-     * @param script string
-     * @param args string[]
+     * Permet de lancer un script python depuis la classe
+     * @param script Le script qu'il veut lancer
+     * @param args Arguments additionels
      */
     public static void launch(String script,String[] args) throws Exception {
-        // Préparation de l'éxécution
+        // Préparation à l'exécution du script
         String[] call = {"python3", path+script};
 
         // Fusion des deux tableaux en une seule ArrayList
@@ -52,13 +52,14 @@ public class PythonLauncher {
     }
 
     /**
-     * Fonction de test de l'écécution de script
-     * @param args String[]
+     * Test de l'exécution d'un script python afin de vérifier le bon fonctionnement du programme
+     * @param args Arguments additionels 
      */
     public static void main(String[] args) {
         try {
             launch("carte.py", new String[] {"../../python/image-test.png"});
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
