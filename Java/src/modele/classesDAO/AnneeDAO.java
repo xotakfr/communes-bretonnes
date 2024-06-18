@@ -3,6 +3,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.sql.PreparedStatement;
+
 
 import modele.classesModele.Annee;
 
@@ -44,5 +46,43 @@ public class AnneeDAO {
 
 
         return str;
+    }
+
+    public void update(Connection co, int id, Annee annee) {
+        String sql = "UPDATE Annees SET tauxInflation = ? WHERE annee = ?";
+
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setFloat(1, annee.getTauxInflation());
+            pstmt.setInt(2, id);
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void create(Connection co, Annee annee) {
+        String sql = "INSERT INTO Annees (annee, tauxInflation) VALUES (?, ?)";
+
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setInt(1, annee.getAnnee());
+            pstmt.setFloat(2, annee.getTauxInflation());
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(Connection co, Annee annee) {
+        String sql = "DELETE FROM Annees WHERE annee = ?";
+
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setInt(1, annee.getAnnee());
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
