@@ -34,9 +34,9 @@ public class WelcomeController {
             Connection c = (Connection) stage.getProperties().get("Connection");
             c.close();
             LoginScene.loadScene(stage);
-        } catch (SQLException e) {
+        } 
+        catch (SQLException e) {
             System.out.println(e.getMessage());
-
         }
     }
 
