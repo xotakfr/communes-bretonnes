@@ -33,6 +33,7 @@ public class LoginController {
         try {
             Connection c = DriverManager.getConnection("jdbc:mysql://localhost/bdSAE", usernameField.getText(), passwordField.getText());
             stage.getProperties().put("Connection", c);
+            stage.getProperties().put("Username", usernameField.getText());
             WelcomeScene.loadScene(stage,usernameField.getText());
         } catch (SQLException e) {
             errorMessage.setText("Echec de la connection, vérifiez vos identifiants");

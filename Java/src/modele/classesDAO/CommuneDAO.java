@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.sql.PreparedStatement;
 
 import modele.classesModele.Commune;
 
@@ -113,5 +114,61 @@ public class CommuneDAO extends DAO<Commune> {
         */
 
         return arr;
+    }
+
+    public Commune findByName(Connection c, String name) {
+        ArrayList<Commune> arr = new ArrayList<>();
+        try {
+            arr = runSQLQuery(c, "SELECT * FROM Commune WHERE nomCommune LIKE \""+name+"\";");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return arr.get(0);
+    }
+
+
+    public void update(long id, Commune commune) {
+        Connection co = getConnection();
+        String sql = "UPDATE Communes SET nomCommune = ?, idDepartement = ? WHERE idCommune = ?";
+
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setString(1, commune.getNomCommune());
+            pstmt.setInt(2, commune.getLeDepartement().getIdDep());
+            pstmt.setLong(3, id);
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void create(Commune commune) {
+        Connection co = getConnection();
+        String sql = "INSERT INTO Communes (idCommune, nomCommune, idDepartement) VALUES (?, ?, ?)";
+
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setInt(1, commune.getIdCommune());
+            pstmt.setString(2, commune.getNomCommune());
+            pstmt.setInt(3, commune.getLeDepartement().getIdDep());
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(Commune commune) {
+        Connection co = getConnection();
+        String sql = "DELETE FROM Communes WHERE idCommune = ?";
+
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setInt(1, commune.getIdCommune());
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

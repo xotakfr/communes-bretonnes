@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="751.0" prefWidth="1131.0" styleClass="bg_credits" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Button mnemonicParsing="false" styleClass="back-button" text="Retour" BorderPane.alignment="TOP_LEFT">
+         <BorderPane.margin>
+            <Insets left="30.0" top="30.0" />
+         </BorderPane.margin>
+      </Button>
+   </top>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <styleClass>
+                  <String fx:value="credits_box" />
+                  <String fx:value="credits_box2" />
+               </styleClass>
+               <center>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-translate-y: -20;" text="Material Design 3 (You)">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-translate-y: 20;" text="Coolors.co">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </StackPane>
+               </center>
+               <top>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-translate-y: 100;" text="Sources d'inspiration" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Text>
+               </top>
+            </BorderPane>
+            <GridPane GridPane.columnIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <styleClass>
+                        <String fx:value="credits_box" />
+                        <String fx:value="credits_box1" />
+                     </styleClass>
+                     <center>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-translate-y: -50;" text="François Patinec-Haxel">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-translate-y: -25;" text="Jean-Louis Emeraud">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-translate-y: 0;" text="Nathan  Guhéneuf-Le Brec">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-translate-y: 25;" text="Iñaki Gomez—Jego">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                     </center>
+                     <top>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-translate-y: 80;" text="Développeurs" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Text>
+                     </top>
+                  </BorderPane>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                     <styleClass>
+                        <String fx:value="credits_box" />
+                        <String fx:value="credits_box1" />
+                     </styleClass>
+                     <center>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-translate-y: -50;" text="Unsplash">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-translate-y: -25;" text="SVGrepo">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-translate-y: 0;" text="Notre équipe">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                     </center>
+                     <top>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-translate-y: 80;" text="Illustrations" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Text>
+                     </top>
+                  </BorderPane>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>
