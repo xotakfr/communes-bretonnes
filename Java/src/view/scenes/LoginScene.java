@@ -13,8 +13,8 @@ import java.sql.Connection;
 
 /**
  * Implémente UIScenes et charge la scène correspondant au menu de connexion.
- * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  * @see UIScenes 
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public class LoginScene implements UIScenes {
 
