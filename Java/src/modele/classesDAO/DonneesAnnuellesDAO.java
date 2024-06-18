@@ -16,7 +16,7 @@ import modele.classesModele.DonneesAnnuelles;
  */
 public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
     /** Filtre actuel - Voir comparableTo et SwitecherFilter */
-    private static String currentFilter = "idCommune";
+    private static String currentFilter = "laCommune";
     /** Liste des filtres posibles */
     private static String[] filtersList = new String[]{"idDep", "nomDep", "invesCulturel2019"};
 
@@ -78,7 +78,7 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
         ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
 
         try {
-            arr = runSQLQuery(c, "SELECT * FROM DonneesAnnuelles WHERE \"DonneesAnnuelles.idCommune\" = "+id+";");
+            arr = runSQLQuery(c, "SELECT * FROM DonneesAnnuelles WHERE \"DonneesAnnuelles.laCommune\" = "+id+";");
         } 
         catch (Exception e) {
             e.printStackTrace();
@@ -140,7 +140,7 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
 
     public void update(long id, DonneesAnnuelles donneesAnnuelles) {
         Connection co = getConnection();
-        String sql = "UPDATE DonneesAnnuelles SET idAnnee = ?, idCommune = ?, nbMaison = ?, nbAppart = ?, prixMoyen = ?, prixM2Moyen = ?, surfaceMoyenne = ?, depensesCulturellesTotales = ?, budgetTotal = ?, population = ? WHERE id = ?";
+        String sql = "UPDATE DonneesAnnuelles SET lAnnee = ?, laCommune = ?, nbMaison = ?, nbAppart = ?, prixMoyen = ?, prixM2Moyen = ?, SurfaceMoy = ?, depensesCulturellesTotales = ?, budgetTotal = ?, population = ? WHERE id = ?";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
             pstmt.setInt(1, donneesAnnuelles.getAnnee().getAnnee());
@@ -163,7 +163,7 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
 
     public void create(DonneesAnnuelles donneesAnnuelles) {
         Connection co = getConnection();
-        String sql = "INSERT INTO DonneesAnnuelles (idAnnee, idCommune, nbMaison, nbAppart, prixMoyen, prixM2Moyen, surfaceMoyenne, depensesCulturellesTotales, budgetTotal, population) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO DonneesAnnuelles (lAnnee, laCommune, nbMaison, nbAppart, prixMoyen, prixM2Moyen, SurfaceMoy, depensesCulturellesTotales, budgetTotal, population) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
             pstmt.setInt(1, donneesAnnuelles.getAnnee().getAnnee());
@@ -172,7 +172,7 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
             pstmt.setInt(4, donneesAnnuelles.getNbAppart());
             pstmt.setFloat(5, donneesAnnuelles.getPrixMoyen());
             pstmt.setFloat(6, donneesAnnuelles.getPrixM2Moyen());
-            pstmt.setFloat(7, donneesAnnuelles.getSurfaceMoyenne());
+            pstmt.setFloat(7, donneesAnnuelles.getSurfaceMoy());
             pstmt.setFloat(8, donneesAnnuelles.getDepensesCulturellesTotales());
             pstmt.setFloat(9, donneesAnnuelles.getBudgetTotal());
             pstmt.setInt(10, donneesAnnuelles.getPopulation());
