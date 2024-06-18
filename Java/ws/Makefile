@@ -4,8 +4,8 @@ build: clean
 doc:
 	javadoc -private -author -d ../doc $(shell find ../src -name '*.java')
 
-run:
-	java -cp ../class --module-path ../lib --add-modules javafx.controls,javafx.base,javafx.fxml CommunesBretonnesApp
+run: build
+	java -cp ../class:../FXML:../lib --module-path ../lib --add-modules javafx.controls,javafx.base,javafx.fxml CommunesBretonnesApp
 
 clean:
 	if [ -d "jar" ]; then rm -rf jar; fi
