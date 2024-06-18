@@ -16,7 +16,7 @@ public class FontOptimizer {
             // changement de taille et mise à jour
             textObject.setFont(Font.font(fontSize));
             
-            javafx.geometry.Bounds bounds = textNode.getLayoutBounds();
+            javafx.geometry.Bounds bounds = textObject.getLayoutBounds();
 
             if (bounds.getWidth() <= width && bounds.getHeight() <= height) {
                 fontSize += 0.5;
