@@ -24,6 +24,8 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
     private float prixMoyen;
     /** Prix moyen au mètre carré dans la commune */
     private float prixM2Moyen;
+    /** Surface moyenne vendue dans la commune */
+    private float surfaceMoyenne;
     /** Dépenses culturelles totales dans la commune*/
     private float depensesCulturellesTotales;
     /** Budget total de la commune */
@@ -41,12 +43,13 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
      * @param nbAppart Le nombre d'appartements dans la commune
      * @param prixMoyen Le prix moyen des biens immobiliers dans la commune
      * @param prixM2Moyen Le prix moyen au mètre carré dans la commune
+     * @param surfaceMoyenne La surface moyenne vendue dans la commune
      * @param depensesCulturellesTotales Les dépenses culturelles totales de la commune
      * @param budgetTotal Le budget total de la commune
      * @param population La population de la commune
      * @throws IllegalArgumentException - quand un paramètre invalide est utilisé
      */
-    public DonneesAnnuelles(Annee lAnnee, Commune laCommune, int nbMaison, int nbAppart, float prixMoyen, float prixM2Moyen, float depensesCulturellesTotales, float budgetTotal, int population) throws IllegalArgumentException {
+    public DonneesAnnuelles(Annee lAnnee, Commune laCommune, int nbMaison, int nbAppart, float prixMoyen, float prixM2Moyen, float surfaceMoyenne, float depensesCulturellesTotales, float budgetTotal, int population) throws IllegalArgumentException {
         if (lAnnee == null) {
             throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre lAnnee invalide");
         }
@@ -65,21 +68,13 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
         if (prixM2Moyen < 0) {
             throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre prixM2Moyen invalide");
         }
-        if (depensesCulturellesTotales < 0) {
-            throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre depensesCulturellesTotales invalide");
-        }
-        if (budgetTotal < 0) {
-            throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre budgetTotal invalide");
-        }
-        if (population < 0) {
-            throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre population invalide");
-        }
         this.lAnnee = lAnnee;
         this.laCommune = laCommune;
         this.nbMaison = nbMaison;
         this.nbAppart = nbAppart;
         this.prixMoyen = prixMoyen;
         this.prixM2Moyen = prixM2Moyen;
+        this.surfaceMoyenne = surfaceMoyenne;
         this.depensesCulturellesTotales = depensesCulturellesTotales;
         this.budgetTotal = budgetTotal;
         this.population = population;
@@ -203,6 +198,14 @@ public class DonneesAnnuelles implements Comparable<DonneesAnnuelles>{
             throw new IllegalArgumentException("DonneesAnnuelles.java : paramètre prixM2Moyen invalide");
         }
         this.prixM2Moyen = prixM2Moyen;
+    }
+
+    public float getSurfaceMoyenne() {
+        return this.surfaceMoyenne;
+    }
+
+    public void setSurfaceMoyenne(float surfaceMoyenne) {
+        this.surfaceMoyenne = surfaceMoyenne;
     }
 
     /**
