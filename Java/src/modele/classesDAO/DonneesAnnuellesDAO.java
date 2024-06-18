@@ -32,10 +32,11 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
                                         resultSet.getInt(3), 
                                         resultSet.getInt(4), 
                                         resultSet.getFloat(5), 
-                                        resultSet.getFloat(6), 
-                                        resultSet.getFloat(7), 
-                                        resultSet.getFloat(8), 
-                                        resultSet.getInt(9)
+                                        resultSet.getFloat(6),
+                                        resultSet.getFloat(7),
+                                        resultSet.getFloat(8),
+                                        resultSet.getFloat(9),
+                                        resultSet.getInt(10)
                                     );
             results.add(com);
         }
