@@ -102,6 +102,23 @@
     -fx-background-size: contain;
 }
 
+.settings-button {
+    -fx-text-fill: rgba(255,255,255,0);
+    -fx-min-width: 90px;
+    -fx-background-image: url("./assets/img/settings.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
+.settings-button:hover {
+    -fx-text-fill: #000000;
+    -fx-min-width: 210px;
+    -fx-background-image: url("./assets/img/settings.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+    -fx-background-size: contain;
+}
+
 .back-button {
     -fx-text-fill: rgba(255,255,255,0);
     -fx-min-width: 20px;
