@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.sql.PreparedStatement;
 
 import modele.classesModele.Gare;;
 
@@ -120,6 +121,51 @@ public class GareDAO extends DAO<Gare> {
 
         return arr;
     }
+    public void update(long id, Gare gare) {
+        Connection co = getConnection();
+        String sql = "UPDATE Gares SET nomGare = ?, estFret = ?, estVoyageur = ?, laCommune = ? WHERE codeGare = ?";
 
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setString(1, gare.getNomGare());
+            pstmt.setBoolean(2, gare.getFretValue());
+            pstmt.setBoolean(3, gare.getVoyageurValue());
+            pstmt.setInt(4, gare.getLaCommune().getIdCommune());
+            pstmt.setLong(5, id);
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void create(Gare gare) {
+        Connection co = getConnection();
+        String sql = "INSERT INTO Gares (codeGare, nomGare, estFret, estVoyageur, laCommune) VALUES (?, ?, ?, ?, ?)";
+
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setInt(1, gare.getCodeGare());
+            pstmt.setString(2, gare.getNomGare());
+            pstmt.setBoolean(3, gare.getFretValue());
+            pstmt.setBoolean(4, gare.getVoyageurValue());
+            pstmt.setInt(5, gare.getLaCommune().getIdCommune());
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(Gare gare) {
+        Connection co = getConnection();
+        String sql = "DELETE FROM Gares WHERE codeGare = ?";
+
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setInt(1, gare.getCodeGare());
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
