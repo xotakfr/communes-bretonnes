@@ -38,6 +38,13 @@
                      </font>
                   </Button>
                </left>
+               <center>
+                  <Button mnemonicParsing="false" text="Paramètres" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                  </Button>
+               </center>
             </BorderPane>
             <BorderPane prefHeight="91.0" prefWidth="1257.0">
                <center>
