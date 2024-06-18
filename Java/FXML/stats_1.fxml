@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="754.0" prefWidth="1217.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StatsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="754.0" prefWidth="1217.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StatsController">
    <left>
       <GridPane prefHeight="1.0E21" styleClass="stats_sidebar" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -35,7 +35,7 @@
                   </Text>
                </center>
                <right>
-                  <MenuButton fx:id="yearButton" mnemonicParsing="false" style="-fx-background-radius: 0 20 0 0;" text="Année" BorderPane.alignment="CENTER">
+                  <MenuButton fx:id="yearButton" mnemonicParsing="false" onAction="#handleYearChange" style="-fx-background-radius: 0 20 0 0;" text="Année" BorderPane.alignment="CENTER">
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#handleYearChange" text="2018" />
                       <MenuItem mnemonicParsing="false" onAction="#handleYearChange" text="2019" />
@@ -89,7 +89,7 @@
                      <GridPane.margin>
                         <Insets top="10.0" />
                      </GridPane.margin></Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Surface moyenne" GridPane.rowIndex="6">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix moyen au m²" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets top="10.0" />
                      </GridPane.margin></Text>
@@ -97,58 +97,58 @@
                      <GridPane.margin>
                         <Insets top="10.0" />
                      </GridPane.margin></Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix moyen au m²" GridPane.rowIndex="10">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dépenses cultutelles totales" GridPane.rowIndex="10">
                      <GridPane.margin>
                         <Insets top="10.0" />
                      </GridPane.margin></Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dépenses cultutelles totales" GridPane.rowIndex="8">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Surface moyenne" GridPane.rowIndex="8">
                      <GridPane.margin>
                         <Insets top="10.0" />
                      </GridPane.margin></Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Population" GridPane.rowIndex="12">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Budget total" GridPane.rowIndex="12">
                      <GridPane.margin>
                         <Insets top="10.0" />
                      </GridPane.margin></Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Budget Total" GridPane.rowIndex="14">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Population" GridPane.rowIndex="14">
                      <GridPane.margin>
                         <Insets top="10.0" />
                      </GridPane.margin></Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="1">
+                  <Text fx:id="maisonsText" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="20.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="3">
+                  <Text fx:id="appartText" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="20.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="5">
+                  <Text fx:id="avgText" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="20.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="7">
+                  <Text fx:id="avgm2Text" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="7">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="20.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="9">
+                  <Text fx:id="avgAreaText" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="9">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="20.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="11">
+                  <Text fx:id="culturalText" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="11">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="20.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="13">
+                  <Text fx:id="budgetText" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="13">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="20.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="15">
+                  <Text fx:id="popText" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="15">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="20.0" />
                      </GridPane.margin>

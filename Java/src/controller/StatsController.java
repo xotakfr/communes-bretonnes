@@ -60,7 +60,6 @@ public class StatsController {
 
     @FXML
     void handleYearChange(ActionEvent event) {
-        System.out.println(event.getSource().getClass());
         Stage stage = (Stage) (((MenuItem) event.getSource()).getParentPopup().getOwnerWindow());
         Connection c = (Connection) stage.getProperties().get("Connection");
         Commune commune = new CommuneDAO().findByName(c, communeText.getText());

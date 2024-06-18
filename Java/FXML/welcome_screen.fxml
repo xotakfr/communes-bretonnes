@@ -39,7 +39,7 @@
                   </Button>
                </left>
                <center>
-                  <Button mnemonicParsing="false" text="Paramètres" BorderPane.alignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#handleSettings" text="Paramètres" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets />
                      </BorderPane.margin>

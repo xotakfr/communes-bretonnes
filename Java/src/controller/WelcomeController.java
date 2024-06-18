@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import modele.classesDAO.UserDAO;
 import modele.classesModele.Commune;
 import view.scenes.LoginScene;
+import view.scenes.SettingsScene;
 import view.scenes.StatsScene;
 
 import java.sql.Connection;
@@ -68,5 +69,11 @@ public class WelcomeController {
     void handleSelection(MouseEvent event) {
         Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
         StatsScene.loadScene(stage, this.communesList.getSelectionModel().getSelectedItem());
+    }
+
+    @FXML
+    void handleSettings(ActionEvent event) {
+        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        SettingsScene.loadScene(stage);
     }
 }

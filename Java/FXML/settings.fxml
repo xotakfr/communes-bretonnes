@@ -9,7 +9,6 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
@@ -21,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="1133.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="1133.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SettingsController">
    <left>
       <GridPane styleClass="stats_sidebar" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -262,11 +261,7 @@
                                           <Insets left="50.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <MenuButton mnemonicParsing="false" text="Table">
-                                      <items>
-                                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                                      </items>
+                                    <MenuButton fx:id="tableButton" mnemonicParsing="false" onAction="#tableAction" onMouseClicked="#tableAction" text="Table">
                                        <GridPane.margin>
                                           <Insets left="50.0" />
                                        </GridPane.margin>
@@ -275,12 +270,7 @@
                               </GridPane>
                            </right>
                            <center>
-                              <TableView prefHeight="725.0" prefWidth="554.0" BorderPane.alignment="CENTER">
-                                <columns>
-                                  <TableColumn prefWidth="75.0" text="C1" />
-                                  <TableColumn prefWidth="75.0" text="C2" />
-                                </columns>
-                              </TableView>
+                              <TableView prefHeight="725.0" prefWidth="554.0" BorderPane.alignment="CENTER" />
                            </center>
                         </BorderPane>
                      </content>
