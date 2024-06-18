@@ -27,7 +27,7 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
 
         while (resultSet.next()) {
             DonneesAnnuelles com = new DonneesAnnuelles(
-                                        (Annee) AnneeDAO.getFromId(resultSet.getInt(0)), 
+                                        (Annee) AnneeDAO.getFromId(connection, resultSet.getInt(0)), 
                                         (Commune) resultSet.getObject(2), 
                                         resultSet.getInt(3), 
                                         resultSet.getInt(4), 
