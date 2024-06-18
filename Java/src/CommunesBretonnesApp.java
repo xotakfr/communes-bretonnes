@@ -28,7 +28,7 @@ public class CommunesBretonnesApp extends Application {
 
     /**
      * Le point d'entrée de notre programme
-     * @param args Les arguments fournis dans le terminal
+     * @param args Les arguments de la ligne de commande
      */
     public static void main(String[] args) {
         launch(args);

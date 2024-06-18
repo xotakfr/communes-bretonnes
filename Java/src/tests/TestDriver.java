@@ -9,12 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Classe de test pour vérifier la connexion à une base de données MySQL en utilisant JDBC.
- * 
+ * Cette classe nous permet de vérifier si la connexion à notre BDD MySQL est fonctionnelle en utilisant JDBC
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public class TestDriver {
-    /** URL de la base de données MySQL */
+    /** Chemin vers la BDD MySQL */
     private static String url = "jdbc:mysql://127.0.0.1:3306/BDSAE";
 
     /** Nom d'utilisateur pour la connexion à la base de données */
@@ -24,29 +23,27 @@ public class TestDriver {
     private static String password = "password";
 
     /**
-     * Obtient une connexion à la base de données.
-     *
-     * @return Une instance de Connection représentant la connexion à la base de données.
+     * Permer de créer et de renvoyer une connexion à la BDD MySQL
+     * @return Une instance de Connection représentant la connexion à la base de données
      */
     protected static Connection getConnection() { 
+        Connection ret = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            return DriverManager.getConnection(url, user, password);
-        } catch (ClassNotFoundException e) {
+            ret = DriverManager.getConnection(url, user, password);
+        } 
+        catch (ClassNotFoundException e) {
             e.printStackTrace();
-            // Return null or throw an exception based on your requirement
-            return null;
-        } catch (SQLException e) {
+        } 
+        catch (SQLException e) {
             System.err.println("Invalid login or password");
-            // Return null or throw an exception based on your requirement
-            return null;
         }
+        return ret;
     }
     
     /**
-     * Point d'entrée de l'application de test.
-     *
-     * @param args Les arguments de la ligne de commande (non utilisés dans cette application).
+     * Point d'entrée du programme
+     * @param args Les arguments de la ligne de commande
      */
     public static void main (String[] args) {
         getConnection();
