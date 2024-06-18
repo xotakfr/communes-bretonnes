@@ -7,11 +7,13 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import modele.classesDAO.UserDAO;
 import modele.classesModele.Commune;
 import view.scenes.LoginScene;
+import view.scenes.StatsScene;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -60,5 +62,11 @@ public class WelcomeController {
             res = UserDAO.getAccesCommunes(c, username).size();
         }
         return res;
+    }
+
+    @FXML
+    void handleSelection(MouseEvent event) {
+        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        StatsScene.loadScene(stage, this.communesList.getSelectionModel().getSelectedItem());
     }
 }
