@@ -1,3 +1,5 @@
+package utils;
+
 import javafx.scene.text.Font;
 import javafx.scene.text.TextBounds;
 import javafx.scene.text.Text;
