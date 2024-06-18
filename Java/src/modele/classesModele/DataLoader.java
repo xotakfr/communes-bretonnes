@@ -315,7 +315,7 @@ public class DataLoader {
     */
 
 
-    /*
+    /**
      * Getter pour les communes avec un filtre
      * @param filter Le filtre à appliquer (nom de la colonne)
      * @param filterSelect La condition de sélection (par exemple : "<54", ">-1", "=0", "<541;>54")
