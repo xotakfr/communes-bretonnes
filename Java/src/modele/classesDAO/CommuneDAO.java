@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import modele.classesModele.Commune;
 
@@ -11,20 +12,20 @@ import modele.classesModele.Commune;
  * Use all fonction in DAO for the Commune objects
  */
 public class CommuneDAO extends DAO<Commune> {
-    /** Filtre actuel - Voir comparableTo et SwitecherFilter */
+    /** Filtre actuel - Voir comparableTo et SwitcherFilter */
     private static String currentFilter = "idCommune";
     /** Liste des filtres possibles */
     private static String[] filtersList = new String[]{"idCommune", "nomCommune", "voisins","population"};
 
 
-    protected  ArrayList<Commune> runSQLQuery(Connection connection, String sql) throws Exception {
+    protected ArrayList<Commune> runSQLQuery(Connection connection, String sql) throws Exception {
         ArrayList<Commune> results = new ArrayList<Commune>();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
 
         
         while (resultSet.next()) {
-            Commune com = new Commune(resultSet.getInt(0),resultSet.getString(1), new DepartementDAO().findByID(resultSet.getInt(2)));
+            Commune com = new Commune(resultSet.getInt(1),resultSet.getString(2), new DepartementDAO().findByID(connection, resultSet.getInt(3)));
             results.add(com);
         }
         
@@ -33,18 +34,17 @@ public class CommuneDAO extends DAO<Commune> {
         return results;
     }
 
-    @Override
-    public  ArrayList<Commune> findAll() {
-        Connection co = getConnection();
+
+    public  ArrayList<Commune> findAll(Connection c) {
         ArrayList<Commune> arr = new ArrayList<Commune>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM Communes;");
+            arr = runSQLQuery(c, "SELECT * FROM Communes;");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        /**
+        /*
         for (Commune commune : arr) {
             ArrayList<Commune> voisines = new ArrayList<Commune>();
             int com = Integer.parseInt(da[0]);
@@ -60,17 +60,14 @@ public class CommuneDAO extends DAO<Commune> {
     }
 
 
-    public Commune findByID(long id) {
-        Connection co = getConnection();
-        ArrayList<Commune> arr = new ArrayList<Commune>();
-
+    public Commune findByID(Connection c, long id) {
+        ArrayList<Commune> arr = new ArrayList<>();
         try {
-            arr = runSQLQuery(co, "SELECT * FROM Communes WHERE \"Communes.idCommune\" = "+id+";");
+            arr = runSQLQuery(c, "SELECT * FROM Commune WHERE idCommune = "+id+";");
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        /**
+        /*
         for (Commune commune : arr) {
             ArrayList<Commune> voisines = new ArrayList<Commune>();
             int com = Integer.parseInt(da[0]);
@@ -96,7 +93,7 @@ public class CommuneDAO extends DAO<Commune> {
             e.printStackTrace();
         }
 
-        /**
+        /*
         for (Commune commune : arr) {
             ArrayList<Commune> voisines = new ArrayList<Commune>();
             int com = Integer.parseInt(da[0]);

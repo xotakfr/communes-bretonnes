@@ -24,7 +24,7 @@ public class UserDAO {
 
         
         while (resultSet.next()) {
-            com = resultSet.getString(0);
+            com = resultSet.getString(1);
         }
         
         resultSet.close();
@@ -32,11 +32,11 @@ public class UserDAO {
         return com;
     }
 
-    public static String getName(Connection co, long id) {
+    public static String getName(Connection co, String username) {
         String str = "";
 
         try {
-            str = runSQLQuery(co, "SELECT nomUser FROM Users WHERE \"Users.idUser\" = "+id+";");
+            str = runSQLQuery(co, "SELECT nomUser FROM Users WHERE \"Users.username\" LIKE \""+username+"\";");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -46,14 +46,15 @@ public class UserDAO {
     }
 
 
-    public static ArrayList<Commune> getAccesCommunes(Connection co, long id) {
+    public static ArrayList<Commune> getAccesCommunes(Connection co, String username) {
         ArrayList<Commune> arr = new ArrayList<Commune>();
 
         try {
-            String str = runSQLQuery(co, "SELECT * FROM Users WHERE \"Users.idUser\""+id+";");
+            String str = runSQLQuery(co, "SELECT communes FROM Users WHERE username LIKE \""+username+"\";");
             String[] a = str.split(";");
             for (String s : a) {
-                arr.add(new Commune(Integer.parseInt(s),"Commune Sans Nom", new Departement(56, "Département Sans Nom", 0)));
+                //arr.add(new Commune(Integer.parseInt(s),"Commune Sans Nom", new Departement(56, "Département Sans Nom", 0)));
+                arr.add(new CommuneDAO().findByID(co, Long.parseLong(s)));
             }
         } catch (Exception e) {
             e.printStackTrace();

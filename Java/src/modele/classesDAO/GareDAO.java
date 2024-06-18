@@ -25,7 +25,7 @@ public class GareDAO extends DAO<Gare> {
 
         
         while (resultSet.next()) {
-            Gare com = new Gare(resultSet.getInt(0),resultSet.getString(1), resultSet.getBoolean(2), resultSet.getBoolean(3), new CommuneDAO().findByID(resultSet.getInt(4)));
+            Gare com = new Gare(resultSet.getInt(0),resultSet.getString(1), resultSet.getBoolean(2), resultSet.getBoolean(3), new CommuneDAO().findByID(connection, resultSet.getInt(4)));
             results.add(com);
         }
         
@@ -35,7 +35,7 @@ public class GareDAO extends DAO<Gare> {
     }
 
     @Override
-    public  ArrayList<Gare> findAll() {
+    public  ArrayList<Gare> findAll(Connection c) {
         Connection co = getConnection();
         ArrayList<Gare> arr = new ArrayList<Gare>();
 

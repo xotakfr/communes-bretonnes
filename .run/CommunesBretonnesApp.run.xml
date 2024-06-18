@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="CommunesBretonnesApp" type="Application" factoryName="Application">
+    <classpathModifications>
+      <entry path="$PROJECT_DIR$/Java/class" />
+      <entry path="$PROJECT_DIR$/Java/FXML" />
+      <entry path="$PROJECT_DIR$/Java/lib" />
+    </classpathModifications>
+    <option name="MAIN_CLASS_NAME" value="CommunesBretonnesApp" />
+    <module name="communes-bretonnes" />
+    <option name="VM_PARAMETERS" value="--module-path ../lib/ --add-modules javafx.controls,javafx.fxml" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Java/ws" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

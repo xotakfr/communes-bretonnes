@@ -7,14 +7,16 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import view.scenes.WelcomeScene;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 
 public class LoginController {
-
-    @FXML
-    private Button loginButton;
 
     @FXML
     private PasswordField passwordField;
@@ -22,10 +24,21 @@ public class LoginController {
     @FXML
     private TextField usernameField;
 
+    @FXML
+    private Text errorMessage;
+
+
     public void handle(ActionEvent event) {
-        System.out.println("Event triggered");
         Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
-        WelcomeScene.loadScene(stage);
+        try {
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost/bdSAE", usernameField.getText(), passwordField.getText());
+            stage.getProperties().put("Connection", c);
+            WelcomeScene.loadScene(stage,usernameField.getText());
+        } catch (SQLException e) {
+            errorMessage.setText("Echec de la connection, vérifiez vos identifiants");
+            System.out.println(e.getMessage());
+        }
+
 
     }
 }

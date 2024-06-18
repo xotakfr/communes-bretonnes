@@ -25,7 +25,7 @@ public class DepartementDAO extends DAO<Departement> {
 
         
         while (resultSet.next()) {
-            Departement com = new Departement(resultSet.getInt(0),resultSet.getString(1), resultSet.getFloat(2));
+            Departement com = new Departement(resultSet.getInt(1),resultSet.getString(2), resultSet.getFloat(3));
             results.add(com);
         }
         
@@ -35,12 +35,11 @@ public class DepartementDAO extends DAO<Departement> {
     }
 
     @Override
-    public ArrayList<Departement> findAll() {
-        Connection co = getConnection();
-        ArrayList<Departement> arr = new ArrayList<Departement>();
+    public ArrayList<Departement> findAll(Connection c) {
+        ArrayList<Departement> arr = new ArrayList<>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM Departements;");
+            arr = runSQLQuery(c, "SELECT * FROM Departements;");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,12 +60,12 @@ public class DepartementDAO extends DAO<Departement> {
     }
 
 
-    public Departement findByID(long id) {
-        Connection co = getConnection();
+    public Departement findByID(Connection c, long id) {
+
         ArrayList<Departement> arr = new ArrayList<Departement>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM Departements WHERE \"Departements.idCommune\" = "+id+";");
+            arr = runSQLQuery(c, "SELECT * FROM Departement WHERE idDep = "+id+";");
         } catch (Exception e) {
             e.printStackTrace();
         }

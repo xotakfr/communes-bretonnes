@@ -37,12 +37,11 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
     }
 
     @Override
-    public  ArrayList<DonneesAnnuelles> findAll() {
-        Connection co = getConnection();
+    public  ArrayList<DonneesAnnuelles> findAll(Connection c) {
         ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM DonneesAnnuelles;");
+            arr = runSQLQuery(c, "SELECT * FROM DonneesAnnuelles;");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -63,12 +62,11 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
     }
 
 
-    public  DonneesAnnuelles findByID(long id) {
-        Connection co = getConnection();
+    public  DonneesAnnuelles findByID(Connection c, long id) {
         ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM DonneesAnnuelles WHERE \"DonneesAnnuelles.idCommune\" = "+id+";");
+            arr = runSQLQuery(c, "SELECT * FROM DonneesAnnuelles WHERE \"DonneesAnnuelles.idCommune\" = "+id+";");
         } catch (Exception e) {
             e.printStackTrace();
         }

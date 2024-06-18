@@ -9,12 +9,9 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
 
-public class LoginScene implements UIScenes{
-    private static LoginController controller;
-
-    @FXML
-    private static Button loginButton;
+public class LoginScene implements UIScenes {
 
     public static void loadScene(Stage stage) {
         try {

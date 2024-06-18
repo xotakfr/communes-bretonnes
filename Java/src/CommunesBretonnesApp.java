@@ -1,8 +1,9 @@
 import javafx.application.Application;
 
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import view.scenes.LoginScene;
+
+import java.sql.Connection;
 
 public class CommunesBretonnesApp extends Application {
     private Stage primaryStage;
@@ -13,6 +14,7 @@ public class CommunesBretonnesApp extends Application {
         this.primaryStage.setTitle("Gestion des communes bretonnes");
 
         LoginScene.loadScene(stage);
+        this.primaryStage.show();
     }
 
     public static void main(String[] args) {

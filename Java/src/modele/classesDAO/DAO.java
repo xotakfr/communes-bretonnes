@@ -37,7 +37,7 @@ public abstract class DAO<T> {
      */
     //protected abstract List<T> runSQLQuery(Connection connection, String sql) throws Exception;
 
-    public abstract List<T> findAll();
+    public abstract List<T> findAll(Connection c);
 
     /**
     public abstract T findById(long id);

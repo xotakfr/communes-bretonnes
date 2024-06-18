@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="1260.0" styleClass="bg_login" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="1260.0" styleClass="bg_login" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -88,7 +88,7 @@
                   </GridPane>
                </center>
             </BorderPane>
-            <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Message d'erreur">
+            <Text id="errorMessage" fx:id="errorMessage" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0">
                <VBox.margin>
                   <Insets left="20.0" />
                </VBox.margin>
