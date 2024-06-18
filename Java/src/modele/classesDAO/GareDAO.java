@@ -25,7 +25,13 @@ public class GareDAO extends DAO<Gare> {
 
         
         while (resultSet.next()) {
-            Gare com = new Gare(resultSet.getInt(0),resultSet.getString(1), resultSet.getBoolean(2), resultSet.getBoolean(3), new CommuneDAO().findByID(connection, resultSet.getInt(4)));
+            Gare com = new Gare(
+                            resultSet.getInt(1),
+                            resultSet.getString(2),
+                            resultSet.getBoolean(3),
+                            resultSet.getBoolean(4),
+                            new CommuneDAO().findByID(connection, resultSet.getInt(5))
+                        );
             results.add(com);
         }
         
@@ -41,7 +47,8 @@ public class GareDAO extends DAO<Gare> {
 
         try {
             arr = runSQLQuery(co, "SELECT * FROM Gares;");
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -67,7 +74,8 @@ public class GareDAO extends DAO<Gare> {
 
         try {
             arr = runSQLQuery(co, "SELECT * FROM Gares WHERE \"Gares.idCommune\" = "+id+";");
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -93,7 +101,8 @@ public class GareDAO extends DAO<Gare> {
 
         try {
             arr = runSQLQuery(co, "SELECT * FROM Gares WHERE \"Gares."+filter+"\""+filterSelect+";");
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
 

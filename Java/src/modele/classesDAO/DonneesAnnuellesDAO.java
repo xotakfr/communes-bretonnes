@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import modele.classesModele.Annee;
+import modele.classesModele.Commune;
 import modele.classesModele.DonneesAnnuelles;
 
 /**
@@ -23,13 +25,20 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
 
-        /**
-         * à refaire via le shéma SQL
         while (resultSet.next()) {
-            DonneesAnnuelles com = new DonneesAnnuelles(resultSet.getInt(0),resultSet.getObject(1), resultSet.getObject(2));
+            DonneesAnnuelles com = new DonneesAnnuelles(
+                                        (Annee) resultSet.getObject(1), 
+                                        (Commune) resultSet.getObject(2), 
+                                        resultSet.getInt(3), 
+                                        resultSet.getInt(4), 
+                                        resultSet.getFloat(5), 
+                                        resultSet.getFloat(6), 
+                                        resultSet.getFloat(7), 
+                                        resultSet.getFloat(8), 
+                                        resultSet.getInt(9)
+                                    );
             results.add(com);
         }
-        */
         
         resultSet.close();
         statement.close();
@@ -42,7 +51,8 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
 
         try {
             arr = runSQLQuery(c, "SELECT * FROM DonneesAnnuelles;");
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -67,7 +77,8 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
 
         try {
             arr = runSQLQuery(c, "SELECT * FROM DonneesAnnuelles WHERE \"DonneesAnnuelles.idCommune\" = "+id+";");
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -93,7 +104,8 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
 
         try {
             arr = runSQLQuery(co, "SELECT * FROM DonneesAnnuelles WHERE \"DonneesAnnuelles."+filter+"\""+filterSelect+";");
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
 

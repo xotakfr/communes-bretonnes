@@ -15,19 +15,19 @@ public abstract class DAO<T> {
     private static String user = "";
     private static String password = "";
     
-    protected static Connection getConnection() { 
+    protected static Connection getConnection() {
+        Connection ret = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            return DriverManager.getConnection(url, user, password);
-        } catch (ClassNotFoundException e) {
+            ret = DriverManager.getConnection(url, user, password);
+        } 
+        catch (ClassNotFoundException e) {
             e.printStackTrace();
-            // Return null or throw an exception based on your requirement
-            return null;
-        } catch (SQLException e) {
+        } 
+        catch (SQLException e) {
             System.err.println("Invalid login or password");
-            // Return null or throw an exception based on your requirement
-            return null;
         }
+        return ret;
     }
 
 

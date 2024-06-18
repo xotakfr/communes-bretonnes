@@ -37,7 +37,8 @@ public class UserDAO {
 
         try {
             str = runSQLQuery(co, "SELECT nomUser FROM Users WHERE \"Users.username\" LIKE \""+username+"\";");
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -56,7 +57,8 @@ public class UserDAO {
                 //arr.add(new Commune(Integer.parseInt(s),"Commune Sans Nom", new Departement(56, "Département Sans Nom", 0)));
                 arr.add(new CommuneDAO().findByID(co, Long.parseLong(s)));
             }
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
 

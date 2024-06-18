@@ -23,12 +23,15 @@ public class DepartementDAO extends DAO<Departement> {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
 
-        
         while (resultSet.next()) {
-            Departement com = new Departement(resultSet.getInt(1),resultSet.getString(2), resultSet.getFloat(3));
+            Departement com = new Departement(
+                                resultSet.getInt(1),
+                                resultSet.getString(2),
+                                resultSet.getFloat(3)
+                            );
             results.add(com);
         }
-        
+    
         resultSet.close();
         statement.close();
         return results;
@@ -37,10 +40,10 @@ public class DepartementDAO extends DAO<Departement> {
     @Override
     public ArrayList<Departement> findAll(Connection c) {
         ArrayList<Departement> arr = new ArrayList<>();
-
         try {
             arr = runSQLQuery(c, "SELECT * FROM Departements;");
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -61,12 +64,12 @@ public class DepartementDAO extends DAO<Departement> {
 
 
     public Departement findByID(Connection c, long id) {
-
         ArrayList<Departement> arr = new ArrayList<Departement>();
 
         try {
             arr = runSQLQuery(c, "SELECT * FROM Departement WHERE idDep = "+id+";");
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -92,7 +95,8 @@ public class DepartementDAO extends DAO<Departement> {
 
         try {
             arr = runSQLQuery(co, "SELECT * FROM Departements WHERE \"Departements."+filter+"\""+filterSelect+";");
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
 

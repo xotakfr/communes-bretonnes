@@ -25,7 +25,11 @@ public class CommuneDAO extends DAO<Commune> {
 
         
         while (resultSet.next()) {
-            Commune com = new Commune(resultSet.getInt(1),resultSet.getString(2), new DepartementDAO().findByID(connection, resultSet.getInt(3)));
+            Commune com = new Commune(
+                            resultSet.getInt(1),
+                            resultSet.getString(2), 
+                            new DepartementDAO().findByID(connection, resultSet.getInt(3))
+                        );
             results.add(com);
         }
         
@@ -37,10 +41,10 @@ public class CommuneDAO extends DAO<Commune> {
 
     public  ArrayList<Commune> findAll(Connection c) {
         ArrayList<Commune> arr = new ArrayList<Commune>();
-
         try {
             arr = runSQLQuery(c, "SELECT * FROM Communes;");
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -64,9 +68,11 @@ public class CommuneDAO extends DAO<Commune> {
         ArrayList<Commune> arr = new ArrayList<>();
         try {
             arr = runSQLQuery(c, "SELECT * FROM Commune WHERE idCommune = "+id+";");
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
+
         /*
         for (Commune commune : arr) {
             ArrayList<Commune> voisines = new ArrayList<Commune>();
@@ -89,7 +95,8 @@ public class CommuneDAO extends DAO<Commune> {
 
         try {
             arr = runSQLQuery(co, "SELECT * FROM Communes WHERE \"Communes."+filter+"\""+filterSelect+";");
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
 
