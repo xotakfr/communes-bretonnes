@@ -28,9 +28,9 @@
          <children>
             <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="stats_sidebar_1_top">
                <center>
-                  <Text fx:id="communeText" strokeType="OUTSIDE" strokeWidth="0.0" text="Vannes" BorderPane.alignment="CENTER">
+                  <Text fx:id="communeText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="stats_title" text="Vannes" wrappingWidth="100.0" BorderPane.alignment="CENTER">
                      <font>
-                        <Font size="22.0" />
+                        <Font size="20.0" />
                      </font>
                   </Text>
                </center>
