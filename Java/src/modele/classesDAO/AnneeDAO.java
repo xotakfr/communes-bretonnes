@@ -3,6 +3,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import modele.classesModele.Annee;
+
 /**
  * Data Access for Annee
  * Use all fonction in DAO for the Annee objects
