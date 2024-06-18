@@ -9,7 +9,18 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class StatsScene {
+/**
+ * Implémente UIScenes et charge la scène correspondante à la page de visualisation des données d'une commune
+ * @see UIScene
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
+ */
+public class StatsScene implements UIScenes {
+
+    /**
+     * Récupère la scène associée à la page de visualisation des données d'une commune
+     * @param stage Le stage de l'application
+     * @param commune La commune concernée
+     */
     public static void loadScene(Stage stage, String commune) {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -20,7 +31,8 @@ public class StatsScene {
             stage.setScene(scene);
             StatsController controller = loader.getController();
             controller.handleLoad(commune);
-        } catch (IOException e) {
+        } 
+        catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }

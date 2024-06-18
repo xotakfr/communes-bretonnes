@@ -14,10 +14,10 @@ import java.sql.Connection;
 /**
  * Implémente UIScenes et charge la scène correspondant au menu principal.
  * La scène utilisée pour le menu principal dépend des permissions de l'utilisateur.
- * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  * @see UIScenes
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
-public class WelcomeScene implements UIScenes{
+public class WelcomeScene implements UIScenes {
     /**
      * Récupère la scène associée au menu principal de l'application et l'applique
      * au stage de l'application.
