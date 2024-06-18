@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import modele.classesDAO.UserDAO;
 import modele.classesModele.Commune;
@@ -22,6 +23,9 @@ public class WelcomeController {
 
     @FXML
     private ListView<String> communesList;
+
+    @FXML
+    private Text nameText;
 
     @FXML
     void handleLogout(ActionEvent event) {
@@ -44,6 +48,8 @@ public class WelcomeController {
             entries.add(commune.getNomCommune());
         }
         communesList.setItems(entries);
+        String nom = UserDAO.getName(c, username);
+        nameText.setText("Bienvenue " + nom);
     }
 
     public static int detectCommunes(Connection c, String username) {

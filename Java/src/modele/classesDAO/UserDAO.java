@@ -36,7 +36,7 @@ public class UserDAO {
         String str = "";
 
         try {
-            str = runSQLQuery(co, "SELECT nomUser FROM Users WHERE \"Users.username\" LIKE \""+username+"\";");
+            str = runSQLQuery(co, "SELECT nomUser FROM Users WHERE username LIKE \""+username+"\";");
         } catch (Exception e) {
             e.printStackTrace();
         }
