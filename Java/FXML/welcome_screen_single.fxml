@@ -42,7 +42,7 @@
             </BorderPane>
             <BorderPane prefHeight="91.0" prefWidth="1257.0">
                <center>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion des communes bretonnes" BorderPane.alignment="CENTER">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion des communes bretonnes" textAlignment="CENTER" wrappingWidth="1255.0" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="54.0" />
                      </font>
@@ -54,7 +54,7 @@
             </BorderPane>
             <BorderPane prefHeight="27.0" prefWidth="1257.0">
                <center>
-                  <Text fx:id="nameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue Jean Dupont" wrappingWidth="385.1396484375" BorderPane.alignment="CENTER">
+                  <Text fx:id="nameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue Jean Dupont" textAlignment="CENTER" wrappingWidth="1255.0" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="System Bold" size="34.0" />
                      </font>
@@ -63,7 +63,7 @@
             </BorderPane>
             <BorderPane prefHeight="49.0" prefWidth="1257.0">
                <center>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Que souhaitez-vous visualiser ?" wrappingWidth="347.2109375" BorderPane.alignment="CENTER">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Que souhaitez-vous visualiser ?" textAlignment="CENTER" wrappingWidth="1255.0" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="25.0" />
                      </font>
