@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
@@ -16,6 +17,8 @@ import modele.classesModele.*;
 import utils.ResultSetTableView;
 import view.scenes.WelcomeScene;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 
 import java.lang.reflect.InvocationTargetException;
@@ -53,6 +56,9 @@ public class SettingsController {
     private TableColumn<DefaultThing, String> col9;
 
     @FXML
+    private TextField valueText;
+
+    @FXML
     void tableAction(ActionEvent event) {
         Stage stage = (Stage) (((MenuItem) event.getSource()).getParentPopup().getOwnerWindow());
         Connection c = (Connection) stage.getProperties().get("Connection");
@@ -66,6 +72,14 @@ public class SettingsController {
         col7.setCellValueFactory(new PropertyValueFactory<>("col7"));
         col8.setCellValueFactory(new PropertyValueFactory<>("col8"));
         col9.setCellValueFactory(new PropertyValueFactory<>("col9"));
+
+        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection!=null) {
+                DefaultThing d = (DefaultThing) newSelection;
+                System.out.println(d.getAsData());
+                valueText.setText(d.getAsData());
+            }
+        });
 
         String table = ((MenuItem) event.getSource()).getText();
         try {
@@ -91,16 +105,31 @@ public class SettingsController {
                     for (Departement q : itemsArrayListDepartement) {
                         def.add(new DefaultThing(q));
                     }
+
                 case "modele.classesDAO.CommuneDAO":
                     ArrayList<Commune> itemsArrayListCommune = new CommuneDAO().findAll(c);
                     for (Commune q : itemsArrayListCommune) {
                         def.add(new DefaultThing(q));
                     }
-
             }
             ObservableList<DefaultThing> items = FXCollections.observableArrayList(def);
-            System.out.println(items);
             tableView.setItems(items);
+
+            valueText.setOnAction(eventDep -> {
+                if (((KeyEvent) eventDep).getCode() == KeyCode.ENTER) {
+                    String[] txt = valueText.getText().split("§");
+                     switch (className) {
+                        case "modele.classesDAO.DepartementDAO":
+                            new DepartementDAO().update(txt[0], new Departement(txt[0], txt[1], txt[2]));
+                        case "modele.classesDAO.CommuneDAO":
+                            new CommuneDAO().update(txt[0], new Commune(txt[0], txt[1], txt[2]));
+                        case "modele.classesDAO.GareDAO":
+                            new GareDAO().update(txt[0], new Gare(txt[0], txt[1], txt[2], txt[3], txt[4]));
+                        case "modele.classesDAO.UsersDAO":
+                            new UsersDAO().update(txt[0], new Gare(txt[0], txt[1], txt[2], txt[3], txt[4]));
+                }
+            });
+
 
         }
         catch (ClassNotFoundException e) {

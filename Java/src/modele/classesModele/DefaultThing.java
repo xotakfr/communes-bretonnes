@@ -37,6 +37,17 @@ public class DefaultThing {
         this.col8 = new SimpleStringProperty("");
         this.col9 = new SimpleStringProperty("");
     }
+    public DefaultThing(Gare gare) {
+        this.col1 = new SimpleStringProperty(String.valueOf(gare.getCodeGare()));
+        this.col2 = new SimpleStringProperty(gare.getNomGare());
+        this.col3 = new SimpleStringProperty(String.valueOf(gare.getFretValue()));
+        this.col4 = new SimpleStringProperty(String.valueOf(gare.getVoyageurValue()));
+        this.col5 = new SimpleStringProperty(String.valueOf(gare.getLaCommune().getIdCommune()));
+        this.col6 = new SimpleStringProperty("");
+        this.col7 = new SimpleStringProperty("");
+        this.col8 = new SimpleStringProperty("");
+        this.col9 = new SimpleStringProperty("");
+    }
 
     public String getCol1() {
         return col1.get();
@@ -68,4 +79,35 @@ public class DefaultThing {
         return col9.get();
     }
 
+    public String getAsData() {
+        String s="";
+        if (!getCol1().equals("")) {
+            s+=getCol1();
+        }
+        if (!getCol2().equals("")) {
+            s=s+"§"+getCol2();
+        }
+        if (!getCol3().equals("")) {
+            s=s+"§"+getCol3();
+        }
+        if (!getCol4().equals("")) {
+            s=s+"§"+getCol4();
+        }
+        if (!getCol5().equals("")) {
+            s=s+"§"+getCol5();
+        }
+        if (!getCol6().equals("")) {
+            s=s+"§"+getCol6();
+        }
+        if (!getCol7().equals("")) {
+            s=s+"§"+getCol7();
+        }
+        if (!getCol8().equals("")) {
+            s=s+"§"+getCol8();
+        }
+        if (!getCol9().equals("")) {
+            s=s+"§"+getCol9();
+        }
+        return s;
+    }
 }
