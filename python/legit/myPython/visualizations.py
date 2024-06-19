@@ -170,7 +170,7 @@ def visualize_degrees():
     plt.colorbar(sm, ax=ax, orientation="vertical")
 
     plt.savefig("javafx_visualization")
-    plt.show()
+    
 
 
 def visualize_eccentricities():
@@ -192,7 +192,7 @@ def visualize_eccentricities():
     plt.colorbar(sm, ax=ax, orientation="vertical")
 
     plt.savefig("javafx_visualization")
-    plt.show()
+    
 
 
 def draw_top_Y_arretes(G: nx.Graph, X: str, Y_amount: int) -> None:
@@ -241,7 +241,7 @@ def draw_top_Y_arretes(G: nx.Graph, X: str, Y_amount: int) -> None:
     nx.draw_networkx_nodes(new_G, node_color=node_color_map, pos=pos_insee, ax=ax, node_size=100, alpha=node_alpha_map)
     nx.draw_networkx_edges(new_G, edge_color=edge_color_map, pos=pos_insee, ax=ax, width=2.0, alpha=edge_alpha_map)
     plt.savefig("javafx_visualization")
-    plt.show()
+    
 
 
 def arretes_importantes(G: nx.Graph) -> list:
@@ -296,7 +296,7 @@ def draw_top_Y_communes(G: nx.Graph, X: str, amount_Y: int) -> None:
     nx.draw_networkx_nodes(new_G, node_color=color_map, pos=pos_insee, ax=ax, node_size=100, alpha=alpha_map)
     nx.draw_networkx_edges(new_G, edge_color="black", pos=pos_insee, ax=ax, width=2.0, alpha=1)
     plt.savefig("javafx_visualization")
-    plt.show()
+    
 
 
 def get_top_Y_communes(G: nx.Graph, amount_Y: int) -> list:
@@ -382,7 +382,7 @@ def draw_Y_highest_priority(G: nx.Graph, amount_Y: int, X: int = -1) -> None:
     nx.draw_networkx_edges(new_G, edge_color="grey", pos=pos_insee, ax=ax, width=2.0, alpha=0.25)
     nx.draw_networkx_labels(new_G, pos=pos_insee, labels=top_Y_priority_content)
     plt.savefig("javafx_visualization")
-    plt.show()
+    
 
 
 def get_Y_highest_priority(G: nx.Graph, sub_G: nx.Graph, amount_Y: int) -> list:
