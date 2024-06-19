@@ -41,7 +41,7 @@ public class AnneeDAO {
      * @param id L'ID qu'on doit rechercher
      * @return L'instance correspondante à l'ID
      */
-    public static ArrayList<Annee> getFromId(Connection co, int id) {
+    public static ArrayList<Annee> findAll(Connection co, int id) {
         ArrayList<Annee> ann = new ArrayList<Annee>();
 
         try {
