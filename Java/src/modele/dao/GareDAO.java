@@ -9,16 +9,24 @@ import java.sql.PreparedStatement;
 import modele.data.Gare;;
 
 /**
- * Data Access for Gare
- * Use all fonction in DAO for the Gare objects
+ * Classe DAO pour le type Gare.
+ * Hérite de DAO
+ * @see DAO
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public class GareDAO extends DAO<Gare> {
-    /** Filtre actuel - Voir comparableTo et SwitecherFilter */
+    /** Filtre actuel - Voir comparableTo */
     private static String currentFilter = "idCommune";
     /** Liste des filtres possibles */
     private static String[] filtersList = new String[]{"codeGare", "nomGare", "estFret", "estVoyageur", "laCommune"};
 
-
+    /**
+     * Lance une requête SQL
+     * @param connection La connexion à la base de données
+     * @param sql La requête SQL
+     * @return Le résultat de la requête SQL
+     * @throws Exception - quand un problème est détecté avec la base de données
+     */
     protected  ArrayList<Gare> runSQLQuery(Connection connection, String sql) throws Exception {
         ArrayList<Gare> results = new ArrayList<Gare>();
         Statement statement = connection.createStatement();
@@ -41,6 +49,11 @@ public class GareDAO extends DAO<Gare> {
         return results;
     }
 
+    /**
+     * Permet de retrouver l'ensemble des instances de type Gare de la base de données
+     * @param co La connexion à la base de données
+     * @return L'ensemble des instances de type Gare de la base de données
+     */
     @Override
     public  ArrayList<Gare> findAll(Connection co) {
         ArrayList<Gare> arr = new ArrayList<Gare>();
@@ -52,22 +65,15 @@ public class GareDAO extends DAO<Gare> {
             e.printStackTrace();
         }
 
-        /**
-        for (Commune commune : arr) {
-            ArrayList<Commune> voisines = new ArrayList<Commune>();
-            int com = Integer.parseInt(da[0]);
-            String[] near_c = commune.split("\\|");// Séparation de chaque ville depuis le CSV
-            for (String nea : near_c) {
-                Commune voisine = communes.get(searcher.search(communes, new Commune(Integer.parseInt(nea), "Searching", null)));
-                voisines.add(voisine); // Ajout de la voisine dans la liste des voisines
-            }
-            current.setVoisins(voisines);
-        */
-
         return arr;
     }
 
-
+    /**
+     * Renvoie l'instance de type Gare correspondant à l'ID
+     * @param co La connexion à la base de données
+     * @param id L'ID 
+     * @return L'instance de type Gare correspondant à l'ID
+     */
     public  Gare findByID(Connection co, long id) {
         ArrayList<Gare> arr = new ArrayList<Gare>();
 
@@ -78,23 +84,17 @@ public class GareDAO extends DAO<Gare> {
             e.printStackTrace();
         }
 
-        /**
-        for (Commune commune : arr) {
-            ArrayList<Commune> voisines = new ArrayList<Commune>();
-            int com = Integer.parseInt(da[0]);
-            String[] near_c = commune.split("\\|");// Séparation de chaque ville depuis le CSV
-            for (String nea : near_c) {
-                Commune voisine = communes.get(searcher.search(communes, new Commune(Integer.parseInt(nea), "Searching", null)));
-                voisines.add(voisine); // Ajout de la voisine dans la liste des voisines
-            }
-            current.setVoisins(voisines);
-        */
-
         return arr.get(0);
     }
 
-
-    public  ArrayList<Gare> findByFilter(Connection co, String filter, String filterSelect) {
+    /**
+     * Renvoie la ou les instances de correspondant au filtre
+     * @param co La connexion à la base de données
+     * @param filter Le paramètre du filtre
+     * @param filterSelect La valeur du filtre
+     * @return La ou les instances correspondant au filtre
+     */
+    public ArrayList<Gare> findByFilter(Connection co, String filter, String filterSelect) {
         ArrayList<Gare> arr = new ArrayList<Gare>();
 
         try {
@@ -104,20 +104,15 @@ public class GareDAO extends DAO<Gare> {
             e.printStackTrace();
         }
 
-        /**
-        for (Commune commune : arr) {
-            ArrayList<Commune> voisines = new ArrayList<Commune>();
-            int com = Integer.parseInt(da[0]);
-            String[] near_c = commune.split("\\|");// Séparation de chaque ville depuis le CSV
-            for (String nea : near_c) {
-                Commune voisine = communes.get(searcher.search(communes, new Commune(Integer.parseInt(nea), "Searching", null)));
-                voisines.add(voisine); // Ajout de la voisine dans la liste des voisines
-            }
-            current.setVoisins(voisines);
-        */
-
         return arr;
     }
+
+    /**
+     * Permet de mettre à jour les données d'une instance
+     * @param co La connexion à la base de données
+     * @param id L'ID de l'instance
+     * @param gare L'instance qui va remplacer celle qu'on recherche
+     */
     public void update(Connection co, long id, Gare gare) {
         String sql = "UPDATE Gare SET nomGare = ?, estFret = ?, estVoyageur = ?, laCommune = ? WHERE codeGare = ?";
 
@@ -134,6 +129,11 @@ public class GareDAO extends DAO<Gare> {
         }
     }
 
+    /**
+     * Permet de créer une instance
+     * @param co La connexion à la base de données
+     * @param gare L'instance qu'on va créer
+     */
     public void create(Connection co, Gare gare) {
         String sql = "INSERT INTO Gare (codeGare, nomGare, estFret, estVoyageur, laCommune) VALUES (?, ?, ?, ?, ?)";
 
@@ -150,6 +150,11 @@ public class GareDAO extends DAO<Gare> {
         }
     }
 
+    /**
+     * Permet d'effacer une instance
+     * @param co La connexion à la base de données
+     * @param donneesAnnuelles L'instance qu'on va effacer
+     */
     public void delete(Connection co, Gare gare) {
         String sql = "DELETE FROM Gare WHERE codeGare = ?";
 

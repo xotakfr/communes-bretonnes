@@ -9,17 +9,25 @@ import java.sql.PreparedStatement;
 import modele.data.DonneesAnnuelles;
 
 /**
- * Data Acces for DonneesAnnuelles
- * Use all fonction in DAO for the DonneesAnnuelles objects
+ * Classe DAO pour le type DonneesAnnuelles.
+ * Hérite de DAO
+ * @see DAO
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
-    /** Filtre actuel - Voir comparableTo et SwitecherFilter */
+    /** Filtre actuel - Voir comparableTo  */
     private static String currentFilter = "laCommune";
     /** Liste des filtres posibles */
     private static String[] filtersList = new String[]{"idDep", "nomDep", "invesCulturel2019"};
 
-
-    protected  ArrayList<DonneesAnnuelles> runSQLQuery(Connection connection, String sql) throws Exception {
+    /**
+     * Lance une requête SQL
+     * @param connection La connexion à la base de données
+     * @param sql La requête SQL
+     * @return Le résultat de la requête SQL
+     * @throws Exception - quand un problème est détecté avec la base de données
+     */
+    protected ArrayList<DonneesAnnuelles> runSQLQuery(Connection connection, String sql) throws Exception {
         ArrayList<DonneesAnnuelles> results = new ArrayList<DonneesAnnuelles>();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
@@ -45,8 +53,13 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
         return results;
     }
 
+    /**
+     * Permet de retrouver l'ensemble des instances de type DonneesAnnuelles de la base de données
+     * @param c La connexion à la base de données
+     * @return L'ensemble des instances de type DonneesAnnuelles de la base de données
+     */
     @Override
-    public  ArrayList<DonneesAnnuelles> findAll(Connection c) {
+    public ArrayList<DonneesAnnuelles> findAll(Connection c) {
         ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
 
         try {
@@ -56,23 +69,16 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
             e.printStackTrace();
         }
 
-        /*
-        for (Commune commune : arr) {
-            ArrayList<Commune> voisines = new ArrayList<Commune>();
-            int com = Integer.parseInt(da[0]);
-            String[] near_c = commune.split("\\|");// Séparation de chaque ville depuis le CSV
-            for (String nea : near_c) {
-                Commune voisine = communes.get(searcher.search(communes, new Commune(Integer.parseInt(nea), "Searching", null)));
-                voisines.add(voisine); // Ajout de la voisine dans la liste des voisines
-            }
-            current.setVoisins(voisines);
-        */
-
         return arr;
     }
 
-
-    public  DonneesAnnuelles findByID(Connection c, long id) {
+    /**
+     * Renvoie l'instance de type DonneesAnnuelles correspondant à l'ID
+     * @param c La connexion à la base de données
+     * @param id L'ID 
+     * @return L'instance de type DonneesAnnuelles correspondant à l'ID
+     */
+    public DonneesAnnuelles findByID(Connection c, long id) {
         ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
 
         try {
@@ -82,23 +88,16 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
             e.printStackTrace();
         }
 
-        /*
-        for (Commune commune : arr) {
-            ArrayList<Commune> voisines = new ArrayList<Commune>();
-            int com = Integer.parseInt(da[0]);
-            String[] near_c = commune.split("\\|");// Séparation de chaque ville depuis le CSV
-            for (String nea : near_c) {
-                Commune voisine = communes.get(searcher.search(communes, new Commune(Integer.parseInt(nea), "Searching", null)));
-                voisines.add(voisine); // Ajout de la voisine dans la liste des voisines
-            }
-            current.setVoisins(voisines);
-        */
-
         return arr.get(0);
     }
 
-
-    public  ArrayList<DonneesAnnuelles> findByFilter(String filter, String filterSelect) {
+    /**
+     * Renvoie la ou les instances de correspondant au filtre
+     * @param filter Le paramètre du filtre
+     * @param filterSelect La valeur du filtre
+     * @return La ou les instances correspondant au filtre
+     */
+    public ArrayList<DonneesAnnuelles> findByFilter(String filter, String filterSelect) {
         Connection co = getConnection();
         ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
 
@@ -109,21 +108,16 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
             e.printStackTrace();
         }
 
-        /*
-        for (Commune commune : arr) {
-            ArrayList<Commune> voisines = new ArrayList<Commune>();
-            int com = Integer.parseInt(da[0]);
-            String[] near_c = commune.split("\\|");// Séparation de chaque ville depuis le CSV
-            for (String nea : near_c) {
-                Commune voisine = communes.get(searcher.search(communes, new Commune(Integer.parseInt(nea), "Searching", null)));
-                voisines.add(voisine); // Ajout de la voisine dans la liste des voisines
-            }
-            current.setVoisins(voisines);
-        */
-
         return arr;
     }
 
+    /**
+     * Renvoie la ou les instances correspondant à la commune ET à l'année
+     * @param c La connexion à la base de données
+     * @param id L'ID de la commune
+     * @param annee L'année
+     * @return La ou les instances correspondant à la commune ET à l'année
+     */
     public DonneesAnnuelles findByCommuneAndYear(Connection c, int id, int annee) {
         ArrayList<DonneesAnnuelles> arr = new ArrayList<DonneesAnnuelles>();
 
@@ -136,6 +130,11 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
         return arr.get(0);
     }
 
+    /**
+     * Permet de mettre à jour les données d'une instance
+     * @param id L'ID de l'instance
+     * @param donneesAnnuelles L'instance qui va remplacer celle qu'on recherche
+     */
     public void update(long id, DonneesAnnuelles donneesAnnuelles) {
         Connection co = getConnection();
         String sql = "UPDATE DonneesAnnuelles SET lAnnee = ?, laCommune = ?, nbMaison = ?, nbAppart = ?, prixMoyen = ?, prixM2Moyen = ?, SurfaceMoy = ?, depensesCulturellesTotales = ?, budgetTotal = ?, population = ? WHERE id = ?";
@@ -159,6 +158,10 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
         }
     }
 
+    /**
+     * Permet de créer une instance
+     * @param donneesAnnuelles L'instance qu'on va créer
+     */
     public void create(DonneesAnnuelles donneesAnnuelles) {
         Connection co = getConnection();
         String sql = "INSERT INTO DonneesAnnuelles (lAnnee, laCommune, nbMaison, nbAppart, prixMoyen, prixM2Moyen, SurfaceMoy, depensesCulturellesTotales, budgetTotal, population) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -181,6 +184,10 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
         }
     }
 
+    /**
+     * Permet d'effacer une instance
+     * @param donneesAnnuelles L'instance qu'on va effacer
+     */
     public void delete(DonneesAnnuelles donneesAnnuelles) {
         Connection co = getConnection();
         String sql = "DELETE FROM DonneesAnnuelles WHERE lAnnee = ? AND laCommune = ?";
