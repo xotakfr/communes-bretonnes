@@ -23,4 +23,4 @@ jobs:
       - name: Upload build arifacts
         uses: actions/upload-artifact@v4.3.3
         with:
-          path: ./Java/class
+          path: ./Java/class/CommunnesBretonnesApp.jar
