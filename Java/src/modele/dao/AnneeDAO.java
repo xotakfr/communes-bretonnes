@@ -21,20 +21,20 @@ public class AnneeDAO {
      * @return Le résultat de la requête SQL
      * @throws Exception - quand un problème est détecté avec la base de données
      */
-    protected static ArrayList<Annee> runSQLQuery(Connection connection, String sql) throws Exception {
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(sql);
-        ArrayList<Annee> ann = new ArrayList<Annee>();
+        protected static ArrayList<Annee> runSQLQuery(Connection connection, String sql) throws Exception {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            ArrayList<Annee> ann = new ArrayList<Annee>();
 
-        while (resultSet.next()) {
-            Annee com = new Annee(resultSet.getInt(0), resultSet.getFloat(1));
-            ann.add(com);
-        }      
+            while (resultSet.next()) {
+                Annee com = new Annee(resultSet.getInt(1), resultSet.getFloat(2));
+                ann.add(com);
+            }      
 
-        resultSet.close();
-        statement.close();
-        return ann;
-    }
+            resultSet.close();
+            statement.close();
+            return ann;
+        }
 
     /**
      * Permet de retrouver toute les instances
