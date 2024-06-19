@@ -242,7 +242,7 @@ public class SettingsController {
             case "modele.dao.AnneeDAO":
                 new AnneeDAO().update(c,Integer.parseInt(txt[0]), new Annee(Integer.parseInt(txt[0]), Float.parseFloat(txt[1])));
                 break;
-            case "modele.dao.AnneeDAO":
+            case "modele.dao.DonneesAnnuelleDAO":
                 new AnneeDAO().update(c,Integer.parseInt(txt[0]), new Annee(Integer.parseInt(txt[0]), Float.parseFloat(txt[1])));
                 break;
         }
