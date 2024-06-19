@@ -27,7 +27,7 @@ public class AeroportDAO {
         ArrayList<Aeroport> ann = new ArrayList<Aeroport>();
 
         while (resultSet.next()) {
-            Aeroport com = new Aeroport(resultSet.getString(0), resultSet.getString(1), resultSet.getInt(2));
+            Aeroport com = new Aeroport(resultSet.getString(0), resultSet.getString(1), new DepartementDAO().findByID(resultSet.getInt(2)));
             ann.add(com);
         }      
 
@@ -104,9 +104,9 @@ public class AeroportDAO {
         String sql = "INSERT INTO Aeroport (nom, adresse, tauxInflation) VALUES (?, ?, ?)";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
-            pstmt.setStringt(1, Aeroport.getNom());
+            pstmt.setString(1, Aeroport.getNom());
             pstmt.setString(2, Aeroport.getAdresse());
-            pstmt.setInt(3, Aeroport.getLeDepartement());
+            pstmt.setInt(3, Aeroport.getLeDepartement().getIdDep());
 
             pstmt.executeUpdate();
         } 
