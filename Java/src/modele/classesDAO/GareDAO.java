@@ -42,8 +42,7 @@ public class GareDAO extends DAO<Gare> {
     }
 
     @Override
-    public  ArrayList<Gare> findAll(Connection c) {
-        Connection co = getConnection();
+    public  ArrayList<Gare> findAll(Connection co) {
         ArrayList<Gare> arr = new ArrayList<Gare>();
 
         try {
@@ -69,8 +68,7 @@ public class GareDAO extends DAO<Gare> {
     }
 
 
-    public  Gare findByID(Connection connection, long id) {
-        Connection co = getConnection();
+    public  Gare findByID(Connection co, long id) {
         ArrayList<Gare> arr = new ArrayList<Gare>();
 
         try {
