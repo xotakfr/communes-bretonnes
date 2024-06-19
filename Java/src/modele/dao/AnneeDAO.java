@@ -81,7 +81,7 @@ public class AnneeDAO {
      * @param annee L'instance qui va remplacer celle qu'on recherche
      */
     public void update(Connection co, int id, Annee annee) {
-        String sql = "UPDATE Annees SET tauxInflation = ? WHERE annee = ?";
+        String sql = "UPDATE Annee SET tauxInflation = ? WHERE annee = ?";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
             pstmt.setFloat(1, annee.getTauxInflation());
@@ -100,7 +100,7 @@ public class AnneeDAO {
      * @param annee L'instance qu'on va créer
      */
     public void create(Connection co, Annee annee) {
-        String sql = "INSERT INTO Annees (annee, tauxInflation) VALUES (?, ?)";
+        String sql = "INSERT INTO Annee (annee, tauxInflation) VALUES (?, ?)";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
             pstmt.setInt(1, annee.getAnnee());
@@ -119,7 +119,7 @@ public class AnneeDAO {
      * @param annee L'instance qu'on va effacer
      */
     public void delete(Connection co, Annee annee) {
-        String sql = "DELETE FROM Annees WHERE annee = ?";
+        String sql = "DELETE FROM Annee WHERE annee = ?";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
             pstmt.setInt(1, annee.getAnnee());
