@@ -128,7 +128,7 @@ public class SettingsController {
                         case "modele.classesDAO.UsersDAO":
                             new UsersDAO().update(txt[0], new Gare(txt[0], txt[1], txt[2], txt[3], txt[4]));
                 }
-            });
+            }});
 
 
         }
