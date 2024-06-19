@@ -239,8 +239,8 @@ public class SettingsController {
             case "modele.dao.AnneeDAO":
                 new AnneeDAO().update(c,Integer.parseInt(txt[0]), new Annee(Integer.parseInt(txt[0]), Float.parseFloat(txt[1])));
                 break;
-            case "modele.dao.DonneesAnnuelleDAO":
-                new AnneeDAO().update(c,Integer.parseInt(txt[0]), new Annee(Integer.parseInt(txt[0]), Float.parseFloat(txt[1])));
+            case "modele.dao.DonneesAnnuellesDAO":
+                new DonneesAnnuellesDAO().update(c,Integer.parseInt(txt[0]), Integer.parseInt(txt[1]), new DonneesAnnuelles(new AnneeDAO().getFromId(Long.parseLong(txt[0])), new CommuneDAO().findByID(Integer.parseInt(txt[1])), Integer.parseInt(txt[2]),Integer.parseInt(txt[3]),Integer.parseInt(txt[4]),Integer.parseInt(txt[5]),Integer.parseInt(txt[6]),Integer.parseInt(txt[7]),Integer.parseInt(txt[8]), -1));
                 break;
         }
         loadTableView();
@@ -268,6 +268,9 @@ public class SettingsController {
         case "modele.dao.AnneeDAO":
             new AnneeDAO().delete(c, new AnneeDAO().getFromId(c, Long.parseLong(txt[0])));
             break;
+        case "modele.dao.DonneesAnnuellesDAO":
+                new DonneesAnnuellesDAO().delete(c, new DonneesAnnuellesDAO().findByCommuneAndYear(Integer.parseInt(txt[0]), Integer.parseInt(txt[1])));
+                break;
         }
         loadTableView();
     }
@@ -288,9 +291,15 @@ public class SettingsController {
         case "modele.dao.GareDAO":
             new GareDAO().create(c,new Gare(Integer.parseInt(txt[0]), txt[1], Boolean.parseBoolean(txt[2]), Boolean.parseBoolean(txt[3]), new CommuneDAO().findByID(c,Long.parseLong(txt[4]))));
             break;
+        case "modele.dao.AeroportDAO":
+            new AeroportDAO().create(c, new Aeroport(txt[0], txt[1], new DepartementDAO().findByID(c,Long.parseLong(txt[2]))));
+            break;
         case "modele.dao.AnneeDAO":
             new AnneeDAO().create(c, new Annee(Integer.parseInt(txt[0]), Float.parseFloat(txt[1])));
             break;
+        case "modele.dao.DonneesAnnuellesDAO":
+                new DonneesAnnuellesDAO().create(c, new DonneesAnnuelles(new AnneeDAO().getFromId(Long.parseLong(txt[0])), new CommuneDAO().findByID(Integer.parseInt(txt[1])), Integer.parseInt(txt[2]),Integer.parseInt(txt[3]),Integer.parseInt(txt[4]),Integer.parseInt(txt[5]),Integer.parseInt(txt[6]),Integer.parseInt(txt[7]),Integer.parseInt(txt[8]), -1));
+                break;
         }
         loadTableView();
     }
@@ -306,15 +315,23 @@ public class SettingsController {
                 break;
             case "modele.dao.AeroportDAO":
                 ArrayList<Aeroport> aeroports = new AeroportDAO().findAll(c);
-                DataLoader.CSVEncoder("departements.csv", aeroports, 4);
+                DataLoader.CSVEncoder("departements.csv", aeroports, 1);
+                break;
+            case "modele.dao.GareDAO":
+                ArrayList<Gare> gares = new GareDAO().findAll(c);
+                DataLoader.CSVEncoder("gares.csv", gares, 4);
                 break;
             case "modele.dao.AnneeDAO":
                 ArrayList<Annee> annees = AnneeDAO.findAll(c);
-                DataLoader.CSVEncoder("departements.csv", annees, 4);
+                DataLoader.CSVEncoder("departements.csv", annees, 2);
                 break;
             case "modele.dao.CommuneDAO":
                 ArrayList<Commune> communes = new CommuneDAO().findAll(c);
-                DataLoader.CSVEncoder("departements.csv", communes, 4);
+                DataLoader.CSVEncoder("departements.csv", communes, 3);
+                break;
+            case "modele.dao.DonneesAnnuellesDAO":
+                ArrayList<DonneesAnnuelles> donneesAnnuelles = new DonneesAnnuellesDAO().findAll(c);
+                DataLoader.CSVEncoder("departements.csv", donneesAnnuelles, 5);
                 break;
         }
     }

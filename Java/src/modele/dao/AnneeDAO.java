@@ -65,7 +65,7 @@ public class AnneeDAO {
         Annee str = new Annee(0,0f);
 
         try {
-            str = runSQLQuery(co, "SELECT * FROM Annee WHERE \"Annee.annee\" LIKE \""+id+"\";").get(0);
+            str = runSQLQuery(co, "SELECT * FROM Annee WHERE Annee.annee = \""+id+"\";").get(0);
         } 
         catch (Exception e) {
             e.printStackTrace();
