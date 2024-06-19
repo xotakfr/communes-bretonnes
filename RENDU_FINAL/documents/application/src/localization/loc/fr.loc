@@ -1,0 +1,9 @@
+# Ligne avec # au début sont ignorées
+# Format button.save Sauvegarder
+# nom espace texte affiché dans interface
+# Il suffit de faire getL("button.save") pour avoir le texte dans la langue choisie de l'utilisateur
+
+button.save Sauvegarder
+menu.save_as Enregistrer sous
+header.welcome Bienvenue
+header.whatsee Que souhaitez-vous visualiser ?

@@ -1,0 +1,3 @@
+Main-Class: CommunesBretonnesApp
+Name: resources/
+

@@ -1,0 +1,20 @@
+1) Lancer Linux
+2) Se déplacer dans ./application/ws
+3) Exécuter setupDeps.sh
+4) Installer MySQL ou MariaDB
+5) Installer la commande "make"
+6) Exécuter l'ensemble des scripts SQL fournis dans ./application/ws/sql
+7) Lancer la commande "make run" depuis le répertoire ws
+
+Informations à noter
+---------------------
+Les commandes de compilation et d'exécution de l'application sont écrites dans ./application/ws/Makefile
+Les visualisations créées sont stockées dans ./application/ws
+La connexion à l'application utilise les connexion existantes de votre base de données, il faut donc utiliser les connexions créées par les scripts SQL fournis
+	1) 
+	  nom : user 
+	  mdp : user
+	2)
+	  nom : user2
+	  mdp : user2
+Ces deux connexions existent pour démontrer la différence qui s'ensuit lorsqu'un utilisateur n'a accès qu'à une seule commune ou plusieurs communes.

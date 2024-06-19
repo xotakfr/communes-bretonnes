@@ -1,0 +1,145 @@
+package modele.dao;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.sql.PreparedStatement;
+
+import modele.data.Commune;
+
+/**
+ * Classe DAO pour le type User
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
+ */
+public class UserDAO {
+    /** Filtre actuel - Voir comparableTo et SwitecherFilter */
+    private static String currentFilter = "idUser";
+    /** Liste des filtres possibles */
+    private static String[] filtersList = new String[]{"idUser", "nomUser","communes"};
+
+    /**
+     * Lance une requête SQL
+     * @param connection La connexion à la base de données
+     * @param sql La requête SQL
+     * @return Le résultat de la requête SQL
+     * @throws Exception - quand un problème est détecté avec la base de données
+     */
+    protected static String runSQLQuery(Connection connection, String sql) throws Exception {
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);
+        String com = "";
+
+        
+        while (resultSet.next()) {
+            com = resultSet.getString(1);
+        }
+        
+        resultSet.close();
+        statement.close();
+        return com;
+    }
+
+    /**
+     * Renvoie le nom de l'utilisateur
+     * @param co La connexion à la base de données
+     * @param username L'username de l'utilisateur
+     * @return Le nom de l'utilisateur
+     */
+    public static String getName(Connection co, String username) {
+        String str = "";
+
+        try {
+            str = runSQLQuery(co, "SELECT nomUser FROM Users WHERE username LIKE \""+username+"\";");
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        return str;
+    }
+
+    /**
+     * Renvoie les communes auxquelles l'utilisateur a accès à
+     * @param co La connexion à la base de données
+     * @param username L'username de l'utilisateur
+     * @return Les communes auxquelles l'utilisateur a accès à
+     */
+    public static ArrayList<Commune> getAccesCommunes(Connection co, String username) {
+        ArrayList<Commune> arr = new ArrayList<Commune>();
+
+        try {
+            String str = runSQLQuery(co, "SELECT communes FROM Users WHERE username LIKE \""+username+"\";");
+            String[] a = str.split(";");
+            for (String s : a) {
+                //arr.add(new Commune(Integer.parseInt(s),"Commune Sans Nom", new Departement(56, "Département Sans Nom", 0)));
+                arr.add(new CommuneDAO().findByID(co, Long.parseLong(s)));
+            }
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        return arr;
+    }
+
+    /**
+     * Permet de mettre à jour les données d'une instance
+     * @param co La connexion à la base de données
+     * @param id L'ID de l'instance
+     * @param username L'username qu'on va remplacer
+     * @param communes Les communes qu'on va remplacer
+     */
+    public void update(Connection co, int id, String username, String communes) {
+        String sql = "UPDATE Users SET username = ?, communes = ? WHERE id = ?";
+
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setString(1, username);
+            pstmt.setString(2, communes);
+            pstmt.setInt(3, id);
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Permet de créer une instance
+     * @param co La connexion à la base de données
+     * @param id L'ID de l'instance
+     * @param username L'username qu'on va donner
+     * @param communes Les communes auxquelles on va donner accès à
+     */
+    public void create(Connection co, int id, String username, String communes) {
+        String sql = "INSERT INTO Users (id, username, communes) VALUES (?, ?, ?)";
+
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+            pstmt.setString(2, username);
+            pstmt.setString(3, communes);
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Permet d'effacer une instance
+     * @param co La connexion à la base de données
+     * @param id L'ID de l'instance qu'on va effacer
+     */
+    public void delete(Connection co, int id) {
+        String sql = "DELETE FROM Users WHERE id = ?";
+
+        try (PreparedStatement pstmt = co.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

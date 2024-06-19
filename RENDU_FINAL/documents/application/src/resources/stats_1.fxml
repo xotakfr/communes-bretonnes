@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="754.0" prefWidth="1217.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StatsController">
+   <left>
+      <GridPane prefHeight="1.0E21" styleClass="stats_sidebar" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="50.0" minHeight="0.0" prefHeight="50.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="710.0" minHeight="10.0" prefHeight="1.0E20" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="stats_sidebar_1_top">
+               <center>
+                  <Text fx:id="communeText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="stats_title" text="Vannes" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+               </center>
+               <right>
+                  <MenuButton fx:id="yearButton" mnemonicParsing="false" onAction="#handleYearChange" style="-fx-background-radius: 0 20 0 0;" text="Année" BorderPane.alignment="CENTER">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#handleYearChange" text="2018" />
+                      <MenuItem mnemonicParsing="false" onAction="#handleYearChange" text="2019" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleYearChange" text="2020" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleYearChange" text="2021" />
+                    </items>
+                  </MenuButton>
+               </right>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="stats_sidebar_2_top" GridPane.columnIndex="1">
+               <left>
+                  <Button mnemonicParsing="false" onAction="#handleBack" text="Retour" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets left="10.0" />
+                     </BorderPane.margin>
+                     <styleClass>
+                        <String fx:value="back-button" />
+                        <String fx:value="discret_stats_back" />
+                     </styleClass>
+                  </Button>
+               </left>
+            </BorderPane>
+            <GridPane styleClass="stats_sidebar_1" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="110.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de maisons">
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin></Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix moyen" GridPane.rowIndex="4">
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin></Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix moyen au m²" GridPane.rowIndex="6">
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin></Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre d'appartements" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin></Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dépenses cultutelles totales" GridPane.rowIndex="10">
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin></Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Surface moyenne" GridPane.rowIndex="8">
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin></Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Budget total" GridPane.rowIndex="12">
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin></Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Population" GridPane.rowIndex="14">
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin></Text>
+                  <Text fx:id="maisonsText" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="20.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="appartText" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="20.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="avgText" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="5">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="20.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="avgm2Text" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="7">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="20.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="avgAreaText" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="9">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="20.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="culturalText" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="11">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="20.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="budgetText" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="13">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="20.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="popText" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.rowIndex="15">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="20.0" />
+                     </GridPane.margin>
+                  </Text>
+               </children>
+            </GridPane>
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
+                     <center>
+                        <Button mnemonicParsing="false" onAction="#vis6" prefHeight="999.0" prefWidth="999.0" styleClass="stats_sidebar_2_button" text="Visualisation de sa commune par rapport aux candidats" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER" />
+                     </center>
+                     <bottom>
+                        <TextField fx:id="vis6Arg" promptText="Nb de communes" text="0" BorderPane.alignment="CENTER" />
+                     </bottom>
+                  </BorderPane>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Visualistaions" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                     <center>
+                        <Button ellipsisString="" mnemonicParsing="false" onAction="#vis1" prefHeight="999.0" prefWidth="999.0" styleClass="stats_sidebar_2_button" text="Voisins" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+                     <center>
+                        <Button mnemonicParsing="false" onAction="#vis2" prefHeight="999.0" prefWidth="999.0" styleClass="stats_sidebar_2_button" text="Eloignement aux autres communes" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+                     <center>
+                        <Button mnemonicParsing="false" onAction="#vis3" prefHeight="999.0" prefWidth="999.0" styleClass="stats_sidebar_2_button" text="Routes les plus importantes" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER" />
+                     </center>
+                     <bottom>
+                        <TextField fx:id="vis3Arg" promptText="Nombre de routes" text="0" BorderPane.alignment="CENTER" />
+                     </bottom>
+                  </BorderPane>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+                     <center>
+                        <Button mnemonicParsing="false" onAction="#vis4" prefHeight="999.0" prefWidth="999.0" styleClass="stats_sidebar_2_button" text="Lier sa commune aux communes importantes" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER" />
+                     </center>
+                     <bottom>
+                        <TextField fx:id="vis4arg" promptText="Nb de communes" text="0" BorderPane.alignment="CENTER" />
+                     </bottom>
+                  </BorderPane>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
+                     <center>
+                        <Button mnemonicParsing="false" onAction="#vis5" prefHeight="999.0" prefWidth="999.0" styleClass="stats_sidebar_2_button" text="Communes candidates a l'obtention d'une gare" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER" />
+                     </center>
+                     <bottom>
+                        <TextField fx:id="vis5Arg" promptText="Nb de communes" text="0" BorderPane.alignment="CENTER" />
+                     </bottom>
+                  </BorderPane>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </left>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <center>
+            <ImageView fx:id="imagePane" fitHeight="754.0" fitWidth="919.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </center>
+</BorderPane>

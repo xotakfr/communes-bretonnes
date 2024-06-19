@@ -1,0 +1,262 @@
+/*Variable -> à faire*/
+
+/* Elements de base*/
+.button {
+    -fx-background-radius: 7px;
+    -fx-cursor: hand;
+    -fx-background-color: #d9d9d9;
+}
+
+.text-entry {
+    -fx-background-color: #E6E0E9;
+    -fx-background-radius: 4px 4px 0px 0px;
+}
+
+.input_label {
+    -fx-translate-y: -15px;
+    -fx-translate-x: 5px;
+}
+
+.main-button {
+    -fx-background-color: #6750a4;
+    -fx-text-fill: white;
+    -fx-padding: 8px 16px;
+    -fx-background-radius: 100px;
+    -fx-font-size: 14px;
+    -fx-line-spacing: 1.5em;
+}
+
+.main-button:hover {
+    -fx-background-color: #9a8dbd;
+}
+
+.search_input {
+    -fx-background-radius: 7px 0px 0px 7px;
+}
+.search-button {
+    -fx-background-radius: 0px 7px 7px 0px;
+    -fx-background-image: url("./assets/img/search.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
+
+.search-button:hover {
+    -fx-background-image: url("./assets/img/search_1.gif");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
+
+.card {
+    -fx-background-radius: 12px 12px 12px 12px;
+}
+
+.card > .card_letter_icon {
+    -fx-background-radius: 100px;
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-background-color: #6750a4;
+}
+
+.card > .card_button {
+    -fx-background-color: #fef7ff;
+    -fx-background-radius: 12px 12px 0px 0px;
+    -fx-border-radius: 12px 12px 0px 0px;
+    -fx-border-width: 1px 1px 0px 1px;
+    -fx-border-color: #d1cbd5;
+}
+
+.card > .card_image {
+    -fx-border-width: 0px 1px 1px 1px;
+    -fx-border-color: #d1cbd5;
+    -fx-background-radius: 0px 0px 12px 12px;
+    -fx-border-radius: 0px 0px 12px 12px;
+    -fx-background-image: url("./assets/img/bgs/bg_login.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+.tab {
+    -fx-border-width: 1px;
+    -fx-border-color: #d1cbd5;
+    -fx-border-radius: 12px 12px 0px 0px;
+    -fx-background-radius: 12px 12px 0px 0px;
+}
+
+.logout-button {
+    -fx-text-fill: rgba(255,255,255,0);
+    -fx-min-width: 90px;
+    -fx-background-image: url("./assets/img/logout.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
+.logout-button:hover {
+    -fx-text-fill: #000000;
+    -fx-min-width: 210px;
+    -fx-background-image: url("./assets/img/logout.gif");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+    -fx-background-size: contain;
+}
+
+.settings-button {
+    -fx-text-fill: rgba(255,255,255,0);
+    -fx-min-width: 90px;
+    -fx-background-image: url("./assets/img/settings.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
+.settings-button:hover {
+    -fx-text-fill: #000000;
+    -fx-min-width: 210px;
+    -fx-background-image: url("./assets/img/settings.gif");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+    -fx-background-size: contain;
+}
+
+.back-button {
+    -fx-text-fill: rgba(255,255,255,0);
+    -fx-min-width: 20px;
+    -fx-background-image: url("./assets/img/back.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
+.back-button:hover {
+    -fx-text-fill: #000000;
+    -fx-min-width: 100px;
+    -fx-background-image: url("./assets/img/back.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+    -fx-background-size: contain;
+}
+
+.bg_login {
+    -fx-background-image: url("./assets/img/bgs/bg_login.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+.bg_credits {
+    -fx-background-image: url("./assets/img/bgs/bg_credits.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+.credits_box {
+    -fx-background-radius: 10;
+    -fx-background-insets: 30px;
+}
+.credits_box1 {
+    -fx-background-color: #6750a4;
+    -fx-text-fill: white;
+}
+.credits_box2 {
+    -fx-background-color: #ECE6F0;
+    -fx-text-fill: rgba(255,255,255,0);
+}
+
+.list_txt {
+    -fx-translate: 20px;
+}
+.list_txt+.list_txt {
+    -fx-translate: 20px;
+}
+
+.login_box {
+    -fx-background-color: rgba(254, 247, 255, 0.80);
+    -fx-background-radius: 5;
+}
+
+.stats_sidebar {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 0px 28px 0px 0px;
+}
+
+.stats_sidebar > .stats_sidebar_1_top {
+    -fx-background-color: #d9d9d9;
+    -fx-border-width: 0px 0px 1px 0px;
+    -fx-border-color: #000000;
+    -fx-background-radius: 0px 28px 0px 0px;
+}
+
+.stats_sidebar > .stats_sidebar_1 {
+    -fx-background-color: #d9d9d9;
+    -fx-border-width: 1px 0px 0px 0px;
+    -fx-border-color: #000000;
+}
+
+.stats_sidebar_2 {
+    -fx-background-color: #FEF7FF;
+}
+
+.stats_sidebar_2_top {
+    -fx-background-color: #ECE6F0;
+    -fx-background-radius: 28px 28px 0px 0px;
+}
+
+.discret_stats_back {
+    -fx-background-color: #ECE6F0;
+}
+
+.stats_image {
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
+
+.warning_image {
+    -fx-background-image: url("./assets/img/warning.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
+
+.warning {
+    -fx-background-color: #d9d9d9;
+    -fx-background-radius: 28px 28px 28px 28px;
+}
+
+.warning_text {
+    -fx-translate-y: -30px;
+}
+
+.warning_button {
+    -fx-padding: 8px 16px;
+    -fx-background-radius: 100px;
+    -fx-font-size: 24px;
+    -fx-line-spacing: 1.5em;
+}
+
+.warning_button_go {
+    -fx-background-color: #E63946;
+    -fx-text-fill: white;
+}
+.warning_button_go:hover {
+    -fx-background-color: #A60916;
+}
+
+.warning_button_no {
+    -fx-background-color: #ECE6F0;
+    -fx-text-fill: black;
+}
+
+.warning_button_no:hover {
+    -fx-background-color: #BCB6C0;
+}
+
+.stats_sidebar_2_button {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: black;
+}
+.stats_sidebar_2_button:hover {
+    -fx-background-color: #6750A4;
+    -fx-text-fill: white;
+}
