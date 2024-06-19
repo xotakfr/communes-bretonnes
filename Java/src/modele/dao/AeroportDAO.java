@@ -39,7 +39,6 @@ public class AeroportDAO  extends DAO<Aeroport> {
     /**
      * Permet de retrouver toute les instances
      * @param co La connexion à la base de données
-     * @param id L'ID qu'on doit rechercher
      * @return L'instance correspondante à l'ID
      */
     public ArrayList<Aeroport> findAll(Connection co) {
@@ -61,7 +60,7 @@ public class AeroportDAO  extends DAO<Aeroport> {
      * @param nom Le nom qu'on doit rechercher
      * @return L'instance correspondante à l'ID
      */
-    public Aeroport getFromId(Connection co, String nom) {
+    public Aeroport getFromName(Connection co, String nom) {
         Aeroport str = null;
 
         try {
