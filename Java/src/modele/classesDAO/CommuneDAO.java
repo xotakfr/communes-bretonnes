@@ -43,7 +43,7 @@ public class CommuneDAO extends DAO<Commune> {
     public  ArrayList<Commune> findAll(Connection c) {
         ArrayList<Commune> arr = new ArrayList<Commune>();
         try {
-            arr = runSQLQuery(c, "SELECT * FROM Communes;");
+            arr = runSQLQuery(c, "SELECT * FROM Commune;");
         } 
         catch (Exception e) {
             e.printStackTrace();
