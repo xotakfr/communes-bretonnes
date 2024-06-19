@@ -13,7 +13,7 @@ public class SettingsScene implements UIScenes{
     public static void loadScene(Stage stage) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(LoginScene.class.getResource("../../settings.fxml"));
+            loader.setLocation(LoginScene.class.getResource("/resources/settings.fxml"));
             BorderPane pane = loader.load();
             Scene scene = new Scene(pane);
             stage.setScene(scene);

@@ -35,9 +35,9 @@ public class WelcomeScene implements UIScenes {
 
             int number = WelcomeController.detectCommunes(c, username);
             if (number > 1) {
-                loader.setLocation(WelcomeScene.class.getResource("../../welcome_screen.fxml"));
+                loader.setLocation(WelcomeScene.class.getResource("/resources/welcome_screen.fxml"));
             } else {
-                loader.setLocation(WelcomeScene.class.getResource("../../welcome_screen_single.fxml"));
+                loader.setLocation(WelcomeScene.class.getResource("/resources/welcome_screen_single.fxml"));
             }
             pane = loader.load();
 

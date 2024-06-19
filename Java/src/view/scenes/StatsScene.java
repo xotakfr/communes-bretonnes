@@ -24,7 +24,7 @@ public class StatsScene implements UIScenes {
     public static void loadScene(Stage stage, String commune) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(LoginScene.class.getResource("../../stats_1.fxml"));
+            loader.setLocation(LoginScene.class.getResource("/resources/stats_1.fxml"));
             BorderPane pane = loader.load();
 
             Scene scene = new Scene(pane);

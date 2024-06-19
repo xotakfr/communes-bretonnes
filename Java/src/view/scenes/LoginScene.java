@@ -22,7 +22,7 @@ public class LoginScene implements UIScenes {
     public static void loadScene(Stage stage) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(LoginScene.class.getResource("../../login_screen.fxml"));
+            loader.setLocation(LoginScene.class.getResource("/resources/login_screen.fxml"));
             GridPane pane = loader.load();
             Scene scene = new Scene(pane);
             stage.setScene(scene);
