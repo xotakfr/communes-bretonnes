@@ -83,8 +83,6 @@ public class DefaultThing {
         this.col7 = new SimpleStringProperty(String.valueOf(ann.getDepensesCulturellesTotales()));
         this.col8 = new SimpleStringProperty(String.valueOf(ann.getBudgetTotal()));
         this.col9 = new SimpleStringProperty(String.valueOf(ann.getPopulation()));
-
-        // Revoir pour ajouter population
     }
 
     public String getCol1() {
