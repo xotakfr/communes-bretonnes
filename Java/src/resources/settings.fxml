@@ -242,22 +242,25 @@
                                 </columnConstraints>
                                 <rowConstraints>
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Button mnemonicParsing="false" text="Charger depuis CSV" GridPane.rowIndex="1">
+                                    <Button mnemonicParsing="false" text="Charger depuis CSV" GridPane.rowIndex="4">
                                        <GridPane.margin>
                                           <Insets left="50.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" text="Supression" GridPane.rowIndex="3">
+                                    <Button mnemonicParsing="false" text="Supression" GridPane.rowIndex="6">
                                        <GridPane.margin>
                                           <Insets left="50.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" text="Sauvegarder en CSV" GridPane.rowIndex="2">
+                                    <Button mnemonicParsing="false" text="Sauvegarder en CSV" GridPane.rowIndex="5">
                                        <GridPane.margin>
                                           <Insets left="50.0" />
                                        </GridPane.margin>
@@ -267,6 +270,31 @@
                                           <Insets left="50.0" />
                                        </GridPane.margin>
                                     </MenuButton>
+                                    <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                       <children>
+                                          <Button mnemonicParsing="false" text="Editer">
+                                             <HBox.margin>
+                                                <Insets left="50.0" top="25.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button mnemonicParsing="false" text="Inserer">
+                                             <HBox.margin>
+                                                <Insets left="5.0" top="25.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button mnemonicParsing="false" text="Supprimer">
+                                             <HBox.margin>
+                                                <Insets left="5.0" top="25.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <TextField GridPane.rowIndex="2" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Valeurs (Séparée par §)" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets bottom="50.0" />
+                                       </GridPane.margin>
+                                    </Text>
                                  </children>
                               </GridPane>
                            </right>
