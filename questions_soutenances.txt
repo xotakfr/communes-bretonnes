@@ -1,14 +1,70 @@
 1. Le rayon d'un graphe consiste en la plus petite excentricité du graphe sachant que l'excentricité de chaque sommet correspond au maximum des distances entre ce sommet et les autres sommets du graphe. Ce paramètre de graphe a pour sens de nous indiquer la ou les communes de la région bretagne qui sont le plus proche de toutes les autres communes et donc la ou les communes de la région bretagne qui sont les plus centrales à celle-ci.
+
 2. Nous avons implémenté trois indicateurs de centralité soit la centralité d'intermédiarité, la centralité de degré et la centralité de proximité. Ceux-ci permettent, dans l'ordre indiqué, de découvrir les arrêtes les plus importantes du graphe, les sommets les plus importants du graphe et les sommets les plus proches d'un sous-ensemble de sommets tel que, par exemple, le sous-ensemble des communes ayant une gare.
-3. Les algortihmes de Kruskal, de Prim et de Steiner peuvent être utilisés pour obtenir un arbre couvrant de poids minimal sur le réseau ferré BreizhGo. Sahchant qu'un arbre couvrant de poids minimal est un graphe partiel du graphe principal, on peut interpréter le résultat pour la région Bretagne comme le graphe partiel qui relierait l'ensemble des gares du réseau ferré BreizghGo pour un poids minimum soit de distance, soit de coût et soit de tout autre paramètre. Le choix du paramètre dépend d'elle.
-4. Il est possible d'aider la région bretagne dans ce choix en utilisant et en calculant la centralité de proximité des communes de Rennes et de Pontivy en les placant dans un sous-graphe des communes existants qui ne contient que les communes qui déservent le réseau ferré de la région bretagne et les deux villes concernées. La ville ayant le résultat le plus proche de 1 sera celle la mieux reliée par le train et donc celle où il faut mieux installer son siège social.
-5. ???
-6. ???
+
+3. Les algorithmes de Kruskal, de Prim et de Steiner peuvent être utilisés pour obtenir un arbre couvrant de poids minimal sur le réseau ferré BreizhGo. Sachant qu'un arbre couvrant de poids minimal est un graphe partiel du graphe principal, on peut interpréter le résultat pour la région Bretagne comme le graphe partiel qui relierait l'ensemble des gares du réseau ferré BreizghGo pour un poids minimum soit de distance, soit de coût et soit de tout autre paramètre. Le choix du paramètre dépend d'elle.
+
+4. Il est possible d'aider la région bretagne dans ce choix en utilisant et en calculant la centralité de proximité des communes de Rennes et de Pontivy en les plaçant dans un sous-graphe des communes existants qui ne contient que les communes qui desservent le réseau ferré de la région bretagne et les deux villes concernées. La ville ayant le résultat le plus proche de 1 sera celle la mieux reliée par le train et donc celle où il faut mieux installer son siège social.
+
+5. Il y a de nombreux outils que nous aurions pu utiliser comme Excel, facile à utiliser pour des analyses simples mais limité pour des analyses avancées.
+Mais nous avons plutôt opté pour Python (geopandas, numpy, matplotlib) qui est excellent pour les statistiques et la visualisation. Il a l’avantage d’être polyvalent et intégré avec d'autres outils de science des données, surtout lorsqu'il s'agit d'intégrer des analyses dans des applications. En revanche, il peut-être plus lent pour certaines opérations lourdes d’où la nécessité d’optimiser notre code.
+
+6. Voici des types graphiques que l’on connait : Histogrammes : Pour distribuer des données, Graphiques linéaires : Pour les tendances temporelles, Graphiques à barres : Pour des comparaisons de catégories, Graphiques circulaires : Pour des distributions de parts, Nuages de points : Pour les relations entre deux variables, Heatmaps : Pour des matrices de corrélation.
+
 7. L'étude séparée de deux variables peut être suffisante dans le cas où s'est deux variables n'ont pas de rapport entre elles cependant si celles-ci s'avèrent avoir un rapport alors il est nécessaire d'effectuer des analyses bivariées. Quelques méthodes de statistiques à deux dimensions inclues la création d'un tableau de contingence, le calcul du rapport de corrélation et le calcul de détermination. Savoir pour quels types de données et comment faire tout ça. Voir notre rendu de statistiques si on avait fait quelque chose d'intéressant.
+
 8. Nous n'avons pas utilisé des séries temporelles pour l'étude des données de cette SAE car celles-ci n'y sont pas adaptées. Tout d'abord, il faut savoir que très peu de données fournies ont un rapport avec la temporalité (on pourrait penser au taux d'inflation annuel ou à l'évolution des données annuelles d'une commune). Cependant, ces données sont présentes en trop faibles quantités pour obtenir des séries temporelles intéressantes dont les données sont significatives puisqu'elles s'étendent sur un total de 4 ans avec seulement une valeur par année. Une série temporelle serait plus intéressante et pertinente à étudier pour des données journalières qui s'étendent sur un moins une année et si possible sur un minimum de cinq ans ce qui n'est pas le cas d'aucunes de nos données.
+
 9. Initialement, les tables provenues des fichiers csv qui nous étaient proposées n'étaient pas satisfaisantes du fait qu'elles contenaient beaucoup de redondance des données et certaines qui pouvaient être rassemblées sous la même table étaient séparées. Par exemple, les fichiers prixParCommune.csv/depensesCulturellesParCommunes.csv/tauxInflationParAn traitent tous de données annuelles qui pourraient être rassemblées en une même table. Par résoudre ce problème, nous avons effectué une base de données relationelle rassemblant les données ayant un rapport entre elles puis nous avons fait en sorte que cette base de données relationelle respecte la forme normale de Boyce-Codd (BCNF ou 3.5NF) afin de garantir l'intégrité de nos données et la réduction de la redondance de celles-ci.
+
 10. Trois méchanismes principaux existent afin de garantir la reconstitution de telles informations. Tout d'abord, je vais vous parler des clés primaires et des clés étrangères qui consiste à assurer une intégrité référentielle de nos données en reliant nos enrengistrements entre différentes tables (par exemple, il sera impossible d'avoir deux fois la même clé primaire donc redondance sur la même table ou avoir plusieurs fois le même enrengistrement dans différentes tables). Autrement, il y a les vues qui sont des méchanismes permettant de créer des ensembles de données en combinant les données de plusieurs tables afin de, par exemple, retrouver les données égarées d'un même enrengistrement étalées sur plusieurs tables.
+
 11. Ces objets sont ce qu'on appelle les vues, une vue consiste en une requête SQL stockée sous la même forme qu'une table et dont les données peuvent être sélectionnées pour être réutilisées. Elles peuvent contenir n'importe quel type de résultat du moment que celui-ci est le même que renvoyé par la requête SQL.
+
 12. L'administration d'une base de données avec un SGBD comme MySQL se déroule à l'aide de la mise en place d'utilisateurs ainsi que de privilèges et de rôles qu'on attribuent à ces utilisateurs. Par exemple, si je souhaite administrer une base de données ouverte à plusieurs utilisateurs à l'échelle nationale alors il est nécessaire de faire une distinction entre les utilisateurs qui ne modifie pas et modifie cette base de données (différentiation entre clients et administrateurs de la BDD), je pourrais donc créer des rôles pour les clients et des rôles pour les administrateurs qui ont des privilèges différents (seulement voir les données pour l'utilsiateur, pouvoir modifier telle ou telle table pour les administrateurs, donner la permission d'attribuer des privilèges à un certain adminsitrateur qui serait alors l'administrateur en chef de la BDD, etc)
+
 13. Un privilège consiste en le droit d'effectuer une action sur une colonne, table ou base de données qu'on attribue à un rôle ou un utilisateur particulier alors qu'un rôle consiste en un ensemble de privilèges qui seront tous également attribués aux utilisateurs a qui appartient ce rôle. Il existe aussi la possibilité qu'un rôle consiste en l'ensemble de sous-rôles, dans ce cas ce rôle aura pour privilèges l'ensemble des privilèges de ses sous-rôles.
-14. 
+
+14. ???
+
+15. ???
+
+16. Une interface est une collection de méthodes abstraites (sans implémentation) que les classes implémentantes doivent définir. Elle permet de définir des comportements communs que différentes classes peuvent implémenter. Contrairement à une Classe abstraite qui peut avoir des méthodes avec implémentation, et des champs, l’interface ne peut pas avoir d'état (champs) et ne peut définir que des méthodes abstraites.
+
+17. ???
+
+18. ???
+
+19. Un diagramme de classe représente la structure statique d'un système, cela inclue les classes, leurs attributs, les méthodes et les relations. Un diagramme de séquence montre les interactions dynamiques entre objets selon un ordre chronologique, illustrant l'échange de messages pour réaliser des scénarios. ( Partie pour la région Bretagne à faire)
+
+20. En JavaFX, les principaux événements à gérer sont, entre autres les événements de souris (MouseEvent), de clavier (KeyEvent) et d'action (ActionEvent). ( Trouver la partie du code)
+
+21. JavaFX utilise différents types de conteneurs de mise en page pour structurer les éléments graphiques, comme HBox pour une organisation horizontale, VBox pour une organisation verticale, GridPane pour une organisation en grille, BorderPane pour une organisation en cinq zones (haut, bas, gauche, droite, centre) et StackPane pour empiler des éléments. ( Trouver la partie du code)
+
+22. Le modèle MVC (Modèle-Vue-Contrôleur) sépare les données (Modèle), la présentation (Vue) et la logique de contrôle (Contrôleur) dans une application. Il permet une meilleure organisation et gestion du code en simplifiant la maintenance, la réutilisation des éléments et la collaboration au sein d'une équipe de développeurs. ( Trouver la partie du code)
+
+23. La base d'une interface utilisateur JavaFX débute avec une classe principale qui étend javafx.application.Application et met en œuvre la méthode start(). Dans cette approche, le Stage est l'entité qui affiche la fenêtre principale et contient une Scene avec un nœud racine (Parent) tel qu'un StackPane ou un conteneur similaire. Des boutons et d'autres éléments graphiques sont insérés dans ce conteneur principal, puis la scène est connectée au stage principal en utilisant primaryStage.setScene(scene). Finalement, on appelle primaryStage.show() pour afficher l'interface utilisateur. ( Trouver la partie du code)
+
+24. En JavaFX, il existe deux méthodes principales pour créer une vue : l'une consiste à utiliser FXML pour décrire la structure de l'interface utilisateur de manière déclarative, et l'autre consiste à créer et configurer directement en Java les éléments graphiques. Nous avons principalement opté pour l'utilisation de FXML dans le projet en raison de sa clarté dans la distinction des tâches entre la conception de l'interface et la logique de contrôle, ce qui rend la maintenance et la collaboration sur le code plus facile.
+
+25. Il faut séparer la partie d'accès aux données et le contrôleur pour travailler sur une architecture modulaire et facile à entretenir. Les DAO encapsulent les détails de la base de données, permettant au contrôleur de se concentrer sur la logique métier. Cela rend plus facile la réutilisation du code, simplifie les tests unitaires et diminue la dépendance de l'application envers des technologies de persistance spécifiques, comme JDBC. Cela permet une gestion plus efficace de la complexité et simplifie les améliorations et les ajustements de l'application.
+
+26. En Java, pour gérer les fichiers, les classes principales sont File pour la représentation des fichiers, FileReader et FileWriter pour la lecture et l'écriture de fichiers texte, et FileInputStream et FileOutputStream pour les fichiers binaires. La variation se trouve dans le type de données : les fichiers texte comprennent des caractères lisibles par les humains, alors que les fichiers binaires renferment des informations brutes non textuelles. ( Partie pour la région Bretagne à faire)
+
+27. En JDBC, le principal problème de sécurité avec createStatement par rapport  à preparedStatement est le risque d’attaques par injection SQL. createStatement exécute directement les requêtes SQL avec les données fournies, offrant ainsi la possibilité à un attaquant d'injecter du code malveillant. Alors que preparedStatement sécurise l'exécution des requêtes en les pré-compilant et en liant les paramètres de manière sûre, ce qui protège contre les attaques par injection et renforce la sécurité de l'application.
+
+28. Nous avons organisé les différents rendus et tâches de la "grande SAE" Communes Bretonnes en utilisant un diagramme de Gantt. Il nous a facilité la visualisation des échéances, l'assignation des tâches à chaque membre de l'équipe et le suivi en temps réel de l'avancement du projet en tenant compte des contraintes pour respecter les délais. Les réunions fréquentes, qu'elles soient écrites ou orales, ont permis de revoir les priorités et de changer le calendrier en fonction de l'avancement et des difficultés rencontrées.
+
+29. Les trois principaux défis de la gestion de projet sont le temps, le coût et la qualité. Pour la SAE Communes Bretonnes, nous avons respecté les délais en faisant les rendus dans les temps, tout cela en adaptant la qualité du projet au temps alloué malgré certaines de nos espérances initiales pour assurer une démo réussie, pour les coûts, il n’y en a pas eu de pars le cadre du projet.
+
+30. Un chef de projet informatique doit organiser, suivre la mise en œuvre et la finalisation des projets en tenant compte le temps impartis et le budget alloué à la réalisation de ce dernier, tout en garantissant la qualité du produit livré. La gestion du temps et des ressources, la communication et la résolution de problèmes sont trois compétences fondamentales. Pendant la réalisation du projet citoyen, on a organisé notre temps pour respecter les délais, les échanges pour nous coordonner notamment au travers du Notion, et la résolution de difficultés pour adapter notre stratégie aux problèmes qui se présentaient à nous.
+
+31. Notion est une application polyvalente et centralisée qui facilite la gestion de projets en regroupant documents, listes de tâches, calendriers et notes de réunion dans un même espace. Il rend la gestion de projet plus efficace et organisée en permettant la collaboration en temps réel avec des fonctionnalités de partage d'édition et des intégrations avec des outils comme Google Drive et Slack.
+
+
+
+
+
+
+
+
