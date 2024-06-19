@@ -28,9 +28,9 @@ public class AeroportDAO  extends DAO<Aeroport> {
 
         while (resultSet.next()) {
             Aeroport com = new Aeroport(
-                resultSet.getString(0),
                 resultSet.getString(1),
-                new DepartementDAO().findByID(connection, resultSet.getInt(2)));
+                resultSet.getString(2),
+                new DepartementDAO().findByID(connection, resultSet.getInt(3)));
             ann.add(com);
         }      
 
