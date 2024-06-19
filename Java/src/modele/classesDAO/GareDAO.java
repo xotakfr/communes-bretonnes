@@ -47,7 +47,7 @@ public class GareDAO extends DAO<Gare> {
         ArrayList<Gare> arr = new ArrayList<Gare>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM Gares;");
+            arr = runSQLQuery(co, "SELECT * FROM Gare;");
         } 
         catch (Exception e) {
             e.printStackTrace();
@@ -74,7 +74,7 @@ public class GareDAO extends DAO<Gare> {
         ArrayList<Gare> arr = new ArrayList<Gare>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM Gares WHERE \"Gares.idCommune\" = "+id+";");
+            arr = runSQLQuery(co, "SELECT * FROM Gare WHERE \"Gares.idCommune\" = "+id+";");
         } 
         catch (Exception e) {
             e.printStackTrace();
@@ -100,7 +100,7 @@ public class GareDAO extends DAO<Gare> {
         ArrayList<Gare> arr = new ArrayList<Gare>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM Gares WHERE \"Gares."+filter+"\""+filterSelect+";");
+            arr = runSQLQuery(co, "SELECT * FROM Gare WHERE \"Gares."+filter+"\""+filterSelect+";");
         } 
         catch (Exception e) {
             e.printStackTrace();
@@ -121,7 +121,7 @@ public class GareDAO extends DAO<Gare> {
         return arr;
     }
     public void update(Connection co, long id, Gare gare) {
-        String sql = "UPDATE Gares SET nomGare = ?, estFret = ?, estVoyageur = ?, laCommune = ? WHERE codeGare = ?";
+        String sql = "UPDATE Gare SET nomGare = ?, estFret = ?, estVoyageur = ?, laCommune = ? WHERE codeGare = ?";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
             pstmt.setString(1, gare.getNomGare());
@@ -137,7 +137,7 @@ public class GareDAO extends DAO<Gare> {
     }
 
     public void create(Connection co, Gare gare) {
-        String sql = "INSERT INTO Gares (codeGare, nomGare, estFret, estVoyageur, laCommune) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Gare (codeGare, nomGare, estFret, estVoyageur, laCommune) VALUES (?, ?, ?, ?, ?)";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
             pstmt.setInt(1, gare.getCodeGare());
@@ -153,7 +153,7 @@ public class GareDAO extends DAO<Gare> {
     }
 
     public void delete(Connection co, Gare gare) {
-        String sql = "DELETE FROM Gares WHERE codeGare = ?";
+        String sql = "DELETE FROM Gare WHERE codeGare = ?";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
             pstmt.setInt(1, gare.getCodeGare());
