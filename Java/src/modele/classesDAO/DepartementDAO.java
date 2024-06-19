@@ -115,8 +115,7 @@ public class DepartementDAO extends DAO<Departement> {
         return arr;
     }
 
-    public void update(long id, Departement departement) {
-        Connection co = getConnection();
+    public void update(Connection co, long id, Departement departement) {
         String sql = "UPDATE Departement SET nomDep = ?, investissementCulturel2019 = ? WHERE idDep = ?";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
@@ -130,8 +129,7 @@ public class DepartementDAO extends DAO<Departement> {
         }
     }
 
-    public void create(Departement departement) {
-        Connection co = getConnection();
+    public void create(Connection co, Departement departement) {
         String sql = "INSERT INTO Departement (idDep, nomDep, investissementCulturel2019) VALUES (?, ?, ?)";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
@@ -145,8 +143,7 @@ public class DepartementDAO extends DAO<Departement> {
         }
     }
 
-    public void delete(Departement departement) {
-        Connection co = getConnection();
+    public void delete(Connection co, Departement departement) {
         String sql = "DELETE FROM Departement WHERE idDep = ?";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
