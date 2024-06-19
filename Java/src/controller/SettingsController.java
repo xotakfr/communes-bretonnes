@@ -110,33 +110,12 @@ public class SettingsController {
             System.out.println(e.getMessage());
         }
         try {
-            Class<?> classeDAO = Class.forName("modele.classesDAO."+table+"DAO");
+            Class<?> classeDAO = Class.forName("modele.dao."+table+"DAO");
             String className = classeDAO.getName();
             currentClasse = className;
             DAO<?> instanceDAO =  (DAO<?>) classeDAO.getDeclaredConstructor().newInstance();
 
-            ArrayList<DefaultThing> def = new ArrayList<DefaultThing>();
-
-            switch (className) {
-                case "modele.classesDAO.DepartementDAO":
-                    ArrayList<Departement> itemsArrayListDepartement = new DepartementDAO().findAll(c);
-                    for (Departement q : itemsArrayListDepartement) {
-                        def.add(new DefaultThing(q));
-                    }
-
-                case "modele.classesDAO.CommuneDAO":
-                    ArrayList<Commune> itemsArrayListCommune = new CommuneDAO().findAll(c);
-                    for (Commune q : itemsArrayListCommune) {
-                        def.add(new DefaultThing(q));
-                    }
-                case "modele.classesDAO.GareDAO":
-                    ArrayList<Gare> itemsArrayListGare = new GareDAO().findAll(c);
-                    for (Gare q : itemsArrayListGare) {
-                        def.add(new DefaultThing(q));
-                    }
-            }
-            ObservableList<DefaultThing> items = FXCollections.observableArrayList(def);
-            tableView.setItems(items);
+            loadTableView();
 
 
         }
@@ -183,18 +162,18 @@ public class SettingsController {
         tableView.getItems().clear();
 
             switch (currentClasse) {
-                case "modele.classesDAO.DepartementDAO":
+                case "modele.dao.DepartementDAO":
                     ArrayList<Departement> itemsArrayListDepartement = new DepartementDAO().findAll(c);
                     for (Departement q : itemsArrayListDepartement) {
                         def.add(new DefaultThing(q));
                     }
 
-                case "modele.classesDAO.CommuneDAO":
+                case "modele.dao.CommuneDAO":
                     ArrayList<Commune> itemsArrayListCommune = new CommuneDAO().findAll(c);
                     for (Commune q : itemsArrayListCommune) {
                         def.add(new DefaultThing(q));
                     }
-                case "modele.classesDAO.GareDAO":
+                case "modele.dao.GareDAO":
                     ArrayList<Gare> itemsArrayListGare = new GareDAO().findAll(c);
                     for (Gare q : itemsArrayListGare) {
                         def.add(new DefaultThing(q));
@@ -225,11 +204,11 @@ public class SettingsController {
             System.out.println(s);
         }
         switch (currentClasse) {
-        case "modele.classesDAO.DepartementDAO":
+        case "modele.dao.DepartementDAO":
             new DepartementDAO().update(c,Integer.parseInt(txt[0]), new Departement(Integer.parseInt(txt[0]), txt[1], Float.parseFloat(txt[2])));
-        case "modele.classesDAO.CommuneDAO":
+        case "modele.dao.CommuneDAO":
             new CommuneDAO().update(c,Integer.parseInt(txt[0]), new Commune(Integer.parseInt(txt[0]), txt[1], new DepartementDAO().findByID(c, Long.parseLong(txt[2]))));
-        case "modele.classesDAO.GareDAO":
+        case "modele.dao.GareDAO":
             new GareDAO().update(c,Integer.parseInt(txt[0]), new Gare(Integer.parseInt(txt[0]), txt[1], Boolean.parseBoolean(txt[2]), Boolean.parseBoolean(txt[3]), new CommuneDAO().findByID(c, Long.parseLong(txt[4]))));
         }
     }
@@ -241,11 +220,11 @@ public class SettingsController {
     void handleDeleteButton() {
         String[] txt = valueText.getText().split("§");
         switch (currentClasse) {
-        case "modele.classesDAO.DepartementDAO":
+        case "modele.dao.DepartementDAO":
             new DepartementDAO().delete(c, new DepartementDAO().findByID(c,Long.parseLong(txt[0])));
-        case "modele.classesDAO.CommuneDAO":
+        case "modele.dao.CommuneDAO":
             new CommuneDAO().delete(c,new CommuneDAO().findByID(c,Long.parseLong(txt[0])));
-        case "modele.classesDAO.GareDAO":
+        case "modele.dao.GareDAO":
             new GareDAO().delete(c,new GareDAO().findByID(c, Long.parseLong(txt[0])));
         }
     }
@@ -257,11 +236,11 @@ public class SettingsController {
     void handleAddButton() {
         String[] txt = valueText.getText().split("§");
         switch (currentClasse) {
-        case "modele.classesDAO.DepartementDAO":
+        case "modele.dao.DepartementDAO":
             new DepartementDAO().create(c,new Departement(Integer.parseInt(txt[0]), txt[1], Float.parseFloat(txt[0])));
-        case "modele.classesDAO.CommuneDAO":
+        case "modele.dao.CommuneDAO":
             new CommuneDAO().create(c,new Commune(Integer.parseInt(txt[0]), txt[1], new DepartementDAO().findByID(c,Long.parseLong(txt[2]))));
-        case "modele.classesDAO.GareDAO":
+        case "modele.dao.GareDAO":
             new GareDAO().create(c,new Gare(Integer.parseInt(txt[0]), txt[1], Boolean.parseBoolean(txt[2]), Boolean.parseBoolean(txt[3]), new CommuneDAO().findByID(c,Long.parseLong(txt[4]))));
         }
     }
