@@ -224,24 +224,25 @@ public class SettingsController {
     void handleEditButton() {
         String[] txt = valueText.getText().split("§");
         switch (currentClasse) {
-        case "modele.dao.DepartementDAO":
-            new DepartementDAO().update(c,Integer.parseInt(txt[0]), new Departement(Integer.parseInt(txt[0]), txt[1], Float.parseFloat(txt[2])));
-            break;
-        case "modele.dao.CommuneDAO":
-            new CommuneDAO().update(c,Integer.parseInt(txt[0]), new Commune(Integer.parseInt(txt[0]), txt[1], new DepartementDAO().findByID(c, Long.parseLong(txt[2]))));
-            break;
-        case "modele.dao.GareDAO":
-            new GareDAO().update(c,Integer.parseInt(txt[0]), new Gare(Integer.parseInt(txt[0]), txt[1], Boolean.parseBoolean(txt[2]), Boolean.parseBoolean(txt[3]), new CommuneDAO().findByID(c, Long.parseLong(txt[4]))));
-            break;
-        /**
-        case "modele.dao.AeroportDAO":
-            new AeroportDAO().update(c,Integer.parseInt(txt[0]), new Gare(Integer.parseInt(txt[0]), txt[1], Boolean.parseBoolean(txt[2]), Boolean.parseBoolean(txt[3]), new CommuneDAO().findByID(c, Long.parseLong(txt[4]))));
-            break;
+            case "modele.dao.DepartementDAO":
+                new DepartementDAO().update(c,Integer.parseInt(txt[0]), new Departement(Integer.parseInt(txt[0]), txt[1], Float.parseFloat(txt[2])));
+                break;
+            case "modele.dao.CommuneDAO":
+                new CommuneDAO().update(c,Integer.parseInt(txt[0]), new Commune(Integer.parseInt(txt[0]), txt[1], new DepartementDAO().findByID(c, Long.parseLong(txt[2]))));
+                break;
+            case "modele.dao.GareDAO":
+                new GareDAO().update(c,Integer.parseInt(txt[0]), new Gare(Integer.parseInt(txt[0]), txt[1], Boolean.parseBoolean(txt[2]), Boolean.parseBoolean(txt[3]), new CommuneDAO().findByID(c, Long.parseLong(txt[4]))));
+                break;
+            /**
+            case "modele.dao.AeroportDAO":
+                new AeroportDAO().update(c,Integer.parseInt(txt[0]), new Gare(Integer.parseInt(txt[0]), txt[1], Boolean.parseBoolean(txt[2]), Boolean.parseBoolean(txt[3]), new CommuneDAO().findByID(c, Long.parseLong(txt[4]))));
+                break;
+            }
+            */
+            case "modele.dao.AnneeDAO":
+                new AnneeDAO().update(c,Integer.parseInt(txt[0]), new Annee(Integer.parseInt(txt[0]), Float.parseFloat(txt[1])));
+                break;
         }
-        */
-       case "modele.dao.AnneeDAO":
-            new AnneeDAO().update(c,Integer.parseInt(txt[0]), new Annee(Integer.parseInt(txt[0]), Float.parseFloat(txt[1])));
-            break;
         loadTableView();
     }
 
