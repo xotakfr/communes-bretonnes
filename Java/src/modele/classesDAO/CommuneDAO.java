@@ -95,7 +95,7 @@ public class CommuneDAO extends DAO<Commune> {
         ArrayList<Commune> arr = new ArrayList<Commune>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM Communes WHERE \"Communes."+filter+"\""+filterSelect+";");
+            arr = runSQLQuery(co, "SELECT * FROM Commune WHERE \"Communes."+filter+"\""+filterSelect+";");
         } 
         catch (Exception e) {
             e.printStackTrace();
@@ -131,7 +131,7 @@ public class CommuneDAO extends DAO<Commune> {
 
     public void update(long id, Commune commune) {
         Connection co = getConnection();
-        String sql = "UPDATE Communes SET nomCommune = ?, idDepartement = ? WHERE idCommune = ?";
+        String sql = "UPDATE Commune SET nomCommune = ?, idDepartement = ? WHERE idCommune = ?";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
             pstmt.setString(1, commune.getNomCommune());
@@ -146,7 +146,7 @@ public class CommuneDAO extends DAO<Commune> {
 
     public void create(Commune commune) {
         Connection co = getConnection();
-        String sql = "INSERT INTO Communes (idCommune, nomCommune, idDepartement) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO Commune (idCommune, nomCommune, idDepartement) VALUES (?, ?, ?)";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
             pstmt.setInt(1, commune.getIdCommune());
@@ -161,7 +161,7 @@ public class CommuneDAO extends DAO<Commune> {
 
     public void delete(Commune commune) {
         Connection co = getConnection();
-        String sql = "DELETE FROM Communes WHERE idCommune = ?";
+        String sql = "DELETE FROM Commune WHERE idCommune = ?";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
             pstmt.setInt(1, commune.getIdCommune());
