@@ -240,7 +240,7 @@ public class SettingsController {
                 new AnneeDAO().update(c,Integer.parseInt(txt[0]), new Annee(Integer.parseInt(txt[0]), Float.parseFloat(txt[1])));
                 break;
             case "modele.dao.DonneesAnnuellesDAO":
-                new DonneesAnnuellesDAO().update(c,Integer.parseInt(txt[0]), Integer.parseInt(txt[1]), new DonneesAnnuelles(new AnneeDAO().getFromId(Integer.parseInt(txt[0])), new CommuneDAO().findByID(Integer.parseInt(txt[1])), Integer.parseInt(txt[2]),Integer.parseInt(txt[3]),Integer.parseInt(txt[4]),Integer.parseInt(txt[5]),Integer.parseInt(txt[6]),Integer.parseInt(txt[7]),Integer.parseInt(txt[8]), -1));
+                new DonneesAnnuellesDAO().update(c,Integer.parseInt(txt[0]), Integer.parseInt(txt[1]), new DonneesAnnuelles(new AnneeDAO().getFromId(Long.parseLong(txt[0])), new CommuneDAO().findByID(Integer.parseInt(txt[1])), Integer.parseInt(txt[2]),Integer.parseInt(txt[3]),Integer.parseInt(txt[4]),Integer.parseInt(txt[5]),Integer.parseInt(txt[6]),Integer.parseInt(txt[7]),Integer.parseInt(txt[8]), -1));
                 break;
         }
         loadTableView();
@@ -298,7 +298,7 @@ public class SettingsController {
             new AnneeDAO().create(c, new Annee(Integer.parseInt(txt[0]), Float.parseFloat(txt[1])));
             break;
         case "modele.dao.DonneesAnnuellesDAO":
-                new DonneesAnnuellesDAO().create(c, new DonneesAnnuelles(new AnneeDAO().getFromId(Integer.parseInt(txt[0])), new CommuneDAO().findByID(Integer.parseInt(txt[1])), Integer.parseInt(txt[2]),Integer.parseInt(txt[3]),Integer.parseInt(txt[4]),Integer.parseInt(txt[5]),Integer.parseInt(txt[6]),Integer.parseInt(txt[7]),Integer.parseInt(txt[8]), -1));
+                new DonneesAnnuellesDAO().create(c, new DonneesAnnuelles(new AnneeDAO().getFromId(Long.parseLong(txt[0])), new CommuneDAO().findByID(Integer.parseInt(txt[1])), Integer.parseInt(txt[2]),Integer.parseInt(txt[3]),Integer.parseInt(txt[4]),Integer.parseInt(txt[5]),Integer.parseInt(txt[6]),Integer.parseInt(txt[7]),Integer.parseInt(txt[8]), -1));
                 break;
         }
         loadTableView();
