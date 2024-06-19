@@ -261,7 +261,7 @@
                                           <Insets left="50.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <MenuButton fx:id="tableButton" mnemonicParsing="false" onAction="#tableAction" onMouseClicked="#tableAction" text="Table">
+                                    <MenuButton fx:id="tableButton" mnemonicParsing="false" onAction="#tableAction" text="Table">
                                        <GridPane.margin>
                                           <Insets left="50.0" />
                                        </GridPane.margin>
@@ -270,7 +270,7 @@
                               </GridPane>
                            </right>
                            <center>
-                              <TableView prefHeight="725.0" prefWidth="554.0" BorderPane.alignment="CENTER" />
+                              <TableView fx:id="tableView" prefHeight="725.0" prefWidth="554.0" BorderPane.alignment="CENTER" />
                            </center>
                         </BorderPane>
                      </content>

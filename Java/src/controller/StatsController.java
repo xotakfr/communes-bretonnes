@@ -13,6 +13,7 @@ import modele.classesDAO.CommuneDAO;
 import modele.classesDAO.DonneesAnnuellesDAO;
 import modele.classesModele.Commune;
 import modele.classesModele.DonneesAnnuelles;
+import utils.FontOptimizer;
 import view.scenes.WelcomeScene;
 import javafx.stage.Stage;
 import javafx.scene.Node;
@@ -91,6 +92,7 @@ public class StatsController {
 
     public void handleLoad(String commune) {
         this.communeText.setText(commune);
+        communeText.setStyle("-fx-font-size: "+ FontOptimizer.getOptimizedFontSize(commune, 80, 50)+"px;");
     }
 
 }

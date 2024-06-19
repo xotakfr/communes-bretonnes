@@ -34,7 +34,7 @@
                <right>
                   <HBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="57.0" prefWidth="327.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="95.0" styleClass="settings-button" text="Paramètres" onAction="#handleSettings">
+                        <Button mnemonicParsing="false" onAction="#handleSettings" prefHeight="55.0" prefWidth="95.0" styleClass="settings-button" text="Paramètres">
                            <HBox.margin>
                               <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                            </HBox.margin>
