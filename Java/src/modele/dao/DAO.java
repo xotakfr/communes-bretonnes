@@ -4,17 +4,24 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Data Access Object
- * 
+ * Classe abstraite DAO 
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public abstract class DAO<T> {
+    /** L'url vers la base de données */
     private static String url = "jdbc:mysql://127.0.0.1:3306/BDSAE";
+    /** L'username de l'utilisateur */
     private static String user = "";
+    /** Le mot de passe de l'utilisateur */
     private static String password = "";
     
+    /**
+     * Renvoie la connexion à la base de données
+     * @return La connexion à la base de données
+     */
     protected static Connection getConnection() {
         Connection ret = null;
         try {
@@ -32,23 +39,18 @@ public abstract class DAO<T> {
 
 
     /**
-     * Utilitaire de lancement d'une requête SQL
-     * Voir exemple implémentation dans CommuneDAO
+     * Lance une requête SQL
+     * @param connection La connexion à la base de données
+     * @param sql La requête SQL
+     * @returns Le résultat de la requête SQL
+     * @throws Exception - quand un problème est détecté avec la base de données
      */
-    //protected abstract List<T> runSQLQuery(Connection connection, String sql) throws Exception;
-
-    public abstract ArrayList<T> findAll(Connection c);
+    protected abstract List<T> runSQLQuery(Connection connection, String sql) throws Exception;
 
     /**
-    public abstract T findById(long id);
-    public abstract void update(T element); 
-    public abstract void create(T element);
-    public abstract void delete(T element);
-    */
-
-    //public abstract T findByFilter(String filter, String filterSelect);
-    //protected abstract static String[] filtersList;
-    //protected abstract static String currentFilter;
-
-    
+     * Permet de retrouver l'ensemble des instances de même type de la base de données
+     * @param c La connexion à la base de données
+     * @return L'ensemble des instances de même type de la base de données
+     */
+    public abstract ArrayList<T> findAll(Connection c);
 }

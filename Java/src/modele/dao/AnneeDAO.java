@@ -8,16 +8,18 @@ import java.sql.PreparedStatement;
 import modele.data.Annee;
 
 /**
- * Data Access for Annee
- * Use all fonction in DAO for the Annee objects
+ * Classe DAO pour le type Annee
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public class AnneeDAO {
-    /** Filtre actuel - Voir comparableTo et SwitecherFilter */
-    private static String currentFilter = "annee";
-    /** Liste des filtres possibles */
-    private static String[] filtersList = new String[]{"annee", "tauxInflation"};
 
-
+    /**
+     * Lance une requête SQL
+     * @param connection La connexion à la base de données
+     * @param sql La requête SQL
+     * @return Le résultat de la requête SQL
+     * @throws Exception - quand un problème est détecté avec la base de données
+     */
     protected static Annee runSQLQuery(Connection connection, String sql) throws Exception {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
@@ -33,6 +35,12 @@ public class AnneeDAO {
         return com;
     }
 
+    /**
+     * Permet de retrouver une instance à partir de son ID
+     * @param co La connexion à la base de données
+     * @param id L'ID qu'on doit rechercher
+     * @return L'instance correspondante à l'ID
+     */
     public static Annee getFromId(Connection co, int id) {
         Annee str = new Annee(0,0f);
 
@@ -47,6 +55,12 @@ public class AnneeDAO {
         return str;
     }
 
+    /**
+     * Permet de mettre à jour les données d'une instance
+     * @param co La connexion à la base de données
+     * @param id L'ID de l'instance
+     * @param annee L'instance qui va remplacer celle qu'on recherche
+     */
     public void update(Connection co, int id, Annee annee) {
         String sql = "UPDATE Annees SET tauxInflation = ? WHERE annee = ?";
 
@@ -60,6 +74,11 @@ public class AnneeDAO {
         }
     }
 
+    /**
+     * Permet de créer une instance
+     * @param co La connexion à la base de données
+     * @param annee L'instance qu'on va créer
+     */
     public void create(Connection co, Annee annee) {
         String sql = "INSERT INTO Annees (annee, tauxInflation) VALUES (?, ?)";
 
@@ -73,6 +92,11 @@ public class AnneeDAO {
         }
     }
 
+    /**
+     * Permet d'effacer une instance
+     * @param co La connexion à la base de données
+     * @param annee L'instance qu'on va effacer
+     */
     public void delete(Connection co, Annee annee) {
         String sql = "DELETE FROM Annees WHERE annee = ?";
 
