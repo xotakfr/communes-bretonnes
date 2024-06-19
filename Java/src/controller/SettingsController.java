@@ -309,7 +309,7 @@ public class SettingsController {
                 break;
             case "modele.dao.AeroportDAO":
                 ArrayList<Aeroport> aeroports = new AeroportDAO().findAll(c);
-                DataLoader.CSVEncoder("departements.csv", aeroports, 4);
+                DataLoader.CSVEncoder("departements.csv", aeroports, 1);
                 break;
             case "modele.dao.GareDAO":
                 ArrayList<Gare> gares = new GareDAO().findAll(c);
@@ -317,11 +317,19 @@ public class SettingsController {
                 break;
             case "modele.dao.AnneeDAO":
                 ArrayList<Annee> annees = AnneeDAO.findAll(c);
-                DataLoader.CSVEncoder("departements.csv", annees, 4);
+                DataLoader.CSVEncoder("departements.csv", annees, 2);
                 break;
             case "modele.dao.CommuneDAO":
                 ArrayList<Commune> communes = new CommuneDAO().findAll(c);
-                DataLoader.CSVEncoder("departements.csv", communes, 4);
+                DataLoader.CSVEncoder("departements.csv", communes, 3);
+                break;
+            case "modele.dao.DonneesAnnuellesDAO":
+                ArrayList<DonneesAnnuelles> donneesAnnuelles = new DonneesAnnuellesDAO().findAll(c);
+                DataLoader.CSVEncoder("departements.csv", donneesAnnuelles, 5);
+                break;
+            case "modele.dao.GareDAO":
+                ArrayList<Gare> gares = new GareDAO().findAll(c);
+                DataLoader.CSVEncoder("departements.csv", gares, 6);
                 break;
         }
     }
