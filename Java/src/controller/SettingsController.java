@@ -141,6 +141,7 @@ public class SettingsController {
 
     private void loadTableView() {
         ArrayList<DefaultThing> def = new ArrayList<DefaultThing>();
+        tableView.getItems().clear();
             
             switch (currentClasse) {
                 case "modele.classesDAO.DepartementDAO":
