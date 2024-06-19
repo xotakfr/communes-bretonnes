@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import modele.data.Departement;
 
 /**
- * Data Access for Departement
- * Use all fonction in DAO for the Departement objects
+ * Classe DAO pour le type Departement
+ * Hérite de DAO
+ * @see DAO
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public class DepartementDAO extends DAO<Departement> {
     /** Filtre actuel - Voir comparableTo et SwitecherFilter */
@@ -18,7 +20,13 @@ public class DepartementDAO extends DAO<Departement> {
     /** Liste des filtres possibles */
     private static String[] filtersList = new String[]{"idDep", "nomDep", "invesCulturel2019"};
 
-
+    /**
+     * Lance une requête SQL
+     * @param connection La connexion à la base de données
+     * @param sql La requête SQL
+     * @return Le résultat de la requête SQL
+     * @throws Exception - quand un problème est détecté avec la base de données
+     */
     protected ArrayList<Departement> runSQLQuery(Connection connection, String sql) throws Exception {
         ArrayList<Departement> results = new ArrayList<Departement>();
         Statement statement = connection.createStatement();
@@ -38,6 +46,11 @@ public class DepartementDAO extends DAO<Departement> {
         return results;
     }
 
+    /**
+     * Permet de retrouver l'ensemble des instances de type Departement de la base de données
+     * @param c La connexion à la base de données
+     * @return L'ensemble des instances de type Departement de la base de données
+     */
     @Override
     public ArrayList<Departement> findAll(Connection c) {
         ArrayList<Departement> arr = new ArrayList<>();
@@ -47,23 +60,15 @@ public class DepartementDAO extends DAO<Departement> {
         catch (Exception e) {
             e.printStackTrace();
         }
-
-        /**
-        for (Commune commune : arr) {
-            ArrayList<Commune> voisines = new ArrayList<Commune>();
-            int com = Integer.parseInt(da[0]);
-            String[] near_c = commune.split("\\|");// Séparation de chaque ville depuis le CSV
-            for (String nea : near_c) {
-                Commune voisine = communes.get(searcher.search(communes, new Commune(Integer.parseInt(nea), "Searching", null)));
-                voisines.add(voisine); // Ajout de la voisine dans la liste des voisines
-            }
-            current.setVoisins(voisines);
-        */
-
         return arr;
     }
 
-
+    /**
+     * Renvoie l'instance de type Departement correspondant à l'ID
+     * @param c La connexion à la base de données
+     * @param id L'ID 
+     * @return L'instance de type Departement correspondant à l'ID
+     */
     public Departement findByID(Connection c, long id) {
         ArrayList<Departement> arr = new ArrayList<Departement>();
 
@@ -74,22 +79,16 @@ public class DepartementDAO extends DAO<Departement> {
             e.printStackTrace();
         }
 
-        /*
-        for (Commune commune : arr) {
-            ArrayList<Commune> voisines = new ArrayList<Commune>();
-            int com = Integer.parseInt(da[0]);
-            String[] near_c = commune.split("\\|");// Séparation de chaque ville depuis le CSV
-            for (String nea : near_c) {
-                Commune voisine = communes.get(searcher.search(communes, new Commune(Integer.parseInt(nea), "Searching", null)));
-                voisines.add(voisine); // Ajout de la voisine dans la liste des voisines
-            }
-            current.setVoisins(voisines);
-        */
-
         return arr.get(0);
     }
 
-
+    /**
+     * Renvoie la ou les instances correspondant au filtre
+     * @param co La connexion à la base de données
+     * @param filter Le paramètre du filtre
+     * @param filterSelect La valeur du filtre
+     * @return La ou les instances correspondant au filtre
+     */
     public  ArrayList<Departement> findByFilter(Connection co, String filter, String filterSelect) {
         ArrayList<Departement> arr = new ArrayList<Departement>();
 
@@ -100,21 +99,15 @@ public class DepartementDAO extends DAO<Departement> {
             e.printStackTrace();
         }
 
-        /*
-        for (Commune commune : arr) {
-            ArrayList<Commune> voisines = new ArrayList<Commune>();
-            int com = Integer.parseInt(da[0]);
-            String[] near_c = commune.split("\\|");// Séparation de chaque ville depuis le CSV
-            for (String nea : near_c) {
-                Commune voisine = communes.get(searcher.search(communes, new Commune(Integer.parseInt(nea), "Searching", null)));
-                voisines.add(voisine); // Ajout de la voisine dans la liste des voisines
-            }
-            current.setVoisins(voisines);
-        */
-
         return arr;
     }
 
+    /**
+     * Permet de mettre à jour les données d'une instance
+     * @param co La connexion à la base de données
+     * @param id L'ID de l'instance
+     * @param departement L'instance qui va remplacer celle qu'on recherche
+     */
     public void update(Connection co, long id, Departement departement) {
         String sql = "UPDATE Departement SET nomDep = ?, investissementCulturel2019 = ? WHERE idDep = ?";
 
@@ -129,6 +122,11 @@ public class DepartementDAO extends DAO<Departement> {
         }
     }
 
+    /**
+     * Permet de créer une instance
+     * @param co La connexion à la base de données
+     * @param departement L'instance qu'on va créer
+     */
     public void create(Connection co, Departement departement) {
         String sql = "INSERT INTO Departement (idDep, nomDep, investissementCulturel2019) VALUES (?, ?, ?)";
 
@@ -143,6 +141,11 @@ public class DepartementDAO extends DAO<Departement> {
         }
     }
 
+    /**
+     * Permet d'effacer une instance
+     * @param co La connexion à la base de données
+     * @param departement L'instance qu'on va effacer
+     */
     public void delete(Connection co, Departement departement) {
         String sql = "DELETE FROM Departement WHERE idDep = ?";
 

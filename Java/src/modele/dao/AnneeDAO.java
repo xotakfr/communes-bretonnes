@@ -24,12 +24,11 @@ public class AnneeDAO {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
         Annee com = new Annee(0,0f);
-
-        
+    
         while (resultSet.next()) {
             com = new Annee(resultSet.getInt(0), resultSet.getFloat(1));
-        }
-        
+        }      
+
         resultSet.close();
         statement.close();
         return com;
@@ -51,7 +50,6 @@ public class AnneeDAO {
             e.printStackTrace();
         }
 
-
         return str;
     }
 
@@ -69,7 +67,8 @@ public class AnneeDAO {
             pstmt.setInt(2, id);
 
             pstmt.executeUpdate();
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -87,7 +86,8 @@ public class AnneeDAO {
             pstmt.setFloat(2, annee.getTauxInflation());
 
             pstmt.executeUpdate();
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -104,7 +104,8 @@ public class AnneeDAO {
             pstmt.setInt(1, annee.getAnnee());
 
             pstmt.executeUpdate();
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
     }

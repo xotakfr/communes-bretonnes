@@ -8,8 +8,10 @@ import java.sql.PreparedStatement;
 import modele.data.Commune;
 
 /**
- * Data Access for Commune
- * Use all fonction in DAO for the Commune objects
+ * Classe DAO pour le type Commune.
+ * Hérite de DAO
+ * @see DAO
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public class CommuneDAO extends DAO<Commune> {
     /** Filtre actuel - Voir comparableTo */
@@ -17,7 +19,13 @@ public class CommuneDAO extends DAO<Commune> {
     /** Liste des filtres possibles */
     private static String[] filtersList = new String[]{"idCommune", "nomCommune", "voisins","population"};
 
-
+     /**
+     * Lance une requête SQL
+     * @param connection La connexion à la base de données
+     * @param sql La requête SQL
+     * @return Le résultat de la requête SQL
+     * @throws Exception - quand un problème est détecté avec la base de données
+     */
     protected ArrayList<Commune> runSQLQuery(Connection connection, String sql) throws Exception {
         ArrayList<Commune> results = new ArrayList<Commune>();
         Statement statement = connection.createStatement();
@@ -38,7 +46,11 @@ public class CommuneDAO extends DAO<Commune> {
         return results;
     }
 
-
+    /**
+     * Permet de retrouver l'ensemble des instances de type Commune de la base de données
+     * @param c La connexion à la base de données
+     * @return L'ensemble des instances de type Commune de la base de données
+     */
     public  ArrayList<Commune> findAll(Connection c) {
         ArrayList<Commune> arr = new ArrayList<Commune>();
         try {
@@ -47,23 +59,15 @@ public class CommuneDAO extends DAO<Commune> {
         catch (Exception e) {
             e.printStackTrace();
         }
-
-        /*
-        for (Commune commune : arr) {
-            ArrayList<Commune> voisines = new ArrayList<Commune>();
-            int com = Integer.parseInt(da[0]);
-            String[] near_c = commune.split("\\|");// Séparation de chaque ville depuis le CSV
-            for (String nea : near_c) {
-                Commune voisine = communes.get(searcher.search(communes, new Commune(Integer.parseInt(nea), "Searching", null)));
-                voisines.add(voisine); // Ajout de la voisine dans la liste des voisines
-            }
-            current.setVoisins(voisines);
-        */
-
         return arr;
     }
 
-
+    /**
+     * Renvoie l'instance de type Commune correspondant à l'ID
+     * @param c La connexion à la base de données
+     * @param id L'ID 
+     * @return L'instance de type Commune correspondant à l'ID
+     */
     public Commune findByID(Connection c, long id) {
         ArrayList<Commune> arr = new ArrayList<>();
         try {
@@ -72,24 +76,16 @@ public class CommuneDAO extends DAO<Commune> {
         catch (Exception e) {
             e.printStackTrace();
         }
-
-        /*
-        for (Commune commune : arr) {
-            ArrayList<Commune> voisines = new ArrayList<Commune>();
-            int com = Integer.parseInt(da[0]);
-            String[] near_c = commune.split("\\|");// Séparation de chaque ville depuis le CSV
-            for (String nea : near_c) {
-                Commune voisine = communes.get(searcher.search(communes, new Commune(Integer.parseInt(nea), "Searching", null)));
-                voisines.add(voisine); // Ajout de la voisine dans la liste des voisines
-            }
-            current.setVoisins(voisines);
-        */
-
         return arr.get(0);
     }
 
-
-    public  ArrayList<Commune> findByFilter(String filter, String filterSelect) {
+    /**
+     * Renvoie la ou les instances de type correspondant au filtre
+     * @param filter Le paramètre du filtre
+     * @param filterSelect La valeur du filtre
+     * @return La ou les instances correspondant au filtre
+     */
+    public ArrayList<Commune> findByFilter(String filter, String filterSelect) {
         Connection co = getConnection();
         ArrayList<Commune> arr = new ArrayList<Commune>();
 
@@ -100,21 +96,15 @@ public class CommuneDAO extends DAO<Commune> {
             e.printStackTrace();
         }
 
-        /*
-        for (Commune commune : arr) {
-            ArrayList<Commune> voisines = new ArrayList<Commune>();
-            int com = Integer.parseInt(da[0]);
-            String[] near_c = commune.split("\\|");// Séparation de chaque ville depuis le CSV
-            for (String nea : near_c) {
-                Commune voisine = communes.get(searcher.search(communes, new Commune(Integer.parseInt(nea), "Searching", null)));
-                voisines.add(voisine); // Ajout de la voisine dans la liste des voisines
-            }
-            current.setVoisins(voisines);
-        */
-
         return arr;
     }
 
+    /**
+     * Renvoie la ou les instances de type Commune correspondant au nom
+     * @param c La connexion à la base de données
+     * @param name Le nom
+     * @return La ou les instances de type Commune correspondant au nom
+     */
     public Commune findByName(Connection c, String name) {
         ArrayList<Commune> arr = new ArrayList<>();
         try {
@@ -127,7 +117,12 @@ public class CommuneDAO extends DAO<Commune> {
         return arr.get(0);
     }
 
-
+    /**
+     * Permet de mettre à jour les données d'une instance
+     * @param co La connexion à la base de données
+     * @param id L'ID de l'instance
+     * @param commune L'instance qui va remplacer celle qu'on recherche
+     */
     public void update(Connection co, long id, Commune commune) {
         String sql = "UPDATE Commune SET nomCommune = ?, leDepartement = ? WHERE idCommune = ?";
 
@@ -142,6 +137,11 @@ public class CommuneDAO extends DAO<Commune> {
         }
     }
 
+    /**
+     * Permet de créer une instance
+     * @param co La connexion à la base de données
+     * @param commune L'instance qu'on va créer
+     */
     public void create(Connection co, Commune commune) {
         String sql = "INSERT INTO Commune (idCommune, nomCommune, leDepartement) VALUES (?, ?, ?)";
 
@@ -156,6 +156,11 @@ public class CommuneDAO extends DAO<Commune> {
         }
     }
 
+    /**
+     * Permet d'effacer une instance
+     * @param co La connexion à la base de données
+     * @param commune L'instance qu'on va effacer
+     */
     public void delete(Connection co, Commune commune) {
         String sql = "DELETE FROM Commune WHERE idCommune = ?";
 
