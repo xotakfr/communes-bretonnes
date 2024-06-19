@@ -9,6 +9,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
@@ -20,7 +21,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="1133.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SettingsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="1133.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SettingsController">
    <left>
       <GridPane styleClass="stats_sidebar" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -270,7 +271,18 @@
                               </GridPane>
                            </right>
                            <center>
-                              <TableView fx:id="tableView" prefHeight="725.0" prefWidth="554.0" BorderPane.alignment="CENTER" />
+                              <TableView fx:id="tableView" prefHeight="725.0" prefWidth="554.0" BorderPane.alignment="CENTER">
+                                 <columns>
+                                    <TableColumn id="col1" prefWidth="75.0" text="Col1" />
+                                    <TableColumn id="col2" prefWidth="75.0" text="Col2" />
+                                    <TableColumn id="col3" prefWidth="75.0" text="Col3" />
+                                    <TableColumn id="col4" prefWidth="75.0" text="Col4" />
+                                    <TableColumn id="col5" prefWidth="75.0" text="Col5" />
+                                    <TableColumn id="col6" prefWidth="75.0" text="Col6" />
+                                    <TableColumn id="col7" prefWidth="75.0" text="Col7" />
+                                    <TableColumn id="col8" prefWidth="75.0" text="Col8" />
+                                    <TableColumn id="col9" prefWidth="75.0" text="Col9" />
+                                 </columns></TableView>
                            </center>
                         </BorderPane>
                      </content>
