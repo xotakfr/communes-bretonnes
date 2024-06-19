@@ -196,7 +196,7 @@ public class SettingsController {
                         def.add(new DefaultThing(q));
                     }
                     break;
-                case "modele.dao.DonneesAnnuelles":
+                case "modele.dao.DonneesAnnuellesDAO":
                     ArrayList<DonneesAnnuelles> itemsArrayListDonneesAnnuelles = new DonneesAnnuellesDAO().findAll(c);
                     for (DonneesAnnuelles q : itemsArrayListDonneesAnnuelles) {
                         def.add(new DefaultThing(q));
