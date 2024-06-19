@@ -145,7 +145,7 @@ public class SettingsController {
                 tableButton.getItems().add(item);
             }
             */
-           String[] names = new String[]{"Aeroport", "Annee", "Commune", "Departement", "Gare", "DonnesAnnuelles"};
+           String[] names = new String[]{"Aeroport", "Annee", "Commune", "Departement", "Gare", "DonneesAnnuelles"};
            for (String a : names) {
                 String tableName = a;
                 MenuItem item = new MenuItem(tableName);
