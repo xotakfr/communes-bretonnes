@@ -27,7 +27,7 @@ public class AeroportDAO {
         ArrayList<Aeroport> ann = new ArrayList<Aeroport>();
 
         while (resultSet.next()) {
-            Aeroport com = new Aeroport(resultSet.getString(0), resultSet.geString(1), resultSet.getInt(2));
+            Aeroport com = new Aeroport(resultSet.getString(0), resultSet.getString(1), resultSet.getInt(2));
             ann.add(com);
         }      
 
@@ -62,7 +62,7 @@ public class AeroportDAO {
      * @return L'instance correspondante à l'ID
      */
     public static Aeroport getFromId(Connection co, String nom) {
-        Aeroport str = new Aeroport(0,0f);
+        Aeroport str = null;
 
         try {
             str = runSQLQuery(co, "SELECT * FROM Aeroport WHERE \"Aeroport.nom\" LIKE \""+nom+"\";").get(0);
