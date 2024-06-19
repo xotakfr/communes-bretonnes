@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class PythonLauncher {
     /** Chemin vers le répertoire contenant nos scripts python */
-    private static String path = "../../python/";
+    private static String path = "../src/utils/";
 
     /**
      * Permet de lancer un script python depuis la classe

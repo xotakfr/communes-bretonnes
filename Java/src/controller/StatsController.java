@@ -8,12 +8,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import modele.classesDAO.CommuneDAO;
 import modele.classesDAO.DonneesAnnuellesDAO;
 import modele.classesModele.Commune;
 import modele.classesModele.DonneesAnnuelles;
 import utils.FontOptimizer;
+import utils.PythonLauncher;
 import view.scenes.WelcomeScene;
 import javafx.stage.Stage;
 import javafx.scene.Node;
@@ -22,35 +25,52 @@ import java.sql.Connection;
 
 public class StatsController {
 
-    @FXML // fx:id="appartText"
-    private Text appartText; // Value injected by FXMLLoader
 
-    @FXML // fx:id="avgAreaText"
-    private Text avgAreaText; // Value injected by FXMLLoader
+    @FXML
+    private Text appartText;
 
-    @FXML // fx:id="avgText"
-    private Text avgText; // Value injected by FXMLLoader
+    @FXML
+    private Text avgAreaText;
 
-    @FXML // fx:id="avgm2Text"
-    private Text avgm2Text; // Value injected by FXMLLoader
+    @FXML
+    private Text avgText;
 
-    @FXML // fx:id="budgetText"
-    private Text budgetText; // Value injected by FXMLLoader
+    @FXML
+    private Text avgm2Text;
 
-    @FXML // fx:id="culturalText"
-    private Text culturalText; // Value injected by FXMLLoader
-
-    @FXML // fx:id="maisonsText"
-    private Text maisonsText; // Value injected by FXMLLoader
-
-    @FXML // fx:id="popText"
-    private Text popText; // Value injected by FXMLLoader
+    @FXML
+    private Text budgetText;
 
     @FXML
     private Text communeText;
 
     @FXML
+    private Text culturalText;
+
+    @FXML
+    private Pane imagePane;
+
+    @FXML
+    private Text maisonsText;
+
+    @FXML
+    private Text popText;
+
+    @FXML
+    private TextField vis3Arg;
+
+    @FXML
+    private TextField vis4arg;
+
+    @FXML
+    private TextField vis5Arg;
+
+    @FXML
+    private TextField vis6Arg;
+
+    @FXML
     private MenuButton yearButton;
+
 
     @FXML
     void handleBack(ActionEvent event) {
@@ -93,6 +113,43 @@ public class StatsController {
     public void handleLoad(String commune) {
         this.communeText.setText(commune);
         communeText.setStyle("-fx-font-size: "+ FontOptimizer.getOptimizedFontSize(commune, 80, 50)+"px;");
+    }
+
+    @FXML
+    void vis1(ActionEvent event) {
+        imagePane.setStyle("-fx-background-image: url(\"/resources/assets/loading.png\");");
+        try {
+            PythonLauncher.launch("visualizations.py", new String[]{"1"});
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        imagePane.setStyle("-fx-background-image: url(\"/javafx_visualization.png\");");
+
+    }
+
+    @FXML
+    void vis2(ActionEvent event) {
+        imagePane.setStyle("-fx-background-image: url(\"/resources/assets/loading.png\");");
+    }
+
+    @FXML
+    void vis3(ActionEvent event) {
+
+    }
+
+    @FXML
+    void vis4(ActionEvent event) {
+
+    }
+
+    @FXML
+    void vis5(ActionEvent event) {
+
+    }
+
+    @FXML
+    void vis6(ActionEvent event) {
+
     }
 
 }

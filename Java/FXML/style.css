@@ -207,7 +207,6 @@
 }
 
 .stats_image {
-    -fx-background-image: url("./assets/img/placeholder/placeholder_1.jpg");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
     -fx-background-size: contain;

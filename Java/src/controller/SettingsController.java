@@ -16,6 +16,7 @@ import modele.classesModele.Departement;
 import utils.ResultSetTableView;
 import view.scenes.WelcomeScene;
 
+import java.io.Console;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
@@ -35,11 +36,17 @@ public class SettingsController {
         Connection c = (Connection) stage.getProperties().get("Connection");
 
         String table = ((MenuItem) event.getSource()).getText();
+
         try {
             System.out.println(table);
+
             Statement statement = c.createStatement();
 
             ResultSet rs = statement.executeQuery("SELECT * FROM " + table + ";");
+
+            while(rs.next()) {
+                System.out.println(rs.getInt(1));
+            }
             tableView = new ResultSetTableView(rs);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -50,7 +57,6 @@ public class SettingsController {
             DAO<?> instanceDAO =  (DAO<?>) classeDAO.getDeclaredConstructor().newInstance();
             ArrayList<?> itemsArrayList = instanceDAO.findAll(c);
             ObservableList<?> items = FXCollections.observableArrayList(itemsArrayList);
-            System.out.println(items);
             tableView = new TableView<>(items);
             switch (className) {
                 case "modele.classesDAO.DepartementDAO":
