@@ -35,6 +35,25 @@ public class AnneeDAO {
     }
 
     /**
+     * Permet de retrouver toute les instances
+     * @param co La connexion à la base de données
+     * @param id L'ID qu'on doit rechercher
+     * @return L'instance correspondante à l'ID
+     */
+    public static ArrayList<Annee> getFromId(Connection co, int id) {
+        ArrayList<Annee> ann = new ArrayList<Annee>();
+
+        try {
+            ann = runSQLQuery(co, "SELECT * FROM Annee;");
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return str;
+    }
+
+    /**
      * Permet de retrouver une instance à partir de son ID
      * @param co La connexion à la base de données
      * @param id L'ID qu'on doit rechercher
