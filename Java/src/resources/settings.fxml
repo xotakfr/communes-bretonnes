@@ -272,17 +272,17 @@
                                     </MenuButton>
                                     <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                        <children>
-                                          <Button mnemonicParsing="false" text="Editer">
+                                          <Button mnemonicParsing="false" text="Editer" onAction="#handleEditButton">
                                              <HBox.margin>
                                                 <Insets left="5.0" top="25.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button mnemonicParsing="false" text="Inserer">
+                                          <Button mnemonicParsing="false" text="Inserer" onAction="#handleAddButton">
                                              <HBox.margin>
                                                 <Insets left="5.0" top="25.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button mnemonicParsing="false" text="Supprimer">
+                                          <Button mnemonicParsing="false" text="Supprimer" onAction="#handleDeleteButton">
                                              <HBox.margin>
                                                 <Insets left="5.0" top="25.0" />
                                              </HBox.margin>
