@@ -2,14 +2,17 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import modele.classesModele.Departement;
+import utils.ResultSetTableView;
+
+import java.sql.*;
+import java.util.ArrayList;
 
 public class SettingsController {
 
@@ -17,13 +20,45 @@ public class SettingsController {
     private MenuButton tableButton;
 
     @FXML
+    private TableView tableView;
+
+    @FXML
     void tableAction(ActionEvent event) {
-        System.out.println("Bonjour, j'existe");
-        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        Stage stage = (Stage) (((MenuItem) event.getSource()).getParentPopup().getOwnerWindow());
         Connection c = (Connection) stage.getProperties().get("Connection");
 
         String table = ((MenuItem) event.getSource()).getText();
-        System.out.println(table);
+        try {
+            System.out.println(table);
+            Statement statement = c.createStatement();
+
+            ResultSet rs = statement.executeQuery("SELECT * FROM " + table + ";");
+            tableView = new ResultSetTableView(rs);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        /*
+        try {
+            Class<?> classeDAO = Class.forName("modele.classesDAO."+table+"DAO");
+            String className = classeDAO.getName();
+            DAO<?> instanceDAO =  (DAO<?>) classeDAO.newInstance();
+            ArrayList<?> itemsArrayList = instanceDAO.findAll(c);
+            ObservableList<?> items = FXCollections.observableArrayList(itemsArrayList);
+            System.out.println(items);
+            tableView = new TableView<>(items);
+            switch (className) {
+                case "modele.classesDAO.DepartementDAO":
+                    departementTableAction(itemsArrayList);
+            }
+        } catch (ClassNotFoundException e) {
+
+        } catch (InstantiationException e) {
+
+        } catch (IllegalAccessException e) {
+
+        }
+
+         */
     }
 
     public void loadTableNames(Connection connection) {
@@ -33,12 +68,13 @@ public class SettingsController {
 
             while (rs.next()) {
                 String tableName = rs.getString("TABLE_NAME");
-                tableButton.getItems().add(new MenuItem(tableName));
+                MenuItem item = new MenuItem(tableName);
+                item.setOnAction(this::tableAction);
+                tableButton.getItems().add(item);
             }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
-
 }

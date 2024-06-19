@@ -3,6 +3,7 @@ package modele.classesDAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,7 +38,7 @@ public abstract class DAO<T> {
      */
     //protected abstract List<T> runSQLQuery(Connection connection, String sql) throws Exception;
 
-    public abstract List<T> findAll(Connection c);
+    public abstract ArrayList<T> findAll(Connection c);
 
     /**
     public abstract T findById(long id);

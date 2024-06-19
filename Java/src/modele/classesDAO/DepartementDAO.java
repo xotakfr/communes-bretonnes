@@ -42,7 +42,7 @@ public class DepartementDAO extends DAO<Departement> {
     public ArrayList<Departement> findAll(Connection c) {
         ArrayList<Departement> arr = new ArrayList<>();
         try {
-            arr = runSQLQuery(c, "SELECT * FROM Departements;");
+            arr = runSQLQuery(c, "SELECT * FROM Departement;");
         } 
         catch (Exception e) {
             e.printStackTrace();
