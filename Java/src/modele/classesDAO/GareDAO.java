@@ -29,8 +29,8 @@ public class GareDAO extends DAO<Gare> {
             Gare com = new Gare(
                             resultSet.getInt(1),
                             resultSet.getString(2),
-                            resultSet.getBoolean(3),
-                            resultSet.getBoolean(4),
+                            (resultSet.getInt(3) !=0),
+                            (resultSet.getInt(4) !=0),
                             new CommuneDAO().findByID(connection, resultSet.getInt(5))
                         );
             results.add(com);
