@@ -2,39 +2,56 @@ package modele.dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.sql.PreparedStatement;
 
 
 import modele.data.Annee;
+import modele.data.Commune;
 
 /**
  * Data Access for Annee
  * Use all fonction in DAO for the Annee objects
  */
-public class AnneeDAO {
+public class AnneeDAO extends DAO<Annee> {
     /** Filtre actuel - Voir comparableTo et SwitecherFilter */
     private static String currentFilter = "annee";
     /** Liste des filtres possibles */
     private static String[] filtersList = new String[]{"annee", "tauxInflation"};
 
 
-    protected static Annee runSQLQuery(Connection connection, String sql) throws Exception {
+    protected static ArrayList<Annee> runSQLQuery(Connection connection, String sql) throws Exception {
+        ArrayList<Annee> results = new ArrayList<Annee>();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
-        Annee com = new Annee(0,0f);
+        Annee com;
 
-        
         while (resultSet.next()) {
-            com = new Annee(resultSet.getInt(0), resultSet.getFloat(1));
+            com = new Annee(
+                    resultSet.getInt(0), 
+                    resultSet.getFloat(1)
+                );
+            results.add(com);
         }
         
         resultSet.close();
         statement.close();
-        return com;
+        return results;
     }
 
-    public static Annee getFromId(Connection co, int id) {
-        Annee str = new Annee(0,0f);
+    public  ArrayList<Annee> findAll(Connection c) {
+        ArrayList<Annee> arr = new ArrayList<Annee>();
+        try {
+            arr = runSQLQuery(c, "SELECT * FROM Annee;");
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return arr;
+    }
+
+    public static ArrayList<Annee> getFromId(Connection co, int id) {
+        ArrayList<Annee> str = null;
 
         try {
             str = runSQLQuery(co, "SELECT * FROM Annee WHERE \"Annee.annee\" LIKE \""+id+"\";");
