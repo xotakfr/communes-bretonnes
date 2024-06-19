@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * Code by <a href="https://stackoverflow.com/questions/54181595/how-to-create-a-dynamic-tableview-in-javafx-from-a-user-selected-database-table">Zephyr on StackOverflow</a>
- *
+
  */
 public class ResultSetTableView extends TableView {
 
