@@ -142,15 +142,26 @@ public class SettingsController {
      */
     public void loadTableNames(Connection connection) {
         try {
+            /*
             DatabaseMetaData dbmd = connection.getMetaData();
             ResultSet rs = dbmd.getTables(null, null, "%", new String[]{"TABLE"});
 
+            
             while (rs.next()) {
                 String tableName = rs.getString("TABLE_NAME");
                 MenuItem item = new MenuItem(tableName);
                 item.setOnAction(this::tableAction);
                 tableButton.getItems().add(item);
             }
+            */
+           String[] names = new String[]{"Aeroport", "Annee", "Commune", "Departement", "Gare", "DonnesAnnuelles"};
+           for (String a : names) {
+                String tableName = a;
+                MenuItem item = new MenuItem(tableName);
+                item.setOnAction(this::tableAction);
+                tableButton.getItems().add(item);
+           }
+
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
