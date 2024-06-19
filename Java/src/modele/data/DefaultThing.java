@@ -50,9 +50,21 @@ public class DefaultThing {
     }
 
     public DefaultThing(Aeroport aer) {
-        this.col1 = new SimpleStringProperty(aer.geNom());
+        this.col1 = new SimpleStringProperty(aer.getNom());
         this.col2 = new SimpleStringProperty(aer.getAdresse());
         this.col3 = new SimpleStringProperty(String.valueOf(aer.getLeDepartement().getIdDep()));
+        this.col4 = new SimpleStringProperty("");
+        this.col5 = new SimpleStringProperty("");
+        this.col6 = new SimpleStringProperty("");
+        this.col7 = new SimpleStringProperty("");
+        this.col8 = new SimpleStringProperty("");
+        this.col9 = new SimpleStringProperty("");
+    }
+
+    public DefaultThing(Annee ann) {
+        this.col1 = new SimpleStringProperty(String.valueOf(ann.getAnnee()));
+        this.col2 = new SimpleStringProperty(String.valueOf(ann.getTauxInflation()));
+        this.col3 = new SimpleStringProperty("");
         this.col4 = new SimpleStringProperty("");
         this.col5 = new SimpleStringProperty("");
         this.col6 = new SimpleStringProperty("");
