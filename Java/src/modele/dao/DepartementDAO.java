@@ -1,4 +1,4 @@
-package modele.classesDAO;
+package modele.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
-import modele.classesModele.Departement;
+import modele.data.Departement;
 
 /**
  * Data Access for Departement

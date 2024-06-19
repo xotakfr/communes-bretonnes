@@ -1,11 +1,11 @@
-package modele.classesModele;
+package modele.data;
 
 import java.io.*;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import modele.classesDAO.*;
+import modele.dao.*;
 
 /**
  * Classe de gestion des données

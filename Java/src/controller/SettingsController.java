@@ -12,21 +12,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import modele.classesDAO.*;
-import modele.classesModele.*;
-import utils.ResultSetTableView;
+import modele.dao.*;
+import modele.data.*;
 import view.scenes.WelcomeScene;
-import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.ArrayList;
 
-import modele.classesModele.DefaultThing;
+import modele.data.DefaultThing;
 
 public class SettingsController {
 

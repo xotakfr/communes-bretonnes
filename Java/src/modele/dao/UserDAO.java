@@ -1,12 +1,11 @@
-package modele.classesDAO;
+package modele.dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.sql.PreparedStatement;
 
-import modele.classesModele.Departement;
-import modele.classesModele.Commune;
+import modele.data.Commune;
 /**
  * Data Access for User
  * Use all fonction in DAO for the User objects

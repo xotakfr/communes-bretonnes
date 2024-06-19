@@ -1,4 +1,4 @@
-import modele.classesModele.*;
+import modele.data.*;
 import modele.methodesTri.*;
 import java.util.Arrays;
 import java.util.ArrayList;

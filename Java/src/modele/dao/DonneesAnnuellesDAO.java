@@ -1,4 +1,4 @@
-package modele.classesDAO;
+package modele.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -6,9 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.sql.PreparedStatement;
 
-import modele.classesModele.Annee;
-import modele.classesModele.Commune;
-import modele.classesModele.DonneesAnnuelles;
+import modele.data.DonneesAnnuelles;
 
 /**
  * Data Acces for DonneesAnnuelles
