@@ -10,6 +10,7 @@ import modele.dao.UserDAO;
 import modele.data.Commune;
 import view.scenes.LoginScene;
 import view.scenes.StatsScene;
+import view.scenes.SettingsScene;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -79,6 +80,16 @@ public class SingleWelcomeController {
         String nomCommune = commune.getNomCommune();
         communeButton.setText(nomCommune);
         subButton.setText(nomCommune.substring(0, 1));
+    }
+
+     /**
+     * Gère la redirection vers la scène de paramètrage de l'application
+     * @param event L'ActionEvent reçu lorsqu'on clique sur le bouton de paramètrage
+     */
+    @FXML
+    void handleSettings(ActionEvent event) {
+        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        SettingsScene.loadScene(stage);
     }
 
 }
