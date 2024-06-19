@@ -25,7 +25,8 @@ Mais nous avons plutôt opté pour Python (geopandas, numpy, matplotlib) qui est
 
 13. Un privilège consiste en le droit d'effectuer une action sur une colonne, table ou base de données qu'on attribue à un rôle ou un utilisateur particulier alors qu'un rôle consiste en un ensemble de privilèges qui seront tous également attribués aux utilisateurs a qui appartient ce rôle. Il existe aussi la possibilité qu'un rôle consiste en l'ensemble de sous-rôles, dans ce cas ce rôle aura pour privilèges l'ensemble des privilèges de ses sous-rôles.
 
-14. ???
+14. Une exception est un événement qui interrompt le flux normal de l'exécution d'un programme. Voici des outils de manipulation en Java : try-catch : Bloc qui permet de capturer et gérer les exceptions. throw : Permet de lancer une exception. Avec ces outils, on peut par exemple, implémenter de blocs try-catch autour des sections de code susceptibles de générer des exceptions puis afficher de messages d'erreur informatifs pour les utilisateurs. ( Partie pour la région Bretagne à faire)
+
 
 15. ???
 
