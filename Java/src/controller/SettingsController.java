@@ -242,6 +242,9 @@ public class SettingsController {
             case "modele.dao.AnneeDAO":
                 new AnneeDAO().update(c,Integer.parseInt(txt[0]), new Annee(Integer.parseInt(txt[0]), Float.parseFloat(txt[1])));
                 break;
+            case "modele.dao.AnneeDAO":
+                new AnneeDAO().update(c,Integer.parseInt(txt[0]), new Annee(Integer.parseInt(txt[0]), Float.parseFloat(txt[1])));
+                break;
         }
         loadTableView();
     }
@@ -263,7 +266,7 @@ public class SettingsController {
             new GareDAO().delete(c,new GareDAO().findByID(c, Long.parseLong(txt[0])));
             break;
         case "modele.dao.AnneeDAO":
-            new AnneeDAO().delete(c, new AnneeDAO.findByID(Long.parseLong(txt[0])));
+            new AnneeDAO().delete(c, new AnneeDAO().getFromId(c, Long.parseLong(txt[0])));
             break;
         }
         loadTableView();
