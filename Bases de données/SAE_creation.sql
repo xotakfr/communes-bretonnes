@@ -1,3 +1,8 @@
+IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = 'YourDatabaseName')
+BEGIN
+    CREATE DATABASE YourDatabaseName;
+END
+
 DROP TABLE IF EXISTS Aeroport;
 DROP TABLE IF EXISTS DonneesAnnuelles;
 DROP TABLE IF EXISTS Annee;
