@@ -203,9 +203,6 @@ public class SettingsController {
     @FXML
     void handleEditButton() {
         String[] txt = valueText.getText().split("§");
-        for (String s:txt) {
-            System.out.println(s);
-        }
         switch (currentClasse) {
         case "modele.dao.DepartementDAO":
             new DepartementDAO().update(c,Integer.parseInt(txt[0]), new Departement(Integer.parseInt(txt[0]), txt[1], Float.parseFloat(txt[2])));
@@ -217,6 +214,7 @@ public class SettingsController {
             new GareDAO().update(c,Integer.parseInt(txt[0]), new Gare(Integer.parseInt(txt[0]), txt[1], Boolean.parseBoolean(txt[2]), Boolean.parseBoolean(txt[3]), new CommuneDAO().findByID(c, Long.parseLong(txt[4]))));
             break;
         }
+        loadTableView();
     }
 
     /**
@@ -236,6 +234,7 @@ public class SettingsController {
             new GareDAO().delete(c,new GareDAO().findByID(c, Long.parseLong(txt[0])));
             break;
         }
+        loadTableView();
     }
 
     /**
@@ -255,6 +254,7 @@ public class SettingsController {
             new GareDAO().create(c,new Gare(Integer.parseInt(txt[0]), txt[1], Boolean.parseBoolean(txt[2]), Boolean.parseBoolean(txt[3]), new CommuneDAO().findByID(c,Long.parseLong(txt[4]))));
             break;
         }
+        loadTableView();
     }
 
 }
