@@ -1,8 +1,9 @@
-build: clean
-	javac -d ../classes --module-path ../lib --add-modules javafx.controls,javafx.base,javafx.fxml $(shell find ../src -name '*.java') -cp ../classes
+build:
+	javac -cp ../classes -d ../classes --module-path ../lib --add-modules javafx.controls,javafx.base,javafx.fxml $(shell find ../src -name '*.java')
 	cp -r ../src/resources ../classes
 	cp ../src/Manifest.txt ../classes/
-	cd ../classes && jar cvfm CommunesBretonnesApp.jar Manifest.txt $(find ./ -name "*.classes") resources/
+	cd ../classes && jar cvfm CommunesBretonnesApp.jar Manifest.txt $(shell cd ../classes && find ./ -name "*.class")
+	cd ../classes && jar uvf CommunesBretonnesApp.jar resources/
 	cp ../classes/CommunesBretonnesApp.jar ./
 
 doc:
