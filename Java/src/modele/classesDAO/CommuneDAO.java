@@ -144,7 +144,6 @@ public class CommuneDAO extends DAO<Commune> {
     }
 
     public void create(Connection co, Commune commune) {
-        Connection co = getConnection();
         String sql = "INSERT INTO Commune (idCommune, nomCommune, leDepartement) VALUES (?, ?, ?)";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
@@ -159,7 +158,6 @@ public class CommuneDAO extends DAO<Commune> {
     }
 
     public void delete(Connection co, Commune commune) {
-        Connection co = getConnection();
         String sql = "DELETE FROM Commune WHERE idCommune = ?";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
