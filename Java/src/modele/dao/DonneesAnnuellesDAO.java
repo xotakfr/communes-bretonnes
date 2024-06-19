@@ -135,8 +135,7 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
      * @param id L'ID de l'instance
      * @param donneesAnnuelles L'instance qui va remplacer celle qu'on recherche
      */
-    public void update(long id, long commune, DonneesAnnuelles donneesAnnuelles) {
-        Connection co = getConnection();
+    public void update(Connection co, long id, long commune, DonneesAnnuelles donneesAnnuelles) {
         String sql = "UPDATE DonneesAnnuelles SET lAnnee = ?, laCommune = ?, nbMaison = ?, nbAppart = ?, prixMoyen = ?, prixM2Moyen = ?, SurfaceMoy = ?, depensesCulturellesTotales = ?, budgetTotal = ?, population = ? WHERE lAnnee = ? AND laCommune = ?";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
@@ -163,7 +162,7 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
      * Permet de créer une instance
      * @param donneesAnnuelles L'instance qu'on va créer
      */
-    public void create(Connection c, DonneesAnnuelles donneesAnnuelles) {
+    public void create(Connection co, DonneesAnnuelles donneesAnnuelles) {
         String sql = "INSERT INTO DonneesAnnuelles (lAnnee, laCommune, nbMaison, nbAppart, prixMoyen, prixM2Moyen, SurfaceMoy, depensesCulturellesTotales, budgetTotal, population) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
@@ -188,7 +187,7 @@ public class DonneesAnnuellesDAO extends DAO<DonneesAnnuelles> {
      * Permet d'effacer une instance
      * @param donneesAnnuelles L'instance qu'on va effacer
      */
-    public void delete(Connection c, DonneesAnnuelles donneesAnnuelles) {
+    public void delete(Connection co, DonneesAnnuelles donneesAnnuelles) {
         String sql = "DELETE FROM DonneesAnnuelles WHERE lAnnee = ? AND laCommune = ?";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
