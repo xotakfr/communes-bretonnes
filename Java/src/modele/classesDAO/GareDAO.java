@@ -69,7 +69,7 @@ public class GareDAO extends DAO<Gare> {
     }
 
 
-    public  Gare findByID(long id) {
+    public  Gare findByID(Connection connection, long id) {
         Connection co = getConnection();
         ArrayList<Gare> arr = new ArrayList<Gare>();
 
@@ -96,8 +96,7 @@ public class GareDAO extends DAO<Gare> {
     }
 
 
-    public  ArrayList<Gare> findByFilter(String filter, String filterSelect) {
-        Connection co = getConnection();
+    public  ArrayList<Gare> findByFilter(Connection co, String filter, String filterSelect) {
         ArrayList<Gare> arr = new ArrayList<Gare>();
 
         try {
@@ -121,8 +120,7 @@ public class GareDAO extends DAO<Gare> {
 
         return arr;
     }
-    public void update(long id, Gare gare) {
-        Connection co = getConnection();
+    public void update(Connection co, long id, Gare gare) {
         String sql = "UPDATE Gares SET nomGare = ?, estFret = ?, estVoyageur = ?, laCommune = ? WHERE codeGare = ?";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
@@ -138,8 +136,7 @@ public class GareDAO extends DAO<Gare> {
         }
     }
 
-    public void create(Gare gare) {
-        Connection co = getConnection();
+    public void create(Connection co, Gare gare) {
         String sql = "INSERT INTO Gares (codeGare, nomGare, estFret, estVoyageur, laCommune) VALUES (?, ?, ?, ?, ?)";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
@@ -155,8 +152,7 @@ public class GareDAO extends DAO<Gare> {
         }
     }
 
-    public void delete(Gare gare) {
-        Connection co = getConnection();
+    public void delete(Connection co, Gare gare) {
         String sql = "DELETE FROM Gares WHERE codeGare = ?";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {

@@ -90,8 +90,7 @@ public class DepartementDAO extends DAO<Departement> {
     }
 
 
-    public  ArrayList<Departement> findByFilter(String filter, String filterSelect) {
-        Connection co = getConnection();
+    public  ArrayList<Departement> findByFilter(Connection co, String filter, String filterSelect) {
         ArrayList<Departement> arr = new ArrayList<Departement>();
 
         try {
