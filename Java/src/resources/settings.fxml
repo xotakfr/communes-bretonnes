@@ -273,15 +273,15 @@
                            <center>
                               <TableView id="tableView" fx:id="tableView" prefHeight="725.0" prefWidth="554.0" BorderPane.alignment="CENTER">
                                  <columns>
-                                    <TableColumn id="col1" prefWidth="75.0" text="Col1" />
-                                    <TableColumn id="col2" prefWidth="75.0" text="Col2" />
-                                    <TableColumn id="col3" prefWidth="75.0" text="Col3" />
-                                    <TableColumn id="col4" prefWidth="75.0" text="Col4" />
-                                    <TableColumn id="col5" prefWidth="75.0" text="Col5" />
-                                    <TableColumn id="col6" prefWidth="75.0" text="Col6" />
-                                    <TableColumn id="col7" prefWidth="75.0" text="Col7" />
-                                    <TableColumn id="col8" prefWidth="75.0" text="Col8" />
-                                    <TableColumn id="col9" prefWidth="75.0" text="Col9" />
+                                    <TableColumn id="col1" fx:id="col1" prefWidth="75.0" text="Col1" />
+                                    <TableColumn id="col2" fx:id="col2" prefWidth="75.0" text="Col2" />
+                                    <TableColumn id="col3" fx:id="col3" prefWidth="75.0" text="Col3" />
+                                    <TableColumn id="col4" fx:id="col4" prefWidth="75.0" text="Col4" />
+                                    <TableColumn id="col5" fx:id="col5" prefWidth="75.0" text="Col5" />
+                                    <TableColumn id="col6" fx:id="col6" prefWidth="75.0" text="Col6" />
+                                    <TableColumn id="col7" fx:id="col7" prefWidth="75.0" text="Col7" />
+                                    <TableColumn id="col8" fx:id="col8" prefWidth="75.0" text="Col8" />
+                                    <TableColumn id="col9" fx:id="col9" prefWidth="75.0" text="Col9" />
                                  </columns></TableView>
                            </center>
                         </BorderPane>
