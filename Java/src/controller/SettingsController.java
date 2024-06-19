@@ -185,6 +185,7 @@ public class SettingsController {
                     ArrayList<Aeroport> itemsArrayListAer = new AeroportDAO().findAll(c);
                     for (Aeroport q : itemsArrayListAer) {
                         def.add(new DefaultThing(q));
+                    }
                     break;
                 case "modele.dao.AnneeDAO":
                     ArrayList<Annee> itemsArrayListAnnee = new AnneeDAO().findAll(c);
