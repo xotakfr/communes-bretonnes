@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import modele.classesDAO.CommuneDAO;
@@ -48,7 +50,7 @@ public class StatsController {
     private Text culturalText;
 
     @FXML
-    private Pane imagePane;
+    private ImageView imagePane;
 
     @FXML
     private Text maisonsText;
@@ -117,38 +119,145 @@ public class StatsController {
 
     @FXML
     void vis1(ActionEvent event) {
-        imagePane.setStyle("-fx-background-image: url(\"/resources/assets/loading.png\");");
+        imagePane.setImage(new Image("/resources/assets/loading.png"));
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            System.out.println(e.getMessage());
+        }
+        // imagePane.setStyle("-fx-background-image: url(\"/resources/assets/loading.png\");");
         try {
             PythonLauncher.launch("visualizations.py", new String[]{"1"});
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
+        imagePane.setImage(null);
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            System.out.println(e.getMessage());
+        }
+        imagePane.setImage(new Image("/javafx_visualization.png"));
+
+        /*
+        imagePane.setStyle(null);
+        imagePane.getStyleClass().clear();
+        imagePane.getStyleClass().addAll("stats_image");
         imagePane.setStyle("-fx-background-image: url(\"/javafx_visualization.png\");");
+         */
 
     }
 
     @FXML
     void vis2(ActionEvent event) {
-        imagePane.setStyle("-fx-background-image: url(\"/resources/assets/loading.png\");");
+        imagePane.setImage(new Image("/resources/assets/loading.png"));
+        try {
+            PythonLauncher.launch("visualizations.py", new String[]{"2"});
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        imagePane.setImage(null);
+        imagePane.setImage(new Image("/javafx_visualization.png"));
     }
 
     @FXML
     void vis3(ActionEvent event) {
+        imagePane.setImage(new Image("/resources/assets/loading.png"));
 
+        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        Connection c = (Connection) stage.getProperties().get("Connection");
+        Commune commune = new CommuneDAO().findByName(c, communeText.getText());
+
+        int yArg = Integer.parseInt(vis3Arg.getText());
+
+        if (yArg >= 1 ) {
+            try {
+                PythonLauncher.launch("visualizations.py", new String[]{"3", Integer.toString(commune.getIdCommune()), vis3Arg.getText()});
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            imagePane.setImage(null);
+            imagePane.setImage(new Image("/javafx_visualization.png"));
+        } else {
+            imagePane.setImage(null);
+            imagePane.setImage(new Image("/resources/assets/wrong.png"));
+        }
     }
 
     @FXML
     void vis4(ActionEvent event) {
+        imagePane.setImage(new Image("/resources/assets/loading.png"));
 
+        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        Connection c = (Connection) stage.getProperties().get("Connection");
+        Commune commune = new CommuneDAO().findByName(c, communeText.getText());
+
+
+        int yArg = Integer.parseInt(vis3Arg.getText());
+
+        if (yArg >= 1) {
+            try {
+                PythonLauncher.launch("visualizations.py", new String[]{"4", Integer.toString(commune.getIdCommune()), vis4arg.getText()});
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            imagePane.setImage(null);
+            imagePane.setImage(new Image("/javafx_visualization.png"));
+        } else {
+            imagePane.setImage(null);
+            imagePane.setImage(new Image("/resources/assets/wrong.png"));
+        }
     }
 
     @FXML
     void vis5(ActionEvent event) {
+        imagePane.setImage(new Image("/resources/assets/loading.png"));
+
+        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        Connection c = (Connection) stage.getProperties().get("Connection");
+
+        int yArg = Integer.parseInt(vis3Arg.getText());
+
+        if (yArg >= 1 ) {
+            try {
+                PythonLauncher.launch("visualizations.py", new String[]{"5", vis5Arg.getText()});
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            imagePane.setImage(null);
+            imagePane.setImage(new Image("/javafx_visualization.png"));
+        } else {
+            imagePane.setImage(null);
+            imagePane.setImage(new Image("/resources/assets/wrong.png"));
+        }
 
     }
 
     @FXML
     void vis6(ActionEvent event) {
+        imagePane.setImage(new Image("/resources/assets/loading.png"));
+
+        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        Connection c = (Connection) stage.getProperties().get("Connection");
+        Commune commune = new CommuneDAO().findByName(c, communeText.getText());
+
+        int yArg = Integer.parseInt(vis3Arg.getText());
+
+        if (yArg >= 1) {
+            try {
+                PythonLauncher.launch("visualizations.py", new String[]{"6", vis6Arg.getText(), Integer.toString(commune.getIdCommune())});
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            imagePane.setImage(null);
+            imagePane.setImage(new Image("/javafx_visualization.png"));
+        } else {
+            imagePane.setImage(null);
+            imagePane.setImage(new Image("/resources/assets/wrong.png"));
+        }
 
     }
 

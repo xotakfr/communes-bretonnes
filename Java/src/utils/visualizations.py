@@ -417,20 +417,23 @@ if which_visualization == 1:
 elif which_visualization == 2:
     visualize_eccentricities()
 elif which_visualization == 3:
-    commune_X = int(args[1])
-    top_Y = int(args[2])
-    draw_top_Y_arretes(G, commune_X, top_Y)
+    if int(args[2]) >= 1:
+        commune_X = int(args[1])
+        top_Y = int(args[2])
+        draw_top_Y_arretes(G, commune_X, top_Y)
 elif which_visualization == 4:
-    commune_X = int(args[1])
-    top_Y = int(args[2])
-    draw_top_Y_communes(G, commune_X, top_Y)
+    if int(args[2]) >= 1:
+        commune_X = int(args[1])
+        top_Y = int(args[2])
+        draw_top_Y_communes(G, commune_X, top_Y)
 elif which_visualization == 5:
-    if len(args) == 2:
-        top_Y = int(args[1])
-        draw_Y_highest_priority(G, top_Y)
-    elif len(args) == 3:
-        top_Y = int(args[1])
-        commune_X = int(args[2])
-        draw_Y_highest_priority(G, top_Y, commune_X)
+    if int(args[1]) >= 1:
+        if len(args) == 2:
+            top_Y = int(args[1])
+            draw_Y_highest_priority(G, top_Y)
+        elif len(args) == 3:
+            top_Y = int(args[1])
+            commune_X = int(args[2])
+            draw_Y_highest_priority(G, top_Y, commune_X)
 else:
     print("mauvais argument/s")
