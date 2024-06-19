@@ -122,16 +122,7 @@ public class SettingsController {
         catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
-        catch (InstantiationException e) {
-            System.out.println(e.getMessage());
-        }
-        catch (IllegalAccessException e) {
-            System.out.println(e.getMessage());
-        }
-        catch (InvocationTargetException e) {
-            System.out.println(e.getMessage());
-        }
-        catch (NoSuchMethodException e) {
+        catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
