@@ -269,7 +269,7 @@ public class SettingsController {
             new AnneeDAO().delete(c, new AnneeDAO().getFromId(c, Long.parseLong(txt[0])));
             break;
         case "modele.dao.DonneesAnnuellesDAO":
-                new DonneesAnnuellesDAO().delete(c, new DonneesAnnuellesDAO().findByCommuneAndYear(Integer.parseInt(txt[0]), Integer.parseInt(txt[1])));
+                new DonneesAnnuellesDAO().delete(c, new DonneesAnnuellesDAO().findByCommuneAndYear(c, Integer.parseInt(txt[0]), Integer.parseInt(txt[1])));
                 break;
         }
         loadTableView();
