@@ -9,61 +9,68 @@ import scipy.stats as sps
 import networkx as nx
 import matplotlib.pyplot as plt
 from queue import Queue
-
+import sys
 import warnings
+
 warnings.filterwarnings('ignore')
 
-import sys
 args = sys.argv[1::]
 
-plt.rcParams["figure.figsize"] = (20,15)
+plt.rcParams["figure.figsize"] = (20, 15)
 
 # importation du fichier csv comme un panda dataframe
-communes=pd.read_csv("./DonneesFourniesGraphes/voisinageCommunesBretonnes.csv", sep=';')
+communes = pd.read_csv("./DonneesFourniesGraphes/voisinageCommunesBretonnes.csv", sep=';')
 
-#lecture des informations geographique
-geo=pd.read_csv("./DonneesFourniesGraphes/communes-geo.csv", sep=';')
+# lecture des informations geographique
+geo = pd.read_csv("./DonneesFourniesGraphes/communes-geo.csv", sep=';')
+
 
 def amezek(com):
     voisins = [int(num) for num in communes['insee_voisins'][com].split('|')]
     amezek = []
-    for vois in voisins :
-        if (22000 <= vois and vois<23000) or (29000 <= vois and vois<30000) or (35000 <= vois and vois<36000) or (56000 <= vois and vois<57000) : #on reste en bretagne
-            if vois != communes['insee'][com] : # boucle
-                if vois not in amezek: # ajout personnel pour éviter les doublons et/ou valeurs à null
+    for vois in voisins:
+        if (22000 <= vois < 23000) or (29000 <= vois < 30000) or (35000 <= vois < 36000) or (
+                56000 <= vois < 57000):  # on reste en bretagne
+            if vois != communes['insee'][com]:  # boucle
+                if vois not in amezek:  # ajout personnel pour éviter les doublons et/ou valeurs à null
                     amezek.append(vois)
     return amezek
 
-voisins_dict = {communes['insee'][x] : amezek(x) for x in range(len(communes['insee']))}
+
+voisins_dict = {communes['insee'][x]: amezek(x) for x in range(len(communes['insee']))}
 
 G = nx.from_dict_of_lists(voisins_dict)
-geo_lite = geo.iloc[:,[0,1,17,19]]
+geo_lite = geo.iloc[:, [0, 1, 17, 19]]
 # création de la colone Latitude
-geo_lite['Latitude']=geo_lite['Geo Point'].apply(lambda x : ast.literal_eval(x)[0])
+geo_lite['Latitude'] = geo_lite['Geo Point'].apply(lambda x: ast.literal_eval(x)[0])
 # création de la colone Longitude
-geo_lite['Longitude']=geo_lite['Geo Point'].apply(lambda x : ast.literal_eval(x)[1])
+geo_lite['Longitude'] = geo_lite['Geo Point'].apply(lambda x: ast.literal_eval(x)[1])
 
-def pos_insee(G,data):
-    pos = {} #dictionnaire vide
+
+def pos_insee(G, data):
+    pos = {}  #dictionnaire vide
     for com in G.nodes:
         y = float(data[data['Code Officiel Commune'] == com]['Latitude'].iloc[0])
-        x = float(data[data['Code Officiel Commune'] == com]['Longitude'].iloc[0])    
-        pos[com]=[x,y]
-    
+        x = float(data[data['Code Officiel Commune'] == com]['Longitude'].iloc[0])
+        pos[com] = [x, y]
+
     return pos
 
-pos_insee = pos_insee(G,geo_lite)
 
-def label_insee(G,data):
-    label = {} #dictionnaire vide
+pos_insee = pos_insee(G, geo_lite)
+
+
+def label_insee(G, data):
+    label = {}  #dictionnaire vide
     for com in G.nodes:
         lab = data[data['Code Officiel Commune'] == com]['Nom Officiel Commune'].iloc[0]
-    
-        label[com]=lab
-    
+
+        label[com] = lab
+
     return label
 
-label_insee = label_insee(G,geo_lite)
+
+label_insee = label_insee(G, geo_lite)
 
 G.remove_edges_from(list(nx.selfloop_edges(G)))
 
@@ -71,6 +78,7 @@ region = geopandas.read_file("./DonneesFourniesGraphes/communes-geo.geojson")
 
 ax = region.plot(linewidth=1, edgecolor="grey", facecolor="lightblue")
 ax.axis("off")
+
 
 def calculate_degrees(G: nx.Graph) -> dict:
     """
@@ -80,11 +88,12 @@ def calculate_degrees(G: nx.Graph) -> dict:
     """
     degrees = dict()
     # Création de la liste des voisins pour chaque sommet du graphe
-    voisins_dict = {communes['insee'][x] : amezek(x) for x in range(len(communes['insee']))}
+    voisins_dict = {communes['insee'][x]: amezek(x) for x in range(len(communes['insee']))}
     for sommet in G.nodes():
         # Le nombre de degrés d'un graphe est égal au nombre de voisins de celui-ci
         degrees[sommet] = len(voisins_dict[sommet])
     return degrees
+
 
 def bfs_min_costs(graph: nx.Graph, start: str) -> dict:
     """
@@ -96,10 +105,10 @@ def bfs_min_costs(graph: nx.Graph, start: str) -> dict:
     # Création dict costs avec le sommet de départ à 0 et les autres à infini
     costs = {node: float('inf') for node in graph.nodes}
     costs[start] = 0
-    
-    q = Queue() # FIFO
+
+    q = Queue()  # FIFO
     q.put(start)
-    
+
     while not q.empty():
         current_node = q.get()
         for neighbor in graph[current_node].keys():
@@ -107,8 +116,9 @@ def bfs_min_costs(graph: nx.Graph, start: str) -> dict:
 
             if new_cost < costs[neighbor]:
                 costs[neighbor] = new_cost
-                q.put(neighbor)                
+                q.put(neighbor)
     return costs
+
 
 def calculate_eccentricity(G: nx.Graph) -> dict:
     """
@@ -117,14 +127,15 @@ def calculate_eccentricity(G: nx.Graph) -> dict:
     :returns: un dictionnaire associant un sommet à son eccentricité pour l'ensemble des sommets du graphe
     """
     # Cette fonction calcule l'excentricité de chaque sommet dans le graphe G en utilisant l'algorithme BFS.
-    
-    eccentricities = dict() # Dictionnaire pour stocker les excentricités calculées
-    
+
+    eccentricities = dict()  # Dictionnaire pour stocker les excentricités calculées
+
     # Boucle sur tous les sommets du graphe G
     for sommet in G.nodes():
         try:
             # Appliquer l'algorithme BFS pour calculer les distances les plus courtes à partir du sommet
-            distances = np.array([float(cost) for cost in bfs_min_costs(G, sommet).values()]) # On transforme les valeurs renvoyées en flotant (pour s'assurer du type traité par numpy)
+            distances = np.array([float(cost) for cost in bfs_min_costs(G,
+                                                                        sommet).values()])  # On transforme les valeurs renvoyées en flotant (pour s'assurer du type traité par numpy)
             # On retire les infinis, car il s'agit de points impossible à atteindre
             mask = np.isinf(distances)
             # Remplacement des infs par 0
@@ -135,9 +146,10 @@ def calculate_eccentricity(G: nx.Graph) -> dict:
         except nx.NetworkXNoPath:
             # Si aucun chemin n'est trouvé, l'excentricité est définie comme None
             eccentricities[sommet] = None
-            
+
     # Retourner le dictionnaire d'excentricités calculées pour chaque sommet        
     return eccentricities
+
 
 def visualize_degrees():
     # Création d'une visualisation à partir des degrés des sommets du graphe
@@ -148,7 +160,8 @@ def visualize_degrees():
     ax = region.plot(linewidth=1, edgecolor="grey", facecolor="white")
     ax.axis("off")
     cmap = plt.get_cmap('plasma')  # Choix de la colormap
-    nx.draw(G, cmap=cmap, pos=pos_insee, ax=ax,node_size=30, alpha=1, edge_color="r", node_color=tuple(degrees.values()))
+    nx.draw(G, cmap=cmap, pos=pos_insee, ax=ax, node_size=30, alpha=1, edge_color="r",
+            node_color=tuple(degrees.values()))
 
     norm = plt.Normalize(min(degrees.values()), max(degrees.values()))
 
@@ -159,6 +172,7 @@ def visualize_degrees():
     plt.savefig("javafx_visualization")
     plt.show()
 
+
 def visualize_eccentricities():
     # Création d'une visualisation à partir de l'eccentricité des sommets du graphe
 
@@ -168,7 +182,8 @@ def visualize_eccentricities():
     ax = region.plot(linewidth=1, edgecolor="grey", facecolor="white")
     ax.axis("off")
     cmap = plt.get_cmap('cividis')  # Choix de la colormap
-    nx.draw(G, cmap=cmap, pos=pos_insee, ax=ax,node_size=30, alpha=1, edge_color="r", node_color=tuple(eccentricities.values()))
+    nx.draw(G, cmap=cmap, pos=pos_insee, ax=ax, node_size=30, alpha=1, edge_color="r",
+            node_color=tuple(eccentricities.values()))
 
     norm = plt.Normalize(min(eccentricities.values()), max(eccentricities.values()))
 
@@ -178,6 +193,7 @@ def visualize_eccentricities():
 
     plt.savefig("javafx_visualization")
     plt.show()
+
 
 def draw_top_Y_arretes(G: nx.Graph, X: str, Y_amount: int) -> None:
     """
@@ -203,7 +219,7 @@ def draw_top_Y_arretes(G: nx.Graph, X: str, Y_amount: int) -> None:
             new_G.add_edge(edge[0], edge[1])
             edge_color_map.append("grey")
             edge_alpha_map.append(0.125)
-    
+
     # remplissage des listes de couleurs et alpha associés à celles-ci pour les sommets
     node_color_map = []
     node_alpha_map = []
@@ -216,16 +232,17 @@ def draw_top_Y_arretes(G: nx.Graph, X: str, Y_amount: int) -> None:
         else:
             node_color_map.append("grey")
             node_alpha_map.append(0.125)
-    
+
     # on dessine le graphe
     region = geopandas.read_file("./DonneesFourniesGraphes/communes-geo.geojson")
     plt.close()
     ax = region.plot(linewidth=1, edgecolor="grey", facecolor="lightblue")
     ax.axis("off")
     nx.draw_networkx_nodes(new_G, node_color=node_color_map, pos=pos_insee, ax=ax, node_size=100, alpha=node_alpha_map)
-    nx.draw_networkx_edges(new_G, edge_color=edge_color_map ,pos=pos_insee, ax=ax, width=2.0, alpha=edge_alpha_map)
+    nx.draw_networkx_edges(new_G, edge_color=edge_color_map, pos=pos_insee, ax=ax, width=2.0, alpha=edge_alpha_map)
     plt.savefig("javafx_visualization")
     plt.show()
+
 
 def arretes_importantes(G: nx.Graph) -> list:
     """
@@ -236,6 +253,7 @@ def arretes_importantes(G: nx.Graph) -> list:
     betweenness_centralities = nx.edge_betweenness_centrality(G)
     important_edges = sorted(betweenness_centralities, key=betweenness_centralities.get, reverse=True)
     return important_edges
+
 
 def draw_top_Y_communes(G: nx.Graph, X: str, amount_Y: int) -> None:
     """
@@ -252,7 +270,7 @@ def draw_top_Y_communes(G: nx.Graph, X: str, amount_Y: int) -> None:
         shortest_path, shortest_distance = chemin_plus_court_de_X_vers_Y(G, X, Y)
         for i in range(len(shortest_path) - 1):
             new_G.add_edge(shortest_path[i], shortest_path[i + 1])
-    
+
     # remplissage des listes de couleurs et alpha associés à celles-ci en fonction du sommet
     color_map = []
     alpha_map = []
@@ -280,6 +298,7 @@ def draw_top_Y_communes(G: nx.Graph, X: str, amount_Y: int) -> None:
     plt.savefig("javafx_visualization")
     plt.show()
 
+
 def get_top_Y_communes(G: nx.Graph, amount_Y: int) -> list:
     """
     Renvoie une liste triée dans l'ordre décroissant de la centralité de degré de chaque sommet du graphe
@@ -290,6 +309,7 @@ def get_top_Y_communes(G: nx.Graph, amount_Y: int) -> list:
     degree_centralities = nx.degree_centrality(G)
     top_Y_communes = sorted(degree_centralities, key=degree_centralities.get, reverse=True)[:amount_Y]
     return top_Y_communes
+
 
 def chemin_plus_court_de_X_vers_Y(G, commune_X, commune_Y):
     """
@@ -305,7 +325,8 @@ def chemin_plus_court_de_X_vers_Y(G, commune_X, commune_Y):
         return shortest_path, shortest_distance
     except nx.NetworkXNoPath:
         return None, float('inf')
-    
+
+
 def draw_Y_highest_priority(G: nx.Graph, amount_Y: int, X: int = -1) -> None:
     """
     Dessine un graphe représentant les Y communes les plus importantes à prioritisées pour l'amélioration du réseau routier
@@ -324,7 +345,7 @@ def draw_Y_highest_priority(G: nx.Graph, amount_Y: int, X: int = -1) -> None:
     new_G = nx.Graph()
     for edge in G.edges():
         new_G.add_edge(edge[0], edge[1])
-    
+
     # création d'une liste pour les ID
     top_Y_priority_ID = [ID for ID, _ in top_Y_priority]
     # création d'un dictionnaire pour le contenu des sommets
@@ -362,7 +383,8 @@ def draw_Y_highest_priority(G: nx.Graph, amount_Y: int, X: int = -1) -> None:
     nx.draw_networkx_labels(new_G, pos=pos_insee, labels=top_Y_priority_content)
     plt.savefig("javafx_visualization")
     plt.show()
-    
+
+
 def get_Y_highest_priority(G: nx.Graph, sub_G: nx.Graph, amount_Y: int) -> list:
     """
     Renvoie la liste triée dans l'ordre décroissants des Y premières communes les plus importantes à prioritisées
@@ -372,7 +394,7 @@ def get_Y_highest_priority(G: nx.Graph, sub_G: nx.Graph, amount_Y: int) -> list:
     :returns: la liste triée dans l'ordre décroissants des Y premières communes les plus importantes à prioritisées
     """
     # Liste des communes dans sub_G
-    communes_avec_gare = list(sub_G.nodes()) 
+    communes_avec_gare = list(sub_G.nodes())
     # Liste des communes dans le graphe original G
     communes_total = list(G.nodes())
     # Communes à prioriser (communes dans G mais pas dans sub_G)
@@ -381,12 +403,13 @@ def get_Y_highest_priority(G: nx.Graph, sub_G: nx.Graph, amount_Y: int) -> list:
     proximity_to_gares_prioriser = {}
     # Calcul de la centralité de proximité pour chaque commune à prioriser
     for commune in communes_a_prioriser:
-            closeness = nx.closeness_centrality(G, u=commune, distance='weight')
-            proximity_to_gares_prioriser[commune] = closeness
+        closeness = nx.closeness_centrality(G, u=commune, distance='weight')
+        proximity_to_gares_prioriser[commune] = closeness
     # Trie des communes à prioriser par la centralité de proximité décroissante
     sorted_communes_prioriser = sorted(proximity_to_gares_prioriser.items(), key=lambda x: x[1], reverse=True)
     # Sélectionner les Y communes les plus prioritaires à afficher
     return sorted_communes_prioriser[:amount_Y]
+
 
 which_visualization = int(args[0]) if args else None
 if which_visualization == 1:

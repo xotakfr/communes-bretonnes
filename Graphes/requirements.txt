@@ -6,6 +6,5 @@ geopy
 scipy
 networkx
 matplotlib
-pyparallel
 ipyparellel
 queue

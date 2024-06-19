@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
@@ -13,7 +14,9 @@ import javafx.stage.Stage;
 import modele.classesDAO.*;
 import modele.classesModele.Departement;
 import utils.ResultSetTableView;
+import view.scenes.WelcomeScene;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.ArrayList;
@@ -54,13 +57,13 @@ public class SettingsController {
                     System.out.println("j'ai reussi");
                     // departementTableAction(itemsArrayList);
             }
-        } 
+        }
         catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
-        } 
+        }
         catch (InstantiationException e) {
             System.out.println(e.getMessage());
-        } 
+        }
         catch (IllegalAccessException e) {
             System.out.println(e.getMessage());
         }
@@ -87,5 +90,12 @@ public class SettingsController {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @FXML
+    void handleBackButton(ActionEvent event) {
+        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        String username = (String) stage.getProperties().get("Username");
+        WelcomeScene.loadScene(stage, username);
     }
 }

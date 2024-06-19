@@ -34,7 +34,7 @@
          <children>
             <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="stats_sidebar_2_top">
                <center>
-                  <Button mnemonicParsing="false" text="Retour" BorderPane.alignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#handleBackButton" text="Retour" BorderPane.alignment="CENTER">
                      <styleClass>
                         <String fx:value="back-button" />
                         <String fx:value="discret_stats_back" />
