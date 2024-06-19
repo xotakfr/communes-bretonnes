@@ -75,14 +75,14 @@ public class DefaultThing {
 
     public DefaultThing(DonneesAnnuelles ann) {
         this.col1 = new SimpleStringProperty(String.valueOf(ann.getAnnee()));
-        this.col2 = new SimpleStringProperty(String.valueOf(ann.getTauxInflation()));
-        this.col3 = new SimpleStringProperty(String.valueOf(ann.getNbMaison()));
-        this.col4 = new SimpleStringProperty(String.valueOf(ann.getNbAppart()));
-        this.col5 = new SimpleStringProperty(String.valueOf(ann.getPrixMoyen()));
-        this.col6 = new SimpleStringProperty(String.valueOf(ann.getPrixM2Moyen()));
-        this.col7 = new SimpleStringProperty(String.valueOf(ann.getSurfaceMoyenne()));
-        this.col8 = new SimpleStringProperty(String.valueOf(ann.getDepensesCulturellesTotales()));
-        this.col9 = new SimpleStringProperty(String.valueOf(ann.getBudgetTotal()));
+        this.col2 = new SimpleStringProperty(String.valueOf(ann.getNbMaison()));
+        this.col3 = new SimpleStringProperty(String.valueOf(ann.getNbAppart()));
+        this.col4 = new SimpleStringProperty(String.valueOf(ann.getPrixMoyen()));
+        this.col5 = new SimpleStringProperty(String.valueOf(ann.getPrixM2Moyen()));
+        this.col6 = new SimpleStringProperty(String.valueOf(ann.getSurfaceMoyenne()));
+        this.col7 = new SimpleStringProperty(String.valueOf(ann.getDepensesCulturellesTotales()));
+        this.col8 = new SimpleStringProperty(String.valueOf(ann.getBudgetTotal()));
+        this.col9 = new SimpleStringProperty(String.valueOf(ann.getPopulation()));
 
         // Revoir pour ajouter population
     }
