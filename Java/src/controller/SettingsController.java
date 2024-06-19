@@ -263,7 +263,7 @@ public class SettingsController {
             new GareDAO().delete(c,new GareDAO().findByID(c, Long.parseLong(txt[0])));
             break;
         case "modele.dao.AnneeDAO":
-            new AnneeDAO().delete(c, new AnneeDAO.findByID(Long.parseLong(txt[0])));
+            new AnneeDAO().delete(c, new AnneeDAO().getFromId(Long.parseLong(txt[0])));
             break;
         }
         loadTableView();
