@@ -296,4 +296,15 @@ public class SettingsController {
         loadTableView();
     }
 
+    @FXML
+    void handleExportCSV(ActionEvent event) {
+        switch (currentClasse) {
+            case "modele.dao.DepartementDAO":
+                Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+                Connection c = (Connection) stage.getProperties().get("Connection");
+                ArrayList<Departement> depts = new DepartementDAO().findAll(c);
+                DataLoader.CSVEncoder("departements.csv", depts, 4);
+        }
+    }
+
 }

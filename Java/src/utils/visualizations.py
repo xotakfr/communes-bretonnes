@@ -169,7 +169,7 @@ def visualize_degrees():
     sm.set_array([])
     plt.colorbar(sm, ax=ax, orientation="vertical")
 
-    plt.savefig("../class/javafx_visualization")
+    plt.savefig("./javafx_visualization")
     plt.show()
 
 
@@ -191,7 +191,7 @@ def visualize_eccentricities():
     sm.set_array([])
     plt.colorbar(sm, ax=ax, orientation="vertical")
 
-    plt.savefig("../class/javafx_visualization")
+    plt.savefig("./javafx_visualization")
     plt.show()
 
 
@@ -228,6 +228,7 @@ def draw_top_Y_arretes(G: nx.Graph, X: str, Y_amount: int) -> None:
         if node == X:
             node_color_map.append("yellow")
             node_alpha_map.append(1)
+            node_alpha_map.append(1)
         # sinon
         else:
             node_color_map.append("grey")
@@ -240,7 +241,7 @@ def draw_top_Y_arretes(G: nx.Graph, X: str, Y_amount: int) -> None:
     ax.axis("off")
     nx.draw_networkx_nodes(new_G, node_color=node_color_map, pos=pos_insee, ax=ax, node_size=100, alpha=node_alpha_map)
     nx.draw_networkx_edges(new_G, edge_color=edge_color_map, pos=pos_insee, ax=ax, width=2.0, alpha=edge_alpha_map)
-    plt.savefig("../class/javafx_visualization")
+    plt.savefig("./javafx_visualization")
     plt.show()
 
 
@@ -295,7 +296,7 @@ def draw_top_Y_communes(G: nx.Graph, X: str, amount_Y: int) -> None:
     ax.axis("off")
     nx.draw_networkx_nodes(new_G, node_color=color_map, pos=pos_insee, ax=ax, node_size=100, alpha=alpha_map)
     nx.draw_networkx_edges(new_G, edge_color="black", pos=pos_insee, ax=ax, width=2.0, alpha=1)
-    plt.savefig("../class/javafx_visualization")
+    plt.savefig("./javafx_visualization")
     plt.show()
 
 
@@ -381,7 +382,7 @@ def draw_Y_highest_priority(G: nx.Graph, amount_Y: int, X: int = -1) -> None:
     nx.draw_networkx_nodes(new_G, node_color=color_map, pos=pos_insee, ax=ax, node_size=200, alpha=alpha_map)
     nx.draw_networkx_edges(new_G, edge_color="grey", pos=pos_insee, ax=ax, width=2.0, alpha=0.25)
     nx.draw_networkx_labels(new_G, pos=pos_insee, labels=top_Y_priority_content)
-    plt.savefig("../class/javafx_visualization")
+    plt.savefig("./javafx_visualization")
     plt.show()
 
 

@@ -18,6 +18,7 @@ import view.scenes.WelcomeScene;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
+import java.io.File;
 import java.sql.Connection;
 
 /**
@@ -147,6 +148,8 @@ public class StatsController {
      */
     @FXML
     void vis1(ActionEvent event) {
+        String workingDirectory = System.getProperty("user.dir");
+        System.out.println("Working Directory: " + workingDirectory);
         imagePane.setImage(new Image("/resources/assets/loading.png"));
         try {
             Thread.sleep(500);
@@ -167,7 +170,9 @@ public class StatsController {
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
         }
-        imagePane.setImage(new Image("/javafx_visualization.png"));
+        String imagePath = new File("javafx_visualization.png").getAbsolutePath();
+        Image viz = new Image("file:"+imagePath);
+        imagePane.setImage(viz);
 
         /*
         imagePane.setStyle(null);
@@ -192,7 +197,9 @@ public class StatsController {
         }
 
         imagePane.setImage(null);
-        imagePane.setImage(new Image("/javafx_visualization.png"));
+        String imagePath = new File("javafx_visualization.png").getAbsolutePath();
+        Image viz = new Image("file:"+imagePath);
+        imagePane.setImage(viz);
     }
 
     /**
@@ -216,7 +223,9 @@ public class StatsController {
                 System.out.println(e.getMessage());
             }
             imagePane.setImage(null);
-            imagePane.setImage(new Image("/javafx_visualization.png"));
+            String imagePath = new File("javafx_visualization.png").getAbsolutePath();
+            Image viz = new Image("file:"+imagePath);
+            imagePane.setImage(viz);
         } else {
             imagePane.setImage(null);
             imagePane.setImage(new Image("/resources/assets/wrong.png"));
@@ -236,7 +245,7 @@ public class StatsController {
         Commune commune = new CommuneDAO().findByName(c, communeText.getText());
 
 
-        int yArg = Integer.parseInt(vis3Arg.getText());
+        int yArg = Integer.parseInt(vis4arg.getText());
 
         if (yArg >= 1) {
             try {
@@ -245,7 +254,9 @@ public class StatsController {
                 System.out.println(e.getMessage());
             }
             imagePane.setImage(null);
-            imagePane.setImage(new Image("/javafx_visualization.png"));
+            String imagePath = new File("javafx_visualization.png").getAbsolutePath();
+            Image viz = new Image("file:"+imagePath);
+            imagePane.setImage(viz);
         } else {
             imagePane.setImage(null);
             imagePane.setImage(new Image("/resources/assets/wrong.png"));
@@ -263,7 +274,7 @@ public class StatsController {
         Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
         Connection c = (Connection) stage.getProperties().get("Connection");
 
-        int yArg = Integer.parseInt(vis3Arg.getText());
+        int yArg = Integer.parseInt(vis5Arg.getText());
 
         if (yArg >= 1 ) {
             try {
@@ -272,7 +283,9 @@ public class StatsController {
                 System.out.println(e.getMessage());
             }
             imagePane.setImage(null);
-            imagePane.setImage(new Image("/javafx_visualization.png"));
+            String imagePath = new File("javafx_visualization.png").getAbsolutePath();
+            Image viz = new Image("file:"+imagePath);
+            imagePane.setImage(viz);
         } else {
             imagePane.setImage(null);
             imagePane.setImage(new Image("/resources/assets/wrong.png"));
@@ -292,7 +305,7 @@ public class StatsController {
         Connection c = (Connection) stage.getProperties().get("Connection");
         Commune commune = new CommuneDAO().findByName(c, communeText.getText());
 
-        int yArg = Integer.parseInt(vis3Arg.getText());
+        int yArg = Integer.parseInt(vis6Arg.getText());
 
         if (yArg >= 1) {
             try {
@@ -301,7 +314,9 @@ public class StatsController {
                 System.out.println(e.getMessage());
             }
             imagePane.setImage(null);
-            imagePane.setImage(new Image("/javafx_visualization.png"));
+            String imagePath = new File("javafx_visualization.png").getAbsolutePath();
+            Image viz = new Image("file:"+imagePath);
+            imagePane.setImage(viz);
         } else {
             imagePane.setImage(null);
             imagePane.setImage(new Image("/resources/assets/wrong.png"));
