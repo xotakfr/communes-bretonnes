@@ -21,18 +21,19 @@ public class AnneeDAO {
      * @return Le résultat de la requête SQL
      * @throws Exception - quand un problème est détecté avec la base de données
      */
-    protected static Annee runSQLQuery(Connection connection, String sql) throws Exception {
+    protected static ArrayList<Annee> runSQLQuery(Connection connection, String sql) throws Exception {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
-        Annee com = new Annee(0,0f);
-    
+        ArrayList<Annee> ann = new ArrayList<Annee>();
+
         while (resultSet.next()) {
-            com = new Annee(resultSet.getInt(0), resultSet.getFloat(1));
+            Annee com = new Annee(resultSet.getInt(0), resultSet.getFloat(1));
+            ann.add(com);
         }      
 
         resultSet.close();
         statement.close();
-        return com;
+        return ann;
     }
 
     /**
@@ -41,7 +42,7 @@ public class AnneeDAO {
      * @param id L'ID qu'on doit rechercher
      * @return L'instance correspondante à l'ID
      */
-    public static ArrayList<Annee> getFromId(Connection co, int id) {
+    public static ArrayList<Annee> findAll(Connection co) {
         ArrayList<Annee> ann = new ArrayList<Annee>();
 
         try {
@@ -51,7 +52,7 @@ public class AnneeDAO {
             e.printStackTrace();
         }
 
-        return str;
+        return ann;
     }
 
     /**
@@ -60,11 +61,11 @@ public class AnneeDAO {
      * @param id L'ID qu'on doit rechercher
      * @return L'instance correspondante à l'ID
      */
-    public static Annee getFromId(Connection co, int id) {
+    public static Annee getFromId(Connection co, long id) {
         Annee str = new Annee(0,0f);
 
         try {
-            str = runSQLQuery(co, "SELECT * FROM Annee WHERE \"Annee.annee\" LIKE \""+id+"\";");
+            str = runSQLQuery(co, "SELECT * FROM Annee WHERE \"Annee.annee\" LIKE \""+id+"\";").get(0);
         } 
         catch (Exception e) {
             e.printStackTrace();
