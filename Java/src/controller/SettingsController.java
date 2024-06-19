@@ -37,11 +37,10 @@ public class SettingsController {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        /*
         try {
             Class<?> classeDAO = Class.forName("modele.classesDAO."+table+"DAO");
             String className = classeDAO.getName();
-            DAO<?> instanceDAO =  (DAO<?>) classeDAO.newInstance();
+            DAO<?> instanceDAO =  (DAO<?>) classeDAO.getDeclaredConstructor().newInstance(); // ! j'ai modifié ici
             ArrayList<?> itemsArrayList = instanceDAO.findAll(c);
             ObservableList<?> items = FXCollections.observableArrayList(itemsArrayList);
             System.out.println(items);
