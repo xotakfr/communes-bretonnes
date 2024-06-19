@@ -171,6 +171,7 @@ public class SettingsController {
     private void loadTableView() {
         ArrayList<DefaultThing> def = new ArrayList<DefaultThing>();
         tableView.getItems().clear();
+        valueText.setText("");
 
             switch (currentClasse) {
                 case "modele.dao.DepartementDAO":

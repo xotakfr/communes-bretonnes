@@ -68,7 +68,7 @@ public class DataLoader {
      * @return Un tableau de chaînes de caractères
      */
     private static String[] decodeLine(String line) {
-        String[] t = line.split(";");
+        String[] t = line.split(",");
         return t;
     }
 
@@ -81,7 +81,7 @@ public class DataLoader {
     private static String encodeLine(ArrayList<String> params) {
         String ret = "";
         for (String param : params) {
-            ret += param + ";";
+            ret += param + ",";
         }
         return ret;
     }
