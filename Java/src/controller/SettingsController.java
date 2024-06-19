@@ -15,7 +15,6 @@ import javafx.stage.Stage;
 import modele.dao.*;
 import modele.data.*;
 import view.scenes.WelcomeScene;
-import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.ArrayList;
 import modele.data.DefaultThing;
@@ -298,12 +297,25 @@ public class SettingsController {
 
     @FXML
     void handleExportCSV(ActionEvent event) {
+        Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
+        Connection c = (Connection) stage.getProperties().get("Connection");
         switch (currentClasse) {
             case "modele.dao.DepartementDAO":
-                Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
-                Connection c = (Connection) stage.getProperties().get("Connection");
                 ArrayList<Departement> depts = new DepartementDAO().findAll(c);
                 DataLoader.CSVEncoder("departements.csv", depts, 4);
+                break;
+            case "modele.dao.AeroportDAO":
+                ArrayList<Aeroport> aeroports = new AeroportDAO().findAll(c);
+                DataLoader.CSVEncoder("departements.csv", aeroports, 4);
+                break;
+            case "modele.dao.AnneeDAO":
+                ArrayList<Annee> annees = AnneeDAO.findAll(c);
+                DataLoader.CSVEncoder("departements.csv", annees, 4);
+                break;
+            case "modele.dao.CommuneDAO":
+                ArrayList<Commune> communes = new CommuneDAO().findAll(c);
+                DataLoader.CSVEncoder("departements.csv", communes, 4);
+                break;
         }
     }
 
