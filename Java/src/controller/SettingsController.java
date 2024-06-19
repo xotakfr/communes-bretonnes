@@ -14,18 +14,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import modele.dao.*;
 import modele.data.*;
-import utils.ResultSetTableView;
 import view.scenes.WelcomeScene;
-import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-
-
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.ArrayList;
-
 import modele.data.DefaultThing;
 
 /**
