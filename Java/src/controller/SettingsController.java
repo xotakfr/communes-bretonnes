@@ -261,7 +261,7 @@ public class SettingsController {
             new GareDAO().delete(c,new GareDAO().findByID(c, Long.parseLong(txt[0])));
             break;
         case "modele.dao.AeroportDAO":
-            new AeroportDAO().delete(c, new AeroportDAO().getFromName(txt[0]));
+            new AeroportDAO().delete(c, new AeroportDAO().getFromName(c, txt[0]));
             break;
         case "modele.dao.AnneeDAO":
             new AnneeDAO().delete(c, new AnneeDAO().getFromId(c, Long.parseLong(txt[0])));
