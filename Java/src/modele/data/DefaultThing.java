@@ -112,7 +112,7 @@ public class DefaultThing {
      * @param ann L'instance de type DonneesAnnuelles
      */
     public DefaultThing(DonneesAnnuelles ann) {
-        this.col1 = new SimpleStringProperty(String.valueOf(ann.getAnnee()));
+        this.col1 = new SimpleStringProperty(String.valueOf(ann.getAnnee().getAnnee()));
         this.col2 = new SimpleStringProperty(String.valueOf(ann.getCommune().getIdCommune()));
         this.col3 = new SimpleStringProperty(String.valueOf(ann.getNbMaison()));
         this.col4 = new SimpleStringProperty(String.valueOf(ann.getNbAppart()));
