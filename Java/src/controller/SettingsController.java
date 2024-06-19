@@ -181,14 +181,11 @@ public class SettingsController {
                         def.add(new DefaultThing(q));
                     }
                     break;
-                    /**
                 case "modele.dao.AeroportDAO":
                     ArrayList<Aeroport> itemsArrayListAer = new AeroportDAO().findAll(c);
                     for (Aeroport q : itemsArrayListAer) {
                         def.add(new DefaultThing(q));
-                    }
                     break;
-                */
                 case "modele.dao.AnneeDAO":
                     ArrayList<Annee> itemsArrayListAnnee = new AnneeDAO().findAll(c);
                     for (Annee q : itemsArrayListAnnee) {
@@ -233,12 +230,9 @@ public class SettingsController {
             case "modele.dao.GareDAO":
                 new GareDAO().update(c,Integer.parseInt(txt[0]), new Gare(Integer.parseInt(txt[0]), txt[1], Boolean.parseBoolean(txt[2]), Boolean.parseBoolean(txt[3]), new CommuneDAO().findByID(c, Long.parseLong(txt[4]))));
                 break;
-            /**
             case "modele.dao.AeroportDAO":
-                new AeroportDAO().update(c,Integer.parseInt(txt[0]), new Gare(Integer.parseInt(txt[0]), txt[1], Boolean.parseBoolean(txt[2]), Boolean.parseBoolean(txt[3]), new CommuneDAO().findByID(c, Long.parseLong(txt[4]))));
+                new AeroportDAO().update(c,txt[0], new Aeroport(txt[0], txt[1], new DepartementDAO().findByID(c, Long.parseLong(txt[2]))));
                 break;
-            }
-            */
             case "modele.dao.AnneeDAO":
                 new AnneeDAO().update(c,Integer.parseInt(txt[0]), new Annee(Integer.parseInt(txt[0]), Float.parseFloat(txt[1])));
                 break;
@@ -264,6 +258,9 @@ public class SettingsController {
             break;
         case "modele.dao.GareDAO":
             new GareDAO().delete(c,new GareDAO().findByID(c, Long.parseLong(txt[0])));
+            break;
+        case "modele.dao.AeroportDAO":
+            new AeroportDAO().delete(c, new AeroportDAO().getFromName(txt[0]));
             break;
         case "modele.dao.AnneeDAO":
             new AnneeDAO().delete(c, new AnneeDAO().getFromId(c, Long.parseLong(txt[0])));
