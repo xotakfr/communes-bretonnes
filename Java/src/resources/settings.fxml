@@ -289,7 +289,7 @@
                                           </Button>
                                        </children>
                                     </HBox>
-                                    <TextField GridPane.rowIndex="2" />
+                                    <TextField GridPane.rowIndex="2" id="valueText" fx:id="valueText"/>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Valeurs (Séparée par §)" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets bottom="50.0" />
