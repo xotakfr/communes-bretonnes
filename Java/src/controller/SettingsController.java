@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuButton;
@@ -8,9 +10,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import modele.classesDAO.*;
 import modele.classesModele.Departement;
 import utils.ResultSetTableView;
 
+import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -40,24 +44,32 @@ public class SettingsController {
         try {
             Class<?> classeDAO = Class.forName("modele.classesDAO."+table+"DAO");
             String className = classeDAO.getName();
-            DAO<?> instanceDAO =  (DAO<?>) classeDAO.getDeclaredConstructor().newInstance(); // ! j'ai modifié ici
+            DAO<?> instanceDAO =  (DAO<?>) classeDAO.getDeclaredConstructor().newInstance();
             ArrayList<?> itemsArrayList = instanceDAO.findAll(c);
             ObservableList<?> items = FXCollections.observableArrayList(itemsArrayList);
             System.out.println(items);
             tableView = new TableView<>(items);
             switch (className) {
                 case "modele.classesDAO.DepartementDAO":
-                    departementTableAction(itemsArrayList);
+                    System.out.println("j'ai reussi");
+                    // departementTableAction(itemsArrayList);
             }
-        } catch (ClassNotFoundException e) {
-
-        } catch (InstantiationException e) {
-
-        } catch (IllegalAccessException e) {
-
+        } 
+        catch (ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        } 
+        catch (InstantiationException e) {
+            System.out.println(e.getMessage());
+        } 
+        catch (IllegalAccessException e) {
+            System.out.println(e.getMessage());
         }
-
-         */
+        catch (InvocationTargetException e) {
+            System.out.println(e.getMessage());
+        }
+        catch (NoSuchMethodException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void loadTableNames(Connection connection) {
