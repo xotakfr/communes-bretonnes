@@ -12,15 +12,18 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import modele.classesDAO.*;
-import modele.classesModele.Departement;
+import modele.classesModele.*;
 import utils.ResultSetTableView;
 import view.scenes.WelcomeScene;
+import javafx.scene.Scene;
 
-import java.io.Console;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.ArrayList;
+
+import modele.classesModele.DefaultThing;
 
 public class SettingsController {
 
@@ -31,23 +34,47 @@ public class SettingsController {
     private TableView tableView;
 
     @FXML
+    private TableColumn<DefaultThing, String> col1;
+    @FXML
+    private TableColumn<DefaultThing, String> col2;
+    @FXML
+    private TableColumn<DefaultThing, String> col3;
+    @FXML
+    private TableColumn<DefaultThing, String> col4;
+    @FXML
+    private TableColumn<DefaultThing, String> col5;
+    @FXML
+    private TableColumn<DefaultThing, String> col6;
+    @FXML
+    private TableColumn<DefaultThing, String> col7;
+    @FXML
+    private TableColumn<DefaultThing, String> col8;
+    @FXML
+    private TableColumn<DefaultThing, String> col9;
+
+    @FXML
     void tableAction(ActionEvent event) {
         Stage stage = (Stage) (((MenuItem) event.getSource()).getParentPopup().getOwnerWindow());
         Connection c = (Connection) stage.getProperties().get("Connection");
 
-        String table = ((MenuItem) event.getSource()).getText();
+        col1.setCellValueFactory(new PropertyValueFactory<>("col1"));
+        col2.setCellValueFactory(new PropertyValueFactory<>("col2"));
+        col3.setCellValueFactory(new PropertyValueFactory<>("col3"));
+        col4.setCellValueFactory(new PropertyValueFactory<>("col4"));
+        col5.setCellValueFactory(new PropertyValueFactory<>("col5"));
+        col6.setCellValueFactory(new PropertyValueFactory<>("col6"));
+        col7.setCellValueFactory(new PropertyValueFactory<>("col7"));
+        col8.setCellValueFactory(new PropertyValueFactory<>("col8"));
+        col9.setCellValueFactory(new PropertyValueFactory<>("col9"));
 
+        String table = ((MenuItem) event.getSource()).getText();
         try {
             System.out.println(table);
-
             Statement statement = c.createStatement();
 
             ResultSet rs = statement.executeQuery("SELECT * FROM " + table + ";");
-
-            while(rs.next()) {
-                System.out.println(rs.getInt(1));
-            }
-            tableView = new ResultSetTableView(rs);
+            //tableView = new ResultSetTableView(rs);
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -55,14 +82,26 @@ public class SettingsController {
             Class<?> classeDAO = Class.forName("modele.classesDAO."+table+"DAO");
             String className = classeDAO.getName();
             DAO<?> instanceDAO =  (DAO<?>) classeDAO.getDeclaredConstructor().newInstance();
-            ArrayList<?> itemsArrayList = instanceDAO.findAll(c);
-            ObservableList<?> items = FXCollections.observableArrayList(itemsArrayList);
-            tableView = new TableView<>(items);
+
+            ArrayList<DefaultThing> def = new ArrayList<DefaultThing>();
+            
             switch (className) {
                 case "modele.classesDAO.DepartementDAO":
-                    System.out.println("j'ai reussi");
-                    // departementTableAction(itemsArrayList);
+                    ArrayList<Departement> itemsArrayListDepartement = new DepartementDAO().findAll(c);
+                    for (Departement q : itemsArrayListDepartement) {
+                        def.add(new DefaultThing(q));
+                    }
+                case "modele.classesDAO.CommuneDAO":
+                    ArrayList<Commune> itemsArrayListCommune = new CommuneDAO().findAll(c);
+                    for (Commune q : itemsArrayListCommune) {
+                        def.add(new DefaultThing(q));
+                    }
+
             }
+            ObservableList<DefaultThing> items = FXCollections.observableArrayList(def);
+            System.out.println(items);
+            tableView.setItems(items);
+
         }
         catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
