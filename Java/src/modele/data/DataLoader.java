@@ -77,7 +77,7 @@ public class DataLoader {
      * @param lesObjets La liste d'objets à écrire dans le fichier
      * @param i Un numéro qui permet d'indiquer quel type d'objets nous avons affaire à 
      */
-    private static void CSVEncoder(String f, ArrayList<Object> lesObjets, int i) {
+    public static void CSVEncoder(String f, ArrayList<?> lesObjets, int i) {
         try {
             String textOutput;
             ArrayList<String> params;
