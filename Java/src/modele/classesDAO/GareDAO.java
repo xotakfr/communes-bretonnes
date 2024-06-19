@@ -72,7 +72,7 @@ public class GareDAO extends DAO<Gare> {
         ArrayList<Gare> arr = new ArrayList<Gare>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM Gare WHERE Gare.laCommune = "+id+";");
+            arr = runSQLQuery(co, "SELECT * FROM Gare WHERE Gare.codeGare = "+id+";");
         } 
         catch (Exception e) {
             e.printStackTrace();
