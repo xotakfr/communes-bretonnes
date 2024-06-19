@@ -27,7 +27,7 @@ public class AeroportDAO {
         ArrayList<Aeroport> ann = new ArrayList<Aeroport>();
 
         while (resultSet.next()) {
-            Aeroport com = new Aeroport(resultSet.getString(0), resultSet.getString(1), new DepartementDAO().findByID(c, resultSet.getInt(2)));
+            Aeroport com = new Aeroport(resultSet.getString(0), resultSet.getString(1), new DepartementDAO().findByID(connection, resultSet.getInt(2)));
             ann.add(com);
         }      
 
