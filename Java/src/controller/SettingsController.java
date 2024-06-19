@@ -30,6 +30,9 @@ import modele.classesModele.DefaultThing;
 
 public class SettingsController {
 
+    private String currentClasse = "";
+    private Connection c = null;
+
     @FXML
     private MenuButton tableButton;
 
@@ -61,7 +64,7 @@ public class SettingsController {
     @FXML
     void tableAction(ActionEvent event) {
         Stage stage = (Stage) (((MenuItem) event.getSource()).getParentPopup().getOwnerWindow());
-        Connection c = (Connection) stage.getProperties().get("Connection");
+        c = (Connection) stage.getProperties().get("Connection");
 
         col1.setCellValueFactory(new PropertyValueFactory<>("col1"));
         col2.setCellValueFactory(new PropertyValueFactory<>("col2"));
@@ -95,6 +98,7 @@ public class SettingsController {
         try {
             Class<?> classeDAO = Class.forName("modele.classesDAO."+table+"DAO");
             String className = classeDAO.getName();
+            currentClasse = className;
             DAO<?> instanceDAO =  (DAO<?>) classeDAO.getDeclaredConstructor().newInstance();
 
             ArrayList<DefaultThing> def = new ArrayList<DefaultThing>();
@@ -114,21 +118,6 @@ public class SettingsController {
             }
             ObservableList<DefaultThing> items = FXCollections.observableArrayList(def);
             tableView.setItems(items);
-
-            valueText.setOnAction(eventDep -> {
-                if (((KeyEvent) eventDep).getCode() == KeyCode.ENTER) {
-                    String[] txt = valueText.getText().split("§");
-                     switch (className) {
-                        case "modele.classesDAO.DepartementDAO":
-                            new DepartementDAO().update(txt[0], new Departement(txt[0], txt[1], txt[2]));
-                        case "modele.classesDAO.CommuneDAO":
-                            new CommuneDAO().update(txt[0], new Commune(txt[0], txt[1], txt[2]));
-                        case "modele.classesDAO.GareDAO":
-                            new GareDAO().update(txt[0], new Gare(txt[0], txt[1], txt[2], txt[3], txt[4]));
-                        case "modele.classesDAO.UsersDAO":
-                            new UsersDAO().update(txt[0], new Gare(txt[0], txt[1], txt[2], txt[3], txt[4]));
-                }
-            }});
 
 
         }
@@ -172,4 +161,47 @@ public class SettingsController {
         String username = (String) stage.getProperties().get("Username");
         WelcomeScene.loadScene(stage, username);
     }
+
+    @FXML
+    void handleEditButton() {
+        String[] txt = valueText.getText().split("§");
+        switch (currentClasse) {
+        case "modele.classesDAO.DepartementDAO":
+            new DepartementDAO().update(Integer.parseInt(txt[0]), new Departement(Integer.parseInt(txt[0]), txt[1], Float.parseFloat(txt[0])));
+        case "modele.classesDAO.CommuneDAO":
+            new CommuneDAO().update(Integer.parseInt(txt[0]), new Commune(Integer.parseInt(txt[0]), txt[1], new DepartementDAO().findByID(c, Long.parseLong(txt[2]))));
+        case "modele.classesDAO.GareDAO":
+            new GareDAO().update(Integer.parseInt(txt[0]), new Gare(Integer.parseInt(txt[0]), txt[1], Boolean.parseBoolean(txt[2]), Boolean.parseBoolean(txt[3]), new CommuneDAO().findByID(c, Long.parseLong(txt[4]))));
+        //case "modele.classesDAO.UsersDAO":
+        }
+    }
+
+    @FXML
+    void handleDeleteButton() {
+        String[] txt = valueText.getText().split("§");
+        switch (currentClasse) {
+        case "modele.classesDAO.DepartementDAO":
+            new DepartementDAO().delete( new DepartementDAO().findByID(c,Long.parseLong(txt[0])));
+        case "modele.classesDAO.CommuneDAO":
+            new CommuneDAO().delete(new CommuneDAO().findByID(c,Long.parseLong(txt[0])));
+        case "modele.classesDAO.GareDAO":
+            new GareDAO().delete(new GareDAO().findByID(Long.parseLong(txt[0])));
+        //case "modele.classesDAO.UsersDAO":
+        }
+    }
+
+    @FXML
+    void handleAddButton() {
+        String[] txt = valueText.getText().split("§");
+        switch (currentClasse) {
+        case "modele.classesDAO.DepartementDAO":
+            new DepartementDAO().create(new Departement(Integer.parseInt(txt[0]), txt[1], Float.parseFloat(txt[0])));
+        case "modele.classesDAO.CommuneDAO":
+            new CommuneDAO().create(new Commune(Integer.parseInt(txt[0]), txt[1], new DepartementDAO().findByID(c,Long.parseLong(txt[2]))));
+        case "modele.classesDAO.GareDAO":
+            new GareDAO().create(new Gare(Integer.parseInt(txt[0]), txt[1], Boolean.parseBoolean(txt[2]), Boolean.parseBoolean(txt[3]), new CommuneDAO().findByID(c,Long.parseLong(txt[4]))));
+        //case "modele.classesDAO.UsersDAO":
+        }
+    }
+
 }
