@@ -1,4 +1,4 @@
-package modele.classesModele;
+package modele.data;
 
 /**
  * Une instance de cette classe permet de représenter une année.

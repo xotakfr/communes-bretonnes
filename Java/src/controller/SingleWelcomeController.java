@@ -1,15 +1,13 @@
 package controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import modele.classesDAO.UserDAO;
-import modele.classesModele.Commune;
+import modele.dao.UserDAO;
+import modele.data.Commune;
 import view.scenes.LoginScene;
 import view.scenes.StatsScene;
 

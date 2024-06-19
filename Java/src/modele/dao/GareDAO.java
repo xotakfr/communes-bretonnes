@@ -1,4 +1,4 @@
-package modele.classesDAO;
+package modele.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.sql.PreparedStatement;
 
-import modele.classesModele.Gare;;
+import modele.data.Gare;;
 
 /**
  * Data Access for Gare
