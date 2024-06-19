@@ -1,0 +1,8 @@
+Nous avons ajouté gare.csv au répertoire DonneesFourniesGraphes. 
+Ce fichier csv nous a été fourni dans le cadre de la partie SQL et est nécessaire au fonctionnement de notre troisième scénario.
+De plus, il est utilisé dans notre application donc nous considérons son utilisation légitime.
+
+Le lien vers la vidéo se trouve sur le fichier PDF.
+Celui-ci renvoie vers youtube.
+
+Enfin, il est nécessaire d'installer l'ensemble des bibliothèques mentionnées dans bibliothèques.txt pour lancer tous les programmes.
