@@ -239,8 +239,8 @@ public class SettingsController {
             case "modele.dao.AnneeDAO":
                 new AnneeDAO().update(c,Integer.parseInt(txt[0]), new Annee(Integer.parseInt(txt[0]), Float.parseFloat(txt[1])));
                 break;
-            case "modele.dao.DonneesAnnuelleDAO":
-                new AnneeDAO().update(c,Integer.parseInt(txt[0]), new Annee(Integer.parseInt(txt[0]), Float.parseFloat(txt[1])));
+            case "modele.dao.DonneesAnnuellesDAO":
+                new DonneesAnnuellesDAO().update(c,Integer.parseInt(txt[0]), Integer.parseInt(txt[1]), new DonneesAnnuelles(Integer.parseInt(txt[0]), Integer.parseInt(txt[1]), Integer.parseInt(txt[2]),Integer.parseInt(txt[3]),Integer.parseInt(txt[4]),Integer.parseInt(txt[5]),Integer.parseInt(txt[6]),Integer.parseInt(txt[7]),Integer.parseInt(txt[8]), -1));
                 break;
         }
         loadTableView();
@@ -268,6 +268,9 @@ public class SettingsController {
         case "modele.dao.AnneeDAO":
             new AnneeDAO().delete(c, new AnneeDAO().getFromId(c, Long.parseLong(txt[0])));
             break;
+        case "modele.dao.DonneesAnnuellesDAO":
+                new DonneesAnnuellesDAO().delete(c, new DonneesAnnuellesDAO().findByCommuneAndYear(Integer.parseInt(txt[0]), Integer.parseInt(txt[1])));
+                break;
         }
         loadTableView();
     }
@@ -294,6 +297,9 @@ public class SettingsController {
         case "modele.dao.AnneeDAO":
             new AnneeDAO().create(c, new Annee(Integer.parseInt(txt[0]), Float.parseFloat(txt[1])));
             break;
+        case "modele.dao.DonneesAnnuellesDAO":
+                new DonneesAnnuellesDAO().create(c, new DonneesAnnuelles(Integer.parseInt(txt[0]), Integer.parseInt(txt[1]), Integer.parseInt(txt[2]),Integer.parseInt(txt[3]),Integer.parseInt(txt[4]),Integer.parseInt(txt[5]),Integer.parseInt(txt[6]),Integer.parseInt(txt[7]),Integer.parseInt(txt[8]), -1));
+                break;
         }
         loadTableView();
     }
