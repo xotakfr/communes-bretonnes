@@ -288,6 +288,9 @@ public class SettingsController {
         case "modele.dao.GareDAO":
             new GareDAO().create(c,new Gare(Integer.parseInt(txt[0]), txt[1], Boolean.parseBoolean(txt[2]), Boolean.parseBoolean(txt[3]), new CommuneDAO().findByID(c,Long.parseLong(txt[4]))));
             break;
+        case "modele.dao.AeroportDAO":
+            new AeroportDAO().create(c, new Aeroport(txt[0]) txt[1], (txt[2]), new DepartementDAO().findByID(c,Long.parseLong(txt[2])));
+            break;
         case "modele.dao.AnneeDAO":
             new AnneeDAO().create(c, new Annee(Integer.parseInt(txt[0]), Float.parseFloat(txt[1])));
             break;
@@ -307,6 +310,10 @@ public class SettingsController {
             case "modele.dao.AeroportDAO":
                 ArrayList<Aeroport> aeroports = new AeroportDAO().findAll(c);
                 DataLoader.CSVEncoder("departements.csv", aeroports, 4);
+                break;
+            case "modele.dao.GareDAO":
+                ArrayList<Gare> gares = new GareDAO().findAll(c);
+                DataLoader.CSVEncoder("gares.csv", gares, 4);
                 break;
             case "modele.dao.AnneeDAO":
                 ArrayList<Annee> annees = AnneeDAO.findAll(c);
