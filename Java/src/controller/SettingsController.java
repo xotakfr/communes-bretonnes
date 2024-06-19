@@ -139,7 +139,7 @@ public class SettingsController {
         }
     }
 
-    private loadTableView() {
+    private void loadTableView() {
         ArrayList<DefaultThing> def = new ArrayList<DefaultThing>();
             
             switch (currentClasse) {
