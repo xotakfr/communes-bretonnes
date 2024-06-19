@@ -131,7 +131,7 @@ public class CommuneDAO extends DAO<Commune> {
 
     public void update(long id, Commune commune) {
         Connection co = getConnection();
-        String sql = "UPDATE Commune SET nomCommune = ?, idDepartement = ? WHERE idCommune = ?";
+        String sql = "UPDATE Commune SET nomCommune = ?, leDepartement = ? WHERE idCommune = ?";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
             pstmt.setString(1, commune.getNomCommune());
@@ -146,7 +146,7 @@ public class CommuneDAO extends DAO<Commune> {
 
     public void create(Commune commune) {
         Connection co = getConnection();
-        String sql = "INSERT INTO Commune (idCommune, nomCommune, idDepartement) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO Commune (idCommune, nomCommune, leDepartement) VALUES (?, ?, ?)";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
             pstmt.setInt(1, commune.getIdCommune());
