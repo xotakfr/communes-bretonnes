@@ -21,7 +21,7 @@ public class AeroportDAO  extends DAO<Aeroport> {
      * @return Le résultat de la requête SQL
      * @throws Exception - quand un problème est détecté avec la base de données
      */
-    protected static ArrayList<Aeroport> runSQLQuery(Connection connection, String sql) throws Exception {
+    protected ArrayList<Aeroport> runSQLQuery(Connection connection, String sql) throws Exception {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
         ArrayList<Aeroport> ann = new ArrayList<Aeroport>();
@@ -42,7 +42,7 @@ public class AeroportDAO  extends DAO<Aeroport> {
      * @param id L'ID qu'on doit rechercher
      * @return L'instance correspondante à l'ID
      */
-    public static ArrayList<Aeroport> findAll(Connection co) {
+    public ArrayList<Aeroport> findAll(Connection co) {
         ArrayList<Aeroport> ann = new ArrayList<Aeroport>();
 
         try {
@@ -61,7 +61,7 @@ public class AeroportDAO  extends DAO<Aeroport> {
      * @param nom Le nom qu'on doit rechercher
      * @return L'instance correspondante à l'ID
      */
-    public static Aeroport getFromId(Connection co, String nom) {
+    public Aeroport getFromId(Connection co, String nom) {
         Aeroport str = null;
 
         try {
