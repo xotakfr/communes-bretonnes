@@ -185,7 +185,7 @@ public class SettingsController {
         case "modele.classesDAO.CommuneDAO":
             new CommuneDAO().delete(c,new CommuneDAO().findByID(c,Long.parseLong(txt[0])));
         case "modele.classesDAO.GareDAO":
-            new GareDAO().delete(c,new GareDAO().findByID(Long.parseLong(txt[0])));
+            new GareDAO().delete(c,new GareDAO().findByID(c, Long.parseLong(txt[0])));
         //case "modele.classesDAO.UsersDAO":
         }
     }
