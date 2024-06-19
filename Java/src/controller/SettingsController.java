@@ -163,7 +163,7 @@ public class SettingsController {
            }
 
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
