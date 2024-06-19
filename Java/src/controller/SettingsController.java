@@ -14,48 +14,75 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import modele.dao.*;
 import modele.data.*;
+import utils.ResultSetTableView;
 import view.scenes.WelcomeScene;
+import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.ArrayList;
 
 import modele.data.DefaultThing;
 
+/**
+ * Contrôleur de la page de paramètrage
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
+ */
 public class SettingsController {
 
+    /** Classe DAO actuellement sélectionnée  */
     private String currentClasse = "";
+    /** Connexion à la base de données */
     private Connection c = null;
 
+    /** Bouton de choix entre les tables */
     @FXML
     private MenuButton tableButton;
 
+    /** Zone de visualisation des données des tables */
     @FXML
     private TableView tableView;
 
+    /** Première colonne pour les données */
     @FXML
     private TableColumn<DefaultThing, String> col1;
+    /** Deuxième colonne pour les données */
     @FXML
     private TableColumn<DefaultThing, String> col2;
+    /** Troisième colonne pour les données */
     @FXML
     private TableColumn<DefaultThing, String> col3;
+    /** Quatrième colonne pour les données */
     @FXML
     private TableColumn<DefaultThing, String> col4;
+    /** Cinquième colonne pour les données */
     @FXML
     private TableColumn<DefaultThing, String> col5;
+    /** Sixième colonne pour les données */
     @FXML
     private TableColumn<DefaultThing, String> col6;
+    /** Septième colonne pour les données */
     @FXML
     private TableColumn<DefaultThing, String> col7;
+    /** Huitième colonne pour les données */
     @FXML
     private TableColumn<DefaultThing, String> col8;
+    /** Neuvième colonne pour les données */
     @FXML
     private TableColumn<DefaultThing, String> col9;
 
+    /** Valeur textuelle à afficher dans une case d'une colonne pour une table */
     @FXML
     private TextField valueText;
 
+    /**
+     * Récupère les données de la base de données afin de les visualisées
+     * @param event L'ActionEvent reçu lorsqu'on sélectionne une table à visualiser
+     */
     @FXML
     void tableAction(ActionEvent event) {
         Stage stage = (Stage) (((MenuItem) event.getSource()).getParentPopup().getOwnerWindow());
@@ -96,7 +123,28 @@ public class SettingsController {
             currentClasse = className;
             DAO<?> instanceDAO =  (DAO<?>) classeDAO.getDeclaredConstructor().newInstance();
 
-            loadTableView();
+            ArrayList<DefaultThing> def = new ArrayList<DefaultThing>();
+
+            switch (className) {
+                case "modele.classesDAO.DepartementDAO":
+                    ArrayList<Departement> itemsArrayListDepartement = new DepartementDAO().findAll(c);
+                    for (Departement q : itemsArrayListDepartement) {
+                        def.add(new DefaultThing(q));
+                    }
+
+                case "modele.classesDAO.CommuneDAO":
+                    ArrayList<Commune> itemsArrayListCommune = new CommuneDAO().findAll(c);
+                    for (Commune q : itemsArrayListCommune) {
+                        def.add(new DefaultThing(q));
+                    }
+                case "modele.classesDAO.GareDAO":
+                    ArrayList<Gare> itemsArrayListGare = new GareDAO().findAll(c);
+                    for (Gare q : itemsArrayListGare) {
+                        def.add(new DefaultThing(q));
+                    }
+            }
+            ObservableList<DefaultThing> items = FXCollections.observableArrayList(def);
+            tableView.setItems(items);
 
 
         }
@@ -117,6 +165,10 @@ public class SettingsController {
         }
     }
 
+    /**
+     * Récupère le nom des tables de la base de données
+     * @param connection La connexion à la base de données
+     */
     public void loadTableNames(Connection connection) {
         try {
             DatabaseMetaData dbmd = connection.getMetaData();
@@ -137,7 +189,7 @@ public class SettingsController {
     private void loadTableView() {
         ArrayList<DefaultThing> def = new ArrayList<DefaultThing>();
         tableView.getItems().clear();
-            
+
             switch (currentClasse) {
                 case "modele.classesDAO.DepartementDAO":
                     ArrayList<Departement> itemsArrayListDepartement = new DepartementDAO().findAll(c);
@@ -160,6 +212,10 @@ public class SettingsController {
             tableView.setItems(items);
     }
 
+    /**
+     * Permet de revenir sur la vue précédente
+     * @param event L'ActionEvent reçu lorsqu'on clique sur la flèche de retour à la vue précédente
+     */
     @FXML
     void handleBackButton(ActionEvent event) {
         Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
@@ -167,6 +223,9 @@ public class SettingsController {
         WelcomeScene.loadScene(stage, username);
     }
 
+    /**
+     * Permet d'éditer la valeur d'une instance existante
+     */
     @FXML
     void handleEditButton() {
         String[] txt = valueText.getText().split("§");
@@ -176,45 +235,42 @@ public class SettingsController {
         switch (currentClasse) {
         case "modele.classesDAO.DepartementDAO":
             new DepartementDAO().update(c,Integer.parseInt(txt[0]), new Departement(Integer.parseInt(txt[0]), txt[1], Float.parseFloat(txt[2])));
-            loadTableView();
         case "modele.classesDAO.CommuneDAO":
             new CommuneDAO().update(c,Integer.parseInt(txt[0]), new Commune(Integer.parseInt(txt[0]), txt[1], new DepartementDAO().findByID(c, Long.parseLong(txt[2]))));
-            loadTableView();
         case "modele.classesDAO.GareDAO":
             new GareDAO().update(c,Integer.parseInt(txt[0]), new Gare(Integer.parseInt(txt[0]), txt[1], Boolean.parseBoolean(txt[2]), Boolean.parseBoolean(txt[3]), new CommuneDAO().findByID(c, Long.parseLong(txt[4]))));
-            loadTableView();
         }
     }
 
+    /**
+     * Permet d'effacer une instance existante
+     */
     @FXML
     void handleDeleteButton() {
         String[] txt = valueText.getText().split("§");
         switch (currentClasse) {
         case "modele.classesDAO.DepartementDAO":
             new DepartementDAO().delete(c, new DepartementDAO().findByID(c,Long.parseLong(txt[0])));
-            loadTableView();
         case "modele.classesDAO.CommuneDAO":
             new CommuneDAO().delete(c,new CommuneDAO().findByID(c,Long.parseLong(txt[0])));
-            loadTableView();
         case "modele.classesDAO.GareDAO":
             new GareDAO().delete(c,new GareDAO().findByID(c, Long.parseLong(txt[0])));
-            loadTableView();
         }
     }
 
+    /**
+     * Permet d'ajouter une nouvelle instance
+     */
     @FXML
     void handleAddButton() {
         String[] txt = valueText.getText().split("§");
         switch (currentClasse) {
         case "modele.classesDAO.DepartementDAO":
             new DepartementDAO().create(c,new Departement(Integer.parseInt(txt[0]), txt[1], Float.parseFloat(txt[0])));
-            loadTableView();
         case "modele.classesDAO.CommuneDAO":
             new CommuneDAO().create(c,new Commune(Integer.parseInt(txt[0]), txt[1], new DepartementDAO().findByID(c,Long.parseLong(txt[2]))));
-            loadTableView();
         case "modele.classesDAO.GareDAO":
             new GareDAO().create(c,new Gare(Integer.parseInt(txt[0]), txt[1], Boolean.parseBoolean(txt[2]), Boolean.parseBoolean(txt[3]), new CommuneDAO().findByID(c,Long.parseLong(txt[4]))));
-            loadTableView();
         }
     }
 

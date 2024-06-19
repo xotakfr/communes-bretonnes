@@ -9,7 +9,17 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Connection;
 
+/**
+ * Implémente UIScenes et charge la scène correspondant au menu de paramètrage.
+ * @see UIScenes 
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
+ */
 public class SettingsScene implements UIScenes{
+
+    /**
+     * Récupère la scène associée à la page du menu de paramètrage
+     * @param stage Le stage de l'application
+     */
     public static void loadScene(Stage stage) {
         try {
             FXMLLoader loader = new FXMLLoader();

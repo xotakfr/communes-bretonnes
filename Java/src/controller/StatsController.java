@@ -1,7 +1,3 @@
-/**
- * Sample Skeleton for 'stats_1.fxml' Controller Class
- */
-
 package controller;
 
 import javafx.event.ActionEvent;
@@ -11,11 +7,12 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import modele.dao.CommuneDAO;
-import modele.dao.DonneesAnnuellesDAO;
-import modele.data.Commune;
-import modele.data.DonneesAnnuelles;
+import modele.classesDAO.CommuneDAO;
+import modele.classesDAO.DonneesAnnuellesDAO;
+import modele.classesModele.Commune;
+import modele.classesModele.DonneesAnnuelles;
 import utils.FontOptimizer;
 import utils.PythonLauncher;
 import view.scenes.WelcomeScene;
@@ -24,55 +21,76 @@ import javafx.scene.Node;
 
 import java.sql.Connection;
 
+/**
+ * Contrôleur de la page d'analyse des données pour une commune
+ * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
+ */
 public class StatsController {
 
-
+    /** Quantité d'appartements */
     @FXML
     private Text appartText;
 
+    /** Surface moyenne */
     @FXML
     private Text avgAreaText;
 
+    /** Prix moyen */
     @FXML
     private Text avgText;
 
+    /** Prix moyen au mètre carré */
     @FXML
     private Text avgm2Text;
 
+    /** Budget de la commune */
     @FXML
     private Text budgetText;
 
+    /** Numéro de la commune */
     @FXML
     private Text communeText;
 
+    /** Dépenses culturelles de la commune */
     @FXML
     private Text culturalText;
 
+    /** ImagePane où l'on stocke les graphes générés */
     @FXML
     private ImageView imagePane;
 
+    /** Quantité de maisons */
     @FXML
     private Text maisonsText;
 
+    /** Quantité de population */
     @FXML
     private Text popText;
 
+    /** Zone d'input des arguments pour la troisième visualisation */
     @FXML
     private TextField vis3Arg;
 
+    /** Zone d'input des arguments pour la quatrième visualisation */
     @FXML
     private TextField vis4arg;
 
+    /** Zone d'input des arguments pour la cinquième visualisation */
     @FXML
     private TextField vis5Arg;
 
+    /** Zone d'input des arguments pour la sixième visualisation */
     @FXML
     private TextField vis6Arg;
 
+    /** Bouton permettant de choisir l'année des données qu'on visualise */
     @FXML
     private MenuButton yearButton;
 
-
+    /**
+     * Renvoie vers la scène précédente
+     * @param event L'ActionEvent reçu lorsqu'on clique sur la flèche de retour à la scène précédente
+     */
     @FXML
     void handleBack(ActionEvent event) {
         Stage stage = (Stage) (((Node)event.getSource()).getScene().getWindow());
@@ -80,6 +98,10 @@ public class StatsController {
         WelcomeScene.loadScene(stage, username);
     }
 
+    /**
+     * Gère le changement des données affichées lorsqu'on change d'année avec le bouton de sélection des années
+     * @param event L'ActionEvent lorsqu'on sélectionne une année avec le bouton de sélection des années
+     */
     @FXML
     void handleYearChange(ActionEvent event) {
         Stage stage = (Stage) (((MenuItem) event.getSource()).getParentPopup().getOwnerWindow());
@@ -111,11 +133,19 @@ public class StatsController {
         }
     }
 
+    /**
+     * Gère le chargement de la scène
+     * @param commune La commune sur laquelle on va faire des visualisations
+     */
     public void handleLoad(String commune) {
         this.communeText.setText(commune);
         communeText.setStyle("-fx-font-size: "+ FontOptimizer.getOptimizedFontSize(commune, 80, 50)+"px;");
     }
 
+    /**
+     * Programme associé à l'envoi d'un message à python pour la première visualisation
+     * @param event L'ActionEvent reçu lorsqu'on demande la première visualisation
+     */
     @FXML
     void vis1(ActionEvent event) {
         imagePane.setImage(new Image("/resources/assets/loading.png"));
@@ -149,6 +179,10 @@ public class StatsController {
 
     }
 
+    /**
+     * Programme associé à l'envoi d'un message à python pour la deuxième visualisation
+     * @param event L'ActionEvent reçu lorsqu'on demande la deuxième visualisation
+     */
     @FXML
     void vis2(ActionEvent event) {
         imagePane.setImage(new Image("/resources/assets/loading.png"));
@@ -162,6 +196,10 @@ public class StatsController {
         imagePane.setImage(new Image("/javafx_visualization.png"));
     }
 
+    /**
+     * Programme associé à l'envoi d'un message à python pour la troisième visualisation
+     * @param event L'ActionEvent reçu lorsqu'on demande la troisième visualisation
+     */
     @FXML
     void vis3(ActionEvent event) {
         imagePane.setImage(new Image("/resources/assets/loading.png"));
@@ -186,6 +224,10 @@ public class StatsController {
         }
     }
 
+    /**
+     * Programme associé à l'envoi d'un message à python pour la quatrième visualisation
+     * @param event L'ActionEvent reçu lorsqu'on demande la quatrième visualisation
+     */
     @FXML
     void vis4(ActionEvent event) {
         imagePane.setImage(new Image("/resources/assets/loading.png"));
@@ -211,6 +253,10 @@ public class StatsController {
         }
     }
 
+    /**
+     * Programme associé à l'envoi d'un message à python pour la cinquième visualisation
+     * @param event L'ActionEvent reçu lorsqu'on demande la cinquième visualisation
+     */
     @FXML
     void vis5(ActionEvent event) {
         imagePane.setImage(new Image("/resources/assets/loading.png"));
@@ -235,6 +281,10 @@ public class StatsController {
 
     }
 
+    /**
+     * Programme associé à l'envoi d'un message à python pour la sixième visualisation
+     * @param event L'ActionEvent reçu lorsqu'on demande la sixième visualisation
+     */
     @FXML
     void vis6(ActionEvent event) {
         imagePane.setImage(new Image("/resources/assets/loading.png"));
