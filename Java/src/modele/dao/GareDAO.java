@@ -153,7 +153,7 @@ public class GareDAO extends DAO<Gare> {
     /**
      * Permet d'effacer une instance
      * @param co La connexion à la base de données
-     * @param donneesAnnuelles L'instance qu'on va effacer
+     * @param gare L'instance qu'on va effacer
      */
     public void delete(Connection co, Gare gare) {
         String sql = "DELETE FROM Gare WHERE codeGare = ?";
