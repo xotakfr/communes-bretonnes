@@ -1,0 +1,12 @@
+Les commandes a executées depuis myPython (exemples)
+
+pour les degrés : python .\visualisations.py 1 
+pour les eccentricités : python .\visualisations.py 2
+pour le scénario 1 : python .\visualisations.py 3 29019 500
+pour le scénario 2 : python .\visualisations.py 4 29019 50
+pour le scénario 3, cas normal : python .\visualisations.py 5 10
+pour le scénario 3, cas spécial echec recherche : python .\visualisations.py 5 10 29019
+pour le scénario 3, cas spécial réussite recherche : python .\visualisations.py 5 1160 29019
+
+
+
