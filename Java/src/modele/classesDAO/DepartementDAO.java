@@ -95,7 +95,7 @@ public class DepartementDAO extends DAO<Departement> {
         ArrayList<Departement> arr = new ArrayList<Departement>();
 
         try {
-            arr = runSQLQuery(co, "SELECT * FROM Departements WHERE \"Departements."+filter+"\""+filterSelect+";");
+            arr = runSQLQuery(co, "SELECT * FROM Departement WHERE \"Departements."+filter+"\""+filterSelect+";");
         } 
         catch (Exception e) {
             e.printStackTrace();
@@ -118,7 +118,7 @@ public class DepartementDAO extends DAO<Departement> {
 
     public void update(long id, Departement departement) {
         Connection co = getConnection();
-        String sql = "UPDATE Departements SET nomDep = ?, invesCulturel2019 = ? WHERE idDep = ?";
+        String sql = "UPDATE Departement SET nomDep = ?, investissementCulturel2019 = ? WHERE idDep = ?";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
             pstmt.setString(1, departement.getNomDep());
@@ -133,7 +133,7 @@ public class DepartementDAO extends DAO<Departement> {
 
     public void create(Departement departement) {
         Connection co = getConnection();
-        String sql = "INSERT INTO Departements (idDep, nomDep, invesCulturel2019) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO Departement (idDep, nomDep, investissementCulturel2019) VALUES (?, ?, ?)";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
             pstmt.setInt(1, departement.getIdDep());
@@ -148,7 +148,7 @@ public class DepartementDAO extends DAO<Departement> {
 
     public void delete(Departement departement) {
         Connection co = getConnection();
-        String sql = "DELETE FROM Departements WHERE idDep = ?";
+        String sql = "DELETE FROM Departement WHERE idDep = ?";
 
         try (PreparedStatement pstmt = co.prepareStatement(sql)) {
             pstmt.setInt(1, departement.getIdDep());
