@@ -289,7 +289,7 @@ public class SettingsController {
             new GareDAO().create(c,new Gare(Integer.parseInt(txt[0]), txt[1], Boolean.parseBoolean(txt[2]), Boolean.parseBoolean(txt[3]), new CommuneDAO().findByID(c,Long.parseLong(txt[4]))));
             break;
         case "modele.dao.AeroportDAO":
-            new AeroportDAO().create(c, new Aeroport(txt[0]), txt[1], (txt[2]), new DepartementDAO().findByID(c,Long.parseLong(txt[2])));
+            new AeroportDAO().create(c, new Aeroport(txt[0]), txt[1], new DepartementDAO().findByID(c,Long.parseLong(txt[2])));
             break;
         case "modele.dao.AnneeDAO":
             new AnneeDAO().create(c, new Annee(Integer.parseInt(txt[0]), Float.parseFloat(txt[1])));
