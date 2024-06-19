@@ -49,6 +49,18 @@ public class DefaultThing {
         this.col9 = new SimpleStringProperty("");
     }
 
+    public DefaultThing(Aeroport aer) {
+        this.col1 = new SimpleStringProperty(aer.geNom());
+        this.col2 = new SimpleStringProperty(aer.getAdresse());
+        this.col3 = new SimpleStringProperty(String.valueOf(aer.getLeDepartement().getIdDep()));
+        this.col4 = new SimpleStringProperty("");
+        this.col5 = new SimpleStringProperty("");
+        this.col6 = new SimpleStringProperty("");
+        this.col7 = new SimpleStringProperty("");
+        this.col8 = new SimpleStringProperty("");
+        this.col9 = new SimpleStringProperty("");
+    }
+
     public String getCol1() {
         return col1.get();
     }
