@@ -14,51 +14,13 @@ import modele.dao.*;
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
 public class DataLoader {
-    /** Chemin des données */
-    private static final String PATH = "../data/";
-
-    /** Chemin du fichier des aéroports */
-    private static final String AIRPORT_PATH = "aeroport.csv"; //Name; Departement number; location
-
-    /** Chemin du fichier des communes */
-    private static final String MUNICIPALITY_PATH = "communesBretonnes.csv";//Departement number; insee; name
-
-    /** Chemin du fichier des départements */
-    private static final String DEPARTEMENTS = "departement.csv"; //departement; name
-    
-    /** Chemin du fichier des dépenses culturelles par commune */
-    private static final String CULTURAL = "depensesCulturellesParCommune.csv"; // Year ;name;insee;popu;total_cultu;total_b
-    
-    /** Chemin du fichier des gares */
-    private static final String TRAIN ="gare.csv"; //Code; name;fret;voya;commune;dep;code_co
-    
-    /** Chemin du fichier des investissements culturels par département */
-    private static final String CULTURAL_DEP = "investissementCulturelParDep.csv"; // Year ;name;insee;popu;total_cultu;total_b
-    
-    /** Chemin du fichier des prix par commune */
-    private static final String PRICE = "prixParCommune.csv";//INSEE_COM;Annee;NbMaisonsVendues;NbAppartsVendus;PrixMoyen;Prixm2Moyen;SurfaceMoy
-    
-    /** Chemin du fichier des taux d'inflation par an */
-    private static final String INFLATION = "tauxInflationParAn.csv";//Annee; taux
-    
-    /** Chemin du fichier des voisinages des communes bretonnes */
-    private static final String NEAR = "voisinageCommunesBretonnes.csv";//insee;nom;nbvoisins; insee voisins
-
-    /** Liste des communes chargées */
-    private static ArrayList<Commune> communes = new ArrayList<Commune>();
-
-    /** Liste des départements chargés */
-    private static ArrayList<Departement> departements = new ArrayList<Departement>();
-    
-    /** Liste des données annuelles chargées */
-    private static ArrayList<DonneesAnnuelles> donneesAnnuelles = new ArrayList<DonneesAnnuelles>();
-    
-    /** Liste des gares chargées */
-    private static ArrayList<Gare> gares = new ArrayList<Gare>();
-
+    /** Instance de type CommuneDAO */
     private static CommuneDAO communeDAO = new CommuneDAO();
+    /** Instance de type DepartementDAO */
     private static DepartementDAO departementDAO = new DepartementDAO();
+    /** Instance de type GareDAO */
     private static GareDAO gareDAO = new GareDAO();
+    /** Instance de type DonneesAnnuellesDAO */
     private static DonneesAnnuellesDAO donneesAnnuellesDAO = new DonneesAnnuellesDAO();
 
     /**
@@ -95,7 +57,7 @@ public class DataLoader {
     private static ArrayList<String[]> CSVReader(String f) {
         ArrayList<String[]> az = new ArrayList<String[]>();
         try {
-            Scanner scanner = new Scanner(new File(PATH+f));
+            Scanner scanner = new Scanner(new File(f));
             scanner.nextLine();//On skip la première ligne
             while(scanner.hasNextLine()) {
                 String[] t = decodeLine(scanner.nextLine());
@@ -119,7 +81,7 @@ public class DataLoader {
         try {
             String textOutput;
             ArrayList<String> params;
-            PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(PATH+f)));
+            PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(f)));
             for (Object leObjet : lesObjets) {
                 params = new ArrayList<String>();
                 switch(i) {
