@@ -12,7 +12,7 @@ import modele.data.Commune;
  * Use all fonction in DAO for the Commune objects
  */
 public class CommuneDAO extends DAO<Commune> {
-    /** Filtre actuel - Voir comparableTo et SwitcherFilter */
+    /** Filtre actuel - Voir comparableTo */
     private static String currentFilter = "idCommune";
     /** Liste des filtres possibles */
     private static String[] filtersList = new String[]{"idCommune", "nomCommune", "voisins","population"};

@@ -46,13 +46,6 @@ public abstract class DAO<T> {
     public abstract void delete(T element);
     */
 
-    /**
-     * Voir documentation de SwitcherFilter
-     * 
-     * Est censé proposer un accès de recherche en limitant les instructions SQL "dangeureuses"
-     * @param filter Filtre de recherche (liste de filtres accessibles dans ObjectDAO.filtersList)
-     * @param filterSelect Filtre de séléction (Accepte plusieurs instructions via ;)
-     */
     //public abstract T findByFilter(String filter, String filterSelect);
     //protected abstract static String[] filtersList;
     //protected abstract static String currentFilter;
