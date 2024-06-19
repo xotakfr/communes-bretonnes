@@ -113,7 +113,7 @@ public class SettingsController {
             Class<?> classeDAO = Class.forName("modele.dao."+table+"DAO");
             String className = classeDAO.getName();
             currentClasse = className;
-            DAO<?> instanceDAO =  (DAO<?>) classeDAO.getDeclaredConstructor().newInstance();
+            //DAO<?> instanceDAO =  (DAO<?>) classeDAO.getDeclaredConstructor().newInstance();
 
             loadTableView();
 
