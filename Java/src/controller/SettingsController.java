@@ -319,7 +319,7 @@ public class SettingsController {
                 break;
             case "modele.dao.GareDAO":
                 ArrayList<Gare> gares = new GareDAO().findAll(c);
-                DataLoader.CSVEncoder("gares.csv", gares, 4);
+                DataLoader.CSVEncoder("gares.csv", gares, 6);
                 break;
             case "modele.dao.AnneeDAO":
                 ArrayList<Annee> annees = AnneeDAO.findAll(c);
