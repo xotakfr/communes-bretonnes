@@ -12,7 +12,7 @@ import modele.data.Aeroport;
  * Classe DAO pour le type Aeroport
  * @author Nathan Guheneuf-Le Brec, Inaki Gomez--Jego, Jean-Louis Emeraud, François Patinec-Haxel
  */
-public class AeroportDAO {
+public class AeroportDAO  extends DAO<Aeroport> {
 
     /**
      * Lance une requête SQL
